@@ -119,18 +119,14 @@ public class PlayerController : MonoBehaviour
             bombsNumber--;
         }
         #endregion
-
-        Debug.Log(top);
-
+        
         #region Switch Gravity
         if (energy > 0)                                 //Whether the player has energy
         {
             if (Input.GetButtonDown("SwitchGravity"))       // If the player has energy and the button was pressed change the gravity.
             {                                                        
                 rb.gravityScale *= -1;                              
-                Rotation();
-                top = !top;
-                facingRight = !facingRight;                             // Change the facing upon rotation
+                Rotation();                
             }                                                      
         }                                                            
         #endregion
@@ -173,7 +169,8 @@ public class PlayerController : MonoBehaviour
             transform.eulerAngles = Vector3.zero;               
         }
 
-       
+        top = !top;
+        facingRight = !facingRight;                             // Change the facing upon rotation
 
     }
 }

@@ -40,15 +40,15 @@ public class LevelGeneration : MonoBehaviour
 
     private void Update()
     {
-        //if (timeBtwRoom <= 0 && stopGeneration == false)
-        //{
-        LvlGenMove();
-        //    timeBtwRoom = startTimeBtwRoom;
-        //}
-        //else
-        //{
-        //    timeBtwRoom -= Time.deltaTime;
-        //}
+        if (timeBtwRoom <= 0 && stopGeneration == false)
+        {
+            LvlGenMove();
+            timeBtwRoom = startTimeBtwRoom;
+        }
+        else
+        {
+            timeBtwRoom -= Time.deltaTime;
+        }
     }
 
     private void LvlGenMove() //level generation moves in a certain direction depending on the value of the direction variable
