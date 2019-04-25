@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class BombsDisplay : MonoBehaviour
 {
-    public PlayerController bombsNumber;
+    public PlayerController playerController;
     public Text bombsNumberText;
 
     private void Update()
     {
-        bombsNumberText.text = "" + bombsNumber.bombsNumber;
+        bombsNumberText.text = "" + playerController.bombsNumber;
     }
 
 }

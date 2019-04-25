@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -7619725829230051125}
   - component: {fileID: -881391477293951908}
   - component: {fileID: 2160072523622284804}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 6b2c71d01280fa04db761cfdafe5cdc0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,14 +100,9 @@ MonoBehaviour:
   damagePlayer: 4
   whatIsDestructible:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 1048832
   effect: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
   player: {fileID: 365476005206782939, guid: 732e16c9a8c034749aed08024320e14e, type: 3}
-  ShakeDuration: 0.3
-  ShakeAmplitude: 1.2
-  ShakeFrequency: 2
-  virtualCamera: {fileID: 520853414573917573, guid: b8677061ca2aec14bb9906e82a70bf67,
-    type: 3}
 --- !u!50 &-881391477293951908
 Rigidbody2D:
   serializedVersion: 4

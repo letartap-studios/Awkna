@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float climbingSmoothing;            // How much to smooth out the climbing.
 
-    public bool facingRight = true;            // For determining which way the player is currently facing.
+    public bool facingRight = true;             // For determining which way the player is currently facing.
 
     private bool isGrounded;                    // Whether or not the player is grounded.
     public Transform groundCheck;               // A position marking where to check if the player is grounded.
@@ -41,13 +41,18 @@ public class PlayerController : MonoBehaviour
 
     public float energy;                        // Measures the amount of energy the player has.
     public float maxEnergy;                     // The maximum energy the player can have.
+
+    enum GravityDirection { Down, Up };
+    GravityDirection m_GravityDirection;        // Whether the directon is down or up
+
     #endregion
 
     private void Start()
     {
-        energy = maxEnergy;
-        rb = GetComponent<Rigidbody2D>();       // Get the rigidbody component from the player object.
-        initialGravity = rb.gravityScale;       // Get the initial gravity of the charcter.
+        energy = maxEnergy;                             // Start with max energy.
+        rb = GetComponent<Rigidbody2D>();               // Get the rigidbody component from the player object.
+        initialGravity = rb.gravityScale;               // Get the initial value of the gravity.
+        m_GravityDirection = GravityDirection.Down;     // Initialize the gravity direction with down.
     }
 
     private void FixedUpdate()
@@ -90,7 +95,7 @@ public class PlayerController : MonoBehaviour
             verticalMoveInput = Input.GetAxisRaw("Vertical");        // ...get the vertical axis input and...
                                                                      // ...move the character by finding the target velocity...
             Vector3 verticalTargetVelocity = new Vector2(rb.velocity.x, verticalMoveInput * climbSpeed);
-                                                                     // ...and then smoothing it out and applying it to the character.
+            //                                                       // ...and then smoothing it out and applying it to the character.
             rb.velocity = Vector3.SmoothDamp(rb.velocity, verticalTargetVelocity, ref velocity, horizontalMovementSmoothing);
 
             rb.gravityScale = 0;                                     // Set the characters gravity to 0, in order to make the player climb.
@@ -101,55 +106,88 @@ public class PlayerController : MonoBehaviour
         }
 
         #endregion
+
+        #region Switch Gravity
+        switch (m_GravityDirection)
+        {
+            case GravityDirection.Down:
+
+
+                rb.gravityScale = initialGravity;           // Change the gravity to be in a downward direction (default).
+                if (Input.GetButtonDown("SwitchGravity"))   // Press the switch gravity button to change the direction of gravity.
+                {
+                    m_GravityDirection = GravityDirection.Up;
+                    Rotation();              // Rotate the player so the controls remain the same.
+                    energy--;                               // Each time the player changes gravity loses energy.
+                }
+
+                break;
+
+            case GravityDirection.Up:
+                if (energy > 0)                                     // Switch gravity only if the player has energy.
+                {
+                    rb.gravityScale = -initialGravity;              // Change the gravity to be in an upward direction
+                    if (Input.GetButtonDown("SwitchGravity"))       // Press the switch gravity button to change the direction of gravity
+                    {
+                        m_GravityDirection = GravityDirection.Down;
+                        Rotation();                        
+                    }
+                }
+                break;
+        }
+        #endregion
+
+        #region Energy
+
+        if (m_GravityDirection == GravityDirection.Up)  // If the player's gravity is upwards...
+        {
+            energy -= Time.deltaTime;                   //...he loses energy.
+            if (energy < 0)                             // If the player doesn't have energy anymore...
+            {
+                energy = 0;
+                m_GravityDirection = GravityDirection.Down; //...chage the gravity back to normal.
+                Rotation();
+            }
+        }
+        else if (energy < maxEnergy) // If the energy is less then the maximum amount...
+        {
+            energy += Time.deltaTime;//...it increases over time.
+        }
+
+        #endregion
     }
 
     private void Update()
     {
         #region Jump
-        if (Input.GetButtonDown("Jump") && isGrounded)  // Check if the Jump button was pressed and give the players...
+        if (m_GravityDirection == GravityDirection.Down) // Check if the gravity is downwards so the jump force is up.
         {
-            rb.velocity = Vector2.up * jumpForce;      //...rigidbody velocity on the y axis.
+            if (Input.GetButtonDown("Jump") && isGrounded)          // Check if the Jump button was pressed and give the players...
+            {
+                rb.velocity = Vector2.up * jumpForce;               //...rigidbody velocity on the y axis.
+            }
+        }
+        else                                             // Else the jump force is down.
+        {
+            if (Input.GetButtonDown("Jump") && isGrounded)           // Check if the Jump button was pressed and give the players...
+            {
+                rb.velocity = Vector2.down * jumpForce;              //...rigidbody velocity on the y axis.
+            }
         }
         #endregion
 
         #region Bomb
-        if (Input.GetButtonDown("Bomb") && bombsNumber > 0)
-        {
-            Instantiate(bomb, transform.position, Quaternion.identity);
-            bombsNumber--;
-        }
-        #endregion
-        
-        #region Switch Gravity
-        if (energy > 0)                                 //Whether the player has energy
-        {
-            if (Input.GetButtonDown("SwitchGravity"))       // If the player has energy and the button was pressed change the gravity.
-            {                                                        
-                rb.gravityScale *= -1;                              
-                Rotation();                
-            }                                                      
-        }                                                            
-        #endregion
+        Physics2D.IgnoreLayerCollision(13, 20);                 // Ignore the collision between the player and the bomb.
 
-        #region Energy
-
-        if (top == true)
-        {
-            energy -= Time.deltaTime;
-            if(energy < 0)
-            {
-                energy = 0;
-            }
+        if (Input.GetButtonDown("Bomb") && bombsNumber > 0)     // If the player has more then 0 bombs remaining and he presses down
+        {                                                       // the bomb button then...
+            Instantiate(bomb, transform.position, Quaternion.identity); //... spawn a bomb at the player position.
+            bombsNumber--;                                      // Lose one bomb from inventory.
         }
-        else if(energy < maxEnergy)
-        {
-            energy += Time.deltaTime;
-        }
-
         #endregion
     }
 
-    private void Flip()
+    private void Flip()     // Flip player facing when walking (left and right).
     {
         facingRight = !facingRight;                 // Switch the way the player is labelled as facing.
 
@@ -166,7 +204,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            transform.eulerAngles = Vector3.zero;               
+            transform.eulerAngles = Vector3.zero;
         }
 
         top = !top;

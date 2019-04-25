@@ -16,18 +16,18 @@ TagManager:
   - 
   - 
   - Ground
-  - Player
+  - Borders
   - Room
   - Ladder
   - Destructable
+  - Bomb
   - 
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
+  - Player
   - 
   - 
   - 
@@ -45,9 +45,6 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Bomb
-    uniqueID: 2548544413
     locked: 0
   - name: Foreground
     uniqueID: 1552592547
