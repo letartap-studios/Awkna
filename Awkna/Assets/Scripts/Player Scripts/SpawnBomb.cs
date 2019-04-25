@@ -17,11 +17,6 @@ public class SpawnBomb : MonoBehaviour
 
     #endregion
 
-    private void Start()
-    {
-        damagePlayer /= 2; // divide the damage by 2 bc. the damage the player takes is doubled
-    }
-
     private void Update()
     {
         if (timer <= 0)   // After spawning in the player controller, 

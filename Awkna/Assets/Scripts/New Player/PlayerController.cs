@@ -13,19 +13,21 @@ public class PlayerController : MonoBehaviour
     [Range(0, .3f)]
     [SerializeField]
     private float climbingSmoothing;            // How much to smooth out the climbing.
-
+    [HideInInspector]
     public bool facingRight = true;             // For determining which way the player is currently facing.
 
     private bool isGrounded;                    // Whether or not the player is grounded.
     public Transform groundCheck;               // A position marking where to check if the player is grounded.
     public float checkRadius;                   // Radius of the overlap circle to determine if grounded.
     public LayerMask whatIsGround;              // A mask determining what is ground to the character.
+    private bool isJumping;                     // Wheather the player is jumping or not.
+    private float jumpTimeCounter;              // The remaining amount of time the player can jump.
+    public float jumpTime;                      // The maximum amount of time the player can jump.
 
     public LayerMask whatIsLadder;              // A mask determining what is ladder to the character.
     public float ladderDistance;                // Distance between the player and the ladder at which the player can climb.
     private bool isClimbing;                    // Whether the player is climbing.
-    private RaycastHit2D ladderHitInfo;         // Whether above the player is ladder.
-    private float initialGravity;               // The initial gravity of the character.
+    private RaycastHit2D ladderHitInfo;         // Whether above the player is ladder.    
     public float climbSpeed = 30f;              // The speed of the character when climbing a ladder.
 
     private float horizontalMoveInput = 0f;     // Input for horizontal movement.
@@ -39,11 +41,13 @@ public class PlayerController : MonoBehaviour
 
     private bool top;                           // Whether the player is upside-down.
 
+    [HideInInspector]
     public float energy;                        // Measures the amount of energy the player has.
     public float maxEnergy;                     // The maximum energy the player can have.
 
     enum GravityDirection { Down, Up };
     GravityDirection m_GravityDirection;        // Whether the directon is down or up
+    private float initialGravity;               // The initial gravity of the character.
 
     #endregion
 
@@ -162,16 +166,56 @@ public class PlayerController : MonoBehaviour
         #region Jump
         if (m_GravityDirection == GravityDirection.Down) // Check if the gravity is downwards so the jump force is up.
         {
-            if (Input.GetButtonDown("Jump") && isGrounded)          // Check if the Jump button was pressed and give the players...
+            if (Input.GetButtonDown("Jump") && isGrounded)          // Check if the Jump button was pressed and give the player's...
             {
                 rb.velocity = Vector2.up * jumpForce;               //...rigidbody velocity on the y axis.
+                isJumping = true;                                   // The player is jumping.
+                jumpTimeCounter = jumpTime;                         // Reset the jump time counter.
+            }
+
+            if(Input.GetButton("Jump") && isJumping == true)        // While the player is holding down the jump button...
+            {
+                if(jumpTimeCounter > 0)                             //...and he has jump time remaining...
+                {
+                    rb.velocity = Vector2.up * jumpForce;           //...give the player's rigidbody velocity on the y axis.
+                    jumpTimeCounter -= Time.deltaTime;              // The jump time goes down each frame the player is jumping.
+                }
+                else
+                {
+                    isJumping = false;
+                }
+            }
+
+            if(Input.GetButtonUp("Jump"))
+            {
+                isJumping = false;
             }
         }
-        else                                             // Else the jump force is down.
+        else                                             // The same things apply to the reversed gravity.
         {
-            if (Input.GetButtonDown("Jump") && isGrounded)           // Check if the Jump button was pressed and give the players...
+            if (Input.GetButtonDown("Jump") && isGrounded)           
             {
-                rb.velocity = Vector2.down * jumpForce;              //...rigidbody velocity on the y axis.
+                rb.velocity = Vector2.down * jumpForce;
+                isJumping = true;                                   
+                jumpTimeCounter = jumpTime;
+            }
+
+            if (Input.GetButton("Jump") && isJumping == true)        
+            {
+                if (jumpTimeCounter > 0)                             
+                {
+                    rb.velocity = Vector2.down * jumpForce;           
+                    jumpTimeCounter -= Time.deltaTime;              
+                }
+                else
+                {
+                    isJumping = false;
+                }
+            }
+
+            if (Input.GetButtonUp("Jump"))
+            {
+                isJumping = false;
             }
         }
         #endregion
@@ -210,5 +254,10 @@ public class PlayerController : MonoBehaviour
         top = !top;
         facingRight = !facingRight;                             // Change the facing upon rotation
 
+    }
+
+    public void AddBomb()
+    {
+        bombsNumber++;
     }
 }

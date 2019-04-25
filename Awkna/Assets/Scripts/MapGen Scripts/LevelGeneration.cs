@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Pathfinding;
 
 // this script selects a random starting position for the room to spawn
 
@@ -23,6 +24,7 @@ public class LevelGeneration : MonoBehaviour
     public float minX; //min and max values of coordonates where the room can spawn
     public float maxX;
     public float maxY;
+    [HideInInspector]
     public bool stopGeneration;
 
     public LayerMask room;
@@ -43,12 +45,15 @@ public class LevelGeneration : MonoBehaviour
         if (timeBtwRoom <= 0 && stopGeneration == false)
         {
             LvlGenMove();
+            
             timeBtwRoom = startTimeBtwRoom;
         }
         else
         {
             timeBtwRoom -= Time.deltaTime;
         }
+
+        AstarPath.active.Scan();
     }
 
     private void LvlGenMove() //level generation moves in a certain direction depending on the value of the direction variable
@@ -57,7 +62,7 @@ public class LevelGeneration : MonoBehaviour
         {
             upCounter = 0;
 
-            if (transform.position.x < maxX) //chech if the levelGenerator has reached the limit
+            if (transform.position.x < maxX) //check if the levelGenerator has reached the limit
             {
                 Vector2 newPos = new Vector2(transform.position.x + moveAmount, transform.position.y);
                 transform.position = newPos;
