@@ -31,13 +31,16 @@ public class LevelGeneration : MonoBehaviour
 
     private int upCounter;
 
+    private GameObject player;
+
     private void Start()
     {
         int randStartingPos = Random.Range(0, startingPositions.Length);
         transform.position = startingPositions[randStartingPos].position;
         Instantiate(rooms[0], transform.position, Quaternion.identity);
-
-        direction = Random.Range(1, 6);
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position = transform.position;
+        direction = Random.Range(1, 5);
     }
 
     private void Update()
@@ -60,10 +63,9 @@ public class LevelGeneration : MonoBehaviour
     {
         if (direction == 1 || direction == 2) //Move RIGHT !
         {
-            upCounter = 0;
-
             if (transform.position.x < maxX) //check if the levelGenerator has reached the limit
             {
+                upCounter = 0;
                 Vector2 newPos = new Vector2(transform.position.x + moveAmount, transform.position.y);
                 transform.position = newPos;
 
@@ -88,10 +90,10 @@ public class LevelGeneration : MonoBehaviour
         }
         else if (direction == 3 || direction == 4) //Move LEFT!
         {
-            upCounter = 0;
-
             if (transform.position.x > minX)
             {
+                upCounter = 0;
+
                 Vector2 newPos = new Vector2(transform.position.x - moveAmount, transform.position.y);
                 transform.position = newPos;
 

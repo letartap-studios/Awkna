@@ -18,7 +18,9 @@ public class PlayerController : MonoBehaviour
 
     private bool isGrounded;                    // Whether or not the player is grounded.
     public Transform groundCheck;               // A position marking where to check if the player is grounded.
-    public float checkRadius;                   // Radius of the overlap circle to determine if grounded.
+    public float groundCheckRadius;             // Radius of the overlap circle to determine if grounded.
+    public float groundCheckRadiusHorizontal;   // Horizontal offset of the ground check radius.
+    public float groundCheckRadiusVertical;     // Vertical offset of the ground check radius.
     public LayerMask whatIsGround;              // A mask determining what is ground to the character.
     private bool isJumping;                     // Wheather the player is jumping or not.
     private float jumpTimeCounter;              // The remaining amount of time the player can jump.
@@ -49,6 +51,8 @@ public class PlayerController : MonoBehaviour
     GravityDirection m_GravityDirection;        // Whether the directon is down or up
     private float initialGravity;               // The initial gravity of the character.
 
+    private bool whatTile;                      // Wheather or not the player is on a special tile.
+
     #endregion
 
     private void Start()
@@ -62,7 +66,8 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+
 
         #region Horizontal movment
 
@@ -117,21 +122,21 @@ public class PlayerController : MonoBehaviour
             case GravityDirection.Down:
 
 
-                rb.gravityScale = initialGravity;           // Change the gravity to be in a downward direction (default).
-                if (Input.GetButtonDown("SwitchGravity"))   // Press the switch gravity button to change the direction of gravity.
+                rb.gravityScale = initialGravity;                         // Change the gravity to be in a downward direction (default).
+                if (Input.GetButtonDown("SwitchGravity") && isGrounded)   // Press the switch gravity button to change the direction of gravity.
                 {
                     m_GravityDirection = GravityDirection.Up;
                     Rotation();              // Rotate the player so the controls remain the same.
-                    energy--;                               // Each time the player changes gravity loses energy.
+                    energy--;                                             // Each time the player changes gravity loses energy.
                 }
 
                 break;
 
             case GravityDirection.Up:
-                if (energy > 0)                                     // Switch gravity only if the player has energy.
+                if (energy > 0)                                             // Switch gravity only if the player has energy.
                 {
-                    rb.gravityScale = -initialGravity;              // Change the gravity to be in an upward direction
-                    if (Input.GetButtonDown("SwitchGravity"))       // Press the switch gravity button to change the direction of gravity
+                    rb.gravityScale = -initialGravity;                      // Change the gravity to be in an upward direction
+                    if (Input.GetButtonDown("SwitchGravity") && isGrounded) // Press the switch gravity button to change the direction of gravity
                     {
                         m_GravityDirection = GravityDirection.Down;
                         Rotation();                        
@@ -229,6 +234,8 @@ public class PlayerController : MonoBehaviour
             bombsNumber--;                                      // Lose one bomb from inventory.
         }
         #endregion
+
+
     }
 
     private void Flip()     // Flip player facing when walking (left and right).
@@ -256,8 +263,16 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void AddBomb()
+    public void AddBomb()   // When the player finds a bomb add it to the inventory.
     {
         bombsNumber++;
+    }
+
+    private void OnDrawGizmosSelected() // Draw a gismos circle around the ground check radius.
+    {
+        Gizmos.color = Color.red;
+        Vector2 vec = new Vector2(transform.position.x + groundCheckRadiusHorizontal, transform.position.y + groundCheckRadiusVertical);
+
+        Gizmos.DrawWireSphere(vec, groundCheckRadius);
     }
 }

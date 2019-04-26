@@ -48,7 +48,7 @@ public class SpawnBomb : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected() // Draw a gismos circlie around the area of effect.
+    private void OnDrawGizmosSelected() // Draw a gismos circle around the area of effect.
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, areaOfEffect);

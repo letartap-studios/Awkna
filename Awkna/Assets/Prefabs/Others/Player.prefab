@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7484104036240423239}
   - component: {fileID: 7484104036240423236}
   m_Layer: 20
-  m_Name: Player 1
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +131,9 @@ MonoBehaviour:
   climbingSmoothing: 0.05
   facingRight: 1
   groundCheck: {fileID: 7484104035305520341}
-  checkRadius: 0.5
+  groundCheckRadius: 0.48
+  groundCheckRadiusHorizontal: 0
+  groundCheckRadiusVertical: -0.3
   whatIsGround:
     serializedVersion: 2
     m_Bits: 768
