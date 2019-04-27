@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7484104035305520341}
-  m_Layer: 20
+  m_Layer: 15
   m_Name: Ground Check
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7484104036240423243}
   - component: {fileID: 7484104036240423239}
   - component: {fileID: 7484104036240423236}
-  m_Layer: 20
+  m_Layer: 15
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ MonoBehaviour:
   groundCheckRadiusVertical: -0.3
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 17152
+    m_Bits: 82688
   jumpTime: 0.15
   whatIsLadder:
     serializedVersion: 2

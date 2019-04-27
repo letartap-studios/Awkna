@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class FlyingEnemyRange : MonoBehaviour
 {
+    #region Variables
     private AIPath aIPath;                              // Refrence to the AIPath script on the enemy.
     private AIDestinationSetter AIDestinationSetter;    // Refrence to the AIDestinationSetter script on the enemy.
     private GameObject player;                          // Refence to the player object in the scene.
     private bool playerInRange = false;                 // Whether the player has been in range of the enemy until the moment.
-    private float distanceToPlayer;                 // The distance at which the enemy starts to follow the player.
+    private float distanceToPlayer;                     // The distance at which the enemy starts to follow the player.
+    #endregion
 
     void Start()
     {
@@ -17,7 +19,7 @@ public class FlyingEnemyRange : MonoBehaviour
         aIPath = GetComponent<AIPath>();                            // Get the AIPath script from the object.
         AIDestinationSetter = GetComponent<AIDestinationSetter>();  // Get the AIDestinationSetter script from the object.
         AIDestinationSetter.target = player.transform;              // Set the target of the enemy to the object Player.
-        distanceToPlayer = 6f;
+        distanceToPlayer = 6f;                                      //Hardcoded the value because it resets when the enemy enstantiates.        
     }
 
     private void Update()

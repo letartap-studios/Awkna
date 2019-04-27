@@ -13,14 +13,13 @@ public class SpawnBomb : MonoBehaviour
 
     public LayerMask whatIsDestructible;    // Whether the objects are destructible.
     public GameObject effect;               // Explosion effect.
-    public Transform player;                // Transform of the player.
-
     #endregion
+
 
     private void Update()
     {
-        if (timer <= 0)   // After spawning in the player controller, 
-        {                 // the timer of the bomb goes down and when it reaches 0 it explodes.
+        if (timer <= 0)   // After spawning in the player controller, ...
+        {                 // ...the timer of the bomb goes down and when it reaches 0 it explodes.
                           // The bomb destroys everything in the area of effect if it destructible.
             Collider2D[] objectsToDamage = Physics2D.OverlapCircleAll(transform.position, areaOfEffect, whatIsDestructible);
             for (int i = 0; i < objectsToDamage.Length; i++)
@@ -28,6 +27,10 @@ public class SpawnBomb : MonoBehaviour
                 if (objectsToDamage[i].CompareTag("Player"))        // If the bomb collides with the player at explosion, ...
                 {                                                   
                     PlayerStats.Instance.TakeDamage(damagePlayer);  // ...damage the player.
+                }
+                else if(objectsToDamage[i].CompareTag("Enemy"))     // If the bomb collides with an enemy at explosion,...
+                {
+                    Destroy(objectsToDamage[i].gameObject);         // ... destroy the enemy.
                 }
                 else                                                // If it collides with anything else that is destructible,...
                 {
