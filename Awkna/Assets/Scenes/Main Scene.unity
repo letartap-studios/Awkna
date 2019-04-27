@@ -785,10 +785,11 @@ MonoBehaviour:
   rooms:
   - {fileID: 1807870825906315875, guid: 080c1bd5de4d64645ab57eb4f004aee4, type: 3}
   - {fileID: 8751427500136251604, guid: 3eb690c1765b94946b9911a9306cd994, type: 3}
-  - {fileID: 6070247645271319342, guid: 0ebe1a95d16cf3140803747cef1aaa01, type: 3}
+  - {fileID: 6070247645271319342, guid: 72c19e5add03a234cb115d7ef159d4ab, type: 3}
   - {fileID: 3093487207388880732, guid: bc3a3c73effd9a347959064d8341a288, type: 3}
+  - {fileID: 6070247645271319342, guid: 0ebe1a95d16cf3140803747cef1aaa01, type: 3}
   moveAmount: 10
-  startTimeBtwRoom: 0.25
+  startTimeBtwRoom: 0.5
   minX: -5
   maxX: 25
   maxY: 25
@@ -1234,7 +1235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   maxHealth: 3
-  maxTotalHealth: 20
+  maxTotalHealth: 5
 --- !u!4 &1029376791
 Transform:
   m_ObjectHideFlags: 0
@@ -2684,6 +2685,11 @@ PrefabInstance:
         type: 3}
       propertyPath: movementSpeed
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7484104036240423243, guid: 950bc62c097b816459c09bbb0ef2e55c,
+        type: 3}
+      propertyPath: maxEnergy
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7484104036240423241, guid: 950bc62c097b816459c09bbb0ef2e55c,
         type: 3}
