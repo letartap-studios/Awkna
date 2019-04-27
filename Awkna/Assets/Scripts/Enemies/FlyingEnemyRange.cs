@@ -9,6 +9,13 @@ public class FlyingEnemyRange : MonoBehaviour
     private bool playerInRange;
     public LayerMask whatIsPlayer;
     public float range;
+    public float sizeX;
+    public float sizeY;
+    public float posX;
+    public float posY;
+    public float angle;
+    private Vector2 boxSize;
+    private Vector2 boxPos;
 
 
     // Start is called before the first frame update
@@ -22,7 +29,10 @@ public class FlyingEnemyRange : MonoBehaviour
 
     private void FixedUpdate()
     {
-        playerInRange = Physics2D.OverlapCircle(transform.position, )
+        boxSize = new Vector2(sizeX, sizeY);
+        boxPos = new Vector2(posX, posY);
+
+        playerInRange = Physics2D.OverlapBox(boxPos, boxSize, angle);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -32,5 +42,12 @@ public class FlyingEnemyRange : MonoBehaviour
             aIPath.enabled = true;
            
         }
+    }
+    private void OnDrawGizmosSelected() // Draw a gismos circle around the ground check radius.
+    {
+        Gizmos.color = Color.red;
+        Vector2 vec = new Vector2(posX, posY);
+
+        Gizmos.DrawWireCube(boxPos, boxSize);
     }
 }

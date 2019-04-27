@@ -137,7 +137,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8000636305140983301}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -168,6 +168,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5130e43ccd424be419c68b4d88fe3251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 1048576
+  range: 0
+  sizeX: 0
+  sizeY: 0
+  posX: 0
+  posY: 0
+  angle: 0
 --- !u!1 &8000636306413758118
 GameObject:
   m_ObjectHideFlags: 0
