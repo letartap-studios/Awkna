@@ -1,53 +1,47 @@
 ﻿using Pathfinding;
 using UnityEngine;
 
+// This script activates the AIPath script on the enemies.
+
 public class FlyingEnemyRange : MonoBehaviour
 {
     private AIPath aIPath;                              // Refrence to the AIPath script on the enemy.
     private AIDestinationSetter AIDestinationSetter;    // Refrence to the AIDestinationSetter script on the enemy.
     private GameObject player;                          // Refence to the player object in the scene.
-    private bool playerInRange;
-    public LayerMask whatIsPlayer;
-    public float range;
-    public float sizeX;
-    public float sizeY;
-    public float posX;
-    public float posY;
-    public float angle;
-    private Vector2 boxSize;
-    private Vector2 boxPos;
+    private bool playerInRange = false;                 // Whether the player has been in range of the enemy until the moment.
+    private float distanceToPlayer;                 // The distance at which the enemy starts to follow the player.
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        aIPath = GetComponent<AIPath>();
-        AIDestinationSetter = GetComponent<AIDestinationSetter>();
-        AIDestinationSetter.target = player.transform;
+        player = GameObject.FindGameObjectWithTag("Player");        // Find the object in the scene with the tag "Player".
+        aIPath = GetComponent<AIPath>();                            // Get the AIPath script from the object.
+        AIDestinationSetter = GetComponent<AIDestinationSetter>();  // Get the AIDestinationSetter script from the object.
+        AIDestinationSetter.target = player.transform;              // Set the target of the enemy to the object Player.
+        distanceToPlayer = 6f;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        boxSize = new Vector2(sizeX, sizeY);
-        boxPos = new Vector2(posX, posY);
-
-        playerInRange = Physics2D.OverlapBox(boxPos, boxSize, angle);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
+        // Check if the player is under the enemy and if the player was in range of the enemy until this moment...
+        if ((player.transform.position.y < transform.position.y) && playerInRange == false)
         {
-            aIPath.enabled = true;
-           
-        }
-    }
-    private void OnDrawGizmosSelected() // Draw a gismos circle around the ground check radius.
-    {
-        Gizmos.color = Color.red;
-        Vector2 vec = new Vector2(posX, posY);
+            //... then use the Pitagorean theorem in a cartesian coordinate system to calculate...
+            //... the distance between the player and the enemy.
+            // distance = Sqrt( ( xA - xB )^2 + (yA - yB)^2 );
+            float distance = Mathf.Sqrt((player.transform.position.x - transform.position.x) * (player.transform.position.x - transform.position.x) +
+                (player.transform.position.y - transform.position.y) * (player.transform.position.y - transform.position.y));
 
-        Gizmos.DrawWireCube(boxPos, boxSize);
+            if (distance < distanceToPlayer)
+            {
+                // The player is in range now.
+                playerInRange = true;
+            }
+        }
+
+        if (playerInRange)          // If the player was in range of the enemy...
+        {
+            aIPath.enabled = true;  // Activate the script AIPath.
+        }
+
     }
 }
