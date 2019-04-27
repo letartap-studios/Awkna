@@ -228,9 +228,9 @@ public class PlayerController : MonoBehaviour
         #region Bomb
         Physics2D.IgnoreLayerCollision(13, 20);                 // Ignore the collision between the player and the bomb.
 
-        if (Input.GetButtonDown("Bomb") && bombsNumber > 0)     // If the player has more then 0 bombs remaining and he presses down
-        {                                                       // the bomb button then...
-            Instantiate(bomb, transform.position, Quaternion.identity); //... spawn a bomb at the player position.
+        if (Input.GetButtonDown("Bomb") && bombsNumber > 0 && isGrounded) // If the player has more then 0 bombs remaining and he presses down
+        {                                                                 // the bomb button and is grounded, then...
+            Instantiate(bomb, transform.position, Quaternion.identity);   //... spawn a bomb at the player position.
             bombsNumber--;                                      // Lose one bomb from inventory.
         }
         #endregion
