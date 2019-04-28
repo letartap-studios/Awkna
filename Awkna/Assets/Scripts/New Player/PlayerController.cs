@@ -234,10 +234,9 @@ public class PlayerController : MonoBehaviour
             bombsNumber--;                                      // Lose one bomb from inventory.
         }
         #endregion
-
-
     }
 
+    #region Functions
     private void Flip()     // Flip player facing when walking (left and right).
     {
         facingRight = !facingRight;                 // Switch the way the player is labelled as facing.
@@ -275,4 +274,5 @@ public class PlayerController : MonoBehaviour
 
         Gizmos.DrawWireSphere(vec, groundCheckRadius);
     }
+    #endregion
 }

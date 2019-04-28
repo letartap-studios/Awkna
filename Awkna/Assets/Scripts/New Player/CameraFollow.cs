@@ -14,15 +14,18 @@ public class CameraFollow : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector3 desiredPosition = transform.position = target.position + offset;                                    // Follow the target
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime); // Smooth the camera movement
-        transform.position = smoothedPosition;                                                                      // Set the position to the smoothed position
+        if (target.GetComponent<PlayerController>() != null)
+        {
+            Vector3 desiredPosition = transform.position = target.position + offset;                                    // Follow the target
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime); // Smooth the camera movement
+            transform.position = smoothedPosition;                                                                      // Set the position to the smoothed position
 
-        if(bounds)                          // If the camera has bounds...
-        {                                   //...set its maximum and minimum position.
-            transform.position = new Vector3(Mathf.Clamp(transform.position.x, minCameraPos.x, maxCameraPos.x), 
-                Mathf.Clamp(transform.position.y, minCameraPos.y, maxCameraPos.y),
-                Mathf.Clamp(transform.position.z, minCameraPos.z, maxCameraPos.z));
+            if (bounds)                          // If the camera has bounds...
+            {                                   //...set its maximum and minimum position.
+                transform.position = new Vector3(Mathf.Clamp(transform.position.x, minCameraPos.x, maxCameraPos.x),
+                    Mathf.Clamp(transform.position.y, minCameraPos.y, maxCameraPos.y),
+                    Mathf.Clamp(transform.position.z, minCameraPos.z, maxCameraPos.z));
+            }
         }
     }
 

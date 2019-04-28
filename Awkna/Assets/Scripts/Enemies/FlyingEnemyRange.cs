@@ -19,7 +19,7 @@ public class FlyingEnemyRange : MonoBehaviour
         aIPath = GetComponent<AIPath>();                            // Get the AIPath script from the object.
         AIDestinationSetter = GetComponent<AIDestinationSetter>();  // Get the AIDestinationSetter script from the object.
         AIDestinationSetter.target = player.transform;              // Set the target of the enemy to the object Player.
-        distanceToPlayer = 6f;                                      //Hardcoded the value because it resets when the enemy enstantiates.        
+        distanceToPlayer = 6f;                                      // Hardcoded the value because it resets when the enemy enstantiates.        
     }
 
     private void Update()
