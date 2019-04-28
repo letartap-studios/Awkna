@@ -103,15 +103,15 @@ public class PlayerController : MonoBehaviour
         {
             verticalMoveInput = Input.GetAxisRaw("Vertical");        // ...get the vertical axis input and...
                                                                      // ...move the character by finding the target velocity...
-            Vector3 verticalTargetVelocity = new Vector2(rb.velocity.x, verticalMoveInput * climbSpeed);
-            //                                                       // ...and then smoothing it out and applying it to the character.
-            rb.velocity = Vector3.SmoothDamp(rb.velocity, verticalTargetVelocity, ref velocity, horizontalMovementSmoothing);
-
-            rb.gravityScale = 0;                                     // Set the characters gravity to 0, in order to make the player climb.
+                                                                     //Vector3 verticalTargetVelocity = new Vector2(rb.velocity.x, verticalMoveInput * climbSpeed);
+                                                                     //                                                       // ...and then smoothing it out and applying it to the character.
+                                                                     //rb.velocity = Vector3.SmoothDamp(rb.velocity, verticalTargetVelocity, ref velocity, horizontalMovementSmoothing);
+            rb.velocity = new Vector2(rb.velocity.x, verticalMoveInput * climbSpeed);
+            //rb.gravityScale = 0;                                     // Set the characters gravity to 0, in order to make the player climb.
         }
         else
         {
-            rb.gravityScale = initialGravity;                        // Else set the gravity back to normal.
+           // rb.gravityScale = initialGravity;                        // Else set the gravity back to normal.
         }
 
         #endregion

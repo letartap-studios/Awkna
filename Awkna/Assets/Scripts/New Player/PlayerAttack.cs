@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private float timeBtwAttack;            // Wait a few miliseconds between each attack.
+    private float timeBtwAttack;            // Time between attacks, so the player can't spam the attacks.
     public float startTimeBtwAttack;
 
     public Transform attackPos;             // Attack position.
@@ -20,8 +20,11 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 CameraShaker.Instance.ShakeOnce(1f, 2f, .1f, .3f);   // When the player is attacking shake the camera.
+
+                // The range at which the player deals damage.
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
-                for (int i = 0; i < enemiesToDamage.Length; i++)
+
+                for (int i = 0; i < enemiesToDamage.Length; i++)    // Damage all enemies in the area.
                 {
                     enemiesToDamage[i].GetComponent<EnemyHealth>().TakeDamage(damage);
                 }
