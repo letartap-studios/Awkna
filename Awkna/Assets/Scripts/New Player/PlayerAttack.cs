@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using EZCameraShake;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -20,6 +19,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
+                CameraShaker.Instance.ShakeOnce(1f, 2f, .1f, .3f);   // When the player is attacking shake the camera.
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
                 }
 
                 timeBtwAttack = startTimeBtwAttack;
-            }            
+            }
         }
         else
         {
