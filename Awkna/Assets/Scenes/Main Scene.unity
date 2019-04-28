@@ -2705,6 +2705,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3495793784283983090, guid: 950bc62c097b816459c09bbb0ef2e55c,
+        type: 3}
+      propertyPath: whatIsLadder.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 3495793784283983088, guid: 950bc62c097b816459c09bbb0ef2e55c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2759,6 +2764,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089614140325562982, guid: 950bc62c097b816459c09bbb0ef2e55c,
+        type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089614140325562982, guid: 950bc62c097b816459c09bbb0ef2e55c,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089614140325562982, guid: 950bc62c097b816459c09bbb0ef2e55c,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 950bc62c097b816459c09bbb0ef2e55c, type: 3}
