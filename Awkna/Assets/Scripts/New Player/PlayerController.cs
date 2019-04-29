@@ -103,15 +103,15 @@ public class PlayerController : MonoBehaviour
         {
             verticalMoveInput = Input.GetAxisRaw("Vertical");        // ...get the vertical axis input and...
                                                                      // ...move the character by finding the target velocity...
-            Vector3 verticalTargetVelocity = new Vector2(rb.velocity.x, verticalMoveInput * climbSpeed);
-            //                                                       // ...and then smoothing it out and applying it to the character.
-            rb.velocity = Vector3.SmoothDamp(rb.velocity, verticalTargetVelocity, ref velocity, horizontalMovementSmoothing);
-
-            rb.gravityScale = 0;                                     // Set the characters gravity to 0, in order to make the player climb.
+                                                                     //Vector3 verticalTargetVelocity = new Vector2(rb.velocity.x, verticalMoveInput * climbSpeed);
+                                                                     //                                                       // ...and then smoothing it out and applying it to the character.
+                                                                     //rb.velocity = Vector3.SmoothDamp(rb.velocity, verticalTargetVelocity, ref velocity, horizontalMovementSmoothing);
+            rb.velocity = new Vector2(rb.velocity.x, verticalMoveInput * climbSpeed);
+            //rb.gravityScale = 0;                                     // Set the characters gravity to 0, in order to make the player climb.
         }
         else
         {
-            rb.gravityScale = initialGravity;                        // Else set the gravity back to normal.
+           // rb.gravityScale = initialGravity;                        // Else set the gravity back to normal.
         }
 
         #endregion
@@ -226,7 +226,7 @@ public class PlayerController : MonoBehaviour
         #endregion
 
         #region Bomb
-        Physics2D.IgnoreLayerCollision(13, 20);                 // Ignore the collision between the player and the bomb.
+        Physics2D.IgnoreLayerCollision(13, 15);                 // Ignore the collision between the player and the bomb.
 
         if (Input.GetButtonDown("Bomb") && bombsNumber > 0 && isGrounded) // If the player has more then 0 bombs remaining and he presses down
         {                                                                 // the bomb button and is grounded, then...
@@ -234,10 +234,9 @@ public class PlayerController : MonoBehaviour
             bombsNumber--;                                      // Lose one bomb from inventory.
         }
         #endregion
-
-
     }
 
+    #region Functions
     private void Flip()     // Flip player facing when walking (left and right).
     {
         facingRight = !facingRight;                 // Switch the way the player is labelled as facing.
@@ -275,4 +274,5 @@ public class PlayerController : MonoBehaviour
 
         Gizmos.DrawWireSphere(vec, groundCheckRadius);
     }
+    #endregion
 }

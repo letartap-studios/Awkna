@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//this script generates the other rooms that are not a way of the level, just random rooms
+// This script generates the other rooms that are not a way of the level, just random rooms.
 
 public class SpawnRooms : MonoBehaviour
 {
