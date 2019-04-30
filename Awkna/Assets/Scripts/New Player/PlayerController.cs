@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 // Script to controll the main character
 
@@ -51,7 +52,6 @@ public class PlayerController : MonoBehaviour
     GravityDirection m_GravityDirection;        // Whether the directon is down or up
     private float initialGravity;               // The initial gravity of the character.
 
-    private bool whatTile;                      // Wheather or not the player is on a special tile.
 
     #endregion
 
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-           // rb.gravityScale = initialGravity;                        // Else set the gravity back to normal.
+            // rb.gravityScale = initialGravity;                        // Else set the gravity back to normal.
         }
 
         #endregion
@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
                     if (Input.GetButtonDown("SwitchGravity") && isGrounded) // Press the switch gravity button to change the direction of gravity
                     {
                         m_GravityDirection = GravityDirection.Down;
-                        Rotation();                        
+                        Rotation();
                     }
                 }
                 break;
@@ -178,9 +178,9 @@ public class PlayerController : MonoBehaviour
                 jumpTimeCounter = jumpTime;                         // Reset the jump time counter.
             }
 
-            if(Input.GetButton("Jump") && isJumping == true)        // While the player is holding down the jump button...
+            if (Input.GetButton("Jump") && isJumping == true)        // While the player is holding down the jump button...
             {
-                if(jumpTimeCounter > 0)                             //...and he has jump time remaining...
+                if (jumpTimeCounter > 0)                             //...and he has jump time remaining...
                 {
                     rb.velocity = Vector2.up * jumpForce;           //...give the player's rigidbody velocity on the y axis.
                     jumpTimeCounter -= Time.deltaTime;              // The jump time goes down each frame the player is jumping.
@@ -191,26 +191,26 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if(Input.GetButtonUp("Jump"))
+            if (Input.GetButtonUp("Jump"))
             {
                 isJumping = false;
             }
         }
         else                                             // The same things apply to the reversed gravity.
         {
-            if (Input.GetButtonDown("Jump") && isGrounded)           
+            if (Input.GetButtonDown("Jump") && isGrounded)
             {
                 rb.velocity = Vector2.down * jumpForce;
-                isJumping = true;                                   
+                isJumping = true;
                 jumpTimeCounter = jumpTime;
             }
 
-            if (Input.GetButton("Jump") && isJumping == true)        
+            if (Input.GetButton("Jump") && isJumping == true)
             {
-                if (jumpTimeCounter > 0)                             
+                if (jumpTimeCounter > 0)
                 {
-                    rb.velocity = Vector2.down * jumpForce;           
-                    jumpTimeCounter -= Time.deltaTime;              
+                    rb.velocity = Vector2.down * jumpForce;
+                    jumpTimeCounter -= Time.deltaTime;
                 }
                 else
                 {
@@ -273,6 +273,26 @@ public class PlayerController : MonoBehaviour
         Vector2 vec = new Vector2(transform.position.x + groundCheckRadiusHorizontal, transform.position.y + groundCheckRadiusVertical);
 
         Gizmos.DrawWireSphere(vec, groundCheckRadius);
+    }
+
+    public IEnumerator Knockback(float knockDur, float knockbackPwr, Vector3 knockbackDir, float posX)
+    {
+        float timer = 0;        // The time that has passed since the function started.
+
+        while (knockDur > timer)
+        {
+            timer += Time.deltaTime;
+            if (posX <= transform.position.x) 
+            {
+                rb.AddForce(new Vector3(knockbackDir.x * knockbackPwr, knockbackDir.y, transform.position.z));
+            }
+            else
+            {
+                rb.AddForce(new Vector3(knockbackDir.x * (-knockbackPwr), knockbackDir.y, transform.position.z));
+            }
+        }
+
+        yield return 0;
     }
     #endregion
 }

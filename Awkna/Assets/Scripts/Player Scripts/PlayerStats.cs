@@ -9,6 +9,8 @@ public class PlayerStats : MonoBehaviour
     public delegate void OnHealthChangedDelegate();
     public OnHealthChangedDelegate onHealthChangedCallback;
 
+    private GameObject player;
+
     #region Sigleton
     private static PlayerStats instance;
     public static PlayerStats Instance
@@ -21,6 +23,11 @@ public class PlayerStats : MonoBehaviour
         }
     }
     #endregion
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     [SerializeField]
     private float health;
@@ -42,6 +49,7 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         health -= dmg;
+        player.gameObject.GetComponent<Animation>().Play("PlayerGetDamaged");
         ClampHealth();
     }
 
