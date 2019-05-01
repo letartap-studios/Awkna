@@ -37,5 +37,9 @@ public class Platform : MonoBehaviour
         {
             effector.rotationalOffset = 0;                      //the platform collision returns
         }
+        if (Input.GetKey(KeyCode.K))
+        {
+            effector.rotationalOffset = 0;
+        }
     }
 }
