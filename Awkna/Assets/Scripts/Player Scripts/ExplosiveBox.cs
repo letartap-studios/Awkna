@@ -14,7 +14,7 @@ public class ExplosiveBox : MonoBehaviour
     private void FixedUpdate()
     {
         wasFalling = isFalling; 
-        if (rb.velocity.y > 0.5)
+        if (rb.velocity.y > 0)
         {
             isFalling = true;
         }

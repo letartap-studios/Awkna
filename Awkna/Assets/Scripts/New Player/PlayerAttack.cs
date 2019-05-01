@@ -21,10 +21,10 @@ public class PlayerAttack : MonoBehaviour
             {
                 CameraShaker.Instance.ShakeOnce(1f, 2f, .1f, .3f);   // When the player is attacking shake the camera.
 
-                // The range at which the player deals damage.
+                //                                                   // The range at which the player deals damage.
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
 
-                for (int i = 0; i < enemiesToDamage.Length; i++)    // Damage all enemies in the area.
+                for (int i = 0; i < enemiesToDamage.Length; i++)     // Damage all enemies in the area.
                 {
                     enemiesToDamage[i].GetComponent<EnemyHealth>().TakeDamage(damage);
                 }
