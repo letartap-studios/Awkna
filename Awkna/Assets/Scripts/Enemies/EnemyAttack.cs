@@ -29,7 +29,7 @@ public class EnemyAttack : MonoBehaviour
 
             //rb.AddForce(new Vector2(transform.position.x, transform.position.y-20));
 
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 
