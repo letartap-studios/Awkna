@@ -131,7 +131,9 @@ public class NewLevelGenerator : MonoBehaviour
                     switch (lastDirection)
                     {
                         case directions.none:
-                            map[cursorPosX, cursorPosY] = roomsTypes.roomLRT;
+                            //map[cursorPosX, cursorPosY] = roomsTypes.roomLRT;
+                            map[cursorPosX, cursorPosY] = roomsTypes.roomLRB;
+
                             break;
                         case directions.up:
                             map[cursorPosX, cursorPosY] = roomsTypes.roomTB;
@@ -141,12 +143,10 @@ public class NewLevelGenerator : MonoBehaviour
                             Debug.LogError("down");
                             break;
                         case directions.left:
-                            map[cursorPosX, cursorPosY] = roomsTypes.roomLRT;
-                            Debug.Log("placeroom1");
-                            break;
                         case directions.right:
-                            map[cursorPosX, cursorPosY] = roomsTypes.roomLRT;
-                            Debug.Log("placeroom2");
+                            //map[cursorPosX, cursorPosY] = roomsTypes.roomLRT;
+                            map[cursorPosX, cursorPosY] = roomsTypes.roomLRB;
+
                             break;
                         default:
                             Debug.LogError("null direction");
@@ -162,7 +162,8 @@ public class NewLevelGenerator : MonoBehaviour
             case directions.right:
                 if (lastDirection == directions.up)
                 {
-                    map[cursorPosX, cursorPosY] = roomsTypes.roomLRB;
+                    map[cursorPosX, cursorPosY] = roomsTypes.roomLRT;
+                    //map[cursorPosX, cursorPosY] = roomsTypes.roomLRB;
                 }
                 else
                 {
@@ -217,7 +218,27 @@ public class NewLevelGenerator : MonoBehaviour
                 switch (map[x, y])
                 {
                     case roomsTypes.none:
-                        //Instantiate(Room, v, Quaternion.identity);
+                        int rand = Random.Range(0, 5);
+                        switch (rand)
+                        {
+                            case 0:
+                                Instantiate(Room, v, Quaternion.identity);
+                                break;
+                            case 1:
+                                Instantiate(Room, v, Quaternion.identity);
+                                break;
+                            case 2:
+                                Instantiate(RoomTB, v, Quaternion.identity);
+                                break;
+                            case 3:
+                                Instantiate(RoomLR, v, Quaternion.identity);
+                                break;
+                            case 4:
+                                Instantiate(RoomLRTB, v, Quaternion.identity);
+                                break;
+                        }
+
+
                         break;
                     case roomsTypes.room:
                         Debug.LogError("errorRoom");
