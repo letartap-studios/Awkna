@@ -49,6 +49,7 @@ public class SpawnBomb : MonoBehaviour
         else
         {
             timer -= Time.deltaTime; // The timer goes down each frame.
+            gameObject.GetComponent<Animation>().Play("bomb ticking");
         }
     }
 
