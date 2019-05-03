@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour
     GravityDirection m_GravityDirection;        // Whether the directon is down or up
     private float initialGravity;               // The initial gravity of the character.
 
+    public float invulnerabilityTime = 1;       // The time in seconds that the player is invulnerable after taking damage.
+
 
     #endregion
 
@@ -71,10 +73,10 @@ public class PlayerController : MonoBehaviour
 
         #region Horizontal movment
 
-        horizontalMoveInput = Input.GetAxisRaw("Horizontal");                                             // Get the horizontal axis input.
-        Vector3 targetVelocity = new Vector2(horizontalMoveInput * movementSpeed, rb.velocity.y);         // Move the character by finding the target velocity...       
-        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, horizontalMovementSmoothing);   // ...and then smoothing it out and applying it to the character.
-
+        horizontalMoveInput = Input.GetAxisRaw("Horizontal");                                         // Get the horizontal axis input.
+        Vector3 targetVelocity = new Vector2(horizontalMoveInput * movementSpeed, rb.velocity.y);     // Move the character by finding the target velocity...       
+        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, horizontalMovementSmoothing);
+        //                                                                                            // ...and then smoothing it out and applying it to the character.
         if (horizontalMoveInput > 0 && !facingRight)        // If the input is moving the player right and the player is facing left...
         {
             Flip();                                     // ... flip the player.
@@ -224,7 +226,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         #endregion
-
+        
         #region Bomb
         Physics2D.IgnoreLayerCollision(13, 15);                 // Ignore the collision between the player and the bomb.
 
@@ -293,6 +295,13 @@ public class PlayerController : MonoBehaviour
         }
 
         yield return 0;
+    }
+
+    public IEnumerator GetInvulnerable()
+    {
+        Physics2D.IgnoreLayerCollision(12, 15, true);
+        yield return new WaitForSeconds(invulnerabilityTime);
+        Physics2D.IgnoreLayerCollision(12, 15, false);
     }
     #endregion
 }

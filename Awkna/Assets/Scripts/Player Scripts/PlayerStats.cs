@@ -58,7 +58,7 @@ public class PlayerStats : MonoBehaviour
         if (maxHealth < maxTotalHealth)
         {
             maxHealth += 1;
-            health = maxHealth;
+            health += 1;
 
             if (onHealthChangedCallback != null)
                 onHealthChangedCallback.Invoke();

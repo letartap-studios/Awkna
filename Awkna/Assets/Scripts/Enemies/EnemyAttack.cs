@@ -9,7 +9,6 @@ public class EnemyAttack : MonoBehaviour
     private Vector3 playerPosition;
     private Rigidbody2D rb;
 
-
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -27,9 +26,7 @@ public class EnemyAttack : MonoBehaviour
 
             CameraShaker.Instance.ShakeOnce(1f, 2f, .1f, .3f);                               // When the player is attacked shake the camera.
 
-            //rb.AddForce(new Vector2(transform.position.x, transform.position.y-20));
-
-            //Destroy(gameObject);
+            StartCoroutine(player.GetInvulnerable());
         }
     }
 
