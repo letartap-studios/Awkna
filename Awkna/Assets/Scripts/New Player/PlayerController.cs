@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();               // Get the rigidbody component from the player object.
         initialGravity = rb.gravityScale;               // Get the initial value of the gravity.
         m_GravityDirection = GravityDirection.Down;     // Initialize the gravity direction with down.
+        Physics2D.IgnoreLayerCollision(12, 15, false);
     }
 
     private void FixedUpdate()
