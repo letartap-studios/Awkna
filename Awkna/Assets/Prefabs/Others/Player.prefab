@@ -76,6 +76,8 @@ GameObject:
   - component: {fileID: 3495793784282079933}
   - component: {fileID: 9089614140325562982}
   - component: {fileID: 523784243420228755}
+  - component: {fileID: 5880306524068973826}
+  - component: {fileID: -835604970967198932}
   m_Layer: 15
   m_Name: Player
   m_TagString: Player
@@ -283,3 +285,34 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &5880306524068973826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3495793784282079922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bdb4b25026586747820757c10a66ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!232 &-835604970967198932
+DistanceJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3495793784282079922}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -0.0051639616, y: 1.0069811}
+  m_AutoConfigureDistance: 1
+  m_Distance: 1.0069944
+  m_MaxDistanceOnly: 1
