@@ -1,5 +1,7 @@
-﻿using UnityEngine;
-
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 public class ExitDoor : MonoBehaviour
 {
     public float waitTime = 1.5f;
@@ -14,6 +16,7 @@ public class ExitDoor : MonoBehaviour
                 {
                //     ***End Screen here***                         // ...the end level screen will appear.
                     Debug.Log("Exit");
+                    SceneManager.LoadScene(sceneBuildIndex:2);                  
                     waitTime = 0f;
                 }
                 else
