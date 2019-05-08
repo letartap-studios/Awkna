@@ -6,11 +6,25 @@ using UnityEngine;
 public class SpawnObject : MonoBehaviour
 {
     public GameObject[] tiles;
+    public string file;
+
+
+    Object[] objects;
 
     private void Start()
     {
-        int rand = Random.Range(0, tiles.Length);//0,1,...,objects.Length-1
-        GameObject instance = (GameObject)Instantiate(tiles[rand], transform.position, Quaternion.identity);
-        instance.transform.parent = transform;
+        if (tiles.Length == 0)
+        {
+            objects = Resources.LoadAll(file, typeof(GameObject));
+            int rand = Random.Range(0, objects.Length);
+            GameObject instance = (GameObject)Instantiate(objects[rand], transform.position, Quaternion.identity);
+            instance.transform.parent = transform;
+        }
+        else
+        {
+            int rand = Random.Range(0, tiles.Length);//0,1,...,objects.Length-1
+            GameObject instance = (GameObject)Instantiate(tiles[rand], transform.position, Quaternion.identity);
+            instance.transform.parent = transform;
+        }
     }
 }
