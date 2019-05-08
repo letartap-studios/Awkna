@@ -297,6 +297,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bdb4b25026586747820757c10a66ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distance: 10
+  whatIsGrappled:
+    serializedVersion: 2
+    m_Bits: 213248
 --- !u!232 &-835604970967198932
 DistanceJoint2D:
   m_ObjectHideFlags: 0
@@ -306,13 +310,13 @@ DistanceJoint2D:
   m_GameObject: {fileID: 3495793784282079922}
   m_Enabled: 1
   serializedVersion: 4
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.0051639616, y: 1.0069811}
+  m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 1.0069944
+  m_Distance: 12.96
   m_MaxDistanceOnly: 1
