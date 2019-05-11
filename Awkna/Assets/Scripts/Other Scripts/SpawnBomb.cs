@@ -36,6 +36,7 @@ public class SpawnBomb : MonoBehaviour
                 else                                                // If it collides with anything else that is destructible,...
                 {
                     Destroy(objectsToDamage[i].gameObject);         // ...destroy it.
+                    //DestroyObject.destroyobject(objectsToDamage[i].gameObject);
                 }
             }
 
