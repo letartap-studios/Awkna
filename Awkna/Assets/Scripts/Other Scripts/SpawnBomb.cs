@@ -26,7 +26,7 @@ public class SpawnBomb : MonoBehaviour
             {
                 if (objectsToDamage[i].CompareTag("Player"))        // If the bomb collides with the player at explosion, ...
                 {                                                   
-                    PlayerStats.Instance.TakeDamage(damagePlayer);  // ...damage the player.
+                    PlayerStats.Instance.TakeDamage(PlayerStats.Instance.MaxHealth);  // ...damage the player.
                 }
                 else if(objectsToDamage[i].CompareTag("Enemy"))     // If the bomb collides with an enemy at explosion,...
                 {

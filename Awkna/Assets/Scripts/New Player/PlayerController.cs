@@ -56,24 +56,26 @@ public class PlayerController : MonoBehaviour
     public float invulnerabilityTime = 1;       // The time in seconds that the player is invulnerable after taking damage.
 
     [HideInInspector]
-    public bool isGrappled;
-    public bool jumped;
+    public bool isGrappled;                     // Wheather the player is using the grappling hook at the moment.
+
+    public bool switchGravityPower;             // Turn on or off the gravity switch ability.
 
 
     #endregion
 
-    private void Start()
+    private void Awake()
     {
         energy = maxEnergy;                             // Start with max energy.
         rb = GetComponent<Rigidbody2D>();               // Get the rigidbody component from the player object.
         initialGravity = rb.gravityScale;               // Get the initial value of the gravity.
         m_GravityDirection = GravityDirection.Down;     // Initialize the gravity direction with down.
-        Physics2D.IgnoreLayerCollision(12, 15, false);
+        Physics2D.IgnoreLayerCollision(12, 15, false);  // Ignore the collision between the player and the enemies.
+        Physics2D.IgnoreLayerCollision(15, 19, true);   // Ignore the collition between the player and the collectables.
     }
 
     private void FixedUpdate()
     {
-        // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
+        // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground.
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
 
@@ -125,32 +127,35 @@ public class PlayerController : MonoBehaviour
         #endregion
 
         #region Switch Gravity
-        switch (m_GravityDirection)
+        if (switchGravityPower == true)
         {
-            case GravityDirection.Down:
+            switch (m_GravityDirection)
+            {
+                case GravityDirection.Down:
 
 
-                rb.gravityScale = initialGravity;                         // Change the gravity to be in a downward direction (default).
-                if (Input.GetButtonDown("SwitchGravity") && isGrounded)   // Press the switch gravity button to change the direction of gravity.
-                {
-                    m_GravityDirection = GravityDirection.Up;
-                    Rotation();              // Rotate the player so the controls remain the same.
-                    energy--;                                             // Each time the player changes gravity loses energy.
-                }
-
-                break;
-
-            case GravityDirection.Up:
-                if (energy > 0)                                             // Switch gravity only if the player has energy.
-                {
-                    rb.gravityScale = -initialGravity;                      // Change the gravity to be in an upward direction
-                    if (Input.GetButtonDown("SwitchGravity") && isGrounded) // Press the switch gravity button to change the direction of gravity
+                    rb.gravityScale = initialGravity;                         // Change the gravity to be in a downward direction (default).
+                    if (Input.GetButtonDown("SwitchGravity") && isGrounded)   // Press the switch gravity button to change the direction of gravity.
                     {
-                        m_GravityDirection = GravityDirection.Down;
-                        Rotation();
+                        m_GravityDirection = GravityDirection.Up;
+                        Rotation();              // Rotate the player so the controls remain the same.
+                        energy--;                                             // Each time the player changes gravity loses energy.
                     }
-                }
-                break;
+
+                    break;
+
+                case GravityDirection.Up:
+                    if (energy > 0)                                             // Switch gravity only if the player has energy.
+                    {
+                        rb.gravityScale = -initialGravity;                      // Change the gravity to be in an upward direction
+                        if (Input.GetButtonDown("SwitchGravity") && isGrounded) // Press the switch gravity button to change the direction of gravity
+                        {
+                            m_GravityDirection = GravityDirection.Down;
+                            Rotation();
+                        }
+                    }
+                    break;
+            }
         }
         #endregion
 
@@ -181,12 +186,10 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = Vector2.up * jumpForce;               //...rigidbody velocity on the y axis.
                 isJumping = true;                                   // The player is jumping.
                 jumpTimeCounter = jumpTime;                         // Reset the jump time counter.
-                jumped = true;
             }
 
             if (Input.GetButton("Jump") && isJumping == true)        // While the player is holding down the jump button...
             {
-                jumped = false;
                 if (jumpTimeCounter > 0)                             //...and he has jump time remaining...
                 {
                     rb.velocity = Vector2.up * jumpForce;           //...give the player's rigidbody velocity on the y axis.
@@ -200,7 +203,6 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetButtonUp("Jump"))
             {
-                jumped = false;
                 isJumping = false;
             }
         }

@@ -2,8 +2,9 @@
 
 public class AddHeart : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D other)
+    private void Update()
     {
+        Collider2D other = Physics2D.OverlapCircle(transform.position, 1f);
         if (other.CompareTag("Player"))
         {
             Destroy(gameObject);
