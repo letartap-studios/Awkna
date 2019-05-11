@@ -54,7 +54,8 @@ public class PlayerController : MonoBehaviour
 
     public float invulnerabilityTime = 1;       // The time in seconds that the player is invulnerable after taking damage.
 
-
+    [HideInInspector]
+    public bool isSwinging;
     #endregion
 
     private void Start()
