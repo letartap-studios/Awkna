@@ -10,6 +10,8 @@ public class NewLevelGenerator : MonoBehaviour
     public GameObject RoomLRT;
     public GameObject RoomLRTB;
     public GameObject RoomTB;
+    public GameObject ExitRoom;
+    public GameObject BorderBlock;
 
     public int roomSize;
     public int mapsizeX;
@@ -34,6 +36,7 @@ public class NewLevelGenerator : MonoBehaviour
         roomLRT,
         roomLRTB,
         roomTB,
+        exitRoom,
     }
 
     public enum directions
@@ -206,6 +209,8 @@ public class NewLevelGenerator : MonoBehaviour
             moveCursor();
         }
 
+        map[cursorPosX, cursorPosY + 1] = roomsTypes.exitRoom;
+
         Vector3 v = new Vector3();
         for (int x = 0; x < mapsizeX; x++)
         {
@@ -259,6 +264,9 @@ public class NewLevelGenerator : MonoBehaviour
                     case roomsTypes.roomTB:
                         Instantiate(RoomTB, v, Quaternion.identity);
                         break;
+                    case roomsTypes.exitRoom:
+                        Instantiate(ExitRoom, v, Quaternion.identity);
+                        break;
                     default:
                         break;
                 }
@@ -266,6 +274,31 @@ public class NewLevelGenerator : MonoBehaviour
 
             }
         }
+
+        //generate borders
+        //x
+        for (int x = 0; x < mapsizeX * roomSize; x++)
+        {
+            v = transform.position;
+            v.x += x;
+            v.y -= roomSize;
+            Instantiate(BorderBlock, v, Quaternion.identity);
+            v.y += roomSize * mapsizeY + 1;
+            Instantiate(BorderBlock, v, Quaternion.identity);
+        }
+
+        //y
+        for (int y = 0; y < mapsizeY * roomSize + 2; y++)
+        {
+            v = transform.position;
+            v.x -= 1;
+            v.y += y;
+            v.y -= roomSize;
+            Instantiate(BorderBlock, v, Quaternion.identity);
+            v.x += roomSize * mapsizeX + 1;
+            Instantiate(BorderBlock, v, Quaternion.identity);
+        }
+
 
     }
 
