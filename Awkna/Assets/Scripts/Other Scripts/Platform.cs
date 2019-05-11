@@ -4,7 +4,6 @@ public class Platform : MonoBehaviour
 {
 
     private PlatformEffector2D effector;
-    public float waitTime;
 
     void Start()
     {
@@ -13,34 +12,27 @@ public class Platform : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("Vertical") && Input.GetAxisRaw("Vertical") < 0)
+        Collider2D other = Physics2D.OverlapBox(transform.position, transform.localScale, 0);
+        if (other.CompareTag("Player"))
         {
-            effector.rotationalOffset = 180f;
-        }                                                                   //if the player hits the Down button, the collision platform rotates 180 degrees,
-        else                                                                //letting the player to fall. Otherwise, the platform collision will only permit 
-        {                                                                   //jumping on it
-            effector.rotationalOffset = 0f;
-        }
+            if (Input.GetAxis("Vertical") < 0)
+            {
+                effector.rotationalOffset = 180f;
+            }                                                                   //if the player hits the Down button, the collision platform rotates 180 degrees,
+            else                                                                //letting the player to fall. Otherwise, the platform collision will only permit 
+            {                                                                   //jumping on it
+                effector.rotationalOffset = 0f;
+            }
 
-        if (Input.GetButton("Jump"))
-        {
-            effector.rotationalOffset = 0f;
-        }
+            if (Input.GetButton("Jump"))
+            {
+                effector.rotationalOffset = 0f;
+            }
 
-        if (Input.GetButton("Horizontal") && Input.GetAxisRaw("Horizontal") < 0)
-        {
-            effector.rotationalOffset = 90f;
-        }
-
-
-        if (Input.GetButton("Horizontal") && Input.GetAxisRaw("Horizontal") > 0)
-        {
-            effector.rotationalOffset = 270f;
-        }
-
-        if (Input.GetButtonDown("SwitchGravity"))
-        {
-            effector.rotationalOffset = 0;
+            if (Input.GetButtonDown("SwitchGravity"))
+            {
+                effector.rotationalOffset = 0;
+            }
         }
     }
 }

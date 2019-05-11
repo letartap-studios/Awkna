@@ -465,6 +465,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151515086}
   m_CullTransparentMesh: 0
+--- !u!1 &170871837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 170871838}
+  m_Layer: 0
+  m_Name: Energy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &170871838
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170871837}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 748824261}
+  - {fileID: 941346908}
+  m_Father: {fileID: 711442640}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &313311233
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,10 +1357,9 @@ RectTransform:
   - {fileID: 1119309779}
   - {fileID: 1843060042}
   - {fileID: 1274929864}
-  - {fileID: 748824261}
-  - {fileID: 941346908}
   - {fileID: 1217311446}
   - {fileID: 1586339466}
+  - {fileID: 170871838}
   m_Father: {fileID: 1950238670}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1576,18 +1612,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 748824260}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 922700629}
   - {fileID: 1413803679}
-  m_Father: {fileID: 711442640}
-  m_RootOrder: 3
+  m_Father: {fileID: 170871838}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -39.30078, y: 103.299805}
+  m_AnchoredPosition: {x: 310.69916, y: -71.629364}
   m_SizeDelta: {x: 172.3, y: 55.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &748824262
@@ -2098,14 +2134,14 @@ RectTransform:
   m_GameObject: {fileID: 941346907}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.660066, y: 0.660066, z: 0.660066}
+  m_LocalScale: {x: 0.66006595, y: 0.66006595, z: 0.66006595}
   m_Children: []
-  m_Father: {fileID: 711442640}
-  m_RootOrder: 4
+  m_Father: {fileID: 170871838}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -39.5, y: 214.7}
+  m_AnchoredPosition: {x: 310.49997, y: 39.77083}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &941346909
@@ -2394,6 +2430,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 84736
+  isJumping: 0
   jumpTime: 0.15
   whatIsLadder:
     serializedVersion: 2
@@ -2405,7 +2442,8 @@ MonoBehaviour:
   energy: 0
   maxEnergy: 3
   invulnerabilityTime: 1
-  isSwinging: 0
+  isGrappled: 0
+  jumped: 0
 --- !u!4 &1098736967
 Transform:
   m_ObjectHideFlags: 0
@@ -2611,7 +2649,7 @@ RectTransform:
   - {fileID: 1032603874}
   - {fileID: 1219871150}
   m_Father: {fileID: 711442640}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3499,7 +3537,7 @@ RectTransform:
   - {fileID: 1329380964}
   - {fileID: 151515087}
   m_Father: {fileID: 711442640}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4610,7 +4648,6 @@ GameObject:
   - component: {fileID: 2127002207}
   - component: {fileID: 1098736965}
   - component: {fileID: 2127002206}
-  - component: {fileID: 2127002205}
   - component: {fileID: 2127002204}
   - component: {fileID: 2127002203}
   - component: {fileID: 2127002202}
@@ -4660,8 +4697,8 @@ MonoBehaviour:
   crosshairSprite: {fileID: 313311235}
   ropeLayerMask:
     serializedVersion: 2
-    m_Bits: 459008
-  ropeMaxCastDistance: 10
+    m_Bits: 213248
+  ropeMaxCastDistance: 7
   step: 0.2
 --- !u!111 &2127002202
 Animation:
@@ -4724,25 +4761,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   damage: 1
---- !u!95 &2127002205
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2127002199}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a207a7b5df84943479055a3770bccc9d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &2127002206
 Rigidbody2D:
   serializedVersion: 4

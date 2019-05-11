@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class RopeSystem : MonoBehaviour
 {
-
-    // 1
     public GameObject ropeHingeAnchor;
     private DistanceJoint2D ropeJoint;
     public Transform crosshair;
@@ -25,10 +23,8 @@ public class RopeSystem : MonoBehaviour
 
     private bool distanceSet;
 
-
     private void Awake()
     {
-        // 2
         ropeJoint = GetComponent<DistanceJoint2D>();
         ropeJoint.enabled = false;
         playerPosition = transform.position;
@@ -36,7 +32,6 @@ public class RopeSystem : MonoBehaviour
         ropeHingeAnchorSprite = ropeHingeAnchor.GetComponent<SpriteRenderer>();
         playerController = GetComponent<PlayerController>();
         ropeRenderer = GetComponent<LineRenderer>();
-
     }
     private void FixedUpdate()
     {
@@ -44,10 +39,7 @@ public class RopeSystem : MonoBehaviour
         {
             ropeJoint.distance -= step;
         }
-
-
-        Vector3 worldMousePosition =
-            Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);        
         Vector3 facingDirection = new Vector3(worldMousePosition.x, worldMousePosition.y, transform.position.z) - transform.position;
         float aimAngle = Mathf.Atan2(facingDirection.y, facingDirection.x);
         if (aimAngle < 0f)
@@ -55,12 +47,10 @@ public class RopeSystem : MonoBehaviour
             aimAngle += (2 * Mathf.PI);
         }
 
-        // 4
         Vector3 aimDirection = Quaternion.Euler(0, 0, aimAngle * Mathf.Rad2Deg) * Vector2.right;
-        // 5
+
         playerPosition = transform.position;
 
-        // 6
         if (!ropeAttached)
         {
             SetCrosshairPosition(aimAngle);
@@ -68,6 +58,7 @@ public class RopeSystem : MonoBehaviour
         else
         {
             crosshairSprite.enabled = false;
+            playerController.isGrappled = true;
         }
 
         HandleInput(aimDirection);
@@ -94,19 +85,16 @@ public class RopeSystem : MonoBehaviour
     {
         if (Input.GetButtonDown("Grapple"))
         {
-            // 2
             if (ropeAttached) return;
             ropeRenderer.enabled = true;
 
             var hit = Physics2D.Raycast(playerPosition, aimDirection, ropeMaxCastDistance, ropeLayerMask);
 
-            // 3
             if (hit.collider != null)
             {
                 ropeAttached = true;
                 if (!ropePositions.Contains(hit.point))
                 {
-                    // 4
                     // Jump slightly to distance the player a little from the ground after grappling to something.
                     transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2f), ForceMode2D.Impulse);
                     ropePositions.Add(hit.point);
@@ -115,7 +103,6 @@ public class RopeSystem : MonoBehaviour
                     ropeHingeAnchorSprite.enabled = true;
                 }
             }
-            // 5
             else
             {
                 ropeRenderer.enabled = false;
@@ -124,7 +111,7 @@ public class RopeSystem : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && playerController.isGrappled) 
         {
             ResetRope();
         }
@@ -134,33 +121,30 @@ public class RopeSystem : MonoBehaviour
     {
         ropeJoint.enabled = false;
         ropeAttached = false;
-        playerController.isSwinging = false;
         ropeRenderer.positionCount = 2;
         ropeRenderer.SetPosition(0, transform.position);
         ropeRenderer.SetPosition(1, transform.position);
         ropePositions.Clear();
         ropeHingeAnchorSprite.enabled = false;
+
+        playerController.isGrappled = false;
     }
 
     private void UpdateRopePositions()
     {
-        // 1
         if (!ropeAttached)
         {
             return;
         }
 
-        // 2
         ropeRenderer.positionCount = ropePositions.Count + 1;
 
-        // 3
         for (var i = ropeRenderer.positionCount - 1; i >= 0; i--)
         {
             if (i != ropeRenderer.positionCount - 1) // if not the Last point of line renderer
             {
                 ropeRenderer.SetPosition(i, ropePositions[i]);
 
-                // 4
                 if (i == ropePositions.Count - 1 || ropePositions.Count == 1)
                 {
                     var ropePosition = ropePositions[ropePositions.Count - 1];
@@ -183,7 +167,6 @@ public class RopeSystem : MonoBehaviour
                         }
                     }
                 }
-                // 5
                 else if (i - 1 == ropePositions.IndexOf(ropePositions.Last()))
                 {
                     var ropePosition = ropePositions.Last();
@@ -197,9 +180,13 @@ public class RopeSystem : MonoBehaviour
             }
             else
             {
-                // 6
                 ropeRenderer.SetPosition(i, transform.position);
             }
         }
+    }
+
+    public void AddRope(float x)
+    {
+        ropeMaxCastDistance += x;
     }
 }

@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour
     public float groundCheckRadiusHorizontal;   // Horizontal offset of the ground check radius.
     public float groundCheckRadiusVertical;     // Vertical offset of the ground check radius.
     public LayerMask whatIsGround;              // A mask determining what is ground to the character.
-    private bool isJumping;                     // Wheather the player is jumping or not.
+    [HideInInspector]
+    public bool isJumping;                     // Wheather the player is jumping or not.
     private float jumpTimeCounter;              // The remaining amount of time the player can jump.
     public float jumpTime;                      // The maximum amount of time the player can jump.
 
@@ -55,7 +56,10 @@ public class PlayerController : MonoBehaviour
     public float invulnerabilityTime = 1;       // The time in seconds that the player is invulnerable after taking damage.
 
     [HideInInspector]
-    public bool isSwinging;
+    public bool isGrappled;
+    public bool jumped;
+
+
     #endregion
 
     private void Start()
@@ -168,22 +172,21 @@ public class PlayerController : MonoBehaviour
         }
 
         #endregion
-    }
 
-    private void Update()
-    {
         #region Jump
         if (m_GravityDirection == GravityDirection.Down) // Check if the gravity is downwards so the jump force is up.
         {
-            if (Input.GetButtonDown("Jump") && isGrounded)          // Check if the Jump button was pressed and give the player's...
+            if (Input.GetButtonDown("Jump") && (isGrounded || isGrappled)) // Check if the Jump button was pressed and give the player's...
             {
                 rb.velocity = Vector2.up * jumpForce;               //...rigidbody velocity on the y axis.
                 isJumping = true;                                   // The player is jumping.
                 jumpTimeCounter = jumpTime;                         // Reset the jump time counter.
+                jumped = true;
             }
 
             if (Input.GetButton("Jump") && isJumping == true)        // While the player is holding down the jump button...
             {
+                jumped = false;
                 if (jumpTimeCounter > 0)                             //...and he has jump time remaining...
                 {
                     rb.velocity = Vector2.up * jumpForce;           //...give the player's rigidbody velocity on the y axis.
@@ -197,6 +200,7 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetButtonUp("Jump"))
             {
+                jumped = false;
                 isJumping = false;
             }
         }
@@ -228,6 +232,11 @@ public class PlayerController : MonoBehaviour
             }
         }
         #endregion
+    }
+
+    private void Update()
+    {
+        
         
         #region Bomb
         Physics2D.IgnoreLayerCollision(13, 15);                 // Ignore the collision between the player and the bomb.
