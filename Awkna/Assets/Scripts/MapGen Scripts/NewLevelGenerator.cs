@@ -302,6 +302,10 @@ public class NewLevelGenerator : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        AstarPath.active.Scan();
+    }
 
 
 }
