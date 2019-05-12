@@ -290,6 +290,7 @@ MonoBehaviour:
   invulnerabilityTime: 1
   isGrappled: 0
   switchGravityPower: 0
+  energyUI: {fileID: 0}
 --- !u!114 &2115697293848515369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,6 +412,8 @@ MonoBehaviour:
     m_Bits: 213248
   ropeMaxCastDistance: 7
   step: 0.2
+  waitTime: 0
+  startWaitTime: 2
 --- !u!120 &2115697293848515349
 LineRenderer:
   m_ObjectHideFlags: 0

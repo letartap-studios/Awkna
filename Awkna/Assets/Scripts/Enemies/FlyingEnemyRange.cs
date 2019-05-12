@@ -11,12 +11,12 @@ public class FlyingEnemyRange : MonoBehaviour
     private GameObject player;                          // Refence to the player object in the scene.
     private bool playerInRange = false;                 // Whether the player has been in range of the enemy until the moment.
     private float distanceToPlayer;                     // The distance at which the enemy starts to follow the player.
+    public bool isFollowing;
     #endregion
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");        // Find the object in the scene with the tag "Player".
-        aIPath = GetComponent<AIPath>();                            // Get the AIPath script from the object.
         AIDestinationSetter = GetComponent<AIDestinationSetter>();  // Get the AIDestinationSetter script from the object.
         AIDestinationSetter.target = player.transform;              // Set the target of the enemy to the object Player.
         distanceToPlayer = 6f;                                      // Hardcoded the value because it resets when the enemy enstantiates.        
@@ -42,7 +42,10 @@ public class FlyingEnemyRange : MonoBehaviour
 
         if (playerInRange)          // If the player was in range of the enemy...
         {
-            aIPath.enabled = true;  // Activate the script AIPath.
+            GetComponent<AIPath>().enabled = true;  // Activate the script AIPath.
+            GetComponent<EnemyHealth>().enabled = true;
+            GetComponent<EnemyAttack>().enabled = true;
+            GetComponent<FlyingEnemyRange>().enabled = false;
         }
 
     }

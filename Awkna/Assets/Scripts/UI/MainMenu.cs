@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(sceneName: "Main Scene");
+        SceneManager.LoadScene(sceneName: "vlod");
         Time.timeScale= 1f;
     }
     public void QuitGame()

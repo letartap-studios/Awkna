@@ -23,6 +23,10 @@ public class RopeSystem : MonoBehaviour
 
     private bool distanceSet;
 
+    [HideInInspector]
+    public float waitTime;
+    public float startWaitTime;
+
     private void Awake()
     {
         ropeJoint = GetComponent<DistanceJoint2D>();
@@ -32,6 +36,7 @@ public class RopeSystem : MonoBehaviour
         ropeHingeAnchorSprite = ropeHingeAnchor.GetComponent<SpriteRenderer>();
         playerController = GetComponent<PlayerController>();
         ropeRenderer = GetComponent<LineRenderer>();
+        waitTime = startWaitTime;
     }
     private void FixedUpdate()
     {
@@ -83,9 +88,13 @@ public class RopeSystem : MonoBehaviour
 
     private void HandleInput(Vector2 aimDirection)
     {
-        if (Input.GetButtonDown("Grapple"))
+        if (Input.GetButtonDown("Grapple") &&  waitTime == startWaitTime)
         {
-            if (ropeAttached) return;
+            if (ropeAttached)
+            {
+                return;
+            }
+
             ropeRenderer.enabled = true;
 
             var hit = Physics2D.Raycast(playerPosition, aimDirection, ropeMaxCastDistance, ropeLayerMask);
@@ -102,18 +111,27 @@ public class RopeSystem : MonoBehaviour
                     ropeJoint.enabled = true;
                     ropeHingeAnchorSprite.enabled = true;
                 }
+                waitTime = 0;
             }
             else
             {
                 ropeRenderer.enabled = false;
                 ropeAttached = false;
                 ropeJoint.enabled = false;
-            }
+            }            
         }
-
         if (Input.GetButtonDown("Jump") && playerController.isGrappled) 
         {
             ResetRope();
+        }
+
+        if (waitTime < startWaitTime)
+        {
+            waitTime += Time.deltaTime;
+            if (waitTime > startWaitTime) 
+            {
+                waitTime = startWaitTime;
+            }
         }
     }
 
@@ -126,7 +144,6 @@ public class RopeSystem : MonoBehaviour
         ropeRenderer.SetPosition(1, transform.position);
         ropePositions.Clear();
         ropeHingeAnchorSprite.enabled = false;
-
         playerController.isGrappled = false;
     }
 

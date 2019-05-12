@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
     public bool isGrappled;                     // Wheather the player is using the grappling hook at the moment.
 
     public bool switchGravityPower;             // Turn on or off the gravity switch ability.
-
+    public GameObject energyUI;                 // Turn on or off the energy bar from the UI.
 
     #endregion
 
@@ -129,11 +129,11 @@ public class PlayerController : MonoBehaviour
         #region Switch Gravity
         if (switchGravityPower == true)
         {
+            energyUI.SetActive(true);
+
             switch (m_GravityDirection)
             {
                 case GravityDirection.Down:
-
-
                     rb.gravityScale = initialGravity;                         // Change the gravity to be in a downward direction (default).
                     if (Input.GetButtonDown("SwitchGravity") && isGrounded)   // Press the switch gravity button to change the direction of gravity.
                     {
@@ -156,6 +156,10 @@ public class PlayerController : MonoBehaviour
                     }
                     break;
             }
+        }
+        else
+        {
+            energyUI.SetActive(false);
         }
         #endregion
 
@@ -256,9 +260,7 @@ public class PlayerController : MonoBehaviour
     {
         facingRight = !facingRight;                 // Switch the way the player is labelled as facing.
 
-        Vector3 theScale = transform.localScale;    // Multiply the player's x local scale by -1.
-        theScale.x *= -1;
-        transform.localScale = theScale;
+        transform.Rotate(0f, 180f, 0f);
     }
 
     void Rotation()
