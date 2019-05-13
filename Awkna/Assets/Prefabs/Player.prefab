@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 2115697293848515373}
   - component: {fileID: 2115697293848515372}
   - component: {fileID: 2115697293848515349}
+  - component: {fileID: 33822461186370136}
   m_Layer: 15
   m_Name: Player
   m_TagString: Player
@@ -509,6 +510,14 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!81 &33822461186370136
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115697293848515362}
+  m_Enabled: 1
 --- !u!1 &2115697294458431860
 GameObject:
   m_ObjectHideFlags: 0

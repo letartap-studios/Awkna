@@ -3,6 +3,7 @@ using EZCameraShake;
 
 // This script spawns the bomb when calling it from the PlayerController.cs and then explodes after a timer.
 
+[RequireComponent(typeof(AudioSource))]
 public class SpawnBomb : MonoBehaviour
 {
     #region Variables
@@ -42,6 +43,7 @@ public class SpawnBomb : MonoBehaviour
             CameraShaker.Instance.ShakeOnce(4f, 4f, .1f, 1f);               // Shake the camera effect on explosion.
 
             Instantiate(effect, transform.position, Quaternion.identity);   //Explosion effect.
+            FindObjectOfType<AudioManager>().Play("Explosion1");
 
             Destroy(whatIsBomb);                                            // Destroy the bomb at explosion.
 
