@@ -1,22 +1,13 @@
 ﻿using UnityEngine;
 
 
-public class AddBomb : MonoBehaviour
+public class AddBomb : PowerUp
 {
-    public float areaOfEffect;
-    private void Update()
+    public float valueToAdd;
+    protected override void PowerUpPayload()
     {
-        Collider2D other = Physics2D.OverlapCircle(transform.position, areaOfEffect);
-        if (other.CompareTag("Player"))
-        {
-            other.GetComponent<PlayerController>().AddBomb();
-            Destroy(gameObject);
-        }
+        base.PowerUpPayload();
 
-    }
-    private void OnDrawGizmosSelected() // Draw a gismos circle around the area of effect.
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, areaOfEffect);
+        GameObject.FindWithTag("Player").GetComponent<PlayerController>().AddBomb();
     }
 }

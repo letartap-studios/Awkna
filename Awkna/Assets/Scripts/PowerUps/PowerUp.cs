@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-
 /// <summary>
 /// Game independent Power Up logic supporting 2D and 3D modes.
 /// When collected, a Power Up has visuals switched off, but the Power Up gameobject exists until it is time for it to expire
@@ -18,6 +17,7 @@ public class PowerUp : MonoBehaviour
     public bool expiresImmediately;
     public GameObject specialEffect;
     public AudioClip soundEffect;
+    public float pickUpRange;
 
     /// <summary>
     /// It is handy to keep a reference to the player that collected us
@@ -45,19 +45,9 @@ public class PowerUp : MonoBehaviour
         powerUpState = PowerUpState.InAttractMode;
     }
 
-    /// <summary>
-    /// 2D support
-    /// </summary>
-    protected virtual void OnTriggerEnter2D(Collider2D other)
-    {
-        PowerUpCollected(other.gameObject);
-    }
-
-    /// <summary>
-    /// 3D support
-    /// </summary>
     protected virtual void Update()
     {
+        Collider2D other = Physics2D.OverlapCircle(transform.position, pickUpRange);
         PowerUpCollected(other.gameObject);
     }
 
@@ -72,6 +62,7 @@ public class PowerUp : MonoBehaviour
         // We only care if we've not been collected before
         if (powerUpState == PowerUpState.IsCollected || powerUpState == PowerUpState.IsExpiring)
         {
+            
             return;
         }
         powerUpState = PowerUpState.IsCollected;
@@ -79,10 +70,7 @@ public class PowerUp : MonoBehaviour
         // We must have been collected by a player, store handle to player for later use      
         playerController = gameObjectCollectingPowerUp.GetComponent<PlayerController>();
 
-        // We move the power up game object to be under the player that collect it, this isn't essential for functionality 
-        // presented so far, but it is neater in the gameObject hierarchy
-        gameObject.transform.parent = playerController.gameObject.transform;
-        gameObject.transform.position = playerController.gameObject.transform.position;
+        Destroy(gameObject);
 
         // Collection effects
         PowerUpEffects();

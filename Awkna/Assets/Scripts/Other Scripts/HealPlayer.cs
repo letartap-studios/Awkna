@@ -1,24 +1,10 @@
-﻿using UnityEngine;
-
-public class HealPlayer : MonoBehaviour
+﻿public class HealPlayer : PowerUp
 {
     public float healPlayer = 1;
-    public Vector2 areaOfEffect;
-
-    private void Update()
+    protected override void PowerUpPayload()
     {
-        Collider2D other = Physics2D.OverlapBox(transform.position, areaOfEffect, 0f);
-        if (other.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-            PlayerStats.Instance.Heal(healPlayer);
-        }
+        base.PowerUpPayload();
 
-    }
-
-    private void OnDrawGizmosSelected() // Draw a gismos circle around the area of effect.
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, areaOfEffect);
+        PlayerStats.Instance.Heal(healPlayer);
     }
 }

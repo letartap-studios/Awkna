@@ -1,22 +1,13 @@
 ﻿using UnityEngine;
 
-public class AddRope : MonoBehaviour
+public class AddRope : PowerUp
 {
     public float valueToAdd;
-    public Vector2 areaOfEffect;
-    private void Update()
+    protected override void PowerUpPayload()
     {
-        Collider2D other = Physics2D.OverlapBox(transform.position, areaOfEffect, 0f);
-        if (other.CompareTag("Player"))
-        {
-            other.GetComponent<RopeSystem>().AddRope(valueToAdd);
-            Destroy(gameObject);            
-        }
+        base.PowerUpPayload();
 
+        GameObject.FindWithTag("Player").GetComponent<RopeSystem>().AddRope(valueToAdd);
     }
-    private void OnDrawGizmosSelected() // Draw a gismos circle around the area of effect.
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, areaOfEffect);
-    }
+
 }

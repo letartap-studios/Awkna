@@ -1,15 +1,9 @@
-﻿using UnityEngine;
-
-public class AddHeart : MonoBehaviour
+﻿public class AddHeart : PowerUp
 {
-    private void Update()
+    protected override void PowerUpPayload()
     {
-        Collider2D other = Physics2D.OverlapCircle(transform.position, 1f);
-        if (other.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-            PlayerStats.Instance.AddHealth();
-        }
+        base.PowerUpPayload();
 
+        PlayerStats.Instance.AddHealth();
     }
 }
