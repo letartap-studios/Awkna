@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        FindObjectOfType<AudioManager>().Play("levelstart");
         energy = maxEnergy;                             // Start with max energy.
         rb = GetComponent<Rigidbody2D>();               // Get the rigidbody component from the player object.
         initialGravity = rb.gravityScale;               // Get the initial value of the gravity.

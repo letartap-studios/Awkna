@@ -49,6 +49,7 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         health -= dmg;
+        FindObjectOfType<AudioManager>().Play("damagetaken");//play sound
         player.gameObject.GetComponent<Animation>().Play("PlayerGetDamaged");
         ClampHealth();
     }
