@@ -11,6 +11,7 @@ public class FlyingEnemyRange : MonoBehaviour
     private GameObject player;                          // Refence to the player object in the scene.
     private bool playerInRange = false;                 // Whether the player has been in range of the enemy until the moment.
     private float distanceToPlayer;                     // The distance at which the enemy starts to follow the player.
+    [HideInInspector]
     public bool isFollowing;
     #endregion
 
