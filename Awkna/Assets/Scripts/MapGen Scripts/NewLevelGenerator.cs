@@ -209,7 +209,7 @@ public class NewLevelGenerator : MonoBehaviour
             moveCursor();
         }
 
-        map[cursorPosX, cursorPosY + 1] = roomsTypes.exitRoom;
+        map[cursorPosX, mapsizeY - 1] = roomsTypes.exitRoom;
 
         Vector3 v = new Vector3();
         for (int x = 0; x < mapsizeX; x++)
@@ -306,6 +306,5 @@ public class NewLevelGenerator : MonoBehaviour
     {
         AstarPath.active.Scan();
     }
-
 
 }
