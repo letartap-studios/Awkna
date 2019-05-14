@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 10
   m_Name: SpawnPoint (35)
   m_TagString: Untagged
-  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -47,6 +47,7 @@ MonoBehaviour:
   - {fileID: 5280870517079132777, guid: 5b8cba080f8e8284eb06b37471a60503, type: 3}
   - {fileID: 5280870517079132777, guid: dc3f801d858563142ae27609a990475c, type: 3}
   - {fileID: 5280870517079132777, guid: 274d26d0a750d5744be2b0e648ca7375, type: 3}
+  file: 
 --- !u!1 &1379917145981011559
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +61,7 @@ GameObject:
   m_Layer: 10
   m_Name: SpawnPoint (43)
   m_TagString: Untagged
-  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -95,6 +96,7 @@ MonoBehaviour:
   - {fileID: 5280870517079132777, guid: a490f18cfff1c9241b192122417b1776, type: 3}
   - {fileID: 5280870517079132777, guid: c49e55d34e036cd4b9e92b88dceeee8c, type: 3}
   - {fileID: 7771080257749935618, guid: 02e2606c2dd87314183a41dac76bd320, type: 3}
+  file: 
 --- !u!1 &2443018801275818677
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +146,7 @@ MonoBehaviour:
   - {fileID: 7771080257749935618, guid: 02e2606c2dd87314183a41dac76bd320, type: 3}
   - {fileID: 7771080257749935618, guid: 02e2606c2dd87314183a41dac76bd320, type: 3}
   - {fileID: 736117162159201801, guid: f815dc2ace6217844b1ed159fad6067d, type: 3}
+  file: 
 --- !u!1 &3093487207388880732
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +161,7 @@ GameObject:
   m_Layer: 10
   m_Name: Room LRTB
   m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -180,6 +183,7 @@ Transform:
   - {fileID: 2149853623017959803}
   - {fileID: 8276281139661153638}
   - {fileID: 932473705790740510}
+  - {fileID: 491093697440526326}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -235,7 +239,7 @@ GameObject:
   m_Layer: 10
   m_Name: SpawnPoint (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -269,6 +273,7 @@ MonoBehaviour:
   - {fileID: 5280870517079132777, guid: 2e1c9607470a0cf499594133389562a6, type: 3}
   - {fileID: 5280870517079132777, guid: 171ebfca74e91994db2f30afc8fd5d54, type: 3}
   - {fileID: 5280870517079132777, guid: ccb9802936d2d0d4a8f17553787bb51d, type: 3}
+  file: 
 --- !u!1 &3093487208487670679
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,7 +287,7 @@ GameObject:
   m_Layer: 10
   m_Name: SpawnPoint (16)
   m_TagString: Untagged
-  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -316,6 +321,59 @@ MonoBehaviour:
   - {fileID: 5280870517079132777, guid: 74e83828bdabe55418214748f20cd68d, type: 3}
   - {fileID: 5280870517079132777, guid: ccf96fa0d66121e47ad8fc99b8f0552a, type: 3}
   - {fileID: 5280870517079132777, guid: a96478e11c09a8b48b5bf5c92a4922e6, type: 3}
+  file: 
+--- !u!1 &4177074273897480927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 491093697440526326}
+  - component: {fileID: 3280574203281345614}
+  m_Layer: 10
+  m_Name: SpawnPoint (45)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &491093697440526326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4177074273897480927}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3093487207388880723}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3280574203281345614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4177074273897480927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251a51e7720bf36449175ecafe28879b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 5280870517079132777, guid: c1daa7232e348d64ba82aad28c66e268, type: 3}
+  - {fileID: 5280870517079132777, guid: dfcbd2346d9683a4fa58a90e3476e620, type: 3}
+  - {fileID: 5280870517079132777, guid: 481f88cb14572c54cbff7ca4f9ce7c6e, type: 3}
+  - {fileID: 7771080257749935618, guid: 02e2606c2dd87314183a41dac76bd320, type: 3}
+  - {fileID: 5280870517079132777, guid: 70dc3438f2eec594cb3c1d02818688de, type: 3}
+  - {fileID: 5280870517079132777, guid: 53ba288978a61d14ab7c310829f83894, type: 3}
+  - {fileID: 7771080257749935618, guid: 02e2606c2dd87314183a41dac76bd320, type: 3}
+  file: 
 --- !u!1 &4863292068269505645
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +387,7 @@ GameObject:
   m_Layer: 10
   m_Name: SpawnPoint (44)
   m_TagString: Untagged
-  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -364,6 +422,7 @@ MonoBehaviour:
   - {fileID: 5280870517079132777, guid: dfcbd2346d9683a4fa58a90e3476e620, type: 3}
   - {fileID: 5280870517079132777, guid: 481f88cb14572c54cbff7ca4f9ce7c6e, type: 3}
   - {fileID: 7771080257749935618, guid: 02e2606c2dd87314183a41dac76bd320, type: 3}
+  file: 
 --- !u!1 &5426043787533576046
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,7 +436,7 @@ GameObject:
   m_Layer: 10
   m_Name: SpawnPoint (41)
   m_TagString: Untagged
-  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -411,3 +470,4 @@ MonoBehaviour:
   - {fileID: 5280870517079132777, guid: 7aca3f5862680014a984d1b92745fa57, type: 3}
   - {fileID: 5280870517079132777, guid: 896a511aab90a3c48ac9a3697bfac767, type: 3}
   - {fileID: 5280870517079132777, guid: ad0e29fd631821540a664ca55d969e8b, type: 3}
+  file: 
