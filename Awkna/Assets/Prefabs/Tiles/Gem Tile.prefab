@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3283394773757278311}
   - component: {fileID: -566835832909437811}
   - component: {fileID: -5890299546071065022}
+  - component: {fileID: 4024643309158407262}
   m_Layer: 8
   m_Name: Gem Tile
-  m_TagString: Environment
+  m_TagString: GemTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,6 +127,21 @@ MonoBehaviour:
   - {fileID: 5769881031359900410, guid: fc18a90fc1c73414d839e5164b1efbfe, type: 3}
   - {fileID: 6618422057275280248, guid: fc18a90fc1c73414d839e5164b1efbfe, type: 3}
   - {fileID: -4825171343780465602, guid: fc18a90fc1c73414d839e5164b1efbfe, type: 3}
+--- !u!114 &4024643309158407262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6633106579968935971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9618c44f0077c4da05602beee5c20f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  gem: {fileID: 5607245197429582468, guid: c4e316010bcf74440aa340f2a804963e, type: 3}
+  gemTile: {fileID: 6633106579968935971}
 --- !u!1001 &2663050663066546788
 PrefabInstance:
   m_ObjectHideFlags: 0

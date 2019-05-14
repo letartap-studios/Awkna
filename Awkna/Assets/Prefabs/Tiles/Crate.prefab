@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4469069994006152613}
   - component: {fileID: 2707811949241984381}
   - component: {fileID: 5036615176167042632}
-  - component: {fileID: 9144894778510209612}
+  - component: {fileID: -517715835672005432}
   m_Layer: 19
   m_Name: Crate
-  m_TagString: Untagged
+  m_TagString: Crate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,7 +129,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9144894778510209612
+--- !u!114 &-517715835672005432
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,11 +138,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4776925764863973313}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33863f3c01cce0648af14fd4e08cd70d, type: 3}
+  m_Script: {fileID: 11500000, guid: 551193c444de4fc42bf25495aae229c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
   objects:
   - {fileID: 736117162159201801, guid: f815dc2ace6217844b1ed159fad6067d, type: 3}
-  - {fileID: 1836647956045709564, guid: 08393c40848ca6648a27e50b6aec4abc, type: 3}
+  - {fileID: 1000013667988280, guid: 677e3f20f0ab76a45bd59d5b73b0b446, type: 3}
+  - {fileID: 7354618734782946251, guid: 70508c18d53267f4385caefbaec14f5f, type: 3}
   - {fileID: 5738914557992221520, guid: 5ea4cc36f9836cf4081285f48a408008, type: 3}
   crate: {fileID: 4776925764863973313}

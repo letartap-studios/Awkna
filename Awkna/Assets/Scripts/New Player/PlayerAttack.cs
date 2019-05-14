@@ -12,7 +12,7 @@ public class PlayerAttack : MonoBehaviour
     public LayerMask whatIsEnemy;           // What layers are enemies.
 
     public int damage;                      // The damage that the player deals to the enemies.
-
+    public GameObject crate;
     private void Update()
     {
         if (timeBtwAttack <= 0)    // Then the player can attack.
@@ -26,7 +26,16 @@ public class PlayerAttack : MonoBehaviour
 
                 for (int i = 0; i < enemiesToDamage.Length; i++)     // Damage all enemies in the area.
                 {
-                    enemiesToDamage[i].GetComponent<EnemyHealth>().TakeDamage(damage);
+                    if (enemiesToDamage[i].CompareTag("Enemy"))
+                    {
+                        enemiesToDamage[i].GetComponent<EnemyHealth>().TakeDamage(damage);
+                    }
+                       
+                  if (enemiesToDamage[i].CompareTag("Crate"))
+                    {
+                        enemiesToDamage[i].GetComponent<CrateHealth>().TakeDamage(damage);
+                        
+                    }
                 }
 
                 timeBtwAttack = startTimeBtwAttack;
