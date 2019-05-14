@@ -70,8 +70,6 @@ public class PowerUp : MonoBehaviour
         // We must have been collected by a player, store handle to player for later use      
         playerController = gameObjectCollectingPowerUp.GetComponent<PlayerController>();
 
-        Destroy(gameObject);
-
         // Collection effects
         PowerUpEffects();
 

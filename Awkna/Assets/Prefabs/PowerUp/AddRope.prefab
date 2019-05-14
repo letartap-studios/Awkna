@@ -46,8 +46,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b3c43bdbf62ef94c9820e015dd2ddcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpName: Rope
+  powerUpExplanation: Increases the rope lenght
+  powerUpQuote: 
+  expiresImmediately: 1
+  specialEffect: {fileID: 0}
+  soundEffect: {fileID: 0}
+  pickUpRange: 0
   valueToAdd: 3
-  areaOfEffect: {x: 0.78, y: 1}
 --- !u!212 &1322174814209055903
 SpriteRenderer:
   m_ObjectHideFlags: 0

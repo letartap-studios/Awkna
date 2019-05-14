@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\mihai\.Rider2019.1\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\mihai\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_Awkna.1713819830.00" t="ExcludeRecursive" />
-    <e p="F:\GitHub\Awkna-new\Awkna" t="IncludeRecursive">
+    <e p="C:\Users\mihai\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_Awkna.-1363352237.00" t="ExcludeRecursive" />
+    <e p="C:\Users\mihai\Documents\GitHub\Awkna-new\Awkna" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="CameraLerpToTransform.cs" t="Include" />
+        <e p="AudioManager.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="AstarPathfindingProject" t="Include">
+            <e p="AstarPathfindingProject.asmdef" t="Include" />
             <e p="Behaviors" t="Include">
               <e p="AIDestinationSetter.cs" t="Include" />
               <e p="Patrol.cs" t="Include" />
@@ -77,6 +78,7 @@
               <e p="AILerpEditor.cs" t="Include" />
               <e p="AnimationLinkEditor.cs" t="Include" />
               <e p="AstarPathEditor.cs" t="Include" />
+              <e p="AstarPathfindingProjectEditor.asmdef" t="Include" />
               <e p="AstarUpdateChecker.cs" t="Include" />
               <e p="AstarUpdateWindow.cs" t="Include" />
               <e p="CustomGraphEditorAttribute.cs" t="Include" />
@@ -176,6 +178,7 @@
                 <e p="EditorBase.cs" t="Include" />
                 <e p="EditorGUIx.cs" t="Include" />
                 <e p="EnumFlagDrawer.cs" t="Include" />
+                <e p="PackageToolsEditor.asmdef" t="Include" />
               </e>
               <e p="EnumFlagAttribute.cs" t="Include" />
               <e p="UniqueComponentAttribute.cs" t="Include" />
@@ -259,8 +262,6 @@
             <e p="RopeSystem.cs" t="Include" />
           </e>
           <e p="Other Scripts" t="Include">
-            <e p="AddBomb.cs" t="Include" />
-            <e p="AddHeart.cs" t="Include" />
             <e p="ExitDoor.cs" t="Include" />
             <e p="ExplosiveBox.cs" t="Include" />
             <e p="HealPlayer.cs" t="Include" />
@@ -271,6 +272,12 @@
             <e p="SlowTile.cs" t="Include" />
             <e p="SpawnBomb.cs" t="Include" />
           </e>
+          <e p="PowerUps" t="Include">
+            <e p="AddBomb.cs" t="Include" />
+            <e p="AddHeart.cs" t="Include" />
+            <e p="AddRope.cs" t="Include" />
+            <e p="PowerUp.cs" t="Include" />
+          </e>
           <e p="UI" t="Include">
             <e p="BombsDisplay.cs" t="Include" />
             <e p="EnergySlider.cs" t="Include" />
@@ -279,8 +286,12 @@
             <e p="MainMenu.cs" t="Include" />
             <e p="OptionsMenu.cs" t="Include" />
             <e p="PauseMenu.cs" t="Include" />
+            <e p="RadialGrapplingHookBar.cs" t="Include" />
             <e p="SceneScript.cs" t="Include" />
           </e>
+        </e>
+        <e p="Sounds" t="Include">
+          <e p="Sound.cs" t="Include" />
         </e>
         <e p="Sprites" t="Include">
           <e p="BayatGames" t="Include">

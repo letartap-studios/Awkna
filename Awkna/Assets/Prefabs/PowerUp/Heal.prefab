@@ -115,8 +115,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e48212f6aa9f44aaa92de180ca6032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpName: Heal
+  powerUpExplanation: Heal the player
+  powerUpQuote: 
+  expiresImmediately: 1
+  specialEffect: {fileID: 0}
+  soundEffect: {fileID: 0}
+  pickUpRange: 0
   healPlayer: 1
-  areaOfEffect: {x: 0.32, y: 0.76}
 --- !u!61 &8353331450605852439
 BoxCollider2D:
   m_ObjectHideFlags: 0

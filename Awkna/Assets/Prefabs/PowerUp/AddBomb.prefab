@@ -95,7 +95,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509bb1fecdb387f44b83fad7f4671787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaOfEffect: 0.4
+  powerUpName: Bomb
+  powerUpExplanation: The player can collect a new bomb.
+  powerUpQuote: 
+  expiresImmediately: 1
+  specialEffect: {fileID: 0}
+  soundEffect: {fileID: 0}
+  pickUpRange: 0
+  valueToAdd: 0
 --- !u!58 &-8980294750756388914
 CircleCollider2D:
   m_ObjectHideFlags: 0

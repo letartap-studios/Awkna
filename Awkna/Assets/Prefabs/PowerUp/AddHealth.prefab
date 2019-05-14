@@ -94,6 +94,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 804e5ba481f3a4a46bc2a33ae945bea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpName: New heart
+  powerUpExplanation: Add a new heart
+  powerUpQuote: 
+  expiresImmediately: 1
+  specialEffect: {fileID: 0}
+  soundEffect: {fileID: 0}
+  pickUpRange: 0
 --- !u!58 &7576780077913433743
 CircleCollider2D:
   m_ObjectHideFlags: 0
