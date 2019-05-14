@@ -14,6 +14,8 @@ public class SpawnBomb : MonoBehaviour
 
     public LayerMask whatIsDestructible;    // Whether the objects are destructible.
     public GameObject effect;               // Explosion effect.
+    public GameObject[] obj;
+    public GameObject crate;
     #endregion
 
 
@@ -36,7 +38,20 @@ public class SpawnBomb : MonoBehaviour
                 }
                 else                                                // If it collides with anything else that is destructible,...
                 {
-                    Destroy(objectsToDamage[i].gameObject);         // ...destroy it.
+                    if (objectsToDamage[i].CompareTag("Crate"))
+                    {
+                        objectsToDamage[i].GetComponent<CrateHealth>().TakeDamage(1);
+                    }
+                    else if (objectsToDamage[i].CompareTag("GemTile"))
+                    {
+                        objectsToDamage[i].GetComponent<GemTileHealth>().TakeDamage(1);
+                    }else
+                    {
+                        Destroy(objectsToDamage[i].gameObject);
+                    }
+                    
+                    // ...destroy it.
+
                 }
             }
 
