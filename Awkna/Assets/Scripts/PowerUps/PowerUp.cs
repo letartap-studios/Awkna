@@ -16,6 +16,7 @@ public class PowerUp : MonoBehaviour
     public bool expiresImmediately;
     public GameObject specialEffect;
     public AudioClip soundEffect;
+
     public float pickUpRange;
 
 
@@ -92,11 +93,10 @@ public class PowerUp : MonoBehaviour
             Instantiate(specialEffect, transform.position, transform.rotation, transform);
         }
 
-        if (soundEffect != null)
-        {
-            //MainGameController.main.PlaySound(soundEffect);
 
-        }
+        FindObjectOfType<AudioManager>().Play("pickup");
+
+
     }
 
     protected virtual void PowerUpPayload()
