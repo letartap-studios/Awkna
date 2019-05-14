@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 /// <summary>
 /// Game independent Power Up logic supporting 2D and 3D modes.
 /// When collected, a Power Up has visuals switched off, but the Power Up gameobject exists until it is time for it to expire
@@ -18,6 +17,7 @@ public class PowerUp : MonoBehaviour
     public GameObject specialEffect;
     public AudioClip soundEffect;
     public float pickUpRange;
+
 
     /// <summary>
     /// It is handy to keep a reference to the player that collected us
@@ -62,15 +62,12 @@ public class PowerUp : MonoBehaviour
         // We only care if we've not been collected before
         if (powerUpState == PowerUpState.IsCollected || powerUpState == PowerUpState.IsExpiring)
         {
-            
             return;
         }
         powerUpState = PowerUpState.IsCollected;
 
         // We must have been collected by a player, store handle to player for later use      
         playerController = gameObjectCollectingPowerUp.GetComponent<PlayerController>();
-
-        Destroy(gameObject);
 
         // Collection effects
         PowerUpEffects();
@@ -95,10 +92,11 @@ public class PowerUp : MonoBehaviour
             Instantiate(specialEffect, transform.position, transform.rotation, transform);
         }
 
-        //if (soundEffect != null)
-        //{
-        //    MainGameController.main.PlaySound(soundEffect);
-        //}
+        if (soundEffect != null)
+        {
+            //MainGameController.main.PlaySound(soundEffect);
+
+        }
     }
 
     protected virtual void PowerUpPayload()
@@ -133,7 +131,13 @@ public class PowerUp : MonoBehaviour
     {
         // Arbitrary delay of some seconds to allow particle, audio is all done
         // TODO could tighten this and inspect the sfx? Hard to know how many, as subclasses could have spawned their own
-        Destroy(gameObject, 10f);
+        Destroy(gameObject, 5f);
+    }
+
+    public void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, pickUpRange);
     }
 }
 
