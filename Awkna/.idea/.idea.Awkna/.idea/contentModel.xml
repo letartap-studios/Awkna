@@ -262,9 +262,11 @@
             <e p="RopeSystem.cs" t="Include" />
           </e>
           <e p="Other Scripts" t="Include">
+            <e p="CrateHealth.cs" t="Include" />
+            <e p="DestroyObject.cs" t="Include" />
             <e p="ExitDoor.cs" t="Include" />
             <e p="ExplosiveBox.cs" t="Include" />
-            <e p="HealPlayer.cs" t="Include" />
+            <e p="GemTileHealth.cs" t="Include" />
             <e p="KillTile.cs" t="Include" />
             <e p="Platform.cs" t="Include" />
             <e p="PlayerStats.cs" t="Include" />
@@ -276,11 +278,15 @@
             <e p="AddBomb.cs" t="Include" />
             <e p="AddHeart.cs" t="Include" />
             <e p="AddRope.cs" t="Include" />
+            <e p="Gem.cs" t="Include" />
+            <e p="HealPlayer.cs" t="Include" />
+            <e p="Invulnerable.cs" t="Include" />
             <e p="PowerUp.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
             <e p="BombsDisplay.cs" t="Include" />
             <e p="EnergySlider.cs" t="Include" />
+            <e p="GemNumber.cs" t="Include" />
             <e p="HealthBarController.cs" t="Include" />
             <e p="HealthBarHUDTester.cs" t="Include" />
             <e p="MainMenu.cs" t="Include" />

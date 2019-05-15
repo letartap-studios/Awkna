@@ -61,6 +61,9 @@ public class PlayerController : MonoBehaviour
     public bool switchGravityPower;             // Turn on or off the gravity switch ability.
     public GameObject energyUI;                 // Turn on or off the energy bar from the UI.
 
+    [HideInInspector]
+    public float gemNumber;                     // The number of gems.
+    
     #endregion
 
     private void Awake()
@@ -286,6 +289,11 @@ public class PlayerController : MonoBehaviour
         bombsNumber++;
     }
 
+    public void AddGem()
+    {
+        gemNumber++;
+    }
+
     private void OnDrawGizmosSelected() // Draw a gismos circle around the ground check radius.
     {
         Gizmos.color = Color.red;
@@ -314,11 +322,27 @@ public class PlayerController : MonoBehaviour
         yield return 0;
     }
 
+    #region Invulnerability
+    /// <summary>
+    /// Invulnerable for the default time set in the PlayerController.
+    /// </summary>
     public IEnumerator GetInvulnerable()
     {
         Physics2D.IgnoreLayerCollision(12, 15, true);
         yield return new WaitForSeconds(invulnerabilityTime);
         Physics2D.IgnoreLayerCollision(12, 15, false);
     }
+    
+    /// <summary>
+    /// Invulnerable for the time set.
+    /// </summary>
+    public IEnumerator GetInvulnerable(float time)
+    {
+        Physics2D.IgnoreLayerCollision(12, 15, true);
+        yield return new WaitForSeconds(time);
+        Physics2D.IgnoreLayerCollision(12, 15, false);
+    }
+    #endregion
+    
     #endregion
 }
