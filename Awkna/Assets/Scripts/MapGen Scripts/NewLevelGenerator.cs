@@ -11,6 +11,7 @@ public class NewLevelGenerator : MonoBehaviour
     public GameObject RoomLRTB;
     public GameObject RoomTB;
     public GameObject ExitRoom;
+    public GameObject EntranceRoom;
     public GameObject BorderBlock;
 
     public int roomSize;
@@ -37,6 +38,7 @@ public class NewLevelGenerator : MonoBehaviour
         roomLRTB,
         roomTB,
         exitRoom,
+        entranceRoom,
     }
 
     public enum directions
@@ -195,6 +197,7 @@ public class NewLevelGenerator : MonoBehaviour
 
         movesTillMoveUp = Random.Range(0, maxStrafe);
         cursorPosX = Random.Range(0, mapsizeX);
+        int mapExit = cursorPosX;
         Debug.Log(cursorPosX);
         cursorPosY = mapsizeY - 1;
         direction = directions.none;
@@ -209,7 +212,8 @@ public class NewLevelGenerator : MonoBehaviour
             moveCursor();
         }
 
-        map[cursorPosX, cursorPosY + 1] = roomsTypes.exitRoom;
+        map[cursorPosX, 0] = roomsTypes.entranceRoom;
+        map[mapExit, mapsizeY - 1] = roomsTypes.exitRoom;
 
         Vector3 v = new Vector3();
         for (int x = 0; x < mapsizeX; x++)
@@ -267,6 +271,9 @@ public class NewLevelGenerator : MonoBehaviour
                     case roomsTypes.exitRoom:
                         Instantiate(ExitRoom, v, Quaternion.identity);
                         break;
+                    case roomsTypes.entranceRoom:
+                        Instantiate(EntranceRoom, v, Quaternion.identity);
+                        break;
                     default:
                         break;
                 }
@@ -306,6 +313,5 @@ public class NewLevelGenerator : MonoBehaviour
     {
         AstarPath.active.Scan();
     }
-
 
 }

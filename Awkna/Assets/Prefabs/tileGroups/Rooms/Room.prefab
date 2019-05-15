@@ -1,5 +1,54 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &112605296892907989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4263441921581156055}
+  - component: {fileID: 5306424955985082938}
+  m_Layer: 10
+  m_Name: SpawnPoint (39)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4263441921581156055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112605296892907989}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7, y: -3, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6070247645271319329}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5306424955985082938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112605296892907989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251a51e7720bf36449175ecafe28879b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a, type: 3}
+  - {fileID: 5280870517079132777, guid: 0b0834faa149a664d87af04dc6dcdb41, type: 3}
+  - {fileID: 5280870517079132777, guid: e1e9f7789abc71a43b1f9e5dc89c98ec, type: 3}
+  - {fileID: 5280870517079132777, guid: 9b57f11af56a52341b9cdad62c43201f, type: 3}
+  file: 
 --- !u!1 &995767371479170047
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,6 +95,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 6633106579968935971, guid: 0874144666d58c547816379099014716, type: 3}
   - {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53, type: 3}
+  file: 
 --- !u!1 &1000335572797098528
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +142,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 6633106579968935971, guid: 0874144666d58c547816379099014716, type: 3}
   - {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53, type: 3}
+  file: 
 --- !u!1 &1135188592863991699
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,6 +189,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 6633106579968935971, guid: 0874144666d58c547816379099014716, type: 3}
   - {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53, type: 3}
+  file: 
 --- !u!1 &1542713260364389233
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,6 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiles:
   - {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a, type: 3}
+  file: 
 --- !u!1 &1611511886802485324
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +282,56 @@ MonoBehaviour:
   tiles:
   - {fileID: 6633106579968935971, guid: 0874144666d58c547816379099014716, type: 3}
   - {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53, type: 3}
+  file: 
+--- !u!1 &1613312348584210103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3927015479062272980}
+  - component: {fileID: 3100472300126875040}
+  m_Layer: 10
+  m_Name: SpawnPoint (21)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3927015479062272980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613312348584210103}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: -4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6070247645271319329}
+  m_RootOrder: 26
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3100472300126875040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613312348584210103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251a51e7720bf36449175ecafe28879b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 7771080257749935618, guid: 02e2606c2dd87314183a41dac76bd320, type: 3}
+  - {fileID: 7771080257749935618, guid: 02e2606c2dd87314183a41dac76bd320, type: 3}
+  - {fileID: 5280870517079132777, guid: 5f05a47271a0c874b8b51c4500108092, type: 3}
+  - {fileID: 5280870517079132777, guid: 9998bc6d801f77e4db348c0bcbf81811, type: 3}
+  file: 
 --- !u!1 &1730882693377418295
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,6 +378,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 6633106579968935971, guid: 0874144666d58c547816379099014716, type: 3}
   - {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53, type: 3}
+  file: 
 --- !u!1 &2630180372861171469
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +425,59 @@ MonoBehaviour:
   tiles:
   - {fileID: 6633106579968935971, guid: 0874144666d58c547816379099014716, type: 3}
   - {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53, type: 3}
+  file: 
+--- !u!1 &2780179043287286717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2202042632090857346}
+  - component: {fileID: 7881448954704149547}
+  m_Layer: 10
+  m_Name: SpawnPoint (38)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2202042632090857346
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2780179043287286717}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3, y: -6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6070247645271319329}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7881448954704149547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2780179043287286717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251a51e7720bf36449175ecafe28879b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 5280870517079132777, guid: 70dc3438f2eec594cb3c1d02818688de, type: 3}
+  - {fileID: 5280870517079132777, guid: c0d48df2ef450284d821042178be1326, type: 3}
+  - {fileID: 5280870517079132777, guid: 53ba288978a61d14ab7c310829f83894, type: 3}
+  - {fileID: 5280870517079132777, guid: ad3ab596ccab0254d9177bfb8b92a610, type: 3}
+  - {fileID: 5280870517079132777, guid: c1daa7232e348d64ba82aad28c66e268, type: 3}
+  - {fileID: 5280870517079132777, guid: dfcbd2346d9683a4fa58a90e3476e620, type: 3}
+  - {fileID: 5280870517079132777, guid: 481f88cb14572c54cbff7ca4f9ce7c6e, type: 3}
+  file: 
 --- !u!1 &3347188838527989589
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,6 +524,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 6633106579968935971, guid: 0874144666d58c547816379099014716, type: 3}
   - {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53, type: 3}
+  file: 
 --- !u!1 &3815652068658861570
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +571,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 6633106579968935971, guid: 0874144666d58c547816379099014716, type: 3}
   - {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53, type: 3}
+  file: 
 --- !u!1 &3992986690382556572
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +618,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 6633106579968935971, guid: 0874144666d58c547816379099014716, type: 3}
   - {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53, type: 3}
+  file: 
 --- !u!1 &5039134632958510056
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,6 +668,7 @@ MonoBehaviour:
   - {fileID: 1836647956045709564, guid: 08393c40848ca6648a27e50b6aec4abc, type: 3}
   - {fileID: 7771080257749935618, guid: 02e2606c2dd87314183a41dac76bd320, type: 3}
   - {fileID: 736117162159201801, guid: f815dc2ace6217844b1ed159fad6067d, type: 3}
+  file: 
 --- !u!1 &5511365196997631231
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiles:
   - {fileID: 8000636305140983301, guid: e52b5e6bffe7af34abc238e959517607, type: 3}
+  file: 
 --- !u!1 &5776148661071291639
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,6 +761,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 6633106579968935971, guid: 0874144666d58c547816379099014716, type: 3}
   - {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53, type: 3}
+  file: 
 --- !u!1 &6070247643782840883
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,6 +809,7 @@ MonoBehaviour:
   - {fileID: 6633106579968935971, guid: 0874144666d58c547816379099014716, type: 3}
   - {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53, type: 3}
   - {fileID: 2089431816229008783, guid: 3cf3555b12ca721428df3e93dc8c3503, type: 3}
+  file: 
 --- !u!1 &6070247644174211620
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,6 +856,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 6633106579968935971, guid: 0874144666d58c547816379099014716, type: 3}
   - {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53, type: 3}
+  file: 
 --- !u!1 &6070247644290967489
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,7 +870,7 @@ GameObject:
   m_Layer: 10
   m_Name: SpawnPoint (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -739,6 +904,7 @@ MonoBehaviour:
   - {fileID: 5280870517079132777, guid: 6961c7fb6ab5bbd4db1556cc07697832, type: 3}
   - {fileID: 5280870517079132777, guid: 08bac0319abe9124584245ad07855236, type: 3}
   - {fileID: 5280870517079132777, guid: b8a7aa737a59d5840b18f26fb62f65a9, type: 3}
+  file: 
 --- !u!1 &6070247644777483751
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,6 +951,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 6633106579968935971, guid: 0874144666d58c547816379099014716, type: 3}
   - {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53, type: 3}
+  file: 
 --- !u!1 &6070247645033585217
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +965,7 @@ GameObject:
   m_Layer: 10
   m_Name: SpawnPoint (10)
   m_TagString: Untagged
-  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -833,6 +1000,7 @@ MonoBehaviour:
   - {fileID: 5280870517079132777, guid: 11d0450090b907747856daa8b7501c39, type: 3}
   - {fileID: 5280870517079132777, guid: 9edca3bece5ebd440ac94b1e373449c3, type: 3}
   - {fileID: 5280870517079132777, guid: 3e31504240f934c458fddd15c7c071b8, type: 3}
+  file: 
 --- !u!1 &6070247645072008400
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,6 +1047,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 6633106579968935971, guid: 0874144666d58c547816379099014716, type: 3}
   - {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53, type: 3}
+  file: 
 --- !u!1 &6070247645271319342
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,6 +1100,10 @@ Transform:
   - {fileID: 9041091848093747374}
   - {fileID: 4949874681964374600}
   - {fileID: 3693909830367555223}
+  - {fileID: 2839777665392378211}
+  - {fileID: 2202042632090857346}
+  - {fileID: 4263441921581156055}
+  - {fileID: 3927015479062272980}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -986,7 +1159,7 @@ GameObject:
   m_Layer: 10
   m_Name: SpawnPoint (23)
   m_TagString: Untagged
-  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1020,6 +1193,7 @@ MonoBehaviour:
   - {fileID: 5280870517079132777, guid: cca8dec5512e1664a9883907a8ec4dd6, type: 3}
   - {fileID: 5280870517079132777, guid: 7a6c6ca5faf372f45ac7623758d08733, type: 3}
   - {fileID: 5280870517079132777, guid: 2a5794583457553489562c2f087064e3, type: 3}
+  file: 
 --- !u!1 &6070247645725069539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,6 +1240,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 6633106579968935971, guid: 0874144666d58c547816379099014716, type: 3}
   - {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53, type: 3}
+  file: 
 --- !u!1 &7129398003545783792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,6 +1287,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 6633106579968935971, guid: 0874144666d58c547816379099014716, type: 3}
   - {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53, type: 3}
+  file: 
 --- !u!1 &8371635077481365341
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,7 +1301,7 @@ GameObject:
   m_Layer: 10
   m_Name: SpawnPoint (50)
   m_TagString: Untagged
-  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1159,6 +1335,7 @@ MonoBehaviour:
   - {fileID: 5280870517079132777, guid: a9dc60010fc2faf468af2966531406bd, type: 3}
   - {fileID: 5280870517079132777, guid: c6c77a05eea11894993e67dbbafecb55, type: 3}
   - {fileID: 5280870517079132777, guid: 517b6f74beb1b774ca9b19c9ee48e4b0, type: 3}
+  file: 
 --- !u!1 &9083827389630859774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,3 +1382,4 @@ MonoBehaviour:
   tiles:
   - {fileID: 6633106579968935971, guid: 0874144666d58c547816379099014716, type: 3}
   - {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53, type: 3}
+  file: 
