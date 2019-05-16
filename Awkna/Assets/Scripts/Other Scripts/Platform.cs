@@ -4,15 +4,21 @@ public class Platform : MonoBehaviour
 {
 
     private PlatformEffector2D effector;
+    public float radius;
+    public Vector2 offset;
+    public LayerMask player;
+    private Vector2 pos;
 
-    void Start()
+
+    private void Start()
     {
         effector = GetComponent<PlatformEffector2D>();
+        pos = transform.position;
     }
 
-    void Update()
+    private void Update()
     {
-        Collider2D other = Physics2D.OverlapBox(transform.position, transform.localScale, 0);
+        Collider2D other = Physics2D.OverlapCircle(pos + offset, radius);
         if (other.CompareTag("Player"))
         {
             if (Input.GetAxis("Vertical") < 0)
@@ -34,6 +40,13 @@ public class Platform : MonoBehaviour
                 effector.rotationalOffset = 0;
             }
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawWireSphere(pos + offset, radius);
     }
 }
 

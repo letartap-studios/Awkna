@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
 
         #region Horizontal movment
 
-        horizontalMoveInput = Input.GetAxisRaw("Horizontal");                                         // Get the horizontal axis input.
+        horizontalMoveInput = Input.GetAxis("Horizontal");                                         // Get the horizontal axis input.
         Vector3 targetVelocity = new Vector2(horizontalMoveInput * movementSpeed, rb.velocity.y);     // Move the character by finding the target velocity...       
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, horizontalMovementSmoothing);
         //                                                                                            // ...and then smoothing it out and applying it to the character.
