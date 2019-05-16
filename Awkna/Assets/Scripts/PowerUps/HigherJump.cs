@@ -1,8 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Invulnerable : PowerUp
+public class HigherJump : PowerUp
 {
     private PlayerController player;
     public float time;
@@ -27,5 +26,22 @@ public class Invulnerable : PowerUp
                 PowerUpHasExpired ();
             }
         }
+    }
+
+    public IEnumerator higherJump(float waitTime, float gravityScale, float jumpForce)
+    {
+        float initialGravityScale = player.GetComponent<Rigidbody2D>().gravityScale;
+        float initialJumpForce = player.jumpForce;
+        
+        
+        player.GetComponent<Rigidbody2D>().gravityScale = gravityScale;
+        player.jumpForce = jumpForce;
+        
+        
+        yield return new WaitForSeconds(waitTime);
+
+        player.GetComponent<Rigidbody2D>().gravityScale = initialGravityScale;
+        player.jumpForce = initialJumpForce;
+
     }
 }
