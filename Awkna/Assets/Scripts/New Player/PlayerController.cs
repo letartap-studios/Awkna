@@ -14,8 +14,7 @@ public class PlayerController : MonoBehaviour
     [Range(0, .3f)]
     [SerializeField]
     private float climbingSmoothing;            // How much to smooth out the climbing.
-    [HideInInspector]
-    public bool facingRight = true;             // For determining which way the player is currently facing.
+    public bool facingRight = false;             // For determining which way the player is currently facing.
 
     private bool isGrounded;                    // Whether or not the player is grounded.
     public Transform groundCheck;               // A position marking where to check if the player is grounded.

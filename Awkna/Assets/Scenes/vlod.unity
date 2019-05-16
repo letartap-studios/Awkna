@@ -209,15 +209,20 @@ PrefabInstance:
       propertyPath: energyUI
       value: 
       objectReference: {fileID: 562573370}
+    - target: {fileID: 2115697293169691696, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
+        type: 3}
+      propertyPath: facingRight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2115697293169691698, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.1
+      value: 19.28
       objectReference: {fileID: 0}
     - target: {fileID: 2115697293169691698, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 44.6
+      value: 44.33
       objectReference: {fileID: 0}
     - target: {fileID: 2115697293169691698, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
         type: 3}
@@ -284,6 +289,36 @@ PrefabInstance:
         type: 3}
       propertyPath: whatIsEnemy.m_Bits
       value: 528384
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115697293848515370, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115697293848515374, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.26015472
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115697293848515374, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.67432785
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115697293848515374, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.17095718
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115697293848515374, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.9419144
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115697293848515374, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
+        type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8, type: 3}
