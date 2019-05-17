@@ -219,6 +219,21 @@ PrefabInstance:
       objectReference: {fileID: 562573370}
     - target: {fileID: 2115697293169691698, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
         type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.317
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115697293169691698, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 44.393
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115697293169691698, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115697293169691698, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
+        type: 3}
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
@@ -1003,7 +1018,7 @@ MonoBehaviour:
   Room: {fileID: 6070247645271319342, guid: 2688b40e6181f654cbfb00b4c10bbe64, type: 3}
   RoomLR: {fileID: 1807870825906315875, guid: 080c1bd5de4d64645ab57eb4f004aee4, type: 3}
   RoomLRB: {fileID: 8751427500136251604, guid: 3eb690c1765b94946b9911a9306cd994, type: 3}
-  RoomLRT: {fileID: 6070247645271319342, guid: 72c19e5add03a234cb115d7ef159d4ab, type: 3}
+  RoomLRT: {fileID: 6070247645271319342, guid: 0ebe1a95d16cf3140803747cef1aaa01, type: 3}
   RoomLRTB: {fileID: 3093487207388880732, guid: bc3a3c73effd9a347959064d8341a288,
     type: 3}
   RoomTB: {fileID: 3093487207388880732, guid: 43732fef2d698e648a60379cd805cf9f, type: 3}
@@ -1017,6 +1032,8 @@ MonoBehaviour:
   mapsizeX: 4
   mapsizeY: 4
   maxStrafe: 4
+  ufoEnemy: {fileID: 8000636305140983301, guid: e52b5e6bffe7af34abc238e959517607,
+    type: 3}
 --- !u!1 &2087093242 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2115697293848515362, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,

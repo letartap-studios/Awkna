@@ -21,6 +21,10 @@ public class NewLevelGenerator : MonoBehaviour
     //the max number of rooms to move before moving up
     public int maxStrafe;
 
+
+    public GameObject ufoEnemy;
+
+
     int cursorPosX = 0;
     int cursorPosY = 0;
     int movesTillMoveUp = 0;
@@ -312,6 +316,16 @@ public class NewLevelGenerator : MonoBehaviour
     private void Update()
     {
         AstarPath.active.Scan();
+    }
+
+    private void SummonEnemies()
+    {
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("EnemySpawner");
+
+        foreach (GameObject i in objects)
+        {
+            Instantiate(ufoEnemy, i.transform.position, Quaternion.identity);
+        }
     }
 
 }
