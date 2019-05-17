@@ -23,6 +23,7 @@ public class NewLevelGenerator : MonoBehaviour
 
 
     public GameObject ufoEnemy;
+    public GameObject crateObject;
 
 
     int cursorPosX = 0;
@@ -310,6 +311,8 @@ public class NewLevelGenerator : MonoBehaviour
             Instantiate(BorderBlock, v, Quaternion.identity);
         }
 
+        SummonEnemies();
+        SummonCrates();
 
     }
 
@@ -325,6 +328,16 @@ public class NewLevelGenerator : MonoBehaviour
         foreach (GameObject i in objects)
         {
             Instantiate(ufoEnemy, i.transform.position, Quaternion.identity);
+        }
+    }
+
+    private void SummonCrates()
+    {
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("ItemSpawner");
+
+        foreach (GameObject i in objects)
+        {
+            Instantiate(crateObject, i.transform.position, Quaternion.identity);
         }
     }
 
