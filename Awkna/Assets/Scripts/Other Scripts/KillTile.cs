@@ -5,10 +5,21 @@
 public class KillTile : MonoBehaviour
 {
     public float damage;
+    private Collider2D collider2D;
+
+    private void Start()
+    {
+        collider2D = GetComponent<Collider2D>();
+    }
+
     private void Update()
     {
-        Collider2D other = Physics2D.OverlapBox(transform.position, transform.localScale, 0);
-        if(other.CompareTag("Player"))
+        bool other = collider2D.IsTouchingLayers(LayerMask.GetMask("Player"));
+        if (!other)
+        {
+            return;
+        }
+        else
         {
             PlayerStats.Instance.TakeDamage(damage);
         }
