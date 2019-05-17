@@ -48,14 +48,15 @@ public class PowerUp : MonoBehaviour
 
     protected virtual void Update()
     {
-        Collider2D other = Physics2D.OverlapCircle(transform.position, pickUpRange);
-        PowerUpCollected(other.gameObject);
+        //Collider2D other = Physics2D.OverlapCircle(transform.position, pickUpRange);
+        bool other = Physics2D.OverlapCircle(transform.position, pickUpRange, LayerMask.GetMask("Player"));
+        PowerUpCollected(other);
     }
 
-    protected virtual void PowerUpCollected(GameObject gameObjectCollectingPowerUp)
+    protected virtual void PowerUpCollected(bool other)
     {
         // We only care if we've been collected by the player
-        if (gameObjectCollectingPowerUp.tag != "Player")
+        if (!other)
         {
             return;
         }
@@ -67,9 +68,7 @@ public class PowerUp : MonoBehaviour
         }
         powerUpState = PowerUpState.IsCollected;
 
-        // We must have been collected by a player, store handle to player for later use      
-        playerController = gameObjectCollectingPowerUp.GetComponent<PlayerController>();
-
+        
         // Collection effects
         PowerUpEffects();
 
