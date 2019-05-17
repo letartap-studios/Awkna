@@ -9,12 +9,12 @@ public class EnemyHealth : MonoBehaviour
     private float dazedTime;
     public float startDazedTime = 0.3f;
     public float deathTime;
-    private Animator anim;
+    //private Animator anim;
     public float deathAnimationTime;
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -33,7 +33,7 @@ public class EnemyHealth : MonoBehaviour
         {
             GetComponent<AIPath>().enabled = false;
             GetComponent<EnemyAttack>().enabled = false;
-            anim.SetTrigger("Dead");
+            //anim.SetTrigger("Dead");
             
             if(deathAnimationTime <= 0)
             {

@@ -139,7 +139,7 @@ MonoBehaviour:
   repathRate: 0.5
   canSearch: 1
   canMove: 1
-  maxSpeed: 7
+  maxSpeed: 5
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -212,9 +212,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  startDazedTime: 0.6
-  deathTime: 1.5
-  deathAnimationTime: 1
+  startDazedTime: 0
+  deathTime: 0
+  deathAnimationTime: 0
 --- !u!114 &4887730450628435212
 MonoBehaviour:
   m_ObjectHideFlags: 0
