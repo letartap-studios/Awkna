@@ -141,7 +141,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d4cda7e8d681b145ba461a4da42fb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 0
+  radius: 0
+  offset: {x: 0, y: 0}
+  player:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!50 &8732714801212001268
 Rigidbody2D:
   serializedVersion: 4
@@ -258,6 +262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c9812cd06d30e4f9c224b61bebf317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  range: 0.5
   waitTime: 1.5
 --- !u!61 &328132848142556693
 BoxCollider2D:

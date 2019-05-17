@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class ExitDoor : MonoBehaviour
 {
+    public Vector3 offset;
+    public float range;
+
     public float waitTime = 1.5f;
     private void Update()
     {
-        Collider2D other = Physics2D.OverlapBox(transform.position, transform.localScale, 0);
-        if (other.CompareTag("Player"))
+        bool other = Physics2D.OverlapCircle(transform.position + offset, range , LayerMask.GetMask("Player"));
+        if (other)
         {
             if (Input.GetAxisRaw("Vertical") > 0)
             {
@@ -25,5 +28,15 @@ public class ExitDoor : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            return;
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position + offset, range);
     }
 }

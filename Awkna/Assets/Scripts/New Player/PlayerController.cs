@@ -279,7 +279,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Bomb") && bombsNumber > 0 && isGrounded) // If the player has more then 0 bombs remaining and he presses down
         {                                                                 // the bomb button and is grounded, then...
-            Instantiate(bomb, transform.position, Quaternion.identity);   //... spawn a bomb at the player position.
+            Instantiate(bomb, transform.position + new Vector3(0,0.2f,0), Quaternion.identity);   //... spawn a bomb at the player position.
             bombsNumber--;                                      // Lose one bomb from inventory.
         }
         #endregion
