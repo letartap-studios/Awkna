@@ -13,6 +13,13 @@ public class PlayerAttack : MonoBehaviour
 
     public int damage;                      // The damage that the player deals to the enemies.
     public GameObject crate;
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     private void Update()
     {
         if (timeBtwAttack <= 0)    // Then the player can attack.
@@ -22,6 +29,9 @@ public class PlayerAttack : MonoBehaviour
                 //CameraShaker.Instance.ShakeOnce(1f, 2f, .1f, .3f);   // When the player is attacking shake the camera.
 
                 //                                                   // The range at which the player deals damage.
+
+                animator.SetTrigger("attacked");
+
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
 
                 for (int i = 0; i < enemiesToDamage.Length; i++)     // Damage all enemies in the area.

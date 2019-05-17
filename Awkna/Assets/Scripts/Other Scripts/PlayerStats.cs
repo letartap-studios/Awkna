@@ -52,7 +52,7 @@ public class PlayerStats : MonoBehaviour
 
         FindObjectOfType<AudioManager>().Play("damagetaken");//play sound
 
-        player.gameObject.GetComponent<Animation>().Play("PlayerGetDamaged");
+        player.gameObject.GetComponent<Animator>().SetTrigger("getDamaged");
 
         ClampHealth();
     }

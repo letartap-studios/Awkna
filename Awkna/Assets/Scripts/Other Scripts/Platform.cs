@@ -8,17 +8,18 @@ public class Platform : MonoBehaviour
     public Vector2 offset;
     public LayerMask player;
     private Vector2 pos;
-
+    private Collider2D other;
 
     private void Start()
     {
         effector = GetComponent<PlatformEffector2D>();
         pos = transform.position;
+        other = GetComponent<Collider2D>();
     }
 
     private void Update()
     {
-        Collider2D other = Physics2D.OverlapCircle(pos + offset, radius);
+        //other = Physics2D.OverlapCircle(pos + offset, radius);
         if (other.CompareTag("Player"))
         {
             if (Input.GetAxis("Vertical") < 0)

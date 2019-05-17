@@ -62,6 +62,8 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector]
     public float gemNumber;                     // The number of gems.
+
+    private Animator animator;                  // Refrence to the animator component.
     
     #endregion
 
@@ -70,6 +72,7 @@ public class PlayerController : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("levelstart");
         energy = maxEnergy;                             // Start with max energy.
         rb = GetComponent<Rigidbody2D>();               // Get the rigidbody component from the player object.
+        animator = GetComponent<Animator>();            // Get the animator component from the player object.
         initialGravity = rb.gravityScale;               // Get the initial value of the gravity.
         m_GravityDirection = GravityDirection.Down;     // Initialize the gravity direction with down.
         Physics2D.IgnoreLayerCollision(12, 15, false);  // Ignore the collision between the player and the enemies.
@@ -85,10 +88,18 @@ public class PlayerController : MonoBehaviour
 
         #region Horizontal movment
 
-        horizontalMoveInput = Input.GetAxis("Horizontal");                                         // Get the horizontal axis input.
+        horizontalMoveInput = Input.GetAxisRaw("Horizontal");                                         // Get the horizontal axis input.
         Vector3 targetVelocity = new Vector2(horizontalMoveInput * movementSpeed, rb.velocity.y);     // Move the character by finding the target velocity...       
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, horizontalMovementSmoothing);
         //                                                                                            // ...and then smoothing it out and applying it to the character.
+        if(horizontalMoveInput == 0)
+        {
+            animator.SetBool("isRunning", false);
+        }
+        else
+        {
+            animator.SetBool("isRunning", true);
+        }
         if (horizontalMoveInput > 0 && !facingRight)        // If the input is moving the player right and the player is facing left...
         {
             Flip();                                     // ... flip the player.
@@ -133,7 +144,10 @@ public class PlayerController : MonoBehaviour
         #region Switch Gravity
         if (switchGravityPower == true)
         {
-            energyUI.SetActive(true);
+            if (energyUI != null)
+            {
+                energyUI.SetActive(true);
+            }
 
             switch (m_GravityDirection)
             {
@@ -163,9 +177,11 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            energyUI.SetActive(false);
+            if (energyUI != null)
+            {
+                energyUI.SetActive(false);
+            }
         }
-        #endregion
 
         #region Energy
 
@@ -186,11 +202,14 @@ public class PlayerController : MonoBehaviour
 
         #endregion
 
+        #endregion
+        
         #region Jump
         if (m_GravityDirection == GravityDirection.Down) // Check if the gravity is downwards so the jump force is up.
         {
             if (Input.GetButtonDown("Jump") && (isGrounded || isGrappled)) // Check if the Jump button was pressed and give the player's...
             {
+                animator.SetTrigger("takeOf");
                 rb.velocity = Vector2.up * jumpForce;               //...rigidbody velocity on the y axis.
                 isJumping = true;                                   // The player is jumping.
                 jumpTimeCounter = jumpTime;                         // Reset the jump time counter.
@@ -212,6 +231,15 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonUp("Jump"))
             {
                 isJumping = false;
+            }
+
+            if (isGrounded || isGrappled)
+            {
+                animator.SetBool("isJumping", false);                
+            }
+            else
+            {
+                animator.SetBool("isJumping", true);
             }
         }
         else                                             // The same things apply to the reversed gravity.
@@ -246,8 +274,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
-        
         #region Bomb
         Physics2D.IgnoreLayerCollision(13, 15);                 // Ignore the collision between the player and the bomb.
 
@@ -264,7 +290,11 @@ public class PlayerController : MonoBehaviour
     {
         facingRight = !facingRight;                 // Switch the way the player is labelled as facing.
 
-        transform.Rotate(0f, 180f, 0f);
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+
+        //transform.Rotate(0f, 180f, 0f);
     }
 
     void Rotation()
