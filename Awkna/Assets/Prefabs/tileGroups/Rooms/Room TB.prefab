@@ -290,6 +290,7 @@ Transform:
   - {fileID: 20823033986845780}
   - {fileID: 7943842785436752256}
   - {fileID: 6452559909487829204}
+  - {fileID: 973492791507934474}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -574,6 +575,54 @@ MonoBehaviour:
   tiles:
   - {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53, type: 3}
   - {fileID: 4776925764863973313, guid: d5c268a7a7daeb446b20353b732d18aa, type: 3}
+  file: 
+--- !u!1 &4674721994505034076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 973492791507934474}
+  - component: {fileID: 165631176988815041}
+  m_Layer: 10
+  m_Name: SpawnPoint (14)
+  m_TagString: Untagged
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &973492791507934474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4674721994505034076}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5, y: -2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3093487207388880723}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &165631176988815041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4674721994505034076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251a51e7720bf36449175ecafe28879b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 8000636305140983301, guid: e52b5e6bffe7af34abc238e959517607, type: 3}
+  - {fileID: 8000636305140983301, guid: e52b5e6bffe7af34abc238e959517607, type: 3}
+  - {fileID: 7771080257749935618, guid: 02e2606c2dd87314183a41dac76bd320, type: 3}
   file: 
 --- !u!1 &4827564752266893276
 GameObject:

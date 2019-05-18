@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -2651,6 +2651,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1461307273}
     m_Modifications:
+    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_Name
+      value: Point Light
+      objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2705,11 +2710,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
-        type: 3}
-      propertyPath: m_Name
-      value: Point Light
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e0341b224a2f714382be454b2e8a95a, type: 3}
@@ -5058,6 +5058,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 686288877}
     m_Modifications:
+    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_Name
+      value: Point Light
+      objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5112,11 +5117,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
-        type: 3}
-      propertyPath: m_Name
-      value: Point Light
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e0341b224a2f714382be454b2e8a95a, type: 3}
@@ -24521,6 +24521,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976758995}
     m_Modifications:
+    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_Name
+      value: Point Light
+      objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24575,11 +24580,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
-        type: 3}
-      propertyPath: m_Name
-      value: Point Light
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e0341b224a2f714382be454b2e8a95a, type: 3}
@@ -36264,6 +36264,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2129507950}
     m_Modifications:
+    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_Name
+      value: Point Light
+      objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36318,11 +36323,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
-        type: 3}
-      propertyPath: m_Name
-      value: Point Light
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e0341b224a2f714382be454b2e8a95a, type: 3}
