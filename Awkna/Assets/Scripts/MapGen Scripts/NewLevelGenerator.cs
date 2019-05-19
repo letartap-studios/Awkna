@@ -314,11 +314,12 @@ public class NewLevelGenerator : MonoBehaviour
         SummonEnemies();
         SummonCrates();
 
+        
     }
 
     private void Update()
     {
-        AstarPath.active.Scan();
+        //AstarPath.active.Scan();
     }
 
     private void SummonEnemies()

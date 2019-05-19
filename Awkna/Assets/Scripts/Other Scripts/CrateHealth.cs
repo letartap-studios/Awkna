@@ -16,6 +16,7 @@ public class CrateHealth : MonoBehaviour
             {
                 int rand = Random.Range(0, objects.Length);
                 Instantiate(objects[rand], transform.position, Quaternion.identity);
+                AstarPath.active.Scan();
             }
         }
     }

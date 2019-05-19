@@ -16,6 +16,7 @@ public class GemTileHealth : MonoBehaviour
             Destroy(gemTile);
             Instantiate(gem, transform.position, Quaternion.identity);
             //Destroy(gemTile);
+            AstarPath.active.Scan();
         }
     }
 

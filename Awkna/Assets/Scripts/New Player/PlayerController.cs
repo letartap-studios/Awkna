@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector]
     public bool isGrappled;                     // Wheather the player is using the grappling hook at the moment.
+    public bool isSwinging;
 
     public bool switchGravityPower;             // Turn on or off the gravity switch ability.
     public GameObject energyUI;                 // Turn on or off the energy bar from the UI.
@@ -91,6 +92,7 @@ public class PlayerController : MonoBehaviour
         horizontalMoveInput = Input.GetAxisRaw("Horizontal");                                         // Get the horizontal axis input.
         Vector3 targetVelocity = new Vector2(horizontalMoveInput * movementSpeed, rb.velocity.y);     // Move the character by finding the target velocity...       
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, horizontalMovementSmoothing);
+        //rb.velocity = new Vector2(horizontalMoveInput * movementSpeed, rb.velocity.y);
         //                                                                                            // ...and then smoothing it out and applying it to the character.
         if(horizontalMoveInput == 0)
         {
@@ -204,6 +206,11 @@ public class PlayerController : MonoBehaviour
 
         #endregion
         
+        
+    }
+
+    private void Update()
+    {
         #region Jump
         if (m_GravityDirection == GravityDirection.Down) // Check if the gravity is downwards so the jump force is up.
         {
@@ -235,7 +242,7 @@ public class PlayerController : MonoBehaviour
 
             if (isGrounded || isGrappled)
             {
-                animator.SetBool("isJumping", false);                
+                animator.SetBool("isJumping", false);
             }
             else
             {
@@ -270,10 +277,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         #endregion
-    }
 
-    private void Update()
-    {
         #region Bomb
         Physics2D.IgnoreLayerCollision(13, 15);                 // Ignore the collision between the player and the bomb.
 

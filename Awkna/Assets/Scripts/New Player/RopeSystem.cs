@@ -40,10 +40,10 @@ public class RopeSystem : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(ropeJoint.distance > 1f)
-        {
-            ropeJoint.distance -= step;
-        }
+        //if(ropeJoint.distance > 1f)
+        //{
+        //    ropeJoint.distance -= step;
+        //}
         Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);        
         Vector3 facingDirection = new Vector3(worldMousePosition.x, worldMousePosition.y, transform.position.z) - transform.position;
         float aimAngle = Mathf.Atan2(facingDirection.y, facingDirection.x);
@@ -140,6 +140,7 @@ public class RopeSystem : MonoBehaviour
     {
         ropeJoint.enabled = false;
         ropeAttached = false;
+        playerController.isSwinging = false;
         ropeRenderer.positionCount = 2;
         ropeRenderer.SetPosition(0, transform.position);
         ropeRenderer.SetPosition(1, transform.position);
