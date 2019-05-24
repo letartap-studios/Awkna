@@ -7,7 +7,7 @@ public class AddRope : PowerUp
     {
         base.PowerUpPayload();
 
-        //GameObject.FindWithTag("Player").GetComponent<RopeSystem>().AddRope(valueToAdd);
+        GameObject.FindWithTag("Player").GetComponent<RopeSystem>().AddRope(valueToAdd);
     }
 
 }

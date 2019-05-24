@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [Range(0, .3f)]
     [SerializeField]
     private float climbingSmoothing;            // How much to smooth out the climbing.
-    public bool facingRight = false;             // For determining which way the player is currently facing.
+    public bool facingRight = false;            // For determining which way the player is currently facing.
 
     private bool isGrounded;                    // Whether or not the player is grounded.
     public Transform groundCheck;               // A position marking where to check if the player is grounded.
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     public float groundCheckRadiusVertical;     // Vertical offset of the ground check radius.
     public LayerMask whatIsGround;              // A mask determining what is ground to the character.
     [HideInInspector]
-    public bool isJumping;                     // Wheather the player is jumping or not.
+    public bool isJumping;                      // Wheather the player is jumping or not.
     private float jumpTimeCounter;              // The remaining amount of time the player can jump.
     public float jumpTime;                      // The maximum amount of time the player can jump.
 
@@ -55,9 +55,10 @@ public class PlayerController : MonoBehaviour
     public float invulnerabilityTime = 1;       // The time in seconds that the player is invulnerable after taking damage.
 
     [HideInInspector]
-    public bool isGrappled;                     // Wheather the player is using the grappling hook at the moment.
-    public bool isSwinging;
-
+    public bool isSwinging;                     // Wheather the player is using the grappling hook at the moment.
+    public Vector2 ropeHook;                    // Whichever position the rope grappling anchor is currently at.
+    public float swingForce = 4f;               // A value to be used to add to the swing motion.
+    
     public bool switchGravityPower;             // Turn on or off the gravity switch ability.
     public GameObject energyUI;                 // Turn on or off the energy bar from the UI.
 
@@ -81,20 +82,141 @@ public class PlayerController : MonoBehaviour
         Physics2D.IgnoreLayerCollision(20, 20, false);  // Ignore the collision between the collectables.
     }
 
+    private void Update()
+    {
+        horizontalMoveInput = Input.GetAxisRaw("Horizontal");                                         // Get the horizontal axis input.
+
+        #region Jump
+        if (m_GravityDirection == GravityDirection.Down) // Check if the gravity is downwards so the jump force is up.
+        {
+            if (Input.GetButtonDown("Jump") && (isGrounded || isSwinging)) // Check if the Jump button was pressed and give the player's...
+            {
+                animator.SetTrigger("takeOf");
+                rb.velocity = Vector2.up * jumpForce;               //...rigidbody velocity on the y axis.
+                isJumping = true;                                   // The player is jumping.
+                jumpTimeCounter = jumpTime;                         // Reset the jump time counter.
+            }
+
+            if (Input.GetButton("Jump") && isJumping == true)       // While the player is holding down the jump button...
+            {
+                if (jumpTimeCounter > 0)                            //...and he has jump time remaining...
+                {
+                    rb.velocity = Vector2.up * jumpForce;           //...give the player's rigidbody velocity on the y axis.
+                    jumpTimeCounter -= Time.deltaTime;              // The jump time goes down each frame the player is jumping.
+                }
+                else
+                {
+                    isJumping = false;
+                }
+            }
+
+            if (Input.GetButtonUp("Jump"))
+            {
+                isJumping = false;
+            }
+
+            if (isGrounded || isSwinging)
+            {
+                animator.SetBool("isJumping", false);
+            }
+            else
+            {
+                animator.SetBool("isJumping", true);
+            }
+        }
+        else                                             // The same things apply to the reversed gravity.
+        {
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                rb.velocity = Vector2.down * jumpForce;
+                isJumping = true;
+                jumpTimeCounter = jumpTime;
+            }
+
+            if (Input.GetButton("Jump") && isJumping == true)
+            {
+                if (jumpTimeCounter > 0)
+                {
+                    rb.velocity = Vector2.down * jumpForce;
+                    jumpTimeCounter -= Time.deltaTime;
+                }
+                else
+                {
+                    isJumping = false;
+                }
+            }
+
+            if (Input.GetButtonUp("Jump"))
+            {
+                isJumping = false;
+            }
+        }
+        #endregion
+
+        #region Bomb
+        Physics2D.IgnoreLayerCollision(13, 15);                 // Ignore the collision between the player and the bomb.
+
+        if (Input.GetButtonDown("Bomb") && bombsNumber > 0 && isGrounded) // If the player has more then 0 bombs remaining and he presses down
+        {                                                                 // the bomb button and is grounded, then...
+            Instantiate(bomb, transform.position + new Vector3(0, 0.2f, 0), Quaternion.identity);   //... spawn a bomb at the player position.
+            bombsNumber--;                                      // Lose one bomb from inventory.
+        }
+        #endregion
+    }
+
     private void FixedUpdate()
     {
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground.
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
+        #region Horizontal movement
 
-        #region Horizontal movment
+        #region Player facing
+        if (horizontalMoveInput > 0 && !facingRight)
+        {
+            Flip();
+        }
+        else if (horizontalMoveInput < 0 && facingRight)
+        {
+            Flip();
+        }
+        #endregion
 
-        horizontalMoveInput = Input.GetAxisRaw("Horizontal");                                         // Get the horizontal axis input.
-        Vector3 targetVelocity = new Vector2(horizontalMoveInput * movementSpeed, rb.velocity.y);     // Move the character by finding the target velocity...       
-        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, horizontalMovementSmoothing);
-        //rb.velocity = new Vector2(horizontalMoveInput * movementSpeed, rb.velocity.y);
-        //                                                                                            // ...and then smoothing it out and applying it to the character.
-        if(horizontalMoveInput == 0)
+        if (isSwinging)
+        {
+            //animator.SetBool("IsSwinging", true);
+
+            // Get a normalized direction vector from the player to the hook point
+            var playerToHookDirection = (ropeHook - (Vector2)transform.position).normalized;
+
+            // Inverse the direction to get a perpendicular direction
+            Vector2 perpendicularDirection;
+            if (horizontalMoveInput < 0)
+            {
+                perpendicularDirection = new Vector2(-playerToHookDirection.y, playerToHookDirection.x);
+                var leftPerpPos = (Vector2)transform.position - perpendicularDirection * -2f;
+                Debug.DrawLine(transform.position, leftPerpPos, Color.green, 0f);
+            }
+            else
+            {
+                perpendicularDirection = new Vector2(playerToHookDirection.y, -playerToHookDirection.x);
+                var rightPerpPos = (Vector2)transform.position + perpendicularDirection * 2f;
+                Debug.DrawLine(transform.position, rightPerpPos, Color.green, 0f);
+            }
+
+            var force = perpendicularDirection * swingForce;
+            rb.AddForce(force, ForceMode2D.Force);
+        }
+        
+        if(!isSwinging)
+        {
+            //animator.SetBool("IsSwinging", false);
+
+            Vector3 targetVelocity = new Vector2(horizontalMoveInput * movementSpeed, rb.velocity.y);     // Move the character by finding the target velocity...       
+            rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, horizontalMovementSmoothing);
+        }                                                                                          // ...and then smoothing it out and applying it to the character.
+
+        if (horizontalMoveInput == 0)
         {
             animator.SetBool("isRunning", false);
         }
@@ -102,14 +224,8 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isRunning", true);
         }
-        if (horizontalMoveInput > 0 && !facingRight)        // If the input is moving the player right and the player is facing left...
-        {
-            Flip();                                     // ... flip the player.
-        }
-        else if (horizontalMoveInput < 0 && facingRight)    // Otherwise if the input is moving the player left and the player is facing right...
-        {
-            Flip();                                     // ... flip the player.
-        }
+
+        
 
         #endregion
 
@@ -205,89 +321,7 @@ public class PlayerController : MonoBehaviour
         #endregion
 
         #endregion
-        
-        
-    }
-
-    private void Update()
-    {
-        #region Jump
-        if (m_GravityDirection == GravityDirection.Down) // Check if the gravity is downwards so the jump force is up.
-        {
-            if (Input.GetButtonDown("Jump") && (isGrounded || isGrappled)) // Check if the Jump button was pressed and give the player's...
-            {
-                animator.SetTrigger("takeOf");
-                rb.velocity = Vector2.up * jumpForce;               //...rigidbody velocity on the y axis.
-                isJumping = true;                                   // The player is jumping.
-                jumpTimeCounter = jumpTime;                         // Reset the jump time counter.
-            }
-
-            if (Input.GetButton("Jump") && isJumping == true)       // While the player is holding down the jump button...
-            {
-                if (jumpTimeCounter > 0)                            //...and he has jump time remaining...
-                {
-                    rb.velocity = Vector2.up * jumpForce;           //...give the player's rigidbody velocity on the y axis.
-                    jumpTimeCounter -= Time.deltaTime;              // The jump time goes down each frame the player is jumping.
-                }
-                else
-                {
-                    isJumping = false;
-                }
-            }
-
-            if (Input.GetButtonUp("Jump"))
-            {
-                isJumping = false;
-            }
-
-            if (isGrounded || isGrappled)
-            {
-                animator.SetBool("isJumping", false);
-            }
-            else
-            {
-                animator.SetBool("isJumping", true);
-            }
-        }
-        else                                             // The same things apply to the reversed gravity.
-        {
-            if (Input.GetButtonDown("Jump") && isGrounded)
-            {
-                rb.velocity = Vector2.down * jumpForce;
-                isJumping = true;
-                jumpTimeCounter = jumpTime;
-            }
-
-            if (Input.GetButton("Jump") && isJumping == true)
-            {
-                if (jumpTimeCounter > 0)
-                {
-                    rb.velocity = Vector2.down * jumpForce;
-                    jumpTimeCounter -= Time.deltaTime;
-                }
-                else
-                {
-                    isJumping = false;
-                }
-            }
-
-            if (Input.GetButtonUp("Jump"))
-            {
-                isJumping = false;
-            }
-        }
-        #endregion
-
-        #region Bomb
-        Physics2D.IgnoreLayerCollision(13, 15);                 // Ignore the collision between the player and the bomb.
-
-        if (Input.GetButtonDown("Bomb") && bombsNumber > 0 && isGrounded) // If the player has more then 0 bombs remaining and he presses down
-        {                                                                 // the bomb button and is grounded, then...
-            Instantiate(bomb, transform.position + new Vector3(0,0.2f,0), Quaternion.identity);   //... spawn a bomb at the player position.
-            bombsNumber--;                                      // Lose one bomb from inventory.
-        }
-        #endregion
-    }
+    }  
 
     #region Functions
     private void Flip()     // Flip player facing when walking (left and right).

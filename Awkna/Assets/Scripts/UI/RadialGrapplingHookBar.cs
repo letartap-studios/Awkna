@@ -12,12 +12,12 @@ public class RadialGrapplingHookBar : MonoBehaviour
 
     private void Start()
     {
-        //max = GameObject.FindWithTag("Player").GetComponent<RopeSystem>().startWaitTime;
+        max = GameObject.FindWithTag("Player").GetComponent<RopeSystem>().startWaitTime;
     }
 
     public void Update()
     {
-        //amount = GameObject.FindWithTag("Player").GetComponent<RopeSystem>().waitTime;
+        amount = GameObject.FindWithTag("Player").GetComponent<RopeSystem>().waitTime;
         ImgBG.fillAmount = amount / max;
     }
 }

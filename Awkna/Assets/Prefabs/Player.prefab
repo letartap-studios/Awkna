@@ -452,8 +452,9 @@ MonoBehaviour:
   energy: 0
   maxEnergy: 3
   invulnerabilityTime: 1
-  isGrappled: 0
   isSwinging: 0
+  ropeHook: {x: 0, y: 0}
+  swingForce: 4
   switchGravityPower: 0
   energyUI: {fileID: 0}
   gemNumber: 0
@@ -530,14 +531,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ropeHingeAnchor: {fileID: 2115697293030184902}
-  ropeJoint: {fileID: 2115697293848515373}
   crosshair: {fileID: 2115697294458431863}
   crosshairSprite: {fileID: 2115697294458431862}
-  playerMovement: {fileID: 2115697293169691696}
-  ropeRenderer: {fileID: 2115697293848515349}
   ropeLayerMask:
     serializedVersion: 2
-    m_Bits: 2834688
+    m_Bits: 3096832
+  ropeMaxCastDistance: 5
+  step: 0.2
+  waitTime: 0
+  startWaitTime: 2
 --- !u!120 &2115697293848515349
 LineRenderer:
   m_ObjectHideFlags: 0
