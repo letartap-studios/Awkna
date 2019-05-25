@@ -84,7 +84,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        horizontalMoveInput = Input.GetAxisRaw("Horizontal");                                         // Get the horizontal axis input.
+        // Get the horizontal axis input.
+        horizontalMoveInput = Input.GetAxisRaw("Horizontal");
 
         #region Jump
         if (m_GravityDirection == GravityDirection.Down) // Check if the gravity is downwards so the jump force is up.
@@ -182,6 +183,7 @@ public class PlayerController : MonoBehaviour
         }
         #endregion
 
+        #region Swinging
         if (isSwinging)
         {
             //animator.SetBool("IsSwinging", true);
@@ -215,6 +217,7 @@ public class PlayerController : MonoBehaviour
             Vector3 targetVelocity = new Vector2(horizontalMoveInput * movementSpeed, rb.velocity.y);     // Move the character by finding the target velocity...       
             rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, horizontalMovementSmoothing);
         }                                                                                          // ...and then smoothing it out and applying it to the character.
+        #endregion
 
         if (horizontalMoveInput == 0)
         {
@@ -224,8 +227,6 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isRunning", true);
         }
-
-        
 
         #endregion
 
