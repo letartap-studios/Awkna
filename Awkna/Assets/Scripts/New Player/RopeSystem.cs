@@ -221,11 +221,11 @@ public class RopeSystem : MonoBehaviour
 
     private void HandleRopeLength()
     {
-        if (Input.GetAxis("Vertical") >= 1f && ropeAttached && !isColliding)
+        if (Input.GetAxisRaw("Vertical") > 0f && ropeAttached && !isColliding)
         {
             ropeJoint.distance -= Time.deltaTime * climbSpeed;
         }
-        else if (Input.GetAxis("Vertical") < 0f && ropeAttached)
+        else if (Input.GetAxisRaw("Vertical") < 0f && ropeAttached)
         {
             ropeJoint.distance += Time.deltaTime * climbSpeed;
         }

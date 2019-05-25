@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
     public bool isSwinging;                     // Wheather the player is using the grappling hook at the moment.
     public Vector2 ropeHook;                    // Whichever position the rope grappling anchor is currently at.
     public float swingForce = 4f;               // A value to be used to add to the swing motion.
-    
+
     public bool switchGravityPower;             // Turn on or off the gravity switch ability.
     public GameObject energyUI;                 // Turn on or off the energy bar from the UI.
 
@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
     public float gemNumber;                     // The number of gems.
 
     private Animator animator;                  // Refrence to the animator component.
-    
+
     #endregion
 
     private void Awake()
@@ -209,8 +209,8 @@ public class PlayerController : MonoBehaviour
             var force = perpendicularDirection * swingForce;
             rb.AddForce(force, ForceMode2D.Force);
         }
-        
-        if(!isSwinging)
+
+        if (!isSwinging)
         {
             //animator.SetBool("IsSwinging", false);
 
@@ -231,10 +231,9 @@ public class PlayerController : MonoBehaviour
         #endregion
 
         #region Climbing the ladder
-
         // Send a raycast upwards to check if the player is on a ladder.
         ladderHitInfo = Physics2D.Raycast(transform.position, Vector2.up, ladderDistance, whatIsLadder);
-
+                
         if (ladderHitInfo.collider != null)                     // Check whether the ray has collided with a ladder.
         {
             isClimbing = true;                                  // The player can climb...
@@ -243,21 +242,17 @@ public class PlayerController : MonoBehaviour
         {
             isClimbing = false;
         }
-        if (isClimbing == true)                                      // If the player is climbing...
+        
+        if (isClimbing == true)                                 // If the player is climbing...
         {
-            verticalMoveInput = Input.GetAxisRaw("Vertical");        // ...get the vertical axis input and...
-                                                                     // ...move the character by finding the target velocity...
-                                                                     //Vector3 verticalTargetVelocity = new Vector2(rb.velocity.x, verticalMoveInput * climbSpeed);
-                                                                     //                                                       // ...and then smoothing it out and applying it to the character.
-                                                                     //rb.velocity = Vector3.SmoothDamp(rb.velocity, verticalTargetVelocity, ref velocity, horizontalMovementSmoothing);
-            rb.velocity = new Vector2(rb.velocity.x, verticalMoveInput * climbSpeed);
-            //rb.gravityScale = 0;                                     // Set the characters gravity to 0, in order to make the player climb.
+            verticalMoveInput = Input.GetAxisRaw("Vertical");   // ...get the vertical axis input and...                                                                
+            rb.velocity = new Vector2(rb.velocity.x, verticalMoveInput * climbSpeed);       
+            rb.gravityScale = 0;                                // Set the characters gravity to 0, in order to make the player stay on the ladder.
         }
         else
         {
-            // rb.gravityScale = initialGravity;                        // Else set the gravity back to normal.
+                rb.gravityScale = initialGravity;                        // Else set the gravity back to normal.
         }
-
         #endregion
 
         #region Switch Gravity
@@ -322,7 +317,7 @@ public class PlayerController : MonoBehaviour
         #endregion
 
         #endregion
-    }  
+    }
 
     #region Functions
     private void Flip()     // Flip player facing when walking (left and right).
@@ -377,7 +372,7 @@ public class PlayerController : MonoBehaviour
         while (knockDur > timer)
         {
             timer += Time.deltaTime;
-            if (posX <= transform.position.x) 
+            if (posX <= transform.position.x)
             {
                 rb.AddForce(new Vector3(knockbackDir.x * knockbackPwr, knockbackDir.y, transform.position.z));
             }
@@ -400,7 +395,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(invulnerabilityTime);
         Physics2D.IgnoreLayerCollision(12, 15, false);
     }
-    
+
     /// <summary>
     /// Invulnerable for the time set.
     /// </summary>
@@ -411,6 +406,6 @@ public class PlayerController : MonoBehaviour
         Physics2D.IgnoreLayerCollision(12, 15, false);
     }
     #endregion
-    
+
     #endregion
 }

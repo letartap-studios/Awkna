@@ -72,8 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5041454722469268486, guid: c74c4618891224140b045d5ee3ce508c,
-    type: 3}
+  m_Sprite: {fileID: 103092142185816030, guid: c74c4618891224140b045d5ee3ce508c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e107acab6c37ca42b82ebec3ed1a3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0.25
+  damage: 0.05
 --- !u!61 &8419934415272737179
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -210,7 +209,7 @@ PrefabInstance:
     - target: {fileID: 7036417900694863382, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.32547623
       objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863382, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
@@ -220,7 +219,7 @@ PrefabInstance:
     - target: {fileID: 7036417900694863382, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.12474215
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863382, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
