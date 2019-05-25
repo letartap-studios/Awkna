@@ -45,7 +45,7 @@ public class RopeSystem : MonoBehaviour
         ropeRenderer = GetComponent<LineRenderer>();
         waitTime = startWaitTime;
     }
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         //if(ropeJoint.distance > 1f)
         //{
@@ -80,6 +80,10 @@ public class RopeSystem : MonoBehaviour
 
         UpdateRopePositions();
         
+    }
+
+    private void Update()
+    {
         HandleRopeLength();
     }
 
