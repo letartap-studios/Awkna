@@ -45,7 +45,7 @@ public class RopeSystem : MonoBehaviour
         ropeRenderer = GetComponent<LineRenderer>();
         waitTime = startWaitTime;
     }
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         //if(ropeJoint.distance > 1f)
         //{
@@ -217,7 +217,6 @@ public class RopeSystem : MonoBehaviour
 
     private void HandleRopeLength()
     {
-        // 1
         if (Input.GetAxis("Vertical") >= 1f && ropeAttached && !isColliding)
         {
             ropeJoint.distance -= Time.deltaTime * climbSpeed;
