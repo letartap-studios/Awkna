@@ -26,6 +26,10 @@ public class RopeSystem : MonoBehaviour
     [HideInInspector]
     public float waitTime;
     public float startWaitTime;
+    
+    public float climbSpeed = 3f;      // set the speed at which the player can go up and down the rope 
+    private bool isColliding;          //flag to determine whether or not the rope's distance joint distance property can be increased or decreased.     
+
 
     private Dictionary<Vector2, int> wrapPointsLookup = new Dictionary<Vector2, int>();
 
@@ -75,7 +79,8 @@ public class RopeSystem : MonoBehaviour
         HandleInput(aimDirection);
 
         UpdateRopePositions();
-
+        
+        HandleRopeLength();
     }
 
     private void SetCrosshairPosition(float aimAngle)
@@ -210,6 +215,29 @@ public class RopeSystem : MonoBehaviour
         }
     }
 
+    private void HandleRopeLength()
+    {
+        // 1
+        if (Input.GetAxis("Vertical") >= 1f && ropeAttached && !isColliding)
+        {
+            ropeJoint.distance -= Time.deltaTime * climbSpeed;
+        }
+        else if (Input.GetAxis("Vertical") < 0f && ropeAttached)
+        {
+            ropeJoint.distance += Time.deltaTime * climbSpeed;
+        }
+    }
+    
+    void OnTriggerStay2D(Collider2D colliderStay)
+    {
+        isColliding = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D colliderOnExit)
+    {
+        isColliding = false;
+    }
+    
     public void AddRope(float x)
     {
         ropeMaxCastDistance += x;
