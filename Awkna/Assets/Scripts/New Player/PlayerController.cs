@@ -233,7 +233,7 @@ public class PlayerController : MonoBehaviour
         #region Climbing the ladder
         // Send a raycast upwards to check if the player is on a ladder.
         ladderHitInfo = Physics2D.Raycast(transform.position, Vector2.up, ladderDistance, whatIsLadder);
-                
+
         if (ladderHitInfo.collider != null)                     // Check whether the ray has collided with a ladder.
         {
             isClimbing = true;                                  
@@ -372,14 +372,11 @@ public class PlayerController : MonoBehaviour
         while (knockDur > timer)
         {
             timer += Time.deltaTime;
-            if (posX <= transform.position.x)
-            {
-                rb.AddForce(new Vector3(knockbackDir.x * knockbackPwr, knockbackDir.y, transform.position.z));
-            }
-            else
-            {
-                rb.AddForce(new Vector3(knockbackDir.x * (-knockbackPwr), knockbackDir.y, transform.position.z));
-            }
+
+            int direction = posX <= transform.position.x ? 1 : -1;
+
+            rb.velocity = (new Vector3(knockbackDir.x * knockbackPwr * direction, knockbackDir.y, transform.position.z));
+
         }
 
         yield return 0;

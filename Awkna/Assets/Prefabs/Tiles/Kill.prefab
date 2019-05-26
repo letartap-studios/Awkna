@@ -97,6 +97,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0.05
+  offset: {x: 0, y: 0, z: 0}
+  size: {x: 1, y: 1, z: 1}
+  knockDuration: 0.5
+  knockbackPwr: 0.5
 --- !u!61 &8419934415272737179
 BoxCollider2D:
   m_ObjectHideFlags: 0
