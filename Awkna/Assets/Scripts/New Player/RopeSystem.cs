@@ -250,7 +250,14 @@ public class RopeSystem : MonoBehaviour
         }
         else if (Input.GetAxisRaw("Vertical") < 0f && ropeAttached)
         {
-            ropeJoint.distance += Time.deltaTime * climbSpeed;
+            if (ropeJoint.distance >= ropeMaxCastDistance)
+            {
+                return;
+            }
+            else
+            {
+                ropeJoint.distance += Time.deltaTime * climbSpeed;
+            }
         }
     }
 
