@@ -48,10 +48,6 @@ public class RopeSystem : MonoBehaviour
 
     private void LateUpdate()
     {
-        //if(ropeJoint.distance > 1f)
-        //{
-        //    ropeJoint.distance -= step;
-        //}
         Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 facingDirection = new Vector3(worldMousePosition.x, worldMousePosition.y, transform.position.z) - transform.position;
         float aimAngle = Mathf.Atan2(facingDirection.y, facingDirection.x);
@@ -144,7 +140,7 @@ public class RopeSystem : MonoBehaviour
                 ropeAttached = true;
                 if (!ropePositions.Contains(hit.point))
                 {
-                    FindObjectOfType<AudioManager>().Play("hook");//play sound
+                    FindObjectOfType<AudioManager>().Play("hook"); //play sound
                     // Jump slightly to distance the player a little from the ground after grappling to something.
                     transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2f), ForceMode2D.Impulse);
                     ropePositions.Add(hit.point);
@@ -152,6 +148,7 @@ public class RopeSystem : MonoBehaviour
                     ropeJoint.enabled = true;
                     //ropeHingeAnchorSprite.enabled = true;
                 }
+
                 waitTime = 0;
             }
             else
@@ -191,22 +188,33 @@ public class RopeSystem : MonoBehaviour
 
     private void UpdateRopePositions()
     {
+        // Return out of this method if the rope isn't actually attached.
         if (!ropeAttached)
         {
             return;
         }
 
+        // Set the rope's line renderer vertex count (positions) to whatever number
+        // of positions are stored in ropePositions, plus 1 more (for the player's position).
         ropeRenderer.positionCount = ropePositions.Count + 1;
 
-        for (var i = ropeRenderer.positionCount - 1; i >= 0; i--)
+
+        // Loop backwards through the ropePositions list, and for every position (except the last position),
+        // set the line renderer vertex position to the Vector2 position stored at the 
+        // current index being looped through in ropePositions.
+        for (int i = ropeRenderer.positionCount - 1; i >= 0; i--)
         {
             if (i != ropeRenderer.positionCount - 1) // if not the Last point of line renderer
             {
                 ropeRenderer.SetPosition(i, ropePositions[i]);
 
+                // Set the rope anchor to the second-to-last rope position where the current hinge/anchor
+                // should be, or if there is only one rope position, then set that one to be the anchor point.
+                // This configures the ropeJoint distance to the distance between the player and
+                // the current rope position being looped over.
                 if (i == ropePositions.Count - 1 || ropePositions.Count == 1)
                 {
-                    var ropePosition = ropePositions[ropePositions.Count - 1];
+                    Vector2 ropePosition = ropePositions[ropePositions.Count - 1];
                     if (ropePositions.Count == 1)
                     {
                         ropeHingeAnchorRb.transform.position = ropePosition;
@@ -226,9 +234,13 @@ public class RopeSystem : MonoBehaviour
                         }
                     }
                 }
+                // Set the rope anchor to the second-to-last rope position where the current hinge/anchor
+                // should be, or if there is only one rope position, then set that one to be the anchor point.
+                // This configures the ropeJoint distance to the distance between the 
+                // player and the current rope position being looped over.
                 else if (i - 1 == ropePositions.IndexOf(ropePositions.Last()))
                 {
-                    var ropePosition = ropePositions.Last();
+                    Vector2 ropePosition = ropePositions.Last();
                     ropeHingeAnchorRb.transform.position = ropePosition;
                     if (!distanceSet)
                     {
@@ -239,6 +251,7 @@ public class RopeSystem : MonoBehaviour
             }
             else
             {
+                // Handle setting the rope's last vertex position to the player's current position.
                 ropeRenderer.SetPosition(i, transform.position);
             }
         }
