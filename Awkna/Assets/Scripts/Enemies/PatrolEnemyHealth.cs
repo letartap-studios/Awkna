@@ -3,7 +3,7 @@ using Pathfinding;
 
 // This script controlls the health of the enemy.
 
-public class EnemyHealth : MonoBehaviour
+public class PatrolEnemyHealth : MonoBehaviour
 {
     public int health;            // The health of the enemy.
     private float dazedTime;
@@ -19,19 +19,10 @@ public class EnemyHealth : MonoBehaviour
 
     private void Update()
     {
-        if(dazedTime <= 0)
-        {
-            GetComponent<AIPath>().enabled = true;
-        }
-        else
-        {
-            GetComponent<AIPath>().enabled = false;
-            dazedTime -= Time.deltaTime;
-        }
+
 
         if (health <= 0)          // If the player reached 0 health...
         {
-            GetComponent<AIPath>().enabled = false;
             GetComponent<EnemyAttack>().enabled = false;
             //anim.SetTrigger("Dead");
             

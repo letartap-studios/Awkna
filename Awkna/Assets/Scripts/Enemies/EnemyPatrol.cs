@@ -38,7 +38,9 @@ public class EnemyPatrol : MonoBehaviour
             }
         }
 
-        if (movingRight == true && wallInfoR.collider == true && wallInfoR.collider.gameObject.tag != "Enemy")
+        if (movingRight == true && wallInfoR.collider == true 
+            && wallInfoR.collider.gameObject.tag != "Enemy" 
+            /*&& wallInfoR.collider.IsTouchingLayers(LayerMask.GetMask("Platform"))*/)
         {
             if (movingRight == true)
             {
@@ -53,7 +55,9 @@ public class EnemyPatrol : MonoBehaviour
 
 
         }
-        if (movingRight == false && wallInfoL.collider == true && wallInfoL.collider.gameObject.tag != "Enemy")
+        if (movingRight == false && wallInfoL.collider == true 
+            && wallInfoL.collider.gameObject.tag != "Enemy" 
+           /* && wallInfoR.collider.IsTouchingLayers(LayerMask.GetMask("Platform"))*/)
         {
             if (movingRight == true)
             {
