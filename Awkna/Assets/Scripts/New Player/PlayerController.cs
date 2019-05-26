@@ -223,7 +223,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isRunning", false);
         }
-        else
+        else if(isGrounded)
         {
             animator.SetBool("isRunning", true);
         }
@@ -236,22 +236,22 @@ public class PlayerController : MonoBehaviour
                 
         if (ladderHitInfo.collider != null)                     // Check whether the ray has collided with a ladder.
         {
-            isClimbing = true;                                  // The player can climb...
+            isClimbing = true;                                  
         }
-        else                                                    // ...else he can't.
+        else
         {
             isClimbing = false;
         }
         
-        if (isClimbing == true)                                 // If the player is climbing...
+        if (isClimbing && !isSwinging)
         {
-            verticalMoveInput = Input.GetAxisRaw("Vertical");   // ...get the vertical axis input and...                                                                
-            rb.velocity = new Vector2(rb.velocity.x, verticalMoveInput * climbSpeed);       
-            rb.gravityScale = 0;                                // Set the characters gravity to 0, in order to make the player stay on the ladder.
+            verticalMoveInput = Input.GetAxisRaw("Vertical");
+            rb.velocity = new Vector2(rb.velocity.x, verticalMoveInput * climbSpeed);
+            rb.gravityScale = 0;                       // Set the characters gravity to 0, in order to make the player stay on the ladder.
         }
         else
         {
-                rb.gravityScale = initialGravity;                        // Else set the gravity back to normal.
+                rb.gravityScale = initialGravity;
         }
         #endregion
 

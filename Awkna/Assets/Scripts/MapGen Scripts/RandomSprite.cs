@@ -11,6 +11,5 @@ public class RandomSprite : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
-        //spriteRenderer.sprite = sprites[0];
     }
 }

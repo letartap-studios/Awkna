@@ -45,6 +45,7 @@ public class RopeSystem : MonoBehaviour
         ropeRenderer = GetComponent<LineRenderer>();
         waitTime = startWaitTime;
     }
+
     private void LateUpdate()
     {
         //if(ropeJoint.distance > 1f)
@@ -130,6 +131,7 @@ public class RopeSystem : MonoBehaviour
         {
             if (ropeAttached)
             {
+                ResetRope();
                 return;
             }
 
@@ -271,7 +273,7 @@ public class RopeSystem : MonoBehaviour
         return orderedDictionary.Any() ? orderedDictionary.First().Value : Vector2.zero;
     }
 
-    void OnTriggerStay2D(Collider2D colliderStay)
+    private void OnTriggerStay2D(Collider2D colliderStay)
     {
         isColliding = true;
     }

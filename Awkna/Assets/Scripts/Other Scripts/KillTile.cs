@@ -11,7 +11,7 @@ public class KillTile : MonoBehaviour
     {
         collider2D = GetComponent<Collider2D>();
     }
-
+    
     private void Update()
     {
         bool other = collider2D.IsTouchingLayers(LayerMask.GetMask("Player"));
