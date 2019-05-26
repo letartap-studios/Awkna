@@ -48,7 +48,6 @@ public class PowerUp : MonoBehaviour
 
     protected virtual void Update()
     {
-        //Collider2D other = Physics2D.OverlapCircle(transform.position, pickUpRange);
         bool other = Physics2D.OverlapCircle(transform.position, pickUpRange, LayerMask.GetMask("Player"));
         PowerUpCollected(other);
     }
