@@ -233,7 +233,7 @@ public class PlayerController : MonoBehaviour
         #region Climbing the ladder
         // Send a raycast upwards to check if the player is on a ladder.
         ladderHitInfo = Physics2D.Raycast(transform.position, Vector2.up, ladderDistance, whatIsLadder);
-                
+
         if (ladderHitInfo.collider != null)                     // Check whether the ray has collided with a ladder.
         {
             isClimbing = true;                                  // The player can climb...
@@ -242,16 +242,16 @@ public class PlayerController : MonoBehaviour
         {
             isClimbing = false;
         }
-        
+
         if (isClimbing == true)                                 // If the player is climbing...
         {
             verticalMoveInput = Input.GetAxisRaw("Vertical");   // ...get the vertical axis input and...                                                                
-            rb.velocity = new Vector2(rb.velocity.x, verticalMoveInput * climbSpeed);       
+            rb.velocity = new Vector2(rb.velocity.x, verticalMoveInput * climbSpeed);
             rb.gravityScale = 0;                                // Set the characters gravity to 0, in order to make the player stay on the ladder.
         }
         else
         {
-                rb.gravityScale = initialGravity;                        // Else set the gravity back to normal.
+            rb.gravityScale = initialGravity;                        // Else set the gravity back to normal.
         }
         #endregion
 
@@ -372,14 +372,11 @@ public class PlayerController : MonoBehaviour
         while (knockDur > timer)
         {
             timer += Time.deltaTime;
-            if (posX <= transform.position.x)
-            {
-                rb.AddForce(new Vector3(knockbackDir.x * knockbackPwr, knockbackDir.y, transform.position.z));
-            }
-            else
-            {
-                rb.AddForce(new Vector3(knockbackDir.x * (-knockbackPwr), knockbackDir.y, transform.position.z));
-            }
+
+            int direction = posX <= transform.position.x ? 1 : -1;
+
+            rb.velocity = (new Vector3(knockbackDir.x * knockbackPwr * direction, knockbackDir.y, transform.position.z));
+
         }
 
         yield return 0;

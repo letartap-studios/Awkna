@@ -7,19 +7,19 @@ public class ExitDoor : MonoBehaviour
     public Vector3 offset;
     public float range;
 
-    public float waitTime = 1.5f;
+    public float waitTime = 0.1f;
     private void Update()
     {
-        bool other = Physics2D.OverlapCircle(transform.position + offset, range , LayerMask.GetMask("Player"));
+        bool other = Physics2D.OverlapCircle(transform.position + offset, range, LayerMask.GetMask("Player"));
         if (other)
         {
-            if (Input.GetAxisRaw("Vertical") > 0)
+            if (Input.GetButtonDown("Interact"))
             {
                 if (waitTime <= 0)                              // If the player presses the down button for a 'waitTime' period of time, ...
                 {
-               //     ***End Screen here***                         // ...the end level screen will appear.
+                    //     ***End Screen here***                         // ...the end level screen will appear.
                     Debug.Log("Exit");
-                    SceneManager.LoadScene("Endgame");                  
+                    SceneManager.LoadScene("Endgame");
                     waitTime = 0f;
                 }
                 else
