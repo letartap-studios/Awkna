@@ -12,6 +12,8 @@ public class NewLevelGenerator : MonoBehaviour
     public GameObject RoomTB;
     public GameObject ExitRoom;
     public GameObject EntranceRoom;
+    public GameObject LeverRoom;
+    public GameObject TreasureRoom;
     public GameObject BorderBlock;
 
     public int roomSize;
@@ -44,6 +46,8 @@ public class NewLevelGenerator : MonoBehaviour
         roomTB,
         exitRoom,
         entranceRoom,
+        leverRoom,
+        treasureRoom,
     }
 
     public enum directions
@@ -220,6 +224,18 @@ public class NewLevelGenerator : MonoBehaviour
         map[cursorPosX, 0] = roomsTypes.entranceRoom;
         map[mapExit, mapsizeY - 1] = roomsTypes.exitRoom;
 
+        while (true)
+        {
+            int x = Random.Range(0, mapsizeX);
+            int y = Random.Range(0, mapsizeY);
+
+            if (map[x, y] == roomsTypes.none)
+            {
+                map[x, y] = roomsTypes.leverRoom;
+                break;
+            }
+        }
+
         Vector3 v = new Vector3();
         for (int x = 0; x < mapsizeX; x++)
         {
@@ -232,7 +248,7 @@ public class NewLevelGenerator : MonoBehaviour
                 switch (map[x, y])
                 {
                     case roomsTypes.none:
-                        int rand = Random.Range(0, 5);
+                        int rand = Random.Range(0, 6);
                         switch (rand)
                         {
                             case 0:
@@ -249,6 +265,9 @@ public class NewLevelGenerator : MonoBehaviour
                                 break;
                             case 4:
                                 Instantiate(RoomLRTB, v, Quaternion.identity);
+                                break;
+                            case 5:
+                                Instantiate(TreasureRoom, v, Quaternion.identity);
                                 break;
                         }
 
@@ -278,6 +297,12 @@ public class NewLevelGenerator : MonoBehaviour
                         break;
                     case roomsTypes.entranceRoom:
                         Instantiate(EntranceRoom, v, Quaternion.identity);
+                        break;
+                    case roomsTypes.leverRoom:
+                        Instantiate(LeverRoom, v, Quaternion.identity);
+                        break;
+                    case roomsTypes.treasureRoom:
+                        Instantiate(TreasureRoom, v, Quaternion.identity);
                         break;
                     default:
                         break;
@@ -314,7 +339,7 @@ public class NewLevelGenerator : MonoBehaviour
         SummonEnemies();
         SummonCrates();
 
-        
+
     }
 
     private void Update()

@@ -223,7 +223,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isRunning", false);
         }
-        else if(isGrounded)
+        else if (isGrounded)
         {
             animator.SetBool("isRunning", true);
         }
@@ -243,7 +243,7 @@ public class PlayerController : MonoBehaviour
         {
             isClimbing = false;
         }
-        
+
         if (isClimbing && !isSwinging)
         {
             verticalMoveInput = Input.GetAxisRaw("Vertical");
@@ -377,7 +377,7 @@ public class PlayerController : MonoBehaviour
 
             int direction = posX <= transform.position.x ? 1 : -1;
 
-            rb.velocity = (new Vector3(knockbackDir.x * knockbackPwr * direction, knockbackDir.y, transform.position.z));
+            rb.AddForce(new Vector3(knockbackDir.x * knockbackPwr * direction, knockbackDir.y, transform.position.z));
 
         }
 
