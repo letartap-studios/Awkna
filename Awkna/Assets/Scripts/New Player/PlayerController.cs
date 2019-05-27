@@ -15,8 +15,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float climbingSmoothing;            // How much to smooth out the climbing.
     public bool facingRight = false;            // For determining which way the player is currently facing.
-
-    private bool isGrounded;                    // Whether or not the player is grounded.
+    [HideInInspector]
+    public bool isGrounded;                    // Whether or not the player is grounded.
     public Transform groundCheck;               // A position marking where to check if the player is grounded.
     public float groundCheckRadius;             // Radius of the overlap circle to determine if grounded.
     public float groundCheckRadiusHorizontal;   // Horizontal offset of the ground check radius.
@@ -186,6 +186,8 @@ public class PlayerController : MonoBehaviour
         #region Swinging
         if (isSwinging)
         {
+            Physics2D.IgnoreLayerCollision(15, 11, true); // Ignore the collision with the ladders, while swinging.
+
             //animator.SetBool("IsSwinging", true);
 
             // Get a normalized direction vector from the player to the hook point
@@ -213,6 +215,8 @@ public class PlayerController : MonoBehaviour
         if (!isSwinging)
         {
             //animator.SetBool("IsSwinging", false);
+
+            Physics2D.IgnoreLayerCollision(15, 11, false);
 
             Vector3 targetVelocity = new Vector2(horizontalMoveInput * movementSpeed, rb.velocity.y);     // Move the character by finding the target velocity...       
             rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, horizontalMovementSmoothing);
@@ -374,11 +378,14 @@ public class PlayerController : MonoBehaviour
         while (knockDur > timer)
         {
             timer += Time.deltaTime;
-
-            int direction = posX <= transform.position.x ? 1 : -1;
-
-            rb.AddForce(new Vector3(knockbackDir.x * knockbackPwr * direction, knockbackDir.y, transform.position.z));
-
+            if (posX <= transform.position.x)
+            {
+                rb.AddForce(new Vector3(knockbackDir.x * knockbackPwr, knockbackDir.y, transform.position.z));
+            }
+            else
+            {
+                rb.AddForce(new Vector3(knockbackDir.x * (-knockbackPwr), knockbackDir.y, transform.position.z));
+            }
         }
 
         yield return 0;

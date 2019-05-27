@@ -34,7 +34,7 @@ public class SpawnBomb : MonoBehaviour
                 else if(objectsToDamage[i].CompareTag("Enemy"))     // If the bomb collides with an enemy at explosion,...
                 {
                     //                                              // ...deal damage to the enemy equal to its health. (Kill it)
-                    objectsToDamage[i].GetComponent<FlyingEnemyHealth>().TakeDamage(objectsToDamage[i].GetComponent<FlyingEnemyHealth>().health);
+                    objectsToDamage[i].GetComponent<EnemyHealth>().TakeDamage(objectsToDamage[i].GetComponent<EnemyHealth>().health);
                 }
                 else                                                // If it collides with anything else that is destructible,...
                 {

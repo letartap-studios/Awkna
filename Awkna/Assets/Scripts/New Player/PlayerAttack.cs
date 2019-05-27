@@ -1,5 +1,4 @@
-﻿using EZCameraShake;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -28,8 +27,6 @@ public class PlayerAttack : MonoBehaviour
             {
                 //CameraShaker.Instance.ShakeOnce(1f, 2f, .1f, .3f);   // When the player is attacking shake the camera.
 
-                //                                                   // The range at which the player deals damage.
-
                 animator.SetTrigger("attacked");
 
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
@@ -38,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     if (enemiesToDamage[i].CompareTag("Enemy"))
                     {
-                        enemiesToDamage[i].GetComponent<PatrolEnemyHealth>().TakeDamage(damage);
+                        enemiesToDamage[i].GetComponent<EnemyHealth>().TakeDamage(damage);
                     }
 
                     if (enemiesToDamage[i].CompareTag("Crate"))

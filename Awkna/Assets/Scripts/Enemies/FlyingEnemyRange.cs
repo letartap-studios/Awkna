@@ -44,7 +44,7 @@ public class FlyingEnemyRange : MonoBehaviour
         if (playerInRange)          // If the player was in range of the enemy...
         {
             GetComponent<AIPath>().enabled = true;  // Activate the script AIPath.
-            GetComponent<FlyingEnemyHealth>().enabled = true;
+            GetComponent<EnemyHealth>().enabled = true;
             GetComponent<EnemyAttack>().enabled = true;
             GetComponent<FlyingEnemyRange>().enabled = false;
         }

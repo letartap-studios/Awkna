@@ -12,7 +12,7 @@ public class RopeSystem : MonoBehaviour
     private bool ropeAttached;
     private Vector2 playerPosition;
     private Rigidbody2D ropeHingeAnchorRb;
-    //private SpriteRenderer ropeHingeAnchorSprite;
+    private SpriteRenderer ropeHingeAnchorSprite;
     private PlayerController playerController;
 
     private LineRenderer ropeRenderer;
@@ -28,11 +28,12 @@ public class RopeSystem : MonoBehaviour
     public float waitTime;
     public float startWaitTime;
 
-    public float climbSpeed = 3f;      // set the speed at which the player can go up and down the rope 
-    private bool isColliding;          // flag to determine whether or not the rope's distance joint distance property can be increased or decreased.     
-
+    public float climbSpeed = 3f;      // Set the speed at which the player can go up and down the rope.
+    private bool isColliding;          // Flag to determine whether or not the rope's distance joint distance property can be increased or decreased.     
 
     private Dictionary<Vector2, int> wrapPointsLookup = new Dictionary<Vector2, int>();
+
+    private bool launch = true;
     #endregion
     private void Awake()
     {
@@ -40,7 +41,7 @@ public class RopeSystem : MonoBehaviour
         ropeJoint.enabled = false;
         playerPosition = transform.position;
         ropeHingeAnchorRb = ropeHingeAnchor.GetComponent<Rigidbody2D>();
-        //ropeHingeAnchorSprite = ropeHingeAnchor.GetComponent<SpriteRenderer>();
+        ropeHingeAnchorSprite = ropeHingeAnchor.GetComponent<SpriteRenderer>();
         playerController = GetComponent<PlayerController>();
         ropeRenderer = GetComponent<LineRenderer>();
         waitTime = startWaitTime;
@@ -48,6 +49,8 @@ public class RopeSystem : MonoBehaviour
 
     private void LateUpdate()
     {
+        
+
         Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 facingDirection = new Vector3(worldMousePosition.x, worldMousePosition.y, transform.position.z) - transform.position;
         float aimAngle = Mathf.Atan2(facingDirection.y, facingDirection.x);
@@ -146,7 +149,7 @@ public class RopeSystem : MonoBehaviour
                     ropePositions.Add(hit.point);
                     ropeJoint.distance = Vector2.Distance(playerPosition, hit.point);
                     ropeJoint.enabled = true;
-                    //ropeHingeAnchorSprite.enabled = true;
+                    ropeHingeAnchorSprite.enabled = true;
                 }
 
                 waitTime = 0;
@@ -182,7 +185,8 @@ public class RopeSystem : MonoBehaviour
         ropeRenderer.SetPosition(0, transform.position);
         ropeRenderer.SetPosition(1, transform.position);
         ropePositions.Clear();
-        //ropeHingeAnchorSprite.enabled = false;
+        launch = true;
+        ropeHingeAnchorSprite.enabled = false;
         wrapPointsLookup.Clear();
     }
 
@@ -194,24 +198,26 @@ public class RopeSystem : MonoBehaviour
             return;
         }
 
-        // Set the rope's line renderer vertex count (positions) to whatever number
-        // of positions are stored in ropePositions, plus 1 more (for the player's position).
+        /* Set the rope's line renderer vertex count (positions) to whatever number
+         * of positions are stored in ropePositions, plus 1 more (for the player's position).
+         */
         ropeRenderer.positionCount = ropePositions.Count + 1;
 
 
-        // Loop backwards through the ropePositions list, and for every position (except the last position),
-        // set the line renderer vertex position to the Vector2 position stored at the 
-        // current index being looped through in ropePositions.
+        /* Loop backwards through the ropePositions list, and for every position (except the last position),
+         * set the line renderer vertex position to the Vector2 position stored at the 
+         * current index being looped through in ropePositions.
+         */
         for (int i = ropeRenderer.positionCount - 1; i >= 0; i--)
         {
             if (i != ropeRenderer.positionCount - 1) // if not the Last point of line renderer
             {
                 ropeRenderer.SetPosition(i, ropePositions[i]);
-
-                // Set the rope anchor to the second-to-last rope position where the current hinge/anchor
-                // should be, or if there is only one rope position, then set that one to be the anchor point.
-                // This configures the ropeJoint distance to the distance between the player and
-                // the current rope position being looped over.
+                /* Set the rope anchor to the second-to-last rope position where the current hinge/anchor
+                 * should be, or if there is only one rope position, then set that one to be the anchor point.
+                 * This configures the ropeJoint distance to the distance between the player and
+                 * the current rope position being looped over.
+                 */
                 if (i == ropePositions.Count - 1 || ropePositions.Count == 1)
                 {
                     Vector2 ropePosition = ropePositions[ropePositions.Count - 1];
@@ -234,10 +240,11 @@ public class RopeSystem : MonoBehaviour
                         }
                     }
                 }
-                // Set the rope anchor to the second-to-last rope position where the current hinge/anchor
-                // should be, or if there is only one rope position, then set that one to be the anchor point.
-                // This configures the ropeJoint distance to the distance between the 
-                // player and the current rope position being looped over.
+                /* Set the rope anchor to the second-to-last rope position where the current hinge/anchor
+                 should be, or if there is only one rope position, then set that one to be the anchor point.
+                 This configures the ropeJoint distance to the distance between the 
+                 player and the current rope position being looped over.
+                */
                 else if (i - 1 == ropePositions.IndexOf(ropePositions.Last()))
                 {
                     Vector2 ropePosition = ropePositions.Last();
@@ -259,11 +266,20 @@ public class RopeSystem : MonoBehaviour
 
     private void HandleRopeLength()
     {
+        if (ropeJoint.distance > (ropeMaxCastDistance / 2) && launch)
+        {
+            ropeJoint.distance -= Time.deltaTime * climbSpeed;
+
+            if (ropeJoint.distance <= (ropeMaxCastDistance / 2))
+            {
+                launch = false;
+            }
+        }
         if (Input.GetAxisRaw("Vertical") > 0f && ropeAttached && !isColliding)
         {
             ropeJoint.distance -= Time.deltaTime * climbSpeed;
         }
-        else if (Input.GetAxisRaw("Vertical") < 0f && ropeAttached)
+        else if (Input.GetAxisRaw("Vertical") < 0f && ropeAttached && !playerController.isGrounded)
         {
             if (ropeJoint.distance >= ropeMaxCastDistance)
             {
