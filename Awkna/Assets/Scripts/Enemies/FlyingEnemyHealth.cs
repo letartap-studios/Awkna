@@ -19,17 +19,17 @@ public class FlyingEnemyHealth : MonoBehaviour
 
     private void Update()
     {
-        //if(dazedTime <= 0)
-        //{
-        //    GetComponent<AIPath>().enabled = true;
-        //}
-        //else
-        //{
-        //    GetComponent<AIPath>().enabled = false;
-        //    dazedTime -= Time.deltaTime;
-        //}
+        if (dazedTime <= 0)
+        {
+            GetComponent<AIPath>().enabled = true;
+        }
+        else
+        {
+            GetComponent<AIPath>().enabled = false;
+            dazedTime -= Time.deltaTime;
+        }
 
-        if (health <= 0)          // If the player reached 0 health...
+        if (health <= 0)          // If the enemy reached 0 health...
         {
             GetComponent<AIPath>().enabled = false;
             GetComponent<EnemyAttack>().enabled = false;

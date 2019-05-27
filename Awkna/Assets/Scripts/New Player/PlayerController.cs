@@ -189,24 +189,24 @@ public class PlayerController : MonoBehaviour
             //animator.SetBool("IsSwinging", true);
 
             // Get a normalized direction vector from the player to the hook point
-            var playerToHookDirection = (ropeHook - (Vector2)transform.position).normalized;
+            Vector2 playerToHookDirection = (ropeHook - (Vector2)transform.position).normalized;
 
             // Inverse the direction to get a perpendicular direction
             Vector2 perpendicularDirection;
             if (horizontalMoveInput < 0)
             {
                 perpendicularDirection = new Vector2(-playerToHookDirection.y, playerToHookDirection.x);
-                var leftPerpPos = (Vector2)transform.position - perpendicularDirection * -2f;
+                Vector2 leftPerpPos = (Vector2)transform.position - perpendicularDirection * -2f;
                 Debug.DrawLine(transform.position, leftPerpPos, Color.green, 0f);
             }
             else
             {
                 perpendicularDirection = new Vector2(playerToHookDirection.y, -playerToHookDirection.x);
-                var rightPerpPos = (Vector2)transform.position + perpendicularDirection * 2f;
+                Vector2 rightPerpPos = (Vector2)transform.position + perpendicularDirection * 2f;
                 Debug.DrawLine(transform.position, rightPerpPos, Color.green, 0f);
             }
 
-            var force = perpendicularDirection * swingForce;
+            Vector2 force = perpendicularDirection * swingForce;
             rb.AddForce(force, ForceMode2D.Force);
         }
 
@@ -231,12 +231,13 @@ public class PlayerController : MonoBehaviour
         #endregion
 
         #region Climbing the ladder
+
         // Send a raycast upwards to check if the player is on a ladder.
         ladderHitInfo = Physics2D.Raycast(transform.position, Vector2.up, ladderDistance, whatIsLadder);
 
         if (ladderHitInfo.collider != null)                     // Check whether the ray has collided with a ladder.
         {
-            isClimbing = true;                                  
+            isClimbing = true;
         }
         else
         {
@@ -251,8 +252,9 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-                rb.gravityScale = initialGravity;
+            rb.gravityScale = initialGravity;
         }
+        
         #endregion
 
         #region Switch Gravity

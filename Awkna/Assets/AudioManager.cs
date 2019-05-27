@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using System;
-using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -28,7 +25,7 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         foreach (Sound s in sounds)
         {
-           s.source= gameObject.AddComponent<AudioSource>();
+            s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
