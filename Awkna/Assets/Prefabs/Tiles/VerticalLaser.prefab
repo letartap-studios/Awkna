@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3032946328403841246}
   - component: {fileID: 5382317980258869651}
   - component: {fileID: 8878488910392419393}
-  m_Layer: 0
+  - component: {fileID: 4680075496387402198}
+  m_Layer: 16
   m_Name: VerticalLaser
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -138,6 +139,21 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.5}
       - {x: 0.5, y: -0.5}
       - {x: 0.5, y: 0.5}
+--- !u!114 &4680075496387402198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910687485101638016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf24bb6be33e534ebf5fdb479e82d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 1
+  active: 1
+  paddingTIme: 0
 --- !u!1 &3117968347332689779
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +165,7 @@ GameObject:
   - component: {fileID: 8397427180310695278}
   - component: {fileID: 8006010201039172587}
   - component: {fileID: 908565290595674577}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4900,8 +4916,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2159585971947669454}
-  - component: {fileID: 2671487426905086298}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: LaserHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4924,18 +4939,6 @@ Transform:
   m_Father: {fileID: 4420026457830191306}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2671487426905086298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3181767964005277011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebf24bb6be33e534ebf5fdb479e82d53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6971715627052753483
 GameObject:
   m_ObjectHideFlags: 0
@@ -4947,7 +4950,7 @@ GameObject:
   - component: {fileID: 3203406479131389239}
   - component: {fileID: 6722939405074711902}
   - component: {fileID: 4498124213436643173}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}

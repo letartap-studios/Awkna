@@ -5,9 +5,21 @@ using UnityEngine;
 public class blink : MonoBehaviour
 {
     public float time = 1;
+    public bool active = true;
+    public float paddingTIme = 0f;
 
     float countTime = 0;
-    bool active = true;
+    GameObject go;
+
+    private void Start()
+    {
+        time += paddingTIme;
+
+        go = this.gameObject.transform.GetChild(0).gameObject;
+
+    }
+
+
 
     // Update is called once per frame
     void Update()
@@ -16,7 +28,7 @@ public class blink : MonoBehaviour
         if (countTime > time)
         {
             active = !active;
-            gameObject.SetActive(active);
+            go.SetActive(active);
 
             countTime = 0;
         }
