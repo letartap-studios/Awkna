@@ -20,7 +20,7 @@ public class EnemyAttack : MonoBehaviour
         {
             PlayerStats.Instance.TakeDamage(1);
 
-            StartCoroutine(player.Knockback(knockDuration, knockbackPwr, player.transform.position, transform.position.x));
+            player.Knockback(knockDuration, knockbackPwr, player.transform.position, transform.position.x);
 
             CameraShaker.Instance.ShakeOnce(1f, 2f, .1f, .3f);                               // When the player is attacked shake the camera.
 

@@ -371,7 +371,7 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(vec, groundCheckRadius);
     }
 
-    public IEnumerator Knockback(float knockDur, float knockbackPwr, Vector3 knockbackDir, float posX)
+    public void Knockback(float knockDur, float knockbackPwr, Vector3 knockbackDir, float posX)
     {
         float timer = 0;        // The time that has passed since the function started.
 
@@ -387,8 +387,6 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(new Vector3(knockbackDir.x * (-knockbackPwr), knockbackDir.y, transform.position.z));
             }
         }
-
-        yield return 0;
     }
 
     #region Invulnerability

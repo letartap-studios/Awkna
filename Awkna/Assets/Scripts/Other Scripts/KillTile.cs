@@ -5,28 +5,47 @@
 public class KillTile : MonoBehaviour
 {
     public float damage;
-    //private Collider2D collider2D;
+    private Collider2D collider2D;
+    private PlayerController player;
 
-    public Vector3 offset;
-    public Vector3 size;
+    public Vector2 offset;
+    public Vector2 size;
 
     public float knockDuration = 0.5f;
     public float knockbackPwr = 2f;
 
+    private LayerMask playerMask;
+
     //private void Start()
     //{
     //    collider2D = GetComponent<Collider2D>();
+    //    player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    //    playerMask = LayerMask.GetMask("Player");
     //}
-    private PlayerController player;
+
+    //private void Update()
+    //{
+    //    bool other = collider2D.IsTouchingLayers(playerMask);
+    //    if (!other)
+    //    {
+    //        return;
+    //    }
+    //    else
+    //    {
+    //        //player.Knockback(knockDuration, knockbackPwr, player.transform.position, transform.position.x);
+    //        PlayerStats.Instance.TakeDamage(damage);
+    //    }
+    //}
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-
+        playerMask = LayerMask.GetMask("Player");
     }
-    
+
     private void Update()
     {
-        bool other = Physics2D.OverlapBox(transform.position + offset, size, 0, LayerMask.GetMask("Player"));
+        bool other = Physics2D.OverlapBox((Vector2)transform.position + offset, size, 0, playerMask);
 
         if (!other)
         {
@@ -34,15 +53,17 @@ public class KillTile : MonoBehaviour
         }
         else
         {
+            //player.Knockback(knockDuration, knockbackPwr, player.transform.position, transform.position.x);
             PlayerStats.Instance.TakeDamage(damage);
-            StartCoroutine(player.Knockback(knockDuration, knockbackPwr, player.transform.position, transform.position.x));
-
         }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position + offset, size);
+        Gizmos.DrawWireCube((Vector2)transform.position + offset, size);
     }
+
+
+
 }
