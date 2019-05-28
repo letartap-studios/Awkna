@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &623277089578109229
+--- !u!1 &7911397281932775648
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2384593786584813644}
-  - component: {fileID: 1852989559380942323}
+  - component: {fileID: 2091480550255105553}
+  - component: {fileID: 7038193320152813425}
   m_Layer: 10
-  m_Name: ROOM LR SPAWN
+  m_Name: ROOM LRB SPAWN
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2384593786584813644
+--- !u!4 &2091480550255105553
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 623277089578109229}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 7911397281932775648}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1852989559380942323
+--- !u!114 &7038193320152813425
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 623277089578109229}
+  m_GameObject: {fileID: 7911397281932775648}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 251a51e7720bf36449175ecafe28879b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 1807870825906315875, guid: 080c1bd5de4d64645ab57eb4f004aee4, type: 3}
-  - {fileID: 1807870825906315875, guid: bfc7f859e4352c54ea542cf4cc93f6cc, type: 3}
-  - {fileID: 1807870825906315875, guid: 736f63738d57c924d9becc020065f4cc, type: 3}
-  - {fileID: 1807870825906315875, guid: 3b4451651f831a2458746fd6b6d37bcf, type: 3}
-  - {fileID: 1807870825906315875, guid: fccdcb8b3df40334290281d088327b07, type: 3}
-  - {fileID: 1807870825906315875, guid: 0177386e3e5a4794ca6d223f51eb8874, type: 3}
+  - {fileID: 8751427500136251604, guid: 59215c76a4a4b524fb9dd89ec22bb960, type: 3}
+  - {fileID: 8751427500136251604, guid: 3eb690c1765b94946b9911a9306cd994, type: 3}
+  - {fileID: 8751427500136251604, guid: 8a14fbce938fa55479b4678842e72135, type: 3}
+  - {fileID: 8751427500136251604, guid: d1ced45bd6484e847994fd68083cccca, type: 3}
+  - {fileID: 8751427500136251604, guid: 7627dfdaef4c97540ac4ad4078dd8877, type: 3}
   file: 
