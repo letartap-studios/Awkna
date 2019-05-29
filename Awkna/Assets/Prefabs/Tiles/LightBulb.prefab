@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6897346292282426428}
   - component: {fileID: 6897346292282426431}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: LightBulb
   m_TagString: Electricity
   m_Icon: {fileID: 0}
@@ -87,11 +87,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6897346292282426428}
     m_Modifications:
-    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
-        type: 3}
-      propertyPath: m_Name
-      value: Point Light
-      objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -146,6 +141,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_Name
+      value: Point Light
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e0341b224a2f714382be454b2e8a95a, type: 3}

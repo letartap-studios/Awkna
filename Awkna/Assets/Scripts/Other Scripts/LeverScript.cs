@@ -31,7 +31,19 @@ public class LeverScript : MonoBehaviour
                 GameObject[] electricty = GameObject.FindGameObjectsWithTag("Electricity");
                 for (int i = 0; i < electricty.Length; i++)
                 {
-                    //if(electricty[i].layer == )
+                    if(electricty[i].layer == 22)       // Light Bulb
+                    {
+                        electricty[i].GetComponentInChildren<Light>().enabled = false;
+                    }
+                    else if(electricty[i].layer == 23)  // Laser
+                    {
+                        electricty[i].transform.GetComponent<Blink>().enabled = false;
+                        electricty[i].transform.GetChild(0).gameObject.SetActive(false);
+                    }
+                    else if(electricty[i].layer == 24)  // Electrical Door
+                    {
+
+                    }
                 }
             }
         }
