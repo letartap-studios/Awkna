@@ -15,9 +15,6 @@ public class EnemyPatrol : MonoBehaviour
 
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, 0.5f);
 
-        
-
-
 
         RaycastHit2D wallInfoR = Physics2D.Raycast(groundDetection.position, Vector2.right, 0.05f);
         RaycastHit2D wallInfoL = Physics2D.Raycast(groundDetection.position, Vector2.left, 0.05f);
