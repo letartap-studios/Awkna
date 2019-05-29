@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class doorScript : MonoBehaviour
+public class DoorScript : MonoBehaviour
 {
 
     public Sprite openedDoor;

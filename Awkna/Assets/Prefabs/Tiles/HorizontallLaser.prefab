@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 4789768623674400670}
   m_Layer: 16
   m_Name: HorizontallLaser
-  m_TagString: Environment
+  m_TagString: Electricity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4984,8 +4984,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0.2
-  offset: {x: -0.5, y: 0.14, z: 0}
-  size: {x: 0.94, y: 0.2, z: 0}
+  offset: {x: -0.5, y: 0.14}
+  size: {x: 0.94, y: 0.2}
   knockDuration: 0.5
   knockbackPwr: 2
 --- !u!61 &5788405329986973560

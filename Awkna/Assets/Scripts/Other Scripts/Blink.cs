@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class blink : MonoBehaviour
+public class Blink : MonoBehaviour
 {
     public float time = 1;
     public bool active = true;
