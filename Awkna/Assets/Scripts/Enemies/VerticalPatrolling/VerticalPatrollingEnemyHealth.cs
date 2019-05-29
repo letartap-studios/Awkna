@@ -3,7 +3,7 @@ using Pathfinding;
 
 // This script controlls the health of the enemy.
 
-public class PatrolEnemyHealth : MonoBehaviour
+public class VerticalPatrollingEnemyHealth : MonoBehaviour
 {
     public int health;            // The health of the enemy.
     private float dazedTime;
@@ -25,10 +25,10 @@ public class PatrolEnemyHealth : MonoBehaviour
         {
             GetComponent<EnemyAttack>().enabled = false;
             //anim.SetTrigger("Dead");
-            
-            if(deathAnimationTime <= 0)
+
+            if (deathAnimationTime <= 0)
             {
-                GetComponent<Rigidbody2D>().gravityScale = 1;
+                //GetComponent<Rigidbody2D>().gravityScale = 1;
             }
             else
             {
@@ -40,7 +40,7 @@ public class PatrolEnemyHealth : MonoBehaviour
                 Destroy(gameObject);  //... destroy it.
             }
             else
-            {                
+            {
                 deathTime -= Time.deltaTime;
             }
         }

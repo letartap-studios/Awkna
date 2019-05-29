@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VerticalPatrollingEnemyScript : MonoBehaviour
+public class VerticalPatrollingEnemy : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed;
     private bool movingUp = true;
     public Transform groundDetection;
 
-    private void FixedUpdate()
+    private void Update()
     {
         transform.Translate(Vector2.up * speed * Time.deltaTime);
 

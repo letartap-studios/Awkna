@@ -42,6 +42,15 @@ public class PlayerAttack : MonoBehaviour
                     {
                         enemiesToDamage[i].GetComponent<CrateHealth>().TakeDamage(damage);
                     }
+                    if (enemiesToDamage[i].CompareTag("PatrollingEnemy"))
+                    {
+                        enemiesToDamage[i].GetComponent<PatrolEnemyHealth>().TakeDamage(damage);
+                    }
+                    if (enemiesToDamage[i].CompareTag("VerticalPatrollingEnemy"))
+                    {
+                        enemiesToDamage[i].GetComponent<VerticalPatrollingEnemyHealth>().TakeDamage(damage);
+                    }
+
                 }
 
                 timeBtwAttack = startTimeBtwAttack;
