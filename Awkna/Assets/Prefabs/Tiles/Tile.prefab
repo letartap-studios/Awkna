@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4420026457830191306}
   - component: {fileID: 3032946328403841246}
-  - component: {fileID: 5382317980258869651}
-  - component: {fileID: 646149728043497314}
   - component: {fileID: 7177495236077699919}
+  - component: {fileID: 8214388161316548880}
   m_Layer: 8
   m_Name: Tile
   m_TagString: Environment
@@ -70,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 1357736945541091471, guid: fc18a90fc1c73414d839e5164b1efbfe,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -83,49 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5382317980258869651
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2910687485101638016}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.97, y: 0.97}
-  m_EdgeRadius: 0.01
---- !u!114 &646149728043497314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2910687485101638016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e15e8358b713dc41bc501ad01fddb18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 1357736945541091471, guid: fc18a90fc1c73414d839e5164b1efbfe, type: 3}
-  - {fileID: 7802148468191544442, guid: fc18a90fc1c73414d839e5164b1efbfe, type: 3}
-  - {fileID: 8836898773244591318, guid: fc18a90fc1c73414d839e5164b1efbfe, type: 3}
-  - {fileID: 4860034685730272219, guid: fc18a90fc1c73414d839e5164b1efbfe, type: 3}
 --- !u!60 &7177495236077699919
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -155,3 +111,55 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.5}
       - {x: 0.5, y: -0.5}
       - {x: 0.5, y: 0.5}
+--- !u!114 &8214388161316548880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910687485101638016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e048b8c9f8561324ab54a74ea1191d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upLeft:
+  - {fileID: -2929263755331010113, guid: 723e70553b4be724daecd5f04a6cb294, type: 3}
+  up:
+  - {fileID: -2155129659862298939, guid: 723e70553b4be724daecd5f04a6cb294, type: 3}
+  upRight:
+  - {fileID: -7689996064608271167, guid: 723e70553b4be724daecd5f04a6cb294, type: 3}
+  upLeftRight:
+  - {fileID: 228313171019311288, guid: 723e70553b4be724daecd5f04a6cb294, type: 3}
+  left:
+  - {fileID: 5787712466333443868, guid: 723e70553b4be724daecd5f04a6cb294, type: 3}
+  centre:
+  - {fileID: 1707043419090945490, guid: 723e70553b4be724daecd5f04a6cb294, type: 3}
+  right:
+  - {fileID: 2575744867454660327, guid: 723e70553b4be724daecd5f04a6cb294, type: 3}
+  leftRight:
+  - {fileID: -5570903107865315977, guid: 723e70553b4be724daecd5f04a6cb294, type: 3}
+  downLeft:
+  - {fileID: -762364060751962655, guid: 723e70553b4be724daecd5f04a6cb294, type: 3}
+  down:
+  - {fileID: -2110916973441543507, guid: 723e70553b4be724daecd5f04a6cb294, type: 3}
+  downRight:
+  - {fileID: -2403720144924512834, guid: 723e70553b4be724daecd5f04a6cb294, type: 3}
+  downLeftRight:
+  - {fileID: -9037810623184723993, guid: 723e70553b4be724daecd5f04a6cb294, type: 3}
+  upDownLeft:
+  - {fileID: -3979440045539012491, guid: 723e70553b4be724daecd5f04a6cb294, type: 3}
+  upDown:
+  - {fileID: -8621144725217851257, guid: 723e70553b4be724daecd5f04a6cb294, type: 3}
+  upDownRight:
+  - {fileID: 5993491368329221297, guid: 723e70553b4be724daecd5f04a6cb294, type: 3}
+  single:
+  - {fileID: 588462261705370300, guid: 723e70553b4be724daecd5f04a6cb294, type: 3}
+  radius: 0.1
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 65792
+  upOffset: {x: 0, y: 0.62}
+  downOffset: {x: 0, y: -0.62}
+  leftOffset: {x: -0.62, y: 0}
+  rightOffset: {x: 0.62, y: 0}

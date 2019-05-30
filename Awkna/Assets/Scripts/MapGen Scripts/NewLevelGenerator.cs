@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class NewLevelGenerator : MonoBehaviour
 {
@@ -191,7 +189,7 @@ public class NewLevelGenerator : MonoBehaviour
 
     }
 
-    void Start()
+    private void Awake()
     {
 
         map = new roomsTypes[mapsizeX, mapsizeY];
@@ -338,13 +336,6 @@ public class NewLevelGenerator : MonoBehaviour
 
         SummonEnemies();
         SummonCrates();
-
-
-    }
-
-    private void Update()
-    {
-        //AstarPath.active.Scan();
     }
 
     private void SummonEnemies()
