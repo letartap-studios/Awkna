@@ -42,7 +42,7 @@ public class LeverScript : MonoBehaviour
                     }
                     else if(electricty[i].layer == 24)  // Electrical Door
                     {
-
+                        electricty[i].GetComponent<DoorScript>().OpenDoor();
                     }
                 }
             }
