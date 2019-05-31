@@ -9,6 +9,8 @@ public class LeverScript : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
 
+    public Animator anim;
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -21,6 +23,7 @@ public class LeverScript : MonoBehaviour
         {
             if (Input.GetButtonDown("Interact"))
             {
+                anim.SetBool("inRange", false);
                 spriteRenderer.sprite = leverDownSprite;
 
                 foreach (Transform child in transform)
@@ -52,6 +55,24 @@ public class LeverScript : MonoBehaviour
             return;
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (anim != null)
+                anim.SetBool("inRange", true);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (anim != null)
+                anim.SetBool("inRange", false);
+        }
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

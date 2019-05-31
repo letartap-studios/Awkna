@@ -6,6 +6,7 @@ public class ExitDoor : MonoBehaviour
 {
     public Vector3 offset;
     public float range;
+    public Animator anim;
 
     //public float waitTime = 0.1f;
     private void Update()
@@ -31,6 +32,23 @@ public class ExitDoor : MonoBehaviour
         else
         {
             return;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (anim != null)
+                anim.SetBool("inRange", true);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (anim != null)
+                anim.SetBool("inRange", false);
         }
     }
 
