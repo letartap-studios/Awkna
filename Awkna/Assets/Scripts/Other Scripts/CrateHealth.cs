@@ -2,22 +2,40 @@
 
 public class CrateHealth : MonoBehaviour
 {
-
     public int health;
     public GameObject[] objects;
     public GameObject crate;
+    public Animator anim;
 
-    void Update()
+    public void DestroyCrate()
     {
-        if (health <= 0)
+        Destroy(crate);
+        for (int i = 1; i <= 3; i++)
         {
-            Destroy(crate);
-            for (int i = 1; i <= 3; i++)
+            int rand = Random.Range(0, objects.Length);
+            Instantiate(objects[rand], transform.position, Quaternion.identity);
+            AstarPath.active.Scan();
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (anim != null)
+                anim.SetBool("inRange", true);
+            if (Input.GetButtonDown("Interact"))
             {
-                int rand = Random.Range(0, objects.Length);
-                Instantiate(objects[rand], transform.position, Quaternion.identity);
-                AstarPath.active.Scan();
+                DestroyCrate();
             }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (anim != null)
+                anim.SetBool("inRange", false);
         }
     }
 

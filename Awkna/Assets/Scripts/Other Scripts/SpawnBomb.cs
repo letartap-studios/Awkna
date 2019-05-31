@@ -40,7 +40,7 @@ public class SpawnBomb : MonoBehaviour
                 {
                     if (objectsToDamage[i].CompareTag("Crate"))
                     {
-                        objectsToDamage[i].GetComponent<CrateHealth>().TakeDamage(1);
+                        objectsToDamage[i].GetComponent<CrateHealth>().DestroyCrate();
                     }
                     else if (objectsToDamage[i].CompareTag("GemTile"))
                     {
