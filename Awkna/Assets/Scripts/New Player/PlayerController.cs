@@ -82,16 +82,19 @@ public class PlayerController : MonoBehaviour
         Animator = GetComponent<Animator>();            // Get the animator component from the player object.
         initialGravity = rb.gravityScale;               // Get the initial value of the gravity.
         m_GravityDirection = GravityDirection.Down;     // Initialize the gravity direction with down.
-        Physics2D.IgnoreLayerCollision(12, 15, false);  // Ignore the collision between the player and the enemies.
         Physics2D.IgnoreLayerCollision(15, 20, true);   // Ignore the collition between the player and the collectables.
-        Physics2D.IgnoreLayerCollision(20, 20, false);  // Ignore the collision between the collectables.
-        //Physics2D.IgnoreLayerCollision(15, 19, true);
+        Physics2D.IgnoreLayerCollision(20, 20, true);   // Ignore the collision between the collectables.
+        //Physics2D.IgnoreLayerCollision(15, 19, true); // player crate
+        //Physics2D.IgnoreLayerCollision(11, 15, true); // player ladders
     }
 
     private void Update()
     {
         // Get the horizontal axis input.
         horizontalMoveInput = Input.GetAxisRaw("Horizontal");
+
+        
+
 
         #region Flip the player facing by mouse cursor
         // using mousePosition and player's transform (on orthographic camera view)
@@ -256,10 +259,27 @@ public class PlayerController : MonoBehaviour
 
         #endregion
 
+        if (isSwinging)
+        {
+            Physics2D.IgnoreLayerCollision(15, 19, true);
+            Physics2D.IgnoreLayerCollision(15, 11, true);
+        }
+        else
+        {
+            Physics2D.IgnoreLayerCollision(15, 19, false);
+            Physics2D.IgnoreLayerCollision(15, 11, false);
+        }
+
         #region Climbing the ladder
 
         // Send a raycast upwards to check if the player is on a ladder.
+        
         ladderHitInfo = Physics2D.Raycast(transform.position, Vector2.up, ladderDistance, whatIsLadder);
+
+        if (isSwinging)
+        {
+            ladderHitInfo = new RaycastHit2D();
+        }
 
         if (ladderHitInfo.collider != null)                     // Check whether the ray has collided with a ladder.
         {
@@ -270,7 +290,7 @@ public class PlayerController : MonoBehaviour
             isClimbing = false;
         }
 
-        if (isClimbing && !isSwinging)
+        if (isClimbing)
         {
             verticalMoveInput = Input.GetAxisRaw("Vertical");
             rb.velocity = new Vector2(rb.velocity.x, verticalMoveInput * climbSpeed);
@@ -345,6 +365,8 @@ public class PlayerController : MonoBehaviour
         #endregion
 
         #endregion
+
+        
     }
 
     #region Functions

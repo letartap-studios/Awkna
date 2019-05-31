@@ -1,27 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GemTileHealth : MonoBehaviour
 {
 
     public int health;
     public GameObject gem;
-    public GameObject gemTile;
 
-    void Update()
+    public void DestroyGemTile()
     {
-        if (health <= 0)
-        {
-            Destroy(gemTile);
-            Instantiate(gem, transform.position, Quaternion.identity);
-            //Destroy(gemTile);
-            AstarPath.active.Scan();
-        }
-    }
-
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
+        Instantiate(gem, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+        //AstarPath.active.Scan();
     }
 }

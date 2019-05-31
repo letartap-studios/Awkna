@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using EZCameraShake;
 
 // This script spawns the bomb when calling it from the PlayerController.cs and then explodes after a timer.
 
@@ -28,40 +27,34 @@ public class SpawnBomb : MonoBehaviour
             for (int i = 0; i < objectsToDamage.Length; i++)
             {
                 if (objectsToDamage[i].CompareTag("Player"))        // If the bomb collides with the player at explosion, ...
-                {                                                   
+                {
                     PlayerStats.Instance.TakeDamage(PlayerStats.Instance.MaxHealth);  // ...damage the player.
                 }
-                else if(objectsToDamage[i].CompareTag("Enemy"))     // If the bomb collides with an enemy at explosion,...
+                else if (objectsToDamage[i].CompareTag("Enemy"))     // If the bomb collides with an enemy at explosion,...
                 {
                     //                                              // ...deal damage to the enemy equal to its health. (Kill it)
                     objectsToDamage[i].GetComponent<EnemyHealth>().TakeDamage(objectsToDamage[i].GetComponent<EnemyHealth>().health);
                 }
-                else                                                // If it collides with anything else that is destructible,...
+                else if (objectsToDamage[i].CompareTag("Crate"))                                               // If it collides with anything else that is destructible,..
                 {
-                    if (objectsToDamage[i].CompareTag("Crate"))
-                    {
-                        objectsToDamage[i].GetComponent<CrateHealth>().DestroyCrate();
-                    }
-                    else if (objectsToDamage[i].CompareTag("GemTile"))
-                    {
-                        objectsToDamage[i].GetComponent<GemTileHealth>().TakeDamage(1);
-                    }else
-                    {
-                        Destroy(objectsToDamage[i].gameObject);
-                    }
-                    
-                    // ...destroy it.
-
+                    objectsToDamage[i].GetComponent<CrateHealth>().DestroyCrate();
                 }
-            }
+                else if (objectsToDamage[i].CompareTag("GemTile"))
+                {
+                    objectsToDamage[i].GetComponent<GemTileHealth>().DestroyGemTile();
+                }
+                else
+                {
+                    Destroy(objectsToDamage[i].gameObject);
+                }
 
-            //CameraShaker.Instance.ShakeOnce(4f, 4f, .1f, 1f);               // Shake the camera effect on explosion.
+                // ...destroy it.
+
+            }
 
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShakeController>().Shake();
 
             GameObject instance = Instantiate(effect, transform.position, Quaternion.identity);   //Explosion effect.
-
-
 
             FindObjectOfType<AudioManager>().Play("Explosion1");
 

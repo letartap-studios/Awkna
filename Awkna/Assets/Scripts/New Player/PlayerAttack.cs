@@ -37,11 +37,6 @@ public class PlayerAttack : MonoBehaviour
                     {
                         enemiesToDamage[i].GetComponent<EnemyHealth>().TakeDamage(damage);
                     }
-
-                    if (enemiesToDamage[i].CompareTag("Crate"))
-                    {
-                        enemiesToDamage[i].GetComponent<CrateHealth>().TakeDamage(damage);
-                    }
                     if (enemiesToDamage[i].CompareTag("PatrollingEnemy"))
                     {
                         enemiesToDamage[i].GetComponent<PatrolEnemyHealth>().TakeDamage(damage);

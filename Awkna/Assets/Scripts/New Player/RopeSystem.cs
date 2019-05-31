@@ -172,7 +172,7 @@ public class RopeSystem : MonoBehaviour
         }
     }
 
-    private void ResetRope()
+    public void ResetRope()
     {
         ropeJoint.enabled = false;
         ropeAttached = false;
@@ -262,7 +262,7 @@ public class RopeSystem : MonoBehaviour
 
     private void HandleRopeLength()
     {
-        if (ropeJoint.distance > (PlayerStats.Instance.RopeMaxDistance / 2) && launch)
+        if ((ropeJoint.distance > (PlayerStats.Instance.RopeMaxDistance / 2)) && launch)
         {
             ropeJoint.distance -= Time.deltaTime * climbSpeed;
 
@@ -271,9 +271,10 @@ public class RopeSystem : MonoBehaviour
                 launch = false;
             }
         }
-        if (Input.GetAxisRaw("Vertical") > 0f && ropeAttached && !isColliding)
+        if (Input.GetAxisRaw("Vertical") > 0f && ropeAttached)
         {
-            ropeJoint.distance -= Time.deltaTime * climbSpeed;
+            if (!isColliding)
+                ropeJoint.distance -= Time.deltaTime * climbSpeed;
         }
         else if (Input.GetAxisRaw("Vertical") < 0f && ropeAttached && !playerController.isGrounded)
         {
