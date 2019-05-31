@@ -362,8 +362,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -64.47, y: -63.06}
-  m_SizeDelta: {x: 13.200012, y: 20.17}
+  m_AnchoredPosition: {x: -64.47, y: -63.06006}
+  m_SizeDelta: {x: 26.8, y: 20.17}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &3464205476088899809
 CanvasRenderer:
@@ -1701,7 +1701,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -11, y: -12.340027}
+  m_AnchoredPosition: {x: -11, y: -12.339966}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7682216458732692667
@@ -2094,8 +2094,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -64.399994, y: -10.700012}
-  m_SizeDelta: {x: 13.2, y: 20.17}
+  m_AnchoredPosition: {x: -64.399994, y: -10.700073}
+  m_SizeDelta: {x: 26.83, y: 20.17}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7682216459166866237
 CanvasRenderer:
@@ -2866,11 +2866,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7682216457582082343}
     m_Modifications:
-    - target: {fileID: 2498314325623954126, guid: de5d22107f8396e42b8ad2de1fca791d,
-        type: 3}
-      propertyPath: m_Name
-      value: HeartParent
-      objectReference: {fileID: 0}
     - target: {fileID: 2498314325623954127, guid: de5d22107f8396e42b8ad2de1fca791d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2991,6 +2986,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2498314325623954126, guid: de5d22107f8396e42b8ad2de1fca791d,
+        type: 3}
+      propertyPath: m_Name
+      value: HeartParent
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de5d22107f8396e42b8ad2de1fca791d, type: 3}
 --- !u!224 &7682216459313247780 stripped
@@ -3006,11 +3006,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7682216459154456121}
     m_Modifications:
-    - target: {fileID: 1934179596721129189, guid: 063a8957bc34b8145807bc05f490728b,
-        type: 3}
-      propertyPath: m_Name
-      value: HealthBarController
-      objectReference: {fileID: 0}
     - target: {fileID: 1934179596721129191, guid: 063a8957bc34b8145807bc05f490728b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3065,6 +3060,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934179596721129189, guid: 063a8957bc34b8145807bc05f490728b,
+        type: 3}
+      propertyPath: m_Name
+      value: HealthBarController
       objectReference: {fileID: 0}
     - target: {fileID: 1934179596721129190, guid: 063a8957bc34b8145807bc05f490728b,
         type: 3}

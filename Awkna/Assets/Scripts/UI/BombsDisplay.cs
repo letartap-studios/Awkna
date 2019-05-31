@@ -9,5 +9,4 @@ public class BombsDisplay : MonoBehaviour
     {
         bombsNumberText.text = "" + PlayerStats.Instance.BombsNumber;
     }
-
 }

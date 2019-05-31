@@ -47,8 +47,6 @@ public class RopeSystem : MonoBehaviour
 
     private void LateUpdate()
     {
-        
-
         Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 facingDirection = new Vector3(worldMousePosition.x, worldMousePosition.y, transform.position.z) - transform.position;
         float aimAngle = Mathf.Atan2(facingDirection.y, facingDirection.x);

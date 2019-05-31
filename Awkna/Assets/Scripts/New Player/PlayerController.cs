@@ -69,14 +69,9 @@ public class PlayerController : MonoBehaviour
     public float swingForce = 4f;               // A value to be used to add to the swing motion.
 
     public bool switchGravityPower;             // Turn on or off the gravity switch ability.
-    public GameObject energyUI;                 // Turn on or off the energy bar from the UI.
+    public GameObject energyUI;                 // Turn on or off the energy bar from the UI.    
 
-    [HideInInspector]
-    
-
-    private Animator animator;                  // Refrence to the animator component.
-    public Animator Animator { get { return animator; } }
-
+    public Animator Animator { get; private set; }
     #endregion
 
     private void Awake()
@@ -84,7 +79,7 @@ public class PlayerController : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("levelstart");
         energy = maxEnergy;                             // Start with max energy.
         rb = GetComponent<Rigidbody2D>();               // Get the rigidbody component from the player object.
-        animator = GetComponent<Animator>();            // Get the animator component from the player object.
+        Animator = GetComponent<Animator>();            // Get the animator component from the player object.
         initialGravity = rb.gravityScale;               // Get the initial value of the gravity.
         m_GravityDirection = GravityDirection.Down;     // Initialize the gravity direction with down.
         Physics2D.IgnoreLayerCollision(12, 15, false);  // Ignore the collision between the player and the enemies.
@@ -98,12 +93,28 @@ public class PlayerController : MonoBehaviour
         // Get the horizontal axis input.
         horizontalMoveInput = Input.GetAxisRaw("Horizontal");
 
+        #region Flip the player facing by mouse cursor
+        // using mousePosition and player's transform (on orthographic camera view)
+        var delta = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+
+        if (delta.x >= 0 && !facingRight)
+        { // mouse is on right side of player
+            transform.localScale = new Vector3(-1, 1, 1); // or activate look right some other way
+            facingRight = true;
+        }
+        else if (delta.x < 0 && facingRight)
+        { // mouse is on left side
+            transform.localScale = new Vector3(1, 1, 1); // activate looking left
+            facingRight = false;
+        }
+        #endregion
+
         #region Jump
         if (m_GravityDirection == GravityDirection.Down) // Check if the gravity is downwards so the jump force is up.
         {
             if (Input.GetButtonDown("Jump") && (isGrounded || isSwinging)) // Check if the Jump button was pressed and give the player's...
             {
-                animator.SetTrigger("takeOf");
+                Animator.SetTrigger("takeOf");
                 rb.velocity = Vector2.up * jumpForce;               //...rigidbody velocity on the y axis.
                 isJumping = true;                                   // The player is jumping.
                 jumpTimeCounter = jumpTime;                         // Reset the jump time counter.
@@ -129,11 +140,11 @@ public class PlayerController : MonoBehaviour
 
             if (isGrounded || isSwinging)
             {
-                animator.SetBool("isJumping", false);
+                Animator.SetBool("isJumping", false);
             }
             else
             {
-                animator.SetBool("isJumping", true);
+                Animator.SetBool("isJumping", true);
             }
         }
         else                                             // The same things apply to the reversed gravity.
@@ -184,14 +195,14 @@ public class PlayerController : MonoBehaviour
         #region Horizontal movement
 
         #region Player facing
-        if (horizontalMoveInput > 0 && !facingRight)
-        {
-            Flip();
-        }
-        else if (horizontalMoveInput < 0 && facingRight)
-        {
-            Flip();
-        }
+        //if (horizontalMoveInput > 0 && !facingRight)
+        //{
+        //    Flip();
+        //}
+        //else if (horizontalMoveInput < 0 && facingRight)
+        //{
+        //    Flip();
+        //}
         #endregion
 
         #region Swinging
@@ -236,11 +247,11 @@ public class PlayerController : MonoBehaviour
 
         if (horizontalMoveInput == 0)
         {
-            animator.SetBool("isRunning", false);
+            Animator.SetBool("isRunning", false);
         }
         else if (isGrounded)
         {
-            animator.SetBool("isRunning", true);
+            Animator.SetBool("isRunning", true);
         }
 
         #endregion
@@ -344,6 +355,7 @@ public class PlayerController : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+
 
         //transform.Rotate(0f, 180f, 0f);
     }
