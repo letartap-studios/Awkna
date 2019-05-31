@@ -5,18 +5,28 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    #region Sigleton
+    private static PlayerController instance;
+    public static PlayerController Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = FindObjectOfType<PlayerController>();
+            return instance;
+        }
+    }
+    #endregion
+
     #region Variables
     public float movementSpeed = 40f;           // The speed at which the player is moving.
     public float jumpForce = 400f;              // Amount of force added when the player jumps.    
     [Range(0, .3f)]
     [SerializeField]
     private float horizontalMovementSmoothing;  // How much to smooth out the horizontal movement.
-    [Range(0, .3f)]
-    [SerializeField]
-    private float climbingSmoothing;            // How much to smooth out the climbing.
     public bool facingRight = false;            // For determining which way the player is currently facing.
     [HideInInspector]
-    public bool isGrounded;                    // Whether or not the player is grounded.
+    public bool isGrounded;                     // Whether or not the player is grounded.
     public Transform groundCheck;               // A position marking where to check if the player is grounded.
     public float groundCheckRadius;             // Radius of the overlap circle to determine if grounded.
     public float groundCheckRadiusHorizontal;   // Horizontal offset of the ground check radius.
@@ -40,7 +50,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
 
     public GameObject bomb;                     // Instance of a bomb.
-    public int bombsNumber;                     // The number of bombs.
 
     private bool top;                           // Whether the player is upside-down.
 
@@ -63,9 +72,10 @@ public class PlayerController : MonoBehaviour
     public GameObject energyUI;                 // Turn on or off the energy bar from the UI.
 
     [HideInInspector]
-    public float gemNumber;                     // The number of gems.
+    
 
     private Animator animator;                  // Refrence to the animator component.
+    public Animator Animator { get { return animator; } }
 
     #endregion
 
@@ -157,10 +167,10 @@ public class PlayerController : MonoBehaviour
         #region Bomb
         Physics2D.IgnoreLayerCollision(13, 15);                 // Ignore the collision between the player and the bomb.
 
-        if (Input.GetButtonDown("Bomb") && bombsNumber > 0 && isGrounded) // If the player has more then 0 bombs remaining and he presses down
+        if (Input.GetButtonDown("Bomb") && PlayerStats.Instance.BombsNumber > 0 && isGrounded) // If the player has more then 0 bombs remaining and he presses down
         {                                                                 // the bomb button and is grounded, then...
             Instantiate(bomb, transform.position + new Vector3(0, 0.2f, 0), Quaternion.identity);   //... spawn a bomb at the player position.
-            bombsNumber--;                                      // Lose one bomb from inventory.
+            PlayerStats.Instance.LoseBomb();
         }
         #endregion
     }
@@ -351,16 +361,6 @@ public class PlayerController : MonoBehaviour
         top = !top;
         facingRight = !facingRight;                             // Change the facing upon rotation
 
-    }
-
-    public void AddBomb()   // When the player finds a bomb add it to the inventory.
-    {
-        bombsNumber++;
-    }
-
-    public void AddGem()
-    {
-        gemNumber++;
     }
 
     private void OnDrawGizmosSelected() // Draw a gismos circle around the ground check radius.

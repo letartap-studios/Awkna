@@ -6,6 +6,6 @@ public class Gem : PowerUp
     {
         base.PowerUpPayload();
 
-        GameObject.FindWithTag("Player").GetComponent<PlayerController>().AddGem();
+        PlayerStats.Instance.AddGem();
     }
 }

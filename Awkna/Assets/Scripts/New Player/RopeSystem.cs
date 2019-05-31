@@ -17,8 +17,6 @@ public class RopeSystem : MonoBehaviour
 
     private LineRenderer ropeRenderer;
     public LayerMask ropeLayerMask;
-    public float ropeMaxCastDistance = 10f;
-    public float step = 0.2f;
 
     private List<Vector2> ropePositions = new List<Vector2>();
 
@@ -136,7 +134,7 @@ public class RopeSystem : MonoBehaviour
 
             ropeRenderer.enabled = true;
 
-            var hit = Physics2D.Raycast(playerPosition, aimDirection, ropeMaxCastDistance, ropeLayerMask);
+            var hit = Physics2D.Raycast(playerPosition, aimDirection, PlayerStats.Instance.RopeMaxDistance, ropeLayerMask);
 
             if (hit.collider != null)
             {
@@ -266,11 +264,11 @@ public class RopeSystem : MonoBehaviour
 
     private void HandleRopeLength()
     {
-        if (ropeJoint.distance > (ropeMaxCastDistance / 2) && launch)
+        if (ropeJoint.distance > (PlayerStats.Instance.RopeMaxDistance / 2) && launch)
         {
             ropeJoint.distance -= Time.deltaTime * climbSpeed;
 
-            if (ropeJoint.distance <= (ropeMaxCastDistance / 2))
+            if (ropeJoint.distance <= (PlayerStats.Instance.RopeMaxDistance / 2))
             {
                 launch = false;
             }
@@ -281,7 +279,7 @@ public class RopeSystem : MonoBehaviour
         }
         else if (Input.GetAxisRaw("Vertical") < 0f && ropeAttached && !playerController.isGrounded)
         {
-            if (ropeJoint.distance >= ropeMaxCastDistance)
+            if (ropeJoint.distance >= PlayerStats.Instance.RopeMaxDistance)
             {
                 return;
             }
@@ -371,10 +369,5 @@ public class RopeSystem : MonoBehaviour
         }
         ropeJoint.distance = Vector2.Distance(transform.position, newAnchorPosition);
         distanceSet = true;
-    }
-
-    public void AddRope(float x)
-    {
-        ropeMaxCastDistance += x;
     }
 }

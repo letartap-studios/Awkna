@@ -55,7 +55,9 @@ public class SpawnBomb : MonoBehaviour
                 }
             }
 
-            CameraShaker.Instance.ShakeOnce(4f, 4f, .1f, 1f);               // Shake the camera effect on explosion.
+            //CameraShaker.Instance.ShakeOnce(4f, 4f, .1f, 1f);               // Shake the camera effect on explosion.
+
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShakeController>().Shake();
 
             GameObject instance = Instantiate(effect, transform.position, Quaternion.identity);   //Explosion effect.
 

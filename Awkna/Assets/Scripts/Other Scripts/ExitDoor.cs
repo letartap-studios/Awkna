@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 public class ExitDoor : MonoBehaviour
 {
@@ -16,17 +14,8 @@ public class ExitDoor : MonoBehaviour
         {
             if (Input.GetButton("Interact"))
             {
-                //if (waitTime <= 0)                              // If the player presses the down button for a 'waitTime' period of time, ...
-                //{
-                //    //     ***End Screen here***                         // ...the end level screen will appear.
-                    Debug.Log("Exit");
-                    SceneManager.LoadScene("Endgame");
-                //    waitTime = 0f;
-                //}
-                //else
-                //{
-                //    waitTime -= Time.deltaTime;                 //decrease the period of time
-                //}
+                Debug.Log("Next Level");
+                SceneManager.LoadScene("Endgame");
             }
         }
         else

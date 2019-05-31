@@ -5,6 +5,6 @@ public class AddBomb : PowerUp
     {
         base.PowerUpPayload();
 
-        GameObject.FindWithTag("Player").GetComponent<PlayerController>().AddBomb();
+        PlayerStats.Instance.AddBomb();
     }
 }

@@ -2,12 +2,16 @@
 
 public class AddRope : PowerUp
 {
-    public float valueToAdd;
+    /// <summary>
+    /// How much the power up increases the rope length.
+    /// </summary>
+    [SerializeField]
+    private float valueToAdd;
     protected override void PowerUpPayload()
     {
         base.PowerUpPayload();
 
-        GameObject.FindWithTag("Player").GetComponent<RopeSystem>().AddRope(valueToAdd);
+        PlayerStats.Instance.AddRope(valueToAdd);
     }
 
 }
