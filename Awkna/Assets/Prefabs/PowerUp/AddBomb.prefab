@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3041084786818820485}
+  - component: {fileID: -8223818313753541792}
   - component: {fileID: 6998548873033530402}
   - component: {fileID: 5383313056408544353}
   - component: {fileID: -8980294750756388914}
@@ -35,6 +36,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8223818313753541792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736117162159201801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd33e502b7b49174389bc7da9de60651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customImage: {fileID: 4022834228565685290, guid: 4466c292f64949c45a90164ed860af9a,
+    type: 3}
 --- !u!212 &6998548873033530402
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -101,6 +116,7 @@ MonoBehaviour:
   expiresImmediately: 1
   specialEffect: {fileID: 0}
   soundEffect: {fileID: 0}
+  name: bomb collected
   pickUpRange: 0.5
 --- !u!58 &-8980294750756388914
 CircleCollider2D:
