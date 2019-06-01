@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;                     // Rigidbody of the character.
     private Vector3 velocity = Vector3.zero;
 
+
     public GameObject bomb;                     // Instance of a bomb.
 
     private bool top;                           // Whether the player is upside-down.
@@ -175,6 +176,8 @@ public class PlayerController : MonoBehaviour
         }
         #endregion
     }
+
+
 
     private void FixedUpdate()
     {

@@ -205,7 +205,7 @@ public class NewLevelGenerator : MonoBehaviour
         movesTillMoveUp = Random.Range(0, maxStrafe);
         cursorPosX = Random.Range(0, mapsizeX);
         int mapExit = cursorPosX;
-        Debug.Log(cursorPosX);
+        //Debug.Log(cursorPosX);
         cursorPosY = mapsizeY - 1;
         direction = directions.none;
         lastDirection = directions.none;
