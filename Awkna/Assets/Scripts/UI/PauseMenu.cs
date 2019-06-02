@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
@@ -66,6 +63,8 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
+
+        PlayerStats.Instance.ResetStats();
         Debug.Log("Loading Menu...");
     }
     public void QuitGame()
@@ -79,7 +78,9 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         gameoverMenuUI.SetActive(false);
         GameIsPaused = false;
+        PlayerStats.Instance.ResetStats();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene("vlod");
         Time.timeScale = 1f;
     }
 

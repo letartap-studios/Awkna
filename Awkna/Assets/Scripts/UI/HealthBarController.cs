@@ -8,7 +8,7 @@ public class HealthBarController : MonoBehaviour
 
     public Transform heartsParent;
     public GameObject heartContainerPrefab;
-
+    
     private void Start()
     {
         // Should I use lists? Maybe :)
@@ -20,6 +20,10 @@ public class HealthBarController : MonoBehaviour
         PlayerStats.Instance.onHealthChangedCallback += UpdateHeartsHUD;
         InstantiateHeartContainers();
         UpdateHeartsHUD();
+    }
+    private void OnDestroy()
+    {
+        PlayerStats.Instance.onHealthChangedCallback -= UpdateHeartsHUD;
     }
 
     public void UpdateHeartsHUD()

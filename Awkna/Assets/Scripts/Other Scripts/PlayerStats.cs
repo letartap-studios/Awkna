@@ -6,32 +6,57 @@ public class PlayerStats : MonoBehaviour
     public OnHealthChangedDelegate onHealthChangedCallback;
 
     #region Sigleton
-    private static PlayerStats instance;
-    public static PlayerStats Instance
+
+    private static PlayerStats _instance;
+
+    public static PlayerStats Instance { get { return _instance; } }
+
+
+    private void Awake()
     {
-        get
+        if (_instance != null && _instance != this)
         {
-            if (instance == null)
-                instance = FindObjectOfType<PlayerStats>();
-            return instance;
+            Destroy(gameObject);
         }
+        else
+        {
+            _instance = this;
+        }
+        DontDestroyOnLoad(gameObject);
     }
+
+
+    //private static PlayerStats instance;
+    //public static PlayerStats Instance
+    //{
+    //    get
+    //    {
+    //        if (instance == null)
+    //            instance = FindObjectOfType<PlayerStats>();
+    //        return instance;
+    //    }
+    //}
+
+    //private void Awake()
+    //{
+    //    DontDestroyOnLoad(gameObject);
+    //}
     #endregion
 
     #region Variables and Getters
 
     [SerializeField]
-    private float health;
+    private float health = 3f;
     [SerializeField]
-    private float maxHealth;
+    private float maxHealth = 3f;
     [SerializeField]
-    private float maxTotalHealth;
+    private float maxTotalHealth = 6f;
     [SerializeField]
-    private int bombsNumber;
+    private int bombsNumber = 3;
     [SerializeField]
-    private int gemNumber;
+    private int gemNumber = 0;
     [SerializeField]
-    private float ropeMaxCastDistance = 10f;
+    private float ropeMaxCastDistance = 5f;
     
     /// <summary>
     /// The current health of the player.
@@ -59,9 +84,23 @@ public class PlayerStats : MonoBehaviour
     /// The maximum distance at whitch the player cand fire the grappling hook.
     /// </summary>
     public float RopeMaxDistance { get { return ropeMaxCastDistance; } }
+
     #endregion
 
     #region Functions
+    /// <summary>
+    /// Reset the stats to the initial stats.
+    /// </summary>
+    public void ResetStats()
+    {
+        health = 3f;
+        maxHealth = 3f;
+        maxTotalHealth = 6f;
+        bombsNumber = 3;
+        gemNumber = 0;
+        ropeMaxCastDistance = 5f;
+    }
+
     /// <summary>
     /// Heal the player by an amount.
     /// </summary>
