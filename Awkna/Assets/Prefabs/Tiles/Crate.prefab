@@ -157,7 +157,8 @@ MonoBehaviour:
   - {fileID: 5607245197429582468, guid: fdb45f077c105f846887fbbf80c6a09e, type: 3}
   - {fileID: 736117162159201801, guid: f815dc2ace6217844b1ed159fad6067d, type: 3}
   - {fileID: 5738914557992221520, guid: 5ea4cc36f9836cf4081285f48a408008, type: 3}
-  crate: {fileID: 4776925764863973313}
+  offset: {x: 0, y: 0}
+  size: {x: 0, y: 0}
   anim: {fileID: 3458926081740903752}
 --- !u!60 &2349846887094362990
 PolygonCollider2D:
@@ -213,6 +214,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5510598205433532348}
     m_Modifications:
+    - target: {fileID: 5253484940142123465, guid: 6d9bac62cc376e94c80916d1dccd4270,
+        type: 3}
+      propertyPath: m_Name
+      value: E 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8200614911839607702, guid: 6d9bac62cc376e94c80916d1dccd4270,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -267,11 +273,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5253484940142123465, guid: 6d9bac62cc376e94c80916d1dccd4270,
-        type: 3}
-      propertyPath: m_Name
-      value: E 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d9bac62cc376e94c80916d1dccd4270, type: 3}

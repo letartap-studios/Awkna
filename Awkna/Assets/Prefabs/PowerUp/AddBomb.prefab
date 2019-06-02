@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3041084786818820485}
-  - component: {fileID: -8223818313753541792}
   - component: {fileID: 6998548873033530402}
   - component: {fileID: 5383313056408544353}
   - component: {fileID: -8980294750756388914}
@@ -36,20 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-8223818313753541792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736117162159201801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd33e502b7b49174389bc7da9de60651, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customImage: {fileID: 4022834228565685290, guid: 4466c292f64949c45a90164ed860af9a,
-    type: 3}
 --- !u!212 &6998548873033530402
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -110,13 +95,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509bb1fecdb387f44b83fad7f4671787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpName: Bomb
-  powerUpExplanation: The player can collect a new bomb.
-  powerUpQuote: 
+  powerUpText: +1 Bomb
   expiresImmediately: 1
   specialEffect: {fileID: 0}
   soundEffect: {fileID: 0}
-  name: bomb collected
+  text1: {fileID: 5524059340177986065, guid: 4e85a985f26a42145baff99918674f0f, type: 3}
+  text2: {fileID: 4381832949439655145, guid: f582e3ba707cf9c4e9d7e2ed07ee1584, type: 3}
+  text3: {fileID: 1985805962601942081, guid: 17a2c0637f7181844b7941189bea2905, type: 3}
+  text4: {fileID: 2806326436863484242, guid: e27f9c4ff436a0244bcb3d51373b5568, type: 3}
+  text5: {fileID: 5764351142323083851, guid: 1cb30c56c60caa247a3b13b5be907be7, type: 3}
   pickUpRange: 0.5
 --- !u!58 &-8980294750756388914
 CircleCollider2D:

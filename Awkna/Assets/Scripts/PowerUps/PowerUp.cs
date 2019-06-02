@@ -9,18 +9,13 @@
 /// </summary>
 public class PowerUp : MonoBehaviour
 {
-    public string powerUpName;
-    public string powerUpExplanation;
-    public string powerUpQuote;
+    public string powerUpText;
     [Tooltip("Tick true for power ups that are instant use, eg a health addition that has no delay before expiring")]
     public bool expiresImmediately;
     public GameObject specialEffect;
     public AudioClip soundEffect;
 
-    [SerializeField]
-    private string name;
-
-    private GameObject obj;
+    private GameObject Dialogue;
 
     public float pickUpRange;
 
@@ -50,7 +45,13 @@ public class PowerUp : MonoBehaviour
     {
         powerUpState = PowerUpState.InAttractMode;
 
-        obj = GameObject.FindWithTag("Dialogue");
+        Dialogue = GameObject.FindWithTag("Dialogue");
+
+        //text1 = GameObject.FindWithTag("text1");
+        //text2 = GameObject.FindWithTag("text2");
+        //text3 = GameObject.FindWithTag("text3");
+        //text4 = GameObject.FindWithTag("text4");
+        //text5 = GameObject.FindWithTag("text5");
     }
 
     protected virtual void Update()
@@ -101,7 +102,9 @@ public class PowerUp : MonoBehaviour
 
         FindObjectOfType<AudioManager>().Play("pickup");
 
-        obj.GetComponent<DialogueTrigger>().AppearDialogue(name);
+        Dialogue.GetComponent<DialogueTrigger>().AppearDialogue(powerUpText);
+
+        
 
     }
 

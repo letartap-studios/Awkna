@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HorizontalPatrollingEnemy : MonoBehaviour
 {
@@ -28,7 +26,7 @@ public class HorizontalPatrollingEnemy : MonoBehaviour
             if (movingRight == true)
             {
                 //Debug.Log("O sa pic");
-                transform.eulerAngles = new Vector3(0, -180, 0);                
+                transform.eulerAngles = new Vector3(0, -180, 0);
                 movingRight = false;
             }
             else
@@ -42,7 +40,7 @@ public class HorizontalPatrollingEnemy : MonoBehaviour
 
 
 
-        if (movingRight == true && wallInfoR.collider == true 
+        if (movingRight == true && wallInfoR.collider == true
             && wallInfoR.collider.gameObject.tag != "PatrollingEnemy"
             /*&& wallInfoR.collider.IsTouchingLayers(LayerMask.GetMask("Platform"))*/)
         {
@@ -59,7 +57,7 @@ public class HorizontalPatrollingEnemy : MonoBehaviour
 
 
         }
-        if (movingRight == false && wallInfoL.collider == true 
+        if (movingRight == false && wallInfoL.collider == true
             && wallInfoL.collider.gameObject.tag != "PatrollingEnemy"
            /* && wallInfoR.collider.IsTouchingLayers(LayerMask.GetMask("Platform"))*/)
         {

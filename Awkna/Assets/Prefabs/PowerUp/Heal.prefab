@@ -115,13 +115,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e48212f6aa9f44aaa92de180ca6032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpName: Heal
-  powerUpExplanation: Heal the player
-  powerUpQuote: 
+  powerUpText: +1 Heal
   expiresImmediately: 1
   specialEffect: {fileID: 0}
   soundEffect: {fileID: 0}
-  name: healed
+  text1: {fileID: 0}
+  text2: {fileID: 0}
+  text3: {fileID: 0}
+  text4: {fileID: 0}
+  text5: {fileID: 0}
   pickUpRange: 0.16
   healAmount: 1
 --- !u!61 &8353331450605852439
