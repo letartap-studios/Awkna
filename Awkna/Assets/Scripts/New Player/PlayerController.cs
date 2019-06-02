@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
         m_GravityDirection = GravityDirection.Down;     // Initialize the gravity direction with down.
         Physics2D.IgnoreLayerCollision(15, 20, true);   // Ignore the collition between the player and the collectables.
         Physics2D.IgnoreLayerCollision(20, 20, true);   // Ignore the collision between the collectables.
+        //Physics2D.IgnoreLayerCollision(15, 12, true);   // player, enemies
         //Physics2D.IgnoreLayerCollision(15, 19, true); // player crate
         //Physics2D.IgnoreLayerCollision(11, 15, true); // player ladders
     }
@@ -93,9 +94,6 @@ public class PlayerController : MonoBehaviour
     {
         // Get the horizontal axis input.
         horizontalMoveInput = Input.GetAxisRaw("Horizontal");
-
-        
-
 
         #region Flip the player facing by mouse cursor
         // using mousePosition and player's transform (on orthographic camera view)
@@ -264,8 +262,8 @@ public class PlayerController : MonoBehaviour
 
         if (isSwinging)
         {
-            Physics2D.IgnoreLayerCollision(15, 19, true);
-            Physics2D.IgnoreLayerCollision(15, 11, true);
+            Physics2D.IgnoreLayerCollision(15, 19, true); // player, crate
+            Physics2D.IgnoreLayerCollision(15, 11, true); // player, ladders
         }
         else
         {
@@ -276,7 +274,7 @@ public class PlayerController : MonoBehaviour
         #region Climbing the ladder
 
         // Send a raycast upwards to check if the player is on a ladder.
-        
+
         ladderHitInfo = Physics2D.Raycast(transform.position, Vector2.up, ladderDistance, whatIsLadder);
 
         if (isSwinging)
@@ -286,7 +284,10 @@ public class PlayerController : MonoBehaviour
 
         if (ladderHitInfo.collider != null)                     // Check whether the ray has collided with a ladder.
         {
-            isClimbing = true;
+            if (Input.GetAxisRaw("Vertical") > 0 || Input.GetAxisRaw("Vertical") < 0)
+            {
+                isClimbing = true;
+            }
         }
         else
         {
@@ -303,7 +304,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.gravityScale = initialGravity;
         }
-        
+
         #endregion
 
         #region Switch Gravity
@@ -368,8 +369,6 @@ public class PlayerController : MonoBehaviour
         #endregion
 
         #endregion
-
-        
     }
 
     #region Functions

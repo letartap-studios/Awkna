@@ -112,7 +112,7 @@ public class PlayerStats : MonoBehaviour
     }
     /// <summary>
     /// The player takes damage by an amount,
-    /// the camera shakes and play a TakingDamage animation.
+    /// play a TakingDamage animation , the camera shakes, and the rope gets cut.
     /// </summary>
     /// <param name="dmg">The amount of damage the player takes.</param>
     public void TakeDamage(float dmg)
@@ -124,6 +124,8 @@ public class PlayerStats : MonoBehaviour
         PlayerController.Instance.Animator.SetTrigger("getDamaged");
 
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShakeController>().Shake();
+
+        GameObject.FindWithTag("Player").GetComponent<RopeSystem>().ResetRope();
 
         ClampHealth();
     }
