@@ -1,59 +1,50 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Oxygen : MonoBehaviour
 {
-
+    public float maxOxygenAmmount;
     private float timeLeft;
-    private Image barImage;
-    public float damagePerHit;
     public float timeBetweenHits;
-    public float OxygenTime = 10f;
-    bool hasOxygen;
+    public float damagePerHit;
 
-    // Start is called before the first frame update
-    void Awake()
+    [SerializeField]
+    private float oxygenAmmount;
+    public float speedOfOxygenUsage;
+    private Image barImage;
+
+    private void Awake()
     {
         barImage = transform.Find("Bar").GetComponent<Image>();
-        timeLeft = OxygenTime;
-        hasOxygen = true;
-
+    }
+    private void Start()
+    {
+        timeLeft = 0;
+        oxygenAmmount = maxOxygenAmmount;
     }
 
-
-    void Update()
+    private void Update()
     {
-        if (timeLeft > 0 && hasOxygen==true)
-        {
-            timeLeft -= Time.deltaTime;
-            barImage.fillAmount = timeLeft / OxygenTime;
-        }
 
+        if (oxygenAmmount <= 0)
+        {
+            barImage.color = Color.red;
+            if (timeLeft <= 0)
+            {
+                PlayerStats.Instance.TakeDamage(damagePerHit);
+                timeLeft = timeBetweenHits;
+            }
+
+            else
+            {
+                timeLeft -= Time.deltaTime;
+                barImage.fillAmount = timeLeft / timeBetweenHits;
+            }
+        }
         else
         {
-            hasOxygen = false;
+            oxygenAmmount -= Time.deltaTime * speedOfOxygenUsage;
+            barImage.fillAmount = oxygenAmmount / maxOxygenAmmount;
         }
-
-        if (!hasOxygen)
-        {   
-            StartCoroutine(dealDamageOverTime(this.timeBetweenHits));               //linia de cod gay.
-        }
-    }
-
-
-
-    public IEnumerator dealDamageOverTime(float timeBetweenHits)
-    {
-
-
-        Debug.Log("damaged player");
-
-
-        PlayerStats.Instance.TakeDamage(damagePerHit);
-
-        yield return new WaitForSeconds(timeBetweenHits);
-
-
     }
 }
