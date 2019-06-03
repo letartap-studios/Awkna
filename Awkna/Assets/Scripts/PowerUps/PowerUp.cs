@@ -15,7 +15,7 @@ public class PowerUp : MonoBehaviour
     public GameObject specialEffect;
     public AudioClip soundEffect;
 
-    private GameObject Dialogue;
+    private GameObject dialogue;
 
     public float pickUpRange;
 
@@ -45,7 +45,7 @@ public class PowerUp : MonoBehaviour
     {
         powerUpState = PowerUpState.InAttractMode;
 
-        Dialogue = GameObject.FindWithTag("Dialogue");
+        dialogue = GameObject.FindWithTag("Dialogue");
 
         //text1 = GameObject.FindWithTag("text1");
         //text2 = GameObject.FindWithTag("text2");
@@ -102,7 +102,7 @@ public class PowerUp : MonoBehaviour
 
         FindObjectOfType<AudioManager>().Play("pickup");
 
-        Dialogue.GetComponent<DialogueTrigger>().AppearDialogue(powerUpText);
+        dialogue.GetComponent<DialogueTrigger>().CollectDialogue(powerUpText);
 
         
 

@@ -1,64 +1,66 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    public GameObject text1;
-    public GameObject text2;
-    public GameObject text3;
-    public GameObject text4;
-    public GameObject text5;
+    public GameObject collectText1;
+    public GameObject collectText2;
+    public GameObject collectText3;
+    public GameObject collectText4;
+    public GameObject collectText5;
+    public GameObject oxygenLevel;
 
-    public void AppearDialogue(string String)
+    public void CollectDialogue(string message)
     {
-        if (text1.activeSelf == true)
+        if (collectText1.activeSelf == true)
         {
-            if (text2.activeSelf == true)
+            if (collectText2.activeSelf == true)
             {
-                if (text3.activeSelf == true)
+                if (collectText3.activeSelf == true)
                 {
-                    if (text4.activeSelf == true)
+                    if (collectText4.activeSelf == true)
                     {
-                        if (text5.activeSelf == true)
+                        if (collectText5.activeSelf == true)
                         {
                             return;
                         }
                         else
                         {
-                            text5.GetComponent<CollectText>().collectText.text = String;
-                            text5.SetActive(true);
+                            collectText5.GetComponent<CollectText>().collectText.text = message;
+                            collectText5.SetActive(true);
                         }
                     }
                     else
                     {
-                        text4.GetComponent<CollectText>().collectText.text = String;
-                        text4.SetActive(true);
+                        collectText4.GetComponent<CollectText>().collectText.text = message;
+                        collectText4.SetActive(true);
                     }
                 }
                 else
                 {
-                    text3.GetComponent<CollectText>().collectText.text = String;
-                    text3.SetActive(true);
+                    collectText3.GetComponent<CollectText>().collectText.text = message;
+                    collectText3.SetActive(true);
                 }
             }
             else
             {
-                text2.GetComponent<CollectText>().collectText.text = String;
-                text2.SetActive(true);
+                collectText2.GetComponent<CollectText>().collectText.text = message;
+                collectText2.SetActive(true);
             }
         }
         else
         {
-            text1.GetComponent<CollectText>().collectText.text = String;
-            text1.SetActive(true);
+            collectText1.GetComponent<CollectText>().collectText.text = message;
+            collectText1.SetActive(true);
         }
-
     }
 
-    //public void AppearDialogue(string String)
-    //{
-    //    text1.SetActive(true);
-    //    text1.GetComponent<CollectText>().collectText.text = String;
-
-    //}
-
+    public void OxygenLevelDialogue(string message)
+    {
+        oxygenLevel.GetComponent<Text>().text = message;
+        if (!oxygenLevel.activeSelf)
+        {
+            oxygenLevel.SetActive(true);
+        }
+    }
 }
