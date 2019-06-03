@@ -1988,6 +1988,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 39.700012
       objectReference: {fileID: 0}
+    - target: {fileID: 3177229397491530849, guid: 560e7cf02fd40784cbc15a83daf36f5e,
+        type: 3}
+      propertyPath: maxOxygenAmmount
+      value: Infinity
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 560e7cf02fd40784cbc15a83daf36f5e, type: 3}
 --- !u!1001 &1433971136
@@ -2066,11 +2071,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 315591677724984560, guid: 28b27b8e0a23230488cde8dfb38956a5,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerStats
-      objectReference: {fileID: 0}
     - target: {fileID: 315591677724984562, guid: 28b27b8e0a23230488cde8dfb38956a5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2125,6 +2125,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 315591677724984560, guid: 28b27b8e0a23230488cde8dfb38956a5,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerStats
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28b27b8e0a23230488cde8dfb38956a5, type: 3}
@@ -2540,18 +2545,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd6f90f496545dd43a649be78f320dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Room: {fileID: 6070247645271319342, guid: 2688b40e6181f654cbfb00b4c10bbe64, type: 3}
+  Room: {fileID: 7458639919616296616, guid: b84828da7fa988f4da595086b9d3765e, type: 3}
   RoomLR: {fileID: 623277089578109229, guid: 06e4868dc7df805458442642770d6c40, type: 3}
-  RoomLRB: {fileID: 8751427500136251604, guid: 3eb690c1765b94946b9911a9306cd994, type: 3}
-  RoomLRT: {fileID: 6070247645271319342, guid: 72c19e5add03a234cb115d7ef159d4ab, type: 3}
+  RoomLRB: {fileID: 7911397281932775648, guid: 8a3ecba5321b81c46879ea2f5ab3c447, type: 3}
+  RoomLRT: {fileID: 6070247645271319342, guid: 0ebe1a95d16cf3140803747cef1aaa01, type: 3}
   RoomLRTB: {fileID: 3093487207388880732, guid: bc3a3c73effd9a347959064d8341a288,
     type: 3}
   RoomTB: {fileID: 6770500174705091894, guid: 910572d60f35a014e9d2e6ee482e4e94, type: 3}
   ExitRoom: {fileID: 8751427500136251604, guid: 3181f410f361af0479df36a9583c0d85,
     type: 3}
-  EntranceRoom: {fileID: 6070247645271319342, guid: 8d791e28448f41843b03023b83d186bd,
+  EntranceRoom: {fileID: 4783192712047829636, guid: cde557e500dd303459e26029e98b01ad,
     type: 3}
-  LeverRoom: {fileID: 3093487207388880732, guid: 32cd2460de6519442bc26bfdcc445568,
+  LeverRoom: {fileID: 5048462934537199778, guid: fc6600ace1493de418735b3dabe967a7,
     type: 3}
   TreasureRoom: {fileID: 3093487207388880732, guid: 87f6818749d35964ba44c8ef8d86c8c2,
     type: 3}

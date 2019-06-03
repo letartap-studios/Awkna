@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4783192712047829636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4783192712047829637}
+  - component: {fileID: 4783192712047829638}
+  m_Layer: 10
+  m_Name: ROOM ENTRANCE SPAWNER
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4783192712047829637
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4783192712047829636}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4783192712047829638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4783192712047829636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251a51e7720bf36449175ecafe28879b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 6070247645271319342, guid: 8d791e28448f41843b03023b83d186bd, type: 3}
+  - {fileID: 6070247645271319342, guid: 781bb25a668ae5b47b66a418c12f3b47, type: 3}
+  - {fileID: 6070247645271319342, guid: 348a68965aa0bf7488c1279c5ec65643, type: 3}
+  - {fileID: 6070247645271319342, guid: 0a88bbaff9533f446a3afa404d770e24, type: 3}
+  - {fileID: 6070247645271319342, guid: 2321c43983768ef42a83c72b3c4cfba8, type: 3}
+  - {fileID: 6070247645271319342, guid: baae72f7ee9ac0f4389bb820ea292afe, type: 3}
+  file: 

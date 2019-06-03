@@ -126,7 +126,7 @@ public class NewLevelGenerator : MonoBehaviour
         movesTillMoveUp--;
         if (movesTillMoveUp <= 0)
         {
-            movesTillMoveUp = Random.Range(0, maxStrafe);
+            movesTillMoveUp = Random.Range(1, maxStrafe);
             direction = directions.up;
         }
     }
@@ -202,7 +202,7 @@ public class NewLevelGenerator : MonoBehaviour
             }
         }
 
-        movesTillMoveUp = Random.Range(0, maxStrafe);
+        movesTillMoveUp = Random.Range(1, maxStrafe);
         cursorPosX = Random.Range(0, mapsizeX);
         int mapExit = cursorPosX;
         //Debug.Log(cursorPosX);
