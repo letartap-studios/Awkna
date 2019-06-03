@@ -60,4 +60,9 @@ public class Oxygen : MonoBehaviour
             }
         }
     }
+
+    public void AddOxygen(float value)
+    {
+        oxygenAmmount += value;
+    }
 }

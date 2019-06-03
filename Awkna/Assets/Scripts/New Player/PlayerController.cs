@@ -210,7 +210,7 @@ public class PlayerController : MonoBehaviour
         #endregion
 
         #region Swinging
-        if (isSwinging)
+        if (isSwinging && Mathf.Abs(horizontalMoveInput) > 0f)
         {
             Physics2D.IgnoreLayerCollision(15, 11, true); // Ignore the collision with the ladders, while swinging.
 
