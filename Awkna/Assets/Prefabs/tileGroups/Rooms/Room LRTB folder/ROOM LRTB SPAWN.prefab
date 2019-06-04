@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8096035246688535225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1951219886927886078}
+  - component: {fileID: -2985367592763675339}
+  m_Layer: 0
+  m_Name: ROOM LRTB SPAWN
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1951219886927886078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8096035246688535225}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2985367592763675339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8096035246688535225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251a51e7720bf36449175ecafe28879b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 3093487207388880732, guid: bc3a3c73effd9a347959064d8341a288, type: 3}
+  - {fileID: 3093487207388880732, guid: 3c50f0ad5dc2325468edd1c2f9b0caf7, type: 3}
+  - {fileID: 3093487207388880732, guid: 42d31156bc35e2a47959304501b8d439, type: 3}
+  - {fileID: 3093487207388880732, guid: 7b92c8d3478910e47bc5160d7836cc97, type: 3}
+  - {fileID: 3093487207388880732, guid: c20142f46a7cc2946a8fbd6f53c3823c, type: 3}
+  - {fileID: 3093487207388880732, guid: 898bd9d72a1758b47883bd5ed049114e, type: 3}
+  file: 
