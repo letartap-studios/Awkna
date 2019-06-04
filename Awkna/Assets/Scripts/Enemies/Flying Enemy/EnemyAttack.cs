@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using EZCameraShake;
 
 public class EnemyAttack : MonoBehaviour
 {
@@ -7,26 +6,46 @@ public class EnemyAttack : MonoBehaviour
     public float knockDuration = 0.5f;
     public float knockbackPwr = 5;
     public float dealtDamage = 1;
-    private Rigidbody2D rb;
+    public Vector2 offset;
+    public float radius;
+    private LayerMask playerMask;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        rb = GetComponent<Rigidbody2D>(); // bitch wtf 
+        playerMask = LayerMask.GetMask("Player");
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void Update()
     {
-        if (other.CompareTag("Player"))
+        bool attackTrigger = Physics2D.OverlapCircle((Vector2)transform.position + offset, radius, playerMask);
+
+        if (attackTrigger)
         {
             PlayerStats.Instance.TakeDamage(dealtDamage);
 
             PlayerController.Instance.Knockback(knockDuration, knockbackPwr, player.transform.position, transform.position.x);
 
-            CameraShaker.Instance.ShakeOnce(1f, 2f, .1f, .3f);          // When the player is attacked shake the camera.
-
             StartCoroutine(player.GetInvulnerable());
         }
+    }
+
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        PlayerStats.Instance.TakeDamage(dealtDamage);
+
+    //        PlayerController.Instance.Knockback(knockDuration, knockbackPwr, player.transform.position, transform.position.x);
+
+    //        StartCoroutine(player.GetInvulnerable());
+    //    }
+    //}
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere((Vector2)transform.position + offset, radius);
     }
 
 }

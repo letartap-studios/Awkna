@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
         m_GravityDirection = GravityDirection.Down;     // Initialize the gravity direction with down.
         Physics2D.IgnoreLayerCollision(15, 20, true);   // Ignore the collition between the player and the collectables.
         Physics2D.IgnoreLayerCollision(20, 20, true);   // Ignore the collision between the collectables.
-        //Physics2D.IgnoreLayerCollision(15, 12, true);   // player, enemies
+        Physics2D.IgnoreLayerCollision(15, 12, true);   // player, enemies
         //Physics2D.IgnoreLayerCollision(15, 19, true); // player crate
         //Physics2D.IgnoreLayerCollision(11, 15, true); // player ladders
     }

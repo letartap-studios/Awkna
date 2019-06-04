@@ -16,6 +16,7 @@ namespace Enemy
         public Vector2 frontGroundOffset;
         public Vector2 edgeOffset;
         public float radius;
+        private EnemyAttack attack;
 
         public Vector3 moveVector { get { return m_MoveVector; } }
 
@@ -26,6 +27,7 @@ namespace Enemy
 
             m_SpriteForward = spriteFaceLeft ? Vector2.left : Vector2.right;
             if (m_SpriteRenderer.flipX) m_SpriteForward = -m_SpriteForward;
+            attack = GetComponent<EnemyAttack>();
         }
 
         void FixedUpdate()
@@ -56,7 +58,7 @@ namespace Enemy
 
             frontGroundOffset.x = -frontGroundOffset.x;
             edgeOffset.x = -edgeOffset.x;
-
+            attack.offset.x = -attack.offset.x;
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
@@ -64,7 +66,7 @@ namespace Enemy
 
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.red;
+            Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere((Vector2)transform.position + frontGroundOffset, radius);
 
             Gizmos.color = Color.blue;
