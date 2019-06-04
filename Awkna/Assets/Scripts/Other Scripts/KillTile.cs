@@ -6,7 +6,6 @@ public class KillTile : MonoBehaviour
 {
     public float damage;
     private Collider2D collider2D;
-    private PlayerController player;
 
     public Vector2 offset;
     public Vector2 size;
@@ -16,30 +15,8 @@ public class KillTile : MonoBehaviour
 
     private LayerMask playerMask;
 
-    //private void Start()
-    //{
-    //    collider2D = GetComponent<Collider2D>();
-    //    player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-    //    playerMask = LayerMask.GetMask("Player");
-    //}
-
-    //private void Update()
-    //{
-    //    bool other = collider2D.IsTouchingLayers(playerMask);
-    //    if (!other)
-    //    {
-    //        return;
-    //    }
-    //    else
-    //    {
-    //        //player.Knockback(knockDuration, knockbackPwr, player.transform.position, transform.position.x);
-    //        PlayerStats.Instance.TakeDamage(damage);
-    //    }
-    //}
-
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         playerMask = LayerMask.GetMask("Player");
     }
 
