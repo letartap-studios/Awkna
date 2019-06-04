@@ -11,12 +11,14 @@ namespace Enemy
         public bool spriteFaceLeft = false;
         protected SpriteRenderer m_SpriteRenderer;
 
-        private bool frontGroundCheck;
-        private bool edgeCheck;
+        private Collider2D frontGroundCheck;
+        private Collider2D edgeCheck;
         public Vector2 frontGroundOffset;
         public Vector2 edgeOffset;
         public float radius;
         private EnemyAttack attack;
+        public EnemyHealth health;
+        private Animator anim;
 
         public Vector3 moveVector { get { return m_MoveVector; } }
 
@@ -24,10 +26,11 @@ namespace Enemy
         {
             m_CharacterController2D = GetComponent<CharacterController2D>();
             m_SpriteRenderer = GetComponent<SpriteRenderer>();
+            anim = GetComponent<Animator>();
+            attack = GetComponent<EnemyAttack>();
 
             m_SpriteForward = spriteFaceLeft ? Vector2.left : Vector2.right;
-            if (m_SpriteRenderer.flipX) m_SpriteForward = -m_SpriteForward;
-            attack = GetComponent<EnemyAttack>();
+            if (m_SpriteRenderer.flipX) m_SpriteForward = -m_SpriteForward;            
         }
 
         void FixedUpdate()
@@ -40,11 +43,26 @@ namespace Enemy
                 Flip();
             }
 
+            //if (frontGroundCheck.CompareTag("LaserHolder"))
+            //{
+            //    //idle animation
+            //    anim.SetBool("idle", true);
+            //}
+            //else
+            //{
+            //    //end idle animation
+            //    anim.SetBool("idle", false);
+            //}
+
             m_MoveVector.y = Mathf.Max(m_MoveVector.y - gravity * Time.deltaTime, -gravity);
 
-            m_CharacterController2D.Move(m_MoveVector * Time.deltaTime);
+            if (!attack.attackTrigger || !(health.countdownTimeToInvulnerability < health.invulnerabilityTime)) 
+            {
+                
+                SetHorizontalSpeed(movementSpeed);
+            }
 
-            SetHorizontalSpeed(movementSpeed);
+            m_CharacterController2D.Move(m_MoveVector * Time.deltaTime);
         }
 
         public void SetHorizontalSpeed(float horizontalSpeed)

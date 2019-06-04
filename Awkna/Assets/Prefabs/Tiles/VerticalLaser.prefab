@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 8397427180310695278}
   - component: {fileID: 8006010201039172587}
   - component: {fileID: 908565290595674577}
-  m_Layer: 16
+  m_Layer: 26
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4859,9 +4859,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2159585971947669454}
-  m_Layer: 16
+  m_Layer: 26
   m_Name: LaserHolder
-  m_TagString: Untagged
+  m_TagString: LaserHolder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4893,7 +4893,7 @@ GameObject:
   - component: {fileID: 3203406479131389239}
   - component: {fileID: 6722939405074711902}
   - component: {fileID: 4498124213436643173}
-  m_Layer: 16
+  m_Layer: 26
   m_Name: damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4926,11 +4926,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e107acab6c37ca42b82ebec3ed1a3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0.05
+  damage: 1
   offset: {x: 0, y: 0}
   size: {x: 0.2, y: 0.91}
-  knockDuration: 0.6
-  knockbackPwr: 1.5
+  playerController: {fileID: 0}
 --- !u!61 &4498124213436643173
 BoxCollider2D:
   m_ObjectHideFlags: 0

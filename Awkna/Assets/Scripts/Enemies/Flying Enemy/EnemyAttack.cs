@@ -9,38 +9,24 @@ public class EnemyAttack : MonoBehaviour
     public Vector2 offset;
     public float radius;
     private LayerMask playerMask;
+    [HideInInspector]
+    public bool attackTrigger;
+
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         playerMask = LayerMask.GetMask("Player");
     }
 
     private void Update()
     {
-        bool attackTrigger = Physics2D.OverlapCircle((Vector2)transform.position + offset, radius, playerMask);
+        attackTrigger = Physics2D.OverlapCircle((Vector2)transform.position + offset, radius, playerMask);
 
         if (attackTrigger)
         {
-            PlayerStats.Instance.TakeDamage(dealtDamage);
-
-            PlayerController.Instance.Knockback(knockDuration, knockbackPwr, player.transform.position, transform.position.x);
-
-            StartCoroutine(player.GetInvulnerable());
+            PlayerStats.Instance.TakeDamage(dealtDamage, transform.position);
         }
     }
-
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.CompareTag("Player"))
-    //    {
-    //        PlayerStats.Instance.TakeDamage(dealtDamage);
-
-    //        PlayerController.Instance.Knockback(knockDuration, knockbackPwr, player.transform.position, transform.position.x);
-
-    //        StartCoroutine(player.GetInvulnerable());
-    //    }
-    //}
 
     private void OnDrawGizmosSelected()
     {

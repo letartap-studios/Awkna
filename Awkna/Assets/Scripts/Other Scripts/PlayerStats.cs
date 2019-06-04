@@ -57,7 +57,13 @@ public class PlayerStats : MonoBehaviour
     private int gemNumber = 0;
     [SerializeField]
     private float ropeMaxCastDistance = 5f;
-    
+    private float countdownTimeToInvulnerability = 0;
+    [SerializeField]
+    private float invulnerabilityTime;
+
+    private float knockDuration;
+    private float knockbackPwr;
+
     /// <summary>
     /// The current health of the player.
     /// </summary>
@@ -115,6 +121,31 @@ public class PlayerStats : MonoBehaviour
     /// play a TakingDamage animation , the camera shakes, and the rope gets cut.
     /// </summary>
     /// <param name="dmg">The amount of damage the player takes.</param>
+    public void TakeDamage(float dmg, Vector2 pos)
+    {
+        if (countdownTimeToInvulnerability <= 0)
+        {
+            health -= dmg;
+
+            FindObjectOfType<AudioManager>().Play("damagetaken");//play sound
+
+            PlayerController.Instance.Animator.SetTrigger("getDamaged");
+
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShakeController>().Shake();
+
+            GameObject.FindWithTag("Player").GetComponent<RopeSystem>().ResetRope();
+                       
+            PlayerController.Instance.Knockback(knockDuration, knockbackPwr, PlayerController.Instance.transform.position, pos.x);
+
+            countdownTimeToInvulnerability = invulnerabilityTime;
+
+            ClampHealth();
+        }
+        else
+        {
+            countdownTimeToInvulnerability -= Time.deltaTime;
+        }
+    }
     public void TakeDamage(float dmg)
     {
         health -= dmg;
@@ -125,7 +156,7 @@ public class PlayerStats : MonoBehaviour
 
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShakeController>().Shake();
 
-        GameObject.FindWithTag("Player").GetComponent<RopeSystem>().ResetRope();
+        countdownTimeToInvulnerability = invulnerabilityTime;
 
         ClampHealth();
     }

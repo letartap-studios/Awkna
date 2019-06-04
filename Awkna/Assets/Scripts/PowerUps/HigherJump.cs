@@ -21,7 +21,6 @@ public class HigherJump : PowerUp
         {
             if (Input.GetButtonDown("Special ability"))
             {
-                StartCoroutine(player.GetInvulnerable(time));
                 
                 PowerUpHasExpired ();
             }

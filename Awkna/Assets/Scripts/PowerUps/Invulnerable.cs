@@ -22,7 +22,7 @@ public class Invulnerable : PowerUp
         {
             if (Input.GetButtonDown("Special ability"))
             {
-                StartCoroutine(player.GetInvulnerable(time));
+                //StartCoroutine(player.GetInvulnerableForSeconds(time));
                 
                 PowerUpHasExpired ();
             }

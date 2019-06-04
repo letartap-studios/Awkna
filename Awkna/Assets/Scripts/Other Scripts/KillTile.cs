@@ -9,15 +9,14 @@ public class KillTile : MonoBehaviour
 
     public Vector2 offset;
     public Vector2 size;
-
-    public float knockDuration = 0.5f;
-    public float knockbackPwr = 2f;
+    public PlayerController playerController;
 
     private LayerMask playerMask;
 
     private void Start()
     {
         playerMask = LayerMask.GetMask("Player");
+        playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
 
     private void Update()
@@ -30,8 +29,8 @@ public class KillTile : MonoBehaviour
         }
         else
         {
-            //player.Knockback(knockDuration, knockbackPwr, player.transform.position, transform.position.x);
-            PlayerStats.Instance.TakeDamage(damage);
+            PlayerStats.Instance.TakeDamage(damage, transform.position);
+            //StartCoroutine(playerController.GetInvulnerableForSeconds(2f));
         }
     }
 

@@ -35,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     if (enemiesToDamage[i].CompareTag("Enemy"))
                     {
-                        enemiesToDamage[i].GetComponent<EnemyHealth>().TakeDamage(damage);
+                        enemiesToDamage[i].transform.GetChild(0).GetComponent<EnemyHealth>().TakeDamage(damage);
                     }
                     if (enemiesToDamage[i].CompareTag("PatrollingEnemy"))
                     {

@@ -8,7 +8,6 @@ public class Oxygen : MonoBehaviour
     public float timeBetweenHits;
     public float damagePerHit;
 
-    [SerializeField]
     private float oxygenAmmount;
     public float speedOfOxygenUsage;
     private Image barImage;

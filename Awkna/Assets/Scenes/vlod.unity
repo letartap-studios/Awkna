@@ -924,29 +924,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1513009200}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1013515462 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7682216457582082363, guid: 560e7cf02fd40784cbc15a83daf36f5e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1360869566}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1013515465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013515462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1587e75e7ed8f8e4cbc6a9e6a039f765, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxOxygenAmmount: 0
-  timeBetweenHits: 0
-  damagePerHit: 0
-  oxygenAmmount: 0
-  speedOfOxygenUsage: 0
 --- !u!4 &1026057007 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4420026457830191306, guid: 9f6aa8d268d66f9478762d0ab188ce53,
@@ -1805,12 +1782,12 @@ PrefabInstance:
     - target: {fileID: 175807318731738446, guid: 560e7cf02fd40784cbc15a83daf36f5e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 13
+      value: 13.000122
       objectReference: {fileID: 0}
     - target: {fileID: 175807318731738446, guid: 560e7cf02fd40784cbc15a83daf36f5e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 72.3
+      value: 72.30002
       objectReference: {fileID: 0}
     - target: {fileID: 8749916820996661064, guid: 560e7cf02fd40784cbc15a83daf36f5e,
         type: 3}
@@ -1941,7 +1918,7 @@ PrefabInstance:
     - target: {fileID: 802979968610511114, guid: 560e7cf02fd40784cbc15a83daf36f5e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 12.700012
+      value: 12.700195
       objectReference: {fileID: 0}
     - target: {fileID: 802979968610511114, guid: 560e7cf02fd40784cbc15a83daf36f5e,
         type: 3}
@@ -2989,6 +2966,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7979948849784545216, guid: 26a6ed2bde0a9214e93066766e3c7be8,
         type: 3}
       propertyPath: m_Name

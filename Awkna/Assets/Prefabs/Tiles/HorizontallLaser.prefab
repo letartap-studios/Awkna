@@ -4983,11 +4983,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e107acab6c37ca42b82ebec3ed1a3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0.2
+  damage: 1
   offset: {x: -0.5, y: 0.14}
   size: {x: 0.94, y: 0.2}
-  knockDuration: 0.5
-  knockbackPwr: 2
+  playerController: {fileID: 0}
 --- !u!61 &5788405329986973560
 BoxCollider2D:
   m_ObjectHideFlags: 0
