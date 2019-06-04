@@ -28,7 +28,7 @@ public class NewLevelGenerator : MonoBehaviour
 
     int cursorPosX = 0;
     int cursorPosY = 0;
-    int movesTillMoveUp = 0;
+    int movesTillMoveUp = 1;
     directions direction;
     directions lastDirection;
     roomsTypes[,] map;
@@ -126,7 +126,7 @@ public class NewLevelGenerator : MonoBehaviour
         movesTillMoveUp--;
         if (movesTillMoveUp <= 0)
         {
-            movesTillMoveUp = Random.Range(1, maxStrafe);
+            movesTillMoveUp = Random.Range(2, maxStrafe);
             direction = directions.up;
         }
     }
@@ -202,7 +202,7 @@ public class NewLevelGenerator : MonoBehaviour
             }
         }
 
-        movesTillMoveUp = Random.Range(1, maxStrafe);
+        movesTillMoveUp = Random.Range(2, maxStrafe);
         cursorPosX = Random.Range(0, mapsizeX);
         int mapExit = cursorPosX;
         //Debug.Log(cursorPosX);
@@ -225,7 +225,7 @@ public class NewLevelGenerator : MonoBehaviour
         while (true)
         {
             int x = Random.Range(0, mapsizeX);
-            int y = Random.Range(0, mapsizeY);
+            int y = Random.Range(1, mapsizeY);
 
             if (map[x, y] == roomsTypes.none)
             {

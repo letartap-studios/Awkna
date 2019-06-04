@@ -2071,6 +2071,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 315591677724984560, guid: 28b27b8e0a23230488cde8dfb38956a5,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerStats
+      objectReference: {fileID: 0}
     - target: {fileID: 315591677724984562, guid: 28b27b8e0a23230488cde8dfb38956a5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2125,11 +2130,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 315591677724984560, guid: 28b27b8e0a23230488cde8dfb38956a5,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerStats
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28b27b8e0a23230488cde8dfb38956a5, type: 3}
@@ -2548,11 +2548,11 @@ MonoBehaviour:
   Room: {fileID: 7458639919616296616, guid: b84828da7fa988f4da595086b9d3765e, type: 3}
   RoomLR: {fileID: 623277089578109229, guid: 06e4868dc7df805458442642770d6c40, type: 3}
   RoomLRB: {fileID: 7911397281932775648, guid: 8a3ecba5321b81c46879ea2f5ab3c447, type: 3}
-  RoomLRT: {fileID: 6070247645271319342, guid: 0ebe1a95d16cf3140803747cef1aaa01, type: 3}
-  RoomLRTB: {fileID: 3093487207388880732, guid: bc3a3c73effd9a347959064d8341a288,
+  RoomLRT: {fileID: 5456698595015218701, guid: f41fae1f1e56bf645ba4fb788833a93d, type: 3}
+  RoomLRTB: {fileID: 8096035246688535225, guid: 3a49c764799e2fb49b2f245b823454a2,
     type: 3}
   RoomTB: {fileID: 6770500174705091894, guid: 910572d60f35a014e9d2e6ee482e4e94, type: 3}
-  ExitRoom: {fileID: 8751427500136251604, guid: 3181f410f361af0479df36a9583c0d85,
+  ExitRoom: {fileID: 9088914828100930047, guid: 91b94e1e2ff5b23469f3c87f13935146,
     type: 3}
   EntranceRoom: {fileID: 4783192712047829636, guid: cde557e500dd303459e26029e98b01ad,
     type: 3}
