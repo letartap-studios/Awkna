@@ -7,7 +7,8 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="AudioManager.cs" t="Include" />
+        <e p="AlienTalkScript.cs" t="Include" />
+        <e p="PlayerSounds.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="AstarPathfindingProject" t="Include">
             <e p="AstarPathfindingProject.asmdef" t="Include" />
@@ -214,13 +215,35 @@
               <e p="UnityReferenceHelper.cs" t="Include" />
             </e>
           </e>
+          <e p="Dialogue" t="Include">
+            <e p="Dialogue.cs" t="Include" />
+            <e p="DialogueManager.cs" t="Include" />
+            <e p="DialogueTrigger.cs" t="Include" />
+            <e p="UIAppear.cs" t="Include" />
+          </e>
           <e p="Editor" t="Include">
             <e p="CameraFollowEditor.cs" t="Include" />
           </e>
           <e p="Enemies" t="Include">
-            <e p="EnemyAttack.cs" t="Include" />
-            <e p="EnemyHealth.cs" t="Include" />
-            <e p="FlyingEnemyRange.cs" t="Include" />
+            <e p="Flying Enemy" t="Include">
+              <e p="EnemyAttack.cs" t="Include" />
+              <e p="EnemyHealth.cs" t="Include" />
+              <e p="FlyingEnemyRange.cs" t="Include" />
+            </e>
+            <e p="HorizontalPatrolling" t="Include">
+              <e p="HorizontalPatrollingEnemy.cs" t="Include" />
+              <e p="PatrolEnemyHealth.cs" t="Include" />
+            </e>
+            <e p="New Patrolling Enemy" t="Include">
+              <e p="CharacterController2D.cs" t="Include" />
+              <e p="EnemyBehaviour.cs" t="Include" />
+              <e p="PatrollingEnemyMovement.cs" t="Include" />
+              <e p="PhysicsHelper.cs" t="Include" />
+            </e>
+            <e p="VerticalPatrolling" t="Include">
+              <e p="VerticalPatrollingEnemy.cs" t="Include" />
+              <e p="VerticalPatrollingEnemyHealth.cs" t="Include" />
+            </e>
           </e>
           <e p="EZ-Camera-Shake-Unity-master" t="Include">
             <e p="Assets" t="Include">
@@ -247,6 +270,7 @@
               <e p="ProjectVersion.txt" t="Include" />
             </e>
           </e>
+          <e p="GameManager.cs" t="Include" />
           <e p="MapGen Scripts" t="Include">
             <e p="LevelGeneration.cs" t="Include" />
             <e p="NewLevelGenerator.cs" t="Include" />
@@ -254,45 +278,61 @@
             <e p="RoomType.cs" t="Include" />
             <e p="SpawnObject.cs" t="Include" />
             <e p="SpawnRooms.cs" t="Include" />
+            <e p="SpriteSelector.cs" t="Include" />
           </e>
           <e p="New Player" t="Include">
             <e p="CameraFollow.cs" t="Include" />
+            <e p="Circle.cs" t="Include" />
+            <e p="DontDestroyPlayerStats.cs" t="Include" />
             <e p="PlayerAttack.cs" t="Include" />
             <e p="PlayerController.cs" t="Include" />
             <e p="RopeSystem.cs" t="Include" />
             <e p="StartPlayer.cs" t="Include" />
           </e>
           <e p="Other Scripts" t="Include">
+            <e p="AudioManager.cs" t="Include" />
+            <e p="Blink.cs" t="Include" />
+            <e p="CameraShakeController.cs" t="Include" />
             <e p="CrateHealth.cs" t="Include" />
             <e p="DestroyObject.cs" t="Include" />
+            <e p="DoorScript.cs" t="Include" />
             <e p="ExitDoor.cs" t="Include" />
             <e p="ExplosiveBox.cs" t="Include" />
             <e p="GemTileHealth.cs" t="Include" />
             <e p="KillTile.cs" t="Include" />
+            <e p="LeverScript.cs" t="Include" />
             <e p="Platform.cs" t="Include" />
             <e p="PlayerStats.cs" t="Include" />
             <e p="Projectile.cs" t="Include" />
+            <e p="ShopItem.cs" t="Include" />
             <e p="SlowTile.cs" t="Include" />
             <e p="SpawnBomb.cs" t="Include" />
           </e>
           <e p="PowerUps" t="Include">
             <e p="AddBomb.cs" t="Include" />
+            <e p="AddBombPack.cs" t="Include" />
             <e p="AddHeart.cs" t="Include" />
             <e p="AddRope.cs" t="Include" />
             <e p="Gem.cs" t="Include" />
+            <e p="GrapplingHookUsages.cs" t="Include" />
             <e p="HealPlayer.cs" t="Include" />
             <e p="HigherJump.cs" t="Include" />
             <e p="Invulnerable.cs" t="Include" />
+            <e p="OxygenTank.cs" t="Include" />
             <e p="PowerUp.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
             <e p="BombsDisplay.cs" t="Include" />
+            <e p="CollectText.cs" t="Include" />
+            <e p="DontDestroyUI.cs" t="Include" />
             <e p="EnergySlider.cs" t="Include" />
             <e p="GemNumber.cs" t="Include" />
             <e p="HealthBarController.cs" t="Include" />
             <e p="HealthBarHUDTester.cs" t="Include" />
             <e p="MainMenu.cs" t="Include" />
             <e p="OptionsMenu.cs" t="Include" />
+            <e p="Oxygen.cs" t="Include" />
+            <e p="OxygenText.cs" t="Include" />
             <e p="PauseMenu.cs" t="Include" />
             <e p="RadialGrapplingHookBar.cs" t="Include" />
             <e p="SceneScript.cs" t="Include" />
