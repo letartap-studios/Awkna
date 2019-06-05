@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     private RaycastHit2D ladderHitInfo;         // Whether above the player is ladder.    
     public float climbSpeed = 30f;              // The speed of the character when climbing a ladder.
 
-    private float horizontalMoveInput = 0f;     // Input for horizontal movement.
+    private float horizontalMoveInput = 0f;    // Input for horizontal movement.
     private float verticalMoveInput;            // Input for vertical movement.
 
     private Rigidbody2D rb;                     // Rigidbody of the character.
@@ -72,7 +72,12 @@ public class PlayerController : MonoBehaviour
     public GameObject energyUI;                 // Turn on or off the energy bar from the UI.    
 
     public Animator Animator { get; private set; }
+    public float GetHorizontalMoveInput()
+    {
+        return horizontalMoveInput;
+    }
     #endregion
+
 
     private void Awake()
     {

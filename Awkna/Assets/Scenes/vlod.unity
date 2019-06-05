@@ -766,6 +766,16 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8382767489736674913, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
+        type: 3}
+      propertyPath: minTimeBetweenSteps
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905101323972294251, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 18beeba95f8452242a12a75f6c313e43, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8, type: 3}
 --- !u!4 &840611715 stripped
@@ -1928,12 +1938,17 @@ PrefabInstance:
     - target: {fileID: 3690884413363229531, guid: 560e7cf02fd40784cbc15a83daf36f5e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 4.200012
+      value: 4.199951
       objectReference: {fileID: 0}
     - target: {fileID: 3690884413363229531, guid: 560e7cf02fd40784cbc15a83daf36f5e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 39.700012
+      objectReference: {fileID: 0}
+    - target: {fileID: 3177229397491530849, guid: 560e7cf02fd40784cbc15a83daf36f5e,
+        type: 3}
+      propertyPath: maxOxygenAmmount
+      value: 130
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 560e7cf02fd40784cbc15a83daf36f5e, type: 3}
@@ -2490,8 +2505,8 @@ MonoBehaviour:
   Room: {fileID: 7458639919616296616, guid: b84828da7fa988f4da595086b9d3765e, type: 3}
   RoomLR: {fileID: 623277089578109229, guid: 06e4868dc7df805458442642770d6c40, type: 3}
   RoomLRB: {fileID: 7911397281932775648, guid: 8a3ecba5321b81c46879ea2f5ab3c447, type: 3}
-  RoomLRT: {fileID: 5456698595015218701, guid: f41fae1f1e56bf645ba4fb788833a93d, type: 3}
-  RoomLRTB: {fileID: 8096035246688535225, guid: 3a49c764799e2fb49b2f245b823454a2,
+  RoomLRT: {fileID: 6070247645271319342, guid: 0225715ad440d6347a91955e4b7a9c7b, type: 3}
+  RoomLRTB: {fileID: 3093487207388880732, guid: bc3a3c73effd9a347959064d8341a288,
     type: 3}
   RoomTB: {fileID: 6770500174705091894, guid: 910572d60f35a014e9d2e6ee482e4e94, type: 3}
   ExitRoom: {fileID: 9088914828100930047, guid: 91b94e1e2ff5b23469f3c87f13935146,
