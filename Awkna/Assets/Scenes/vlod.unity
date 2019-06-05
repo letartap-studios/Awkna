@@ -643,16 +643,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7123935868138199034, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3972215020158208031, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2910687485101638016, guid: 9f6aa8d268d66f9478762d0ab188ce53,
         type: 3}
       propertyPath: m_Name
@@ -727,6 +717,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123935868138199034, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3972215020158208031, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2115697293030184899, guid: bf3a358f9b08ebc4d9c46bd9db36f6b8,
         type: 3}
@@ -1686,6 +1686,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7682216459154456122, guid: 560e7cf02fd40784cbc15a83daf36f5e,
+        type: 3}
+      propertyPath: m_Name
+      value: U.I. Holder
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682216459154456122, guid: 560e7cf02fd40784cbc15a83daf36f5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 708133550023305065, guid: 560e7cf02fd40784cbc15a83daf36f5e,
         type: 3}
       propertyPath: m_EffectDistance.x
@@ -1780,16 +1790,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7682216459154456122, guid: 560e7cf02fd40784cbc15a83daf36f5e,
-        type: 3}
-      propertyPath: m_Name
-      value: U.I. Holder
-      objectReference: {fileID: 0}
-    - target: {fileID: 7682216459154456122, guid: 560e7cf02fd40784cbc15a83daf36f5e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3271426773217734667, guid: 560e7cf02fd40784cbc15a83daf36f5e,
         type: 3}
@@ -2033,6 +2033,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 12800000, guid: 38e8a84da0790554e8b614056d688c4b,
         type: 3}
+    - target: {fileID: 467913732563414921, guid: 560e7cf02fd40784cbc15a83daf36f5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965142580745064965, guid: 560e7cf02fd40784cbc15a83daf36f5e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 560e7cf02fd40784cbc15a83daf36f5e, type: 3}
 --- !u!1 &1389889561 stripped

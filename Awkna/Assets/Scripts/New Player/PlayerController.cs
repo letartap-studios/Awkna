@@ -89,9 +89,9 @@ public class PlayerController : MonoBehaviour
         initialGravity = rb.gravityScale;               // Get the initial value of the gravity.
         m_GravityDirection = GravityDirection.Down;     // Initialize the gravity direction with down.
         Physics2D.IgnoreLayerCollision(15, 20, true);   // Ignore the collition between the player and the collectables.
-        //Physics2D.IgnoreLayerCollision(20, 20, true);   // Ignore the collision between the collectables.
+        //Physics2D.IgnoreLayerCollision(20, 20, true); // Ignore the collision between the collectables.
         Physics2D.IgnoreLayerCollision(15, 12, true);   // player, enemies
-        Physics2D.IgnoreLayerCollision(13, 15, true);  // Ignore the collision between the player and the bomb.
+        Physics2D.IgnoreLayerCollision(13, 15, true);   // Ignore the collision between the player and the bomb.
     }
 
     private void Update()
@@ -116,14 +116,14 @@ public class PlayerController : MonoBehaviour
         #endregion
 
         #region Jump
-        if (m_GravityDirection == GravityDirection.Down) // Check if the gravity is downwards so the jump force is up.
+        if (m_GravityDirection == GravityDirection.Down)
         {
-            if (Input.GetButtonDown("Jump") && (isGrounded || isSwinging)) // Check if the Jump button was pressed and give the player's...
+            if (Input.GetButtonDown("Jump") && (isGrounded || isSwinging || isClimbing))
             {
                 Animator.SetTrigger("takeOf");
-                rb.velocity = Vector2.up * jumpForce;               //...rigidbody velocity on the y axis.
-                isJumping = true;                                   // The player is jumping.
-                jumpTimeCounter = jumpTime;                         // Reset the jump time counter.
+                rb.velocity = Vector2.up * jumpForce;               
+                isJumping = true;                                   
+                jumpTimeCounter = jumpTime;                         
             }
 
             if (Input.GetButton("Jump") && isJumping == true)       // While the player is holding down the jump button...

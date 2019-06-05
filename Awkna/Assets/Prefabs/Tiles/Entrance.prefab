@@ -70,9 +70,9 @@ SpriteRenderer:
   m_SortingLayerID: -1485450897
   m_SortingLayer: -1
   m_SortingOrder: 100
-  m_Sprite: {fileID: -2490518196463044431, guid: c74c4618891224140b045d5ee3ce508c,
+  m_Sprite: {fileID: 4350706009984135856, guid: ad160015b5e09914d83df8addc6968dd,
     type: 3}
-  m_Color: {r: 0.11525452, g: 0.6981132, b: 0.35476068, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,6 +101,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6005580955527666633}
     m_Modifications:
+    - target: {fileID: 2910687485101638016, guid: df5b0c2e128669a4e979b514ec8fff2e,
+        type: 3}
+      propertyPath: m_Name
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 4420026457830191306, guid: df5b0c2e128669a4e979b514ec8fff2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -156,25 +161,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2910687485101638016, guid: df5b0c2e128669a4e979b514ec8fff2e,
-        type: 3}
-      propertyPath: m_Name
-      value: Platform
-      objectReference: {fileID: 0}
     - target: {fileID: 3032946328403841246, guid: df5b0c2e128669a4e979b514ec8fff2e,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.043492727
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3032946328403841246, guid: df5b0c2e128669a4e979b514ec8fff2e,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.24528301
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3032946328403841246, guid: df5b0c2e128669a4e979b514ec8fff2e,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.031238874
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032946328403841246, guid: df5b0c2e128669a4e979b514ec8fff2e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8938347677825819057, guid: ad160015b5e09914d83df8addc6968dd,
+        type: 3}
+    - target: {fileID: 646149728043497314, guid: df5b0c2e128669a4e979b514ec8fff2e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df5b0c2e128669a4e979b514ec8fff2e, type: 3}

@@ -4,7 +4,7 @@
 
 public class KillTile : MonoBehaviour
 {
-    public float damage;
+    public float damage = 0.01f;
     public Vector2 offset;
     public Vector2 size;
 
