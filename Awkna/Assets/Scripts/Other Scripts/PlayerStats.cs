@@ -87,7 +87,7 @@ public class PlayerStats : MonoBehaviour
     /// </summary>
     public int GemNumber { get { return gemNumber; } }
     /// <summary>
-    /// The maximum distance at whitch the player cand fire the grappling hook.
+    /// The maximum distance at which the player can fire the grappling hook.
     /// </summary>
     public float RopeMaxDistance { get { return ropeMaxCastDistance; } }
 
@@ -135,7 +135,7 @@ public class PlayerStats : MonoBehaviour
 
             GameObject.FindWithTag("Player").GetComponent<RopeSystem>().ResetRope();
                        
-            PlayerController.Instance.Knockback(knockDuration, knockbackPwr, PlayerController.Instance.transform.position, pos.x);
+            //PlayerController.Instance.Knockback(knockDuration, knockbackPwr, PlayerController.Instance.transform.position, pos.x);
 
             countdownTimeToInvulnerability = invulnerabilityTime;
 

@@ -393,7 +393,7 @@ public class PlayerController : MonoBehaviour
 
         Gizmos.DrawWireSphere(vec, groundCheckRadius);
 
-        Gizmos.color = Color.white;
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere((Vector2)transform.position + ladderOffset, ladderDistance);
     }
 #endif

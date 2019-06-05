@@ -28,6 +28,8 @@ public class Oxygen : MonoBehaviour
 
     private void Update()
     {
+        if (oxygenAmmount > maxOxygenAmmount)
+            oxygenAmmount = maxOxygenAmmount;
 
         if (oxygenAmmount <= 0)
         {

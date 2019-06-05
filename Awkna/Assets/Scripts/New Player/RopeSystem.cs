@@ -42,8 +42,10 @@ public class RopeSystem : MonoBehaviour
     public float climbSpeed = 3f;      // Set the speed at which the player can go up and down the rope.
     private bool isColliding;          // Flag to determine whether or not the rope's distance joint distance property can be increased or decreased.    
 
-    private int usesUsed;
+    public int usesUsed;
     public int numberOfUses = 2;
+
+    public Animator anim;
 
     private Dictionary<Vector2, int> wrapPointsLookup = new Dictionary<Vector2, int>();
 
@@ -154,7 +156,7 @@ public class RopeSystem : MonoBehaviour
 
             ropeRenderer.enabled = true;
 
-            usesUsed--;
+            
 
             var hit = Physics2D.Raycast(playerPosition, aimDirection, PlayerStats.Instance.RopeMaxDistance, ropeLayerMask);
 
@@ -170,6 +172,7 @@ public class RopeSystem : MonoBehaviour
                     ropeJoint.distance = Vector2.Distance(playerPosition, hit.point);
                     ropeJoint.enabled = true;
                     ropeHingeAnchorSprite.enabled = true;
+                    usesUsed--;
                 }
 
                 waitTime = 0;
@@ -179,6 +182,8 @@ public class RopeSystem : MonoBehaviour
                 ropeRenderer.enabled = false;
                 ropeAttached = false;
                 ropeJoint.enabled = false;
+                //animation
+                anim.SetTrigger("outOfRange");
             }
         }
         if (Input.GetButtonDown("Jump") && playerController.isSwinging)
