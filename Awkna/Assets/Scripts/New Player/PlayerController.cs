@@ -385,7 +385,7 @@ public class PlayerController : MonoBehaviour
         facingRight = !facingRight;                             // Change the facing upon rotation
 
     }
-
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected() // Draw a gismos circle around the ground check radius.
     {
         Gizmos.color = Color.red;
@@ -396,7 +396,7 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere((Vector2)transform.position + ladderOffset, ladderDistance);
     }
-
+#endif
     public void Knockback(float knockDur, float knockbackPwr, Vector3 knockbackDir, float posX)
     {
         float timer = 0;        // The time that has passed since the function started.

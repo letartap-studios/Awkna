@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class RopeSystem : MonoBehaviour
 {
+    #region Sigleton
+    private static RopeSystem instance;
+    public static RopeSystem Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = FindObjectOfType<RopeSystem>();
+            return instance;
+        }
+    }
+    #endregion
+
     #region Varibles
     public GameObject ropeHingeAnchor;
     private DistanceJoint2D ropeJoint;
@@ -27,7 +40,10 @@ public class RopeSystem : MonoBehaviour
     public float startWaitTime;
 
     public float climbSpeed = 3f;      // Set the speed at which the player can go up and down the rope.
-    private bool isColliding;          // Flag to determine whether or not the rope's distance joint distance property can be increased or decreased.     
+    private bool isColliding;          // Flag to determine whether or not the rope's distance joint distance property can be increased or decreased.    
+
+    private int usesUsed;
+    public int numberOfUses = 2;
 
     private Dictionary<Vector2, int> wrapPointsLookup = new Dictionary<Vector2, int>();
 
@@ -43,6 +59,7 @@ public class RopeSystem : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         ropeRenderer = GetComponent<LineRenderer>();
         waitTime = startWaitTime;
+        usesUsed = numberOfUses;
     }
 
     private void LateUpdate()
@@ -97,6 +114,11 @@ public class RopeSystem : MonoBehaviour
 
         }
 
+        if (playerController.isGrounded && !ropeAttached)
+        {
+            usesUsed = numberOfUses;
+        }
+
         HandleInput(aimDirection);
 
         UpdateRopePositions();
@@ -122,7 +144,7 @@ public class RopeSystem : MonoBehaviour
 
     private void HandleInput(Vector2 aimDirection)
     {
-        if (Input.GetButtonDown("Grapple") && waitTime == startWaitTime)
+        if (Input.GetButtonDown("Grapple") && waitTime == startWaitTime && usesUsed > 0) 
         {
             if (ropeAttached)
             {
@@ -131,6 +153,8 @@ public class RopeSystem : MonoBehaviour
             }
 
             ropeRenderer.enabled = true;
+
+            usesUsed--;
 
             var hit = Physics2D.Raycast(playerPosition, aimDirection, PlayerStats.Instance.RopeMaxDistance, ropeLayerMask);
 
@@ -368,5 +392,10 @@ public class RopeSystem : MonoBehaviour
         }
         ropeJoint.distance = Vector2.Distance(transform.position, newAnchorPosition);
         distanceSet = true;
+    }
+
+    public void AddUsage()
+    {
+        numberOfUses++;
     }
 }

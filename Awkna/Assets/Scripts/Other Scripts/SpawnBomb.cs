@@ -68,10 +68,11 @@ public class SpawnBomb : MonoBehaviour
             gameObject.GetComponent<Animation>().Play("bomb ticking");
         }
     }
-
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected() // Draw a gismos circle around the area of effect.
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, areaOfEffect);
     }
+#endif
 }

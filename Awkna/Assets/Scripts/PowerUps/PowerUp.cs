@@ -142,11 +142,12 @@ public class PowerUp : MonoBehaviour
         // TODO could tighten this and inspect the sfx? Hard to know how many, as subclasses could have spawned their own
         Destroy(gameObject, 5f);
     }
-
+#if UNITY_EDITOR
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, pickUpRange);
     }
+#endif
 }
 

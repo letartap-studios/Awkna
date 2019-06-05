@@ -64,10 +64,11 @@ public class ShopItem : MonoBehaviour
                 anim.SetBool("inRange", false);
         }
     }
-
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube((Vector2)transform.position + offset, size);
     }
+#endif
 }

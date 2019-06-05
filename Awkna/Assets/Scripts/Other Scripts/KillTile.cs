@@ -33,13 +33,13 @@ public class KillTile : MonoBehaviour
             //StartCoroutine(playerController.GetInvulnerableForSeconds(2f));
         }
     }
-
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube((Vector2)transform.position + offset, size);
     }
-
+#endif
 
 
 }

@@ -168,8 +168,8 @@ public class SpriteSelector : MonoBehaviour
             spriteRenderer.sprite = downLeftRightSprite;
         }
     }
-
-    private void OnDrawGizmos()
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere((Vector2)transform.position + upOffset, radius);
@@ -183,4 +183,5 @@ public class SpriteSelector : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset, radius);
     }
+#endif
 }

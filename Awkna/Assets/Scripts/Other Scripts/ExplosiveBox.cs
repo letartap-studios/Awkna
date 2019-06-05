@@ -55,10 +55,11 @@ public class ExplosiveBox : MonoBehaviour
 
         }
     }
-
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(offset, size);
     }
+#endif
 }

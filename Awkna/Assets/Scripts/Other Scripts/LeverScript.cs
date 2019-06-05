@@ -72,10 +72,11 @@ public class LeverScript : MonoBehaviour
                 anim.SetBool("inRange", false);
         }
     }
-
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position + offset, range);
     }
+#endif
 }
