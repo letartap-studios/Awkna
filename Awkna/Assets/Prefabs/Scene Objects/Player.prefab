@@ -392,14 +392,15 @@ MonoBehaviour:
   groundCheckRadiusVertical: -0.24
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 84101376
+    m_Bits: 16990464
   isJumping: 0
   jumpTime: 0.15
   whatIsLadder:
     serializedVersion: 2
     m_Bits: 2048
-  ladderDistance: 0.01
+  ladderDistance: 0.14
   climbSpeed: 5
+  ladderOffset: {x: 0, y: -0.12}
   bomb: {fileID: 7109910309584040693, guid: dccba2200408f084482c75d52df4e04e, type: 3}
   energy: 0
   maxEnergy: 3
@@ -428,7 +429,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 528384
   damage: 1
-  crate: {fileID: 4776925764863973313, guid: d5c268a7a7daeb446b20353b732d18aa, type: 3}
 --- !u!50 &2115697293848515371
 Rigidbody2D:
   serializedVersion: 4
@@ -486,7 +486,7 @@ MonoBehaviour:
   crosshairSprite: {fileID: 2115697294458431862}
   ropeLayerMask:
     serializedVersion: 2
-    m_Bits: 84099328
+    m_Bits: 16990464
   waitTime: 0
   startWaitTime: 0.5
   climbSpeed: 5

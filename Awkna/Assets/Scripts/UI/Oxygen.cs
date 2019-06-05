@@ -33,7 +33,7 @@ public class Oxygen : MonoBehaviour
             if (zeroOxygenAlarm == false)
             {
                 zeroOxygenAlarm = true;
-                dialogue.GetComponent<DialogueTrigger>().OxygenLevelDialogue("NO MORE OXYGEN!");
+                dialogue.GetComponent<DialogueTrigger>().OxygenLevelDialogueOn("NO MORE OXYGEN!");
             }
             barImage.color = Color.red;
             if (timeLeft <= 0)
@@ -55,7 +55,13 @@ public class Oxygen : MonoBehaviour
             if (lowLevelOxygenAlarm == false && ((oxygenAmmount / maxOxygenAmmount) <= 0.3f)) 
             {
                 lowLevelOxygenAlarm = true;
-                dialogue.GetComponent<DialogueTrigger>().OxygenLevelDialogue("Oxygen Level: LOW!");
+                dialogue.GetComponent<DialogueTrigger>().OxygenLevelDialogueOn("Oxygen Level: LOW!");
+            }
+            else if(lowLevelOxygenAlarm && ((oxygenAmmount / maxOxygenAmmount) > 0.3f))
+            {
+                lowLevelOxygenAlarm = false;
+                dialogue.GetComponent<DialogueTrigger>().OxygenLevelDialogueOff();
+
             }
         }
     }

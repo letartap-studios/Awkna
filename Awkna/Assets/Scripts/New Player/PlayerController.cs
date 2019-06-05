@@ -39,8 +39,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsLadder;              // A mask determining what is ladder to the character.
     public float ladderDistance;                // Distance between the player and the ladder at which the player can climb.
     private bool isClimbing;                    // Whether the player is climbing.
-    private RaycastHit2D ladderHitInfo;         // Whether above the player is ladder.    
     public float climbSpeed = 30f;              // The speed of the character when climbing a ladder.
+    private bool ladderCollider;
+    public Vector2 ladderOffset;
 
     private float horizontalMoveInput = 0f;    // Input for horizontal movement.
     private float verticalMoveInput;            // Input for vertical movement.
@@ -69,7 +70,7 @@ public class PlayerController : MonoBehaviour
     public float swingForce = 4f;               // A value to be used to add to the swing motion.
 
     public bool switchGravityPower;             // Turn on or off the gravity switch ability.
-    public GameObject energyUI;                 // Turn on or off the energy bar from the UI.    
+    public GameObject energyUI;                 // Turn on or off the energy bar from the UI.  
 
     public Animator Animator { get; private set; }
     public float GetHorizontalMoveInput()
@@ -88,9 +89,9 @@ public class PlayerController : MonoBehaviour
         initialGravity = rb.gravityScale;               // Get the initial value of the gravity.
         m_GravityDirection = GravityDirection.Down;     // Initialize the gravity direction with down.
         Physics2D.IgnoreLayerCollision(15, 20, true);   // Ignore the collition between the player and the collectables.
-       // Physics2D.IgnoreLayerCollision(20, 20, true); // Ignore the collision between the collectables.
+        //Physics2D.IgnoreLayerCollision(20, 20, true);   // Ignore the collision between the collectables.
         Physics2D.IgnoreLayerCollision(15, 12, true);   // player, enemies
-        Physics2D.IgnoreLayerCollision(13, 15, false);  // Ignore the collision between the player and the bomb.
+        Physics2D.IgnoreLayerCollision(13, 15, true);  // Ignore the collision between the player and the bomb.
     }
 
     private void Update()
@@ -214,8 +215,6 @@ public class PlayerController : MonoBehaviour
         if (isSwinging && Mathf.Abs(horizontalMoveInput) > 0f)
         {
             Physics2D.IgnoreLayerCollision(15, 19, true); // player, crate
-            Physics2D.IgnoreLayerCollision(15, 11, true); // player, ladders
-
             //animator.SetBool("IsSwinging", true);
 
             // Get a normalized direction vector from the player to the hook point
@@ -244,7 +243,7 @@ public class PlayerController : MonoBehaviour
         {
             //animator.SetBool("IsSwinging", false);
             Physics2D.IgnoreLayerCollision(15, 19, false);
-            Physics2D.IgnoreLayerCollision(15, 11, false);
+
 
             Vector3 targetVelocity = new Vector2(horizontalMoveInput * movementSpeed, rb.velocity.y);     // Move the character by finding the target velocity...       
             rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, horizontalMovementSmoothing);
@@ -264,28 +263,34 @@ public class PlayerController : MonoBehaviour
 
         #region Climbing the ladder
 
-        // Send a raycast upwards to check if the player is on a ladder.
-
-        ladderHitInfo = Physics2D.Raycast(transform.position, Vector2.up, ladderDistance, whatIsLadder);
-
-        if (isSwinging)
+        if (!isSwinging)
         {
-            ladderHitInfo = new RaycastHit2D();
-        }
 
-        if (ladderHitInfo.collider != null)                     // Check whether the ray has collided with a ladder.
-        {
-            isClimbing = true;
-            verticalMoveInput = Input.GetAxisRaw("Vertical");
-            rb.velocity = new Vector2(rb.velocity.x, verticalMoveInput * climbSpeed);
-            rb.gravityScale = 0;                       // Set the characters gravity to 0, in order to make the player stay on the ladder.
+            Physics2D.IgnoreLayerCollision(15, 11, false); // player, ladders
+
+            ladderCollider = Physics2D.OverlapCircle((Vector2)transform.position + ladderOffset, ladderDistance, whatIsLadder);
+
+            if (ladderCollider)
+            {
+                isClimbing = true;
+
+                verticalMoveInput = Input.GetAxisRaw("Vertical");
+                rb.velocity = new Vector2(rb.velocity.x, verticalMoveInput * climbSpeed);
+                rb.gravityScale = 0;
+            }
+            else
+            {
+                isClimbing = false;
+                rb.gravityScale = initialGravity;
+
+            }
         }
         else
         {
-            isClimbing = false;
             rb.gravityScale = initialGravity;
-        }
 
+            Physics2D.IgnoreLayerCollision(15, 11, true); // player, ladders
+        }
         #endregion
 
         #region Switch Gravity
@@ -387,6 +392,9 @@ public class PlayerController : MonoBehaviour
         Vector2 vec = new Vector2(transform.position.x + groundCheckRadiusHorizontal, transform.position.y + groundCheckRadiusVertical);
 
         Gizmos.DrawWireSphere(vec, groundCheckRadius);
+
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere((Vector2)transform.position + ladderOffset, ladderDistance);
     }
 
     public void Knockback(float knockDur, float knockbackPwr, Vector3 knockbackDir, float posX)

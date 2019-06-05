@@ -11,7 +11,6 @@ public class PlayerAttack : MonoBehaviour
     public LayerMask whatIsEnemy;           // What layers are enemies.
 
     public int damage;                      // The damage that the player deals to the enemies.
-    public GameObject crate;
     private Animator animator;
 
     private void Start()

@@ -55,7 +55,7 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    public void OxygenLevelDialogue(string message)
+    public void OxygenLevelDialogueOn(string message)
     {
         oxygenLevel.GetComponent<Text>().text = message;
         if (!oxygenLevel.activeSelf)
@@ -63,4 +63,13 @@ public class DialogueTrigger : MonoBehaviour
             oxygenLevel.SetActive(true);
         }
     }
+
+    public void OxygenLevelDialogueOff()
+    {
+        if (oxygenLevel.activeSelf)
+        {
+            oxygenLevel.SetActive(false);
+        }
+    }
+
 }

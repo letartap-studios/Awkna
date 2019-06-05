@@ -12,7 +12,6 @@ public class EnemyAttack : MonoBehaviour
     [HideInInspector]
     public bool attackTrigger;
 
-
     private void Start()
     {
         playerMask = LayerMask.GetMask("Player");
@@ -35,3 +34,4 @@ public class EnemyAttack : MonoBehaviour
     }
 
 }
+

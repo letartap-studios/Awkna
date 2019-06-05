@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
 // This script controlls the health of the enemy.
-
 public class EnemyHealth : MonoBehaviour
 {
     public int health;
@@ -9,16 +8,22 @@ public class EnemyHealth : MonoBehaviour
     [HideInInspector]
     public float countdownTimeToInvulnerability = 0;
     public float invulnerabilityTime = 0.5f;
+    public PatrollingEnemyMovement movement;
+    private bool dead = false;
+
 
     private void Update()
     {
-        if (health <= 0)
+        if (health <= 0 && dead == false)
         {
+            dead = true;
+            if (movement != null)
+                movement.movementSpeed = 0;
             if (anim != null)
             {
                 anim.SetTrigger("die");
             }
-            Destroy(gameObject.transform.parent.gameObject);
+            Destroy(gameObject.transform.parent.gameObject, 0.5f);
         }
     }
 
