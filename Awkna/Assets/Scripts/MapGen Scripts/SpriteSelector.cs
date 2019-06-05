@@ -9,7 +9,7 @@ public class SpriteSelector : MonoBehaviour
     public Sprite[] up;
     public Sprite[] upRight;
     public Sprite[] upLeftRight;
-    
+
     public Sprite[] left;
     public Sprite[] centre;
     public Sprite[] right;
@@ -61,26 +61,33 @@ public class SpriteSelector : MonoBehaviour
     public Vector2 leftOffset;
     public Vector2 rightOffset;
 
+    private int randomId = 0;
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        singleSprite = single[Random.Range(0, single.Length)];
-        upLeftSprite = upLeft[Random.Range(0, upLeft.Length)];
-        upSprite = up[Random.Range(0, up.Length)];
-        upRightSprite = upRight[Random.Range(0, upRight.Length)];
-        leftSprite = left[Random.Range(0, left.Length)];
-        centreSprite = centre[Random.Range(0, centre.Length)];
-        rightSprite = right[Random.Range(0, right.Length)];
-        downLeftSprite = downLeft[Random.Range(0, downLeft.Length)];
-        downSprite = down[Random.Range(0, down.Length)];
-        downRightSprite = downRight[Random.Range(0, downRight.Length)];
-        upDownLeftSprite = upDownLeft[Random.Range(0, upDownLeft.Length)];
-        upDownSprite = upDown[Random.Range(0, upDown.Length)];
-        upDownRightSprite = upDownRight[Random.Range(0, upDownRight.Length)];
-        upLeftRightSprite = upLeftRight[Random.Range(0, upLeftRight.Length)];
-        leftRightSprite = leftRight[Random.Range(0, leftRight.Length)];
-        downLeftRightSprite = downLeftRight[Random.Range(0, downLeftRight.Length)];
+        //this code assumes that all the arrays have the same length.
+        //otherways it might crash
+
+        randomId = Random.Range(0, single.Length);
+
+        singleSprite = single[randomId];
+        upLeftSprite = upLeft[randomId];
+        upSprite = up[randomId];
+        upRightSprite = upRight[randomId];
+        leftSprite = left[randomId];
+        centreSprite = centre[randomId];
+        rightSprite = right[randomId];
+        downLeftSprite = downLeft[randomId];
+        downSprite = down[randomId];
+        downRightSprite = downRight[randomId];
+        upDownLeftSprite = upDownLeft[randomId];
+        upDownSprite = upDown[randomId];
+        upDownRightSprite = upDownRight[randomId];
+        upLeftRightSprite = upLeftRight[randomId];
+        leftRightSprite = leftRight[randomId];
+        downLeftRightSprite = downLeftRight[randomId];
     }
 
     private void Update()
@@ -96,19 +103,19 @@ public class SpriteSelector : MonoBehaviour
         leftRay = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, radius, whatIsGround);
         rightRay = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, radius, whatIsGround);
 
-        if(!upRay && !downRay && !leftRay && !rightRay)     // single
+        if (!upRay && !downRay && !leftRay && !rightRay)     // single
         {
             spriteRenderer.sprite = singleSprite;
         }
-        else if(!upRay && downRay && !leftRay && rightRay)  // Up Left 
+        else if (!upRay && downRay && !leftRay && rightRay)  // Up Left 
         {
             spriteRenderer.sprite = upLeftSprite;
         }
-        else if(!upRay && downRay && leftRay && rightRay)   // Up
+        else if (!upRay && downRay && leftRay && rightRay)   // Up
         {
             spriteRenderer.sprite = upSprite;
         }
-        else if(!upRay && downRay && leftRay && !rightRay)  // Up Right
+        else if (!upRay && downRay && leftRay && !rightRay)  // Up Right
         {
             spriteRenderer.sprite = upRightSprite;
         }
