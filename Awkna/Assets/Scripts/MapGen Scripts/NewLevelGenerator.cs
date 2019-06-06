@@ -12,6 +12,7 @@ public class NewLevelGenerator : MonoBehaviour
     public GameObject EntranceRoom;
     public GameObject LeverRoom;
     public GameObject TreasureRoom;
+    public GameObject ShopRoom;
     public GameObject BorderBlock;
 
     public int roomSize;
@@ -46,6 +47,7 @@ public class NewLevelGenerator : MonoBehaviour
         entranceRoom,
         leverRoom,
         treasureRoom,
+        shopRoom,
     }
 
     public enum directions
@@ -225,11 +227,23 @@ public class NewLevelGenerator : MonoBehaviour
         while (true)
         {
             int x = Random.Range(0, mapsizeX);
-            int y = Random.Range(1, mapsizeY);
+            int y = Random.Range(0, mapsizeY - 1);
 
             if (map[x, y] == roomsTypes.none)
             {
                 map[x, y] = roomsTypes.leverRoom;
+                break;
+            }
+        }
+
+        while (true)
+        {
+            int x = Random.Range(0, mapsizeX);
+            int y = Random.Range(1, mapsizeY - 1);
+
+            if (map[x, y] == roomsTypes.none)
+            {
+                map[x, y] = roomsTypes.shopRoom;
                 break;
             }
         }
@@ -302,6 +316,9 @@ public class NewLevelGenerator : MonoBehaviour
                     case roomsTypes.treasureRoom:
                         Instantiate(TreasureRoom, v, Quaternion.identity);
                         break;
+                    case roomsTypes.shopRoom:
+                        Instantiate(ShopRoom, v, Quaternion.identity);
+                        break;
                     default:
                         break;
                 }
@@ -344,6 +361,7 @@ public class NewLevelGenerator : MonoBehaviour
 
         foreach (GameObject i in objects)
         {
+            Debug.Log("test");
             Instantiate(ufoEnemy, i.transform.position, Quaternion.identity);
         }
     }
