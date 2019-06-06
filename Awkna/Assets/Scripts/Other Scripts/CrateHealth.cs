@@ -2,7 +2,6 @@
 
 public class CrateHealth : MonoBehaviour
 {
-    public int health;
     public GameObject[] objects;
     [SerializeField] private Vector2 offset;
     [SerializeField] private Vector2 size;
@@ -45,6 +44,15 @@ public class CrateHealth : MonoBehaviour
         }
     }
 
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireCube((Vector2)transform.position + offset, size);
+    }
+
+#endif
 
     //private void OnTriggerStay2D(Collider2D collision)
     //{

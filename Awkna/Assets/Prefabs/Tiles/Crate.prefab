@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551193c444de4fc42bf25495aae229c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
   objects:
   - {fileID: 736117162159201801, guid: f815dc2ace6217844b1ed159fad6067d, type: 3}
   - {fileID: 7774495067867591863, guid: d28b6e53ed9327e4396326877610550f, type: 3}
@@ -160,7 +159,7 @@ MonoBehaviour:
   - {fileID: 5607245197429582468, guid: fdb45f077c105f846887fbbf80c6a09e, type: 3}
   - {fileID: 5738914557992221520, guid: 5ea4cc36f9836cf4081285f48a408008, type: 3}
   offset: {x: 0, y: 0}
-  size: {x: 0, y: 0}
+  size: {x: 0.8, y: 0.8}
   anim: {fileID: 3458926081740903752}
 --- !u!60 &2349846887094362990
 PolygonCollider2D:
