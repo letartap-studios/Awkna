@@ -10,6 +10,10 @@ public class PlayerSounds : MonoBehaviour
     private float timeToNextStep;
     public float minTimeBetweenSteps;
 
+    private bool spawnDust;
+
+    public GameObject dustEffect;
+
     void Awake()
     {
         audioSrc = GetComponent<AudioSource>();
@@ -22,15 +26,19 @@ public class PlayerSounds : MonoBehaviour
 
         if (PlayerController.Instance.isGrounded == true && PlayerController.Instance.GetHorizontalMoveInput() != 0 /*&& audioSrc.isPlaying == false*/)
         {
+
+
             audioSrc.volume = Random.Range(0.1f, 0.3f);
             audioSrc.pitch = Random.Range(0.8f,1.2f);
             if (timeToNextStep <= 0)
             {
                 audioSrc.Play();
+                Instantiate(dustEffect, PlayerController.Instance.groundCheck.position, Quaternion.identity);
                 timeToNextStep = minTimeBetweenSteps;
             }
             else
             {
+                
                 timeToNextStep -= Time.deltaTime;
             }
         }
