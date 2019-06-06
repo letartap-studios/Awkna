@@ -1,80 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7429756506876728553
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 664277252447896918}
-  - component: {fileID: 8738201325782531986}
-  - component: {fileID: 4177493314480172885}
-  m_Layer: 0
-  m_Name: Health
-  m_TagString: Enemy
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &664277252447896918
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7429756506876728553}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8000636305140983321}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8738201325782531986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7429756506876728553}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e7ef24260bf77c478a34b91ed61f52e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  anim: {fileID: 0}
-  countdownTimeToInvulnerability: 0
-  invulnerabilityTime: 0.5
-  movement: {fileID: 0}
---- !u!61 &4177493314480172885
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7429756506876728553}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.006307125, y: -0.0037841797}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.775465, y: 0.38694382}
-  m_EdgeRadius: 0
 --- !u!1 &8000636305140983301
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,6 +21,7 @@ GameObject:
   - component: {fileID: 8312610371759115514}
   - component: {fileID: 4251806502527554277}
   - component: {fileID: 3528771225684238853}
+  - component: {fileID: 7652611834833479524}
   m_Layer: 12
   m_Name: FlyingEnemy
   m_TagString: Enemy
@@ -114,7 +40,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 664277252447896918}
   - {fileID: 6409061781139681061}
   - {fileID: 6596762043500890740}
   - {fileID: 4833065003542165623}
@@ -274,7 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5130e43ccd424be419c68b4d88fe3251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFollowing: 0
 --- !u!114 &4887730450628435212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,6 +393,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minTimeBetweenSteps: 0
+--- !u!114 &7652611834833479524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8000636305140983301}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7ef24260bf77c478a34b91ed61f52e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
 --- !u!1001 &2500658668335089262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -524,7 +461,7 @@ PrefabInstance:
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
@@ -629,7 +566,7 @@ PrefabInstance:
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
@@ -734,7 +671,7 @@ PrefabInstance:
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}

@@ -20,8 +20,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        //if (timeBtwAttack <= 0)    // Then the player can attack.
-        //{
+        if (timeBtwAttack <= 0)    // Then the player can attack.
+        {
             if (Input.GetButtonDown("Fire1"))
             {
                 animator.SetTrigger("attacked");
@@ -32,26 +32,18 @@ public class PlayerAttack : MonoBehaviour
                 {
                     if (enemiesToDamage[i].CompareTag("Enemy"))
                     {
-                        enemiesToDamage[i].transform.GetChild(0).GetComponent<EnemyHealth>().TakeDamage(damage);
-                    }
-                    if (enemiesToDamage[i].CompareTag("PatrollingEnemy"))
-                    {
-                        enemiesToDamage[i].GetComponent<PatrolEnemyHealth>().TakeDamage(damage);
-                    }
-                    if (enemiesToDamage[i].CompareTag("VerticalPatrollingEnemy"))
-                    {
-                        enemiesToDamage[i].GetComponent<VerticalPatrollingEnemyHealth>().TakeDamage(damage);
+                        enemiesToDamage[i].GetComponent<EnemyHealth>().TakeDamage(damage);
                     }
 
                 }
 
-        //        timeBtwAttack = startTimeBtwAttack;
-            }
-        //}
-        //else
-        //{
-        //    timeBtwAttack -= Time.deltaTime;
-        //}
+            timeBtwAttack = startTimeBtwAttack;
+        }
+    }
+        else
+        {
+            timeBtwAttack -= Time.deltaTime;
+        }
     }
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()

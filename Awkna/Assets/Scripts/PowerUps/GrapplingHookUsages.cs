@@ -6,7 +6,7 @@ public class GrapplingHookUsages : PowerUp
     {
         base.PowerUpPayload();
 
-        RopeSystem.Instance.AddUsage();
+        PlayerStats.Instance.AddGrapplingUsage();
     }
 
 }

@@ -8,8 +8,8 @@ public class GrapplingHookUses : MonoBehaviour
 
     private void Update()
     {
-        numberOfCharges.text = "" + RopeSystem.Instance.usesUsed;
-        if(RopeSystem.Instance.usesUsed <= 0)
+        numberOfCharges.text = "" + PlayerStats.Instance.UsesUsed;
+        if(PlayerStats.Instance.UsesUsed <= 0)
         {
             grapplingHookIcon.enabled = false;
         }

@@ -23,24 +23,9 @@ public class PlayerStats : MonoBehaviour
             _instance = this;
         }
         DontDestroyOnLoad(gameObject);
+
+        usesUsed = numberOfUses;
     }
-
-
-    //private static PlayerStats instance;
-    //public static PlayerStats Instance
-    //{
-    //    get
-    //    {
-    //        if (instance == null)
-    //            instance = FindObjectOfType<PlayerStats>();
-    //        return instance;
-    //    }
-    //}
-
-    //private void Awake()
-    //{
-    //    DontDestroyOnLoad(gameObject);
-    //}
     #endregion
 
     #region Variables and Getters
@@ -59,10 +44,13 @@ public class PlayerStats : MonoBehaviour
     private float ropeMaxCastDistance = 5f;
     private float countdownTimeToInvulnerability = 0;
     [SerializeField]
-    private float invulnerabilityTime;
+    private float invulnerabilityTime = 0.2f;
 
-    private float knockDuration;
+    [SerializeField]
     private float knockbackPwr;
+
+    private int usesUsed;
+    private int numberOfUses = 2;
 
     /// <summary>
     /// The current health of the player.
@@ -91,6 +79,9 @@ public class PlayerStats : MonoBehaviour
     /// </summary>
     public float RopeMaxDistance { get { return ropeMaxCastDistance; } }
 
+    public int UsesUsed { get { return usesUsed; } set { usesUsed = value; } }
+    public int NumberOfUses { get { return numberOfUses; } }
+
     #endregion
 
     #region Functions
@@ -99,12 +90,21 @@ public class PlayerStats : MonoBehaviour
     /// </summary>
     public void ResetStats()
     {
-        health = 3f;
         maxHealth = 3f;
+        health = maxHealth;
         maxTotalHealth = 6f;
         bombsNumber = 3;
         gemNumber = 0;
         ropeMaxCastDistance = 5f;
+    }
+
+    public void UseGrapplingCharge()
+    {
+        usesUsed--;
+    }
+    public void AddGrapplingUsage()
+    {
+        numberOfUses++;
     }
 
     /// <summary>
@@ -135,7 +135,7 @@ public class PlayerStats : MonoBehaviour
 
             GameObject.FindWithTag("Player").GetComponent<RopeSystem>().ResetRope();
                        
-            //PlayerController.Instance.Knockback(knockDuration, knockbackPwr, PlayerController.Instance.transform.position, pos.x);
+            PlayerController.Instance.Knockback(knockbackPwr, (Vector2)PlayerController.Instance.transform.position, pos.x);
 
             countdownTimeToInvulnerability = invulnerabilityTime;
 

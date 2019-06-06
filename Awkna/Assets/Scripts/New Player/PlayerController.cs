@@ -395,22 +395,17 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere((Vector2)transform.position + ladderOffset, ladderDistance);
     }
 #endif
-    public void Knockback(float knockDur, float knockbackPwr, Vector3 knockbackDir, float posX)
+    public void Knockback(float knockbackPwr, Vector2 knockbackDir, float posX)
     {
-        float timer = 0;        // The time that has passed since the function started.
-
-        while (knockDur > timer)
+        if (posX <= transform.position.x)
         {
-            timer += Time.deltaTime;
-            if (posX <= transform.position.x)
-            {
-                rb.AddForce(new Vector3(knockbackDir.x * knockbackPwr, knockbackDir.y, transform.position.z));
-            }
-            else
-            {
-                rb.AddForce(new Vector3(knockbackDir.x * (-knockbackPwr), knockbackDir.y, transform.position.z));
-            }
+            rb.AddForce(new Vector2(knockbackDir.x * knockbackPwr, knockbackDir.y));
         }
+        else
+        {
+            rb.AddForce(new Vector2(knockbackDir.x * (-knockbackPwr), knockbackDir.y));
+        }
+
     }
 
     #endregion

@@ -42,9 +42,6 @@ public class RopeSystem : MonoBehaviour
     public float climbSpeed = 3f;      // Set the speed at which the player can go up and down the rope.
     private bool isColliding;          // Flag to determine whether or not the rope's distance joint distance property can be increased or decreased.    
 
-    public int usesUsed;
-    public int numberOfUses = 2;
-
     public Animator anim;
 
     private Dictionary<Vector2, int> wrapPointsLookup = new Dictionary<Vector2, int>();
@@ -61,7 +58,7 @@ public class RopeSystem : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         ropeRenderer = GetComponent<LineRenderer>();
         waitTime = startWaitTime;
-        usesUsed = numberOfUses;
+
     }
 
     private void LateUpdate()
@@ -118,7 +115,7 @@ public class RopeSystem : MonoBehaviour
 
         if (playerController.isGrounded && !ropeAttached)
         {
-            usesUsed = numberOfUses;
+            PlayerStats.Instance.UsesUsed = PlayerStats.Instance.NumberOfUses;
         }
 
         HandleInput(aimDirection);
@@ -146,7 +143,7 @@ public class RopeSystem : MonoBehaviour
 
     private void HandleInput(Vector2 aimDirection)
     {
-        if (Input.GetButtonDown("Grapple") && waitTime == startWaitTime && usesUsed > 0)
+        if (Input.GetButtonDown("Grapple") && waitTime == startWaitTime && PlayerStats.Instance.UsesUsed > 0)
         {
             if (ropeAttached)
             {
@@ -172,7 +169,7 @@ public class RopeSystem : MonoBehaviour
                     ropeJoint.distance = Vector2.Distance(playerPosition, hit.point);
                     ropeJoint.enabled = true;
                     ropeHingeAnchorSprite.enabled = true;
-                    usesUsed--;
+                    PlayerStats.Instance.UseGrapplingCharge();
                 }
 
                 waitTime = 0;
@@ -397,10 +394,5 @@ public class RopeSystem : MonoBehaviour
         }
         ropeJoint.distance = Vector2.Distance(transform.position, newAnchorPosition);
         distanceSet = true;
-    }
-
-    public void AddUsage()
-    {
-        numberOfUses++;
     }
 }
