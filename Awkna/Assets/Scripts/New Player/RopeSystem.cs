@@ -146,7 +146,7 @@ public class RopeSystem : MonoBehaviour
 
     private void HandleInput(Vector2 aimDirection)
     {
-        if (Input.GetButtonDown("Grapple") && waitTime == startWaitTime && usesUsed > 0) 
+        if (Input.GetButtonDown("Grapple") && waitTime == startWaitTime && usesUsed > 0)
         {
             if (ropeAttached)
             {
@@ -156,7 +156,7 @@ public class RopeSystem : MonoBehaviour
 
             ropeRenderer.enabled = true;
 
-            
+
 
             var hit = Physics2D.Raycast(playerPosition, aimDirection, PlayerStats.Instance.RopeMaxDistance, ropeLayerMask);
 
@@ -302,7 +302,7 @@ public class RopeSystem : MonoBehaviour
         }
         if (Input.GetAxisRaw("Vertical") > 0f && ropeAttached)
         {
-            if (!isColliding)
+            //if (!isColliding)
                 ropeJoint.distance -= Time.deltaTime * climbSpeed;
         }
         else if (Input.GetAxisRaw("Vertical") < 0f && ropeAttached && !playerController.isGrounded)
