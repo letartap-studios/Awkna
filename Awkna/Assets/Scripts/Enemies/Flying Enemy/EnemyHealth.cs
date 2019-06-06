@@ -29,20 +29,12 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)     // When the function is called deal damage to the enemy equal to the damage parameter.
     {
-        if (countdownTimeToInvulnerability <= 0)
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShakeController>().Shake();
+        health -= damage;                  // Lower the enemy's health by the damage amount.
+        Debug.Log("Enemy has taken damage");
+        if (anim != null)
         {
-
-            health -= damage;                  // Lower the enemy's health by the damage amount.
-            Debug.Log("Enemy has taken damage");
-            if (anim != null)
-            {
-                anim.SetTrigger("takeDamage");
-            }
-            countdownTimeToInvulnerability = invulnerabilityTime;
-        }
-        else
-        {
-            countdownTimeToInvulnerability -= Time.deltaTime;
+            anim.SetTrigger("takeDamage");
         }
     }
 }

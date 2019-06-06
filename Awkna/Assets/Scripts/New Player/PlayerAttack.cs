@@ -20,12 +20,10 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (timeBtwAttack <= 0)    // Then the player can attack.
-        {
+        //if (timeBtwAttack <= 0)    // Then the player can attack.
+        //{
             if (Input.GetButtonDown("Fire1"))
             {
-                //CameraShaker.Instance.ShakeOnce(1f, 2f, .1f, .3f);   // When the player is attacking shake the camera.
-
                 animator.SetTrigger("attacked");
 
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
@@ -47,13 +45,13 @@ public class PlayerAttack : MonoBehaviour
 
                 }
 
-                timeBtwAttack = startTimeBtwAttack;
+        //        timeBtwAttack = startTimeBtwAttack;
             }
-        }
-        else
-        {
-            timeBtwAttack -= Time.deltaTime;
-        }
+        //}
+        //else
+        //{
+        //    timeBtwAttack -= Time.deltaTime;
+        //}
     }
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()

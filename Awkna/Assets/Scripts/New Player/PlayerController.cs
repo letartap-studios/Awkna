@@ -121,9 +121,9 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Jump") && (isGrounded || isSwinging || isClimbing))
             {
                 Animator.SetTrigger("takeOf");
-                rb.velocity = Vector2.up * jumpForce;               
-                isJumping = true;                                   
-                jumpTimeCounter = jumpTime;                         
+                rb.velocity = Vector2.up * jumpForce;
+                isJumping = true;
+                jumpTimeCounter = jumpTime;
             }
 
             if (Input.GetButton("Jump") && isJumping == true)       // While the player is holding down the jump button...
@@ -265,7 +265,6 @@ public class PlayerController : MonoBehaviour
 
         if (!isSwinging)
         {
-
             Physics2D.IgnoreLayerCollision(15, 11, false); // player, ladders
 
             ladderCollider = Physics2D.OverlapCircle((Vector2)transform.position + ladderOffset, ladderDistance, whatIsLadder);
@@ -282,7 +281,6 @@ public class PlayerController : MonoBehaviour
             {
                 isClimbing = false;
                 rb.gravityScale = initialGravity;
-
             }
         }
         else
