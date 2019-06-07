@@ -2,8 +2,17 @@
 
 public class DoorScript : MonoBehaviour
 {
-
     public Sprite openedDoor;
+    public Sprite closedDoor;
+
+    public void CloseDoor()
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = closedDoor;
+        gameObject.GetComponent<Collider2D>().enabled = true;
+
+        GameObject light = gameObject.transform.GetChild(0).gameObject;
+        light.SetActive(true);
+    }
 
     public void OpenDoor()
     {

@@ -2,29 +2,54 @@
 
 public class ShopItem : MonoBehaviour
 {
-    public GameObject[] objects;
+    public GameObject soldObject;
+
+    public Sprite soldObjectSprite;
+
+    public GameObject[] PickupArray;
+
+    public TextMesh PriceText;
+
     [SerializeField] private Vector2 offset;
     [SerializeField] private Vector2 size;
     private LayerMask playerMask;
     public Animator anim;
-    public int price;
+    public Animator anim2;
+    private int price;
     public int numberOfItems;
 
+    public GameObject displayItemPos;
+    public GameObject pushButtonIndicator;
+    public GameObject itemCost;
+
+    bool empty = false;
+
+
     private void Start()
-    {
+    {        
         playerMask = LayerMask.GetMask("Player");
+        EnableShop();
     }
 
-    public void DestroyShopItem()
+    public void EnableShop()
     {
-        for (int i = 1; i <= numberOfItems; i++) 
-        {
-            int rand = Random.Range(0, objects.Length);
-            Instantiate(objects[rand], transform.position, Quaternion.identity);
-            //AstarPath.active.Scan();
-        }
-        GameObject.FindWithTag("Player").GetComponent<RopeSystem>().ResetRope();
-        Destroy(gameObject);
+        soldObjectSprite = GetComponent<SpriteRenderer>().sprite;
+        soldObject = PickupArray[Random.Range(1, PickupArray.Length)];
+        price = soldObject.GetComponent<PowerUp>().price;
+        displayItemPos.GetComponent<SpriteRenderer>().sprite = soldObject.GetComponent<SpriteRenderer>().sprite;
+        displayItemPos.GetComponent<SpriteRenderer>().enabled = true;
+        pushButtonIndicator.SetActive(true);
+        itemCost.SetActive(true);
+        PriceText.text = price.ToString();
+    }
+
+    public void DisableShop()
+    {
+        //GameObject.FindWithTag("Player").GetComponent<RopeSystem>().ResetRope();
+        displayItemPos.GetComponent<SpriteRenderer>().enabled = false;
+        pushButtonIndicator.SetActive(false);
+        itemCost.SetActive(false);
+        empty = true;
     }
 
     private void Update()
@@ -41,14 +66,25 @@ public class ShopItem : MonoBehaviour
             {
                 anim.SetBool("inRange", true);
             }
+            if (anim2 != null)
+            {
+                anim2.SetBool("inRange", true);
+            }
 
             if (Input.GetButtonDown("Interact"))
             {
                 if (PlayerStats.Instance.GemNumber >= price)
                 {
-                    PlayerStats.Instance.PayGems(price);
-                    DestroyShopItem();
-                    
+                    if (!empty)
+                    {
+                        PlayerStats.Instance.PayGems(price);
+                        Instantiate(soldObject, transform.position, Quaternion.identity);
+                        DisableShop();
+                    }
+                }
+                else
+                {
+                    // Not enough gems
                 }
             }
         }
@@ -62,8 +98,11 @@ public class ShopItem : MonoBehaviour
         {
             if (anim != null)
                 anim.SetBool("inRange", false);
+            if (anim2 != null)
+                anim2.SetBool("inRange", false);
         }
     }
+
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
