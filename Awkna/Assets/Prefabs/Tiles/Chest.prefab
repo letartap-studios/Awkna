@@ -125,8 +125,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6834524911116659543, guid: cb7917f923f9ad54981fb90633e40e7c,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89f34e49a5609034e9ca72ec9cdd7cc0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -152,9 +151,9 @@ PolygonCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0.005, z: 0, w: 0}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.025, y: 0.945}
+    oldSize: {x: 0.86, y: 0.75}
     newSize: {x: 1.15, y: 1.08}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -205,8 +204,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0}
   size: {x: 0.8, y: 0.8}
   anim: {fileID: 3458926081740903752}
-  chestOpened: {fileID: 5045073161074915229, guid: cb7917f923f9ad54981fb90633e40e7c,
-    type: 3}
+  chestOpened: {fileID: 21300000, guid: bc9e408aca2f18544b0c7a672aaa72e7, type: 3}
   button: {fileID: 1239457304275530327}
 --- !u!1001 &5700126489712491045
 PrefabInstance:

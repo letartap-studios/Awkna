@@ -15,6 +15,9 @@ public class SpawnBomb : MonoBehaviour
     public GameObject effect;               // Explosion effect.
     public GameObject[] obj;
     public GameObject crate;
+
+    public float updateOffset;
+    public LayerMask updateMask;
     #endregion
 
 
@@ -51,7 +54,6 @@ public class SpawnBomb : MonoBehaviour
                 // ...destroy it.
 
             }
-
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShakeController>().Shake();
 
             GameObject instance = Instantiate(effect, transform.position, Quaternion.identity);   //Explosion effect.
@@ -60,6 +62,14 @@ public class SpawnBomb : MonoBehaviour
 
             Destroy(whatIsBomb);                                            // Destroy the bomb at explosion.
             Destroy(instance, 3f);
+
+            Collider2D[] tilesToUpdate = Physics2D.OverlapCircleAll(transform.position, areaOfEffect + updateOffset, updateMask);
+
+            for (int i = 0; i < tilesToUpdate.Length; i++)
+            {
+                tilesToUpdate[i].GetComponent<SpriteSelector>().ChangeSprite();
+            }
+
             AstarPath.active.Scan();
         }
         else
@@ -73,6 +83,9 @@ public class SpawnBomb : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, areaOfEffect);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, areaOfEffect + updateOffset);
     }
 #endif
 }

@@ -51,7 +51,7 @@ public class PlayerStats : MonoBehaviour
 
     private int usesUsed;
     private int numberOfUses = 2;
-
+    [SerializeField]
     private int level = 0;
 
     /// <summary>

@@ -11,7 +11,7 @@ public class SpawnObject : MonoBehaviour
 
     Object[] objects;
 
-    private void Start()
+    private void Awake()
     {
         if (tiles.Length == 0)
         {
