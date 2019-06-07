@@ -4,14 +4,15 @@
 public class EnemyHealth : MonoBehaviour
 {
     public int health;
-    [HideInInspector]
 
+    public ParticleSystem deathParticles;
 
     private void Update()
     {
         if (health <= 0)
         {
             Destroy(gameObject);
+            Instantiate(deathParticles, gameObject.transform.position, Quaternion.identity);
         }
     }
 
@@ -27,6 +28,7 @@ public class EnemyHealth : MonoBehaviour
         {
             TakeDamage(1);
             FindObjectOfType<AudioManager>().Play("hit_alien");
+
         }
     }
 }

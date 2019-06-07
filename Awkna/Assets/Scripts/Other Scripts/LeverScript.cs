@@ -31,6 +31,8 @@ public class LeverScript : MonoBehaviour
 
                 if (leverIsUp)
                 {
+                    FindObjectOfType<AudioManager>().Play("surge");
+
                     led.color = Color.red;
                     leverIsUp = false;
                     spriteRenderer.sprite = leverDownSprite;
@@ -58,6 +60,7 @@ public class LeverScript : MonoBehaviour
                 }
                 else
                 {
+                    FindObjectOfType<AudioManager>().Play("power_on");
                     led.color = Color.green;
                     leverIsUp = true;
                     spriteRenderer.sprite = leverUpSprite;
