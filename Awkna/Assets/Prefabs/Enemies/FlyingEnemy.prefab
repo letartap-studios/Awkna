@@ -305,7 +305,7 @@ AudioSource:
   Priority: 202
   DopplerLevel: 1
   MinDistance: 0.1
-  MaxDistance: 15.9
+  MaxDistance: 10.1
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -354,7 +354,7 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.003730774
       value: 0
       inSlope: 0
       outSlope: 0
@@ -413,16 +413,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8000636305140983321}
     m_Modifications:
-    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
-        type: 3}
-      propertyPath: m_Name
-      value: Point Light (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -478,6 +468,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_Name
+      value: Point Light (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863382, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_Range
@@ -518,16 +518,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8000636305140983321}
     m_Modifications:
-    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
-        type: 3}
-      propertyPath: m_Name
-      value: Point Light
-      objectReference: {fileID: 0}
-    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -583,6 +573,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_Name
+      value: Point Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863382, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_Intensity
@@ -623,16 +623,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8000636305140983321}
     m_Modifications:
-    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
-        type: 3}
-      propertyPath: m_Name
-      value: Point Light (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -686,6 +676,16 @@ PrefabInstance:
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_Name
+      value: Point Light (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863382, guid: 8e0341b224a2f714382be454b2e8a95a,

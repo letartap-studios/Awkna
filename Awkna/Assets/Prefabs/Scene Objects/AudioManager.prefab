@@ -44,8 +44,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - clip: {fileID: 8300000, guid: 98f95acdb018aae4f9c1ba6fb65c54de, type: 3}
+  - clip: {fileID: 8300000, guid: b5ee55a2397e76b4cafe189d0c647dfe, type: 3}
     name: Explosion1
+    volume: 0.43
+    pitch: 0.96
+    Loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 5c97647f3148e144e9996646dcb9cb49, type: 3}
+    name: levelstart
+    volume: 0.43
+    pitch: 0.96
+    Loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 3f3ec189d6b320c40af4dcb9179a0e7d, type: 3}
+    name: hook
+    volume: 0.43
+    pitch: 0.96
+    Loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: fd16dce303f2eba4c92424252b248761, type: 3}
+    name: damagetaken
+    volume: 0.43
+    pitch: 0.96
+    Loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 301f492efe291dd48a0c25b6c01d8377, type: 3}
+    name: pickup
+    volume: 0.43
+    pitch: 0.96
+    Loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 7240c288740e96d40b004eb8c439d377, type: 3}
+    name: fall
     volume: 0.43
     pitch: 0.96
     Loop: 0

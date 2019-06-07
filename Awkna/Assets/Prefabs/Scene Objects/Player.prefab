@@ -491,8 +491,6 @@ MonoBehaviour:
   waitTime: 0
   startWaitTime: 0.5
   climbSpeed: 5
-  usesUsed: 0
-  numberOfUses: 1
   anim: {fileID: 174803940181713847}
 --- !u!120 &2115697293848515349
 LineRenderer:
@@ -655,7 +653,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minTimeBetweenSteps: 0.2
-  dustEffect: {fileID: 4025888977589029232, guid: 6581dd4c987fc674284e1b96d5107a7d,
+  walkDustEffect: {fileID: 4327993200132837721, guid: 6581dd4c987fc674284e1b96d5107a7d,
+    type: 3}
+  landEffect: {fileID: 4327993200132837721, guid: e8c31adabcf41d14680793db2c77d2bf,
     type: 3}
 --- !u!82 &1905101323972294251
 AudioSource:
