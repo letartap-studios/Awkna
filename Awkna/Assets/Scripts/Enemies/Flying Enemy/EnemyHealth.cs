@@ -26,6 +26,7 @@ public class EnemyHealth : MonoBehaviour
         if (other.tag == "Sword")
         {
             TakeDamage(1);
+            FindObjectOfType<AudioManager>().Play("hit_alien");
         }
     }
 }

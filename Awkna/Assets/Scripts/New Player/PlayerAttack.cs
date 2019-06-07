@@ -38,9 +38,9 @@ public class PlayerAttack : MonoBehaviour
 
                 //}
 
-            timeBtwAttack = startTimeBtwAttack;
+                timeBtwAttack = startTimeBtwAttack;
+            }
         }
-    }
         else
         {
             timeBtwAttack -= Time.deltaTime;
