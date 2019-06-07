@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Blink : MonoBehaviour
 {
+
+    AudioSource audioSrc;
     public float time = 1;
     public bool active = true;
     public float paddingTIme = 0f;
@@ -13,6 +15,9 @@ public class Blink : MonoBehaviour
 
     private void Start()
     {
+
+        audioSrc = GetComponent<AudioSource>();
+
         time += paddingTIme;
 
         go = this.gameObject.transform.GetChild(0).gameObject;
@@ -32,6 +37,16 @@ public class Blink : MonoBehaviour
 
             countTime = 0;
         }
+
+        if (go.activeSelf && !audioSrc.isPlaying)
+        {
+            audioSrc.Play();
+        }
+        else
+        {
+            audioSrc.Stop();
+        }
+
 
     }
 }

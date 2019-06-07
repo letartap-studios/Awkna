@@ -26,7 +26,8 @@ public class PlayerSounds : MonoBehaviour
         {
             if(spawnDust == true)
             {
-            Instantiate(landEffect, PlayerController.Instance.groundCheck.position, Quaternion.identity);
+                Instantiate(landEffect, PlayerController.Instance.groundCheck.position, Quaternion.identity);
+                FindObjectOfType<AudioManager>().Play("fall");
                 spawnDust = false;
             }
 
