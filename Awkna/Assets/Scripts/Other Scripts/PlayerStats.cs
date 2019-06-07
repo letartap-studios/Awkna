@@ -54,6 +54,17 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     private int level = 0;
 
+    private float damageAnimationTime;
+    [SerializeField]
+    private float initialdDamageAnimationTime;
+
+    [SerializeField]
+    private SpriteRenderer body;
+    [SerializeField]
+    private SpriteRenderer rightHand;
+    [SerializeField]
+    private SpriteRenderer leftHand;
+
     /// <summary>
     /// The current health of the player.
     /// </summary>

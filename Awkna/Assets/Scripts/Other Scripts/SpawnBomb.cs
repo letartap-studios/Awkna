@@ -67,7 +67,8 @@ public class SpawnBomb : MonoBehaviour
 
             for (int i = 0; i < tilesToUpdate.Length; i++)
             {
-                tilesToUpdate[i].GetComponent<SpriteSelector>().ChangeSprite();
+                if (tilesToUpdate[i].GetComponent<SpriteSelector>() != null)
+                    tilesToUpdate[i].GetComponent<SpriteSelector>().ChangeSprite();
             }
 
             AstarPath.active.Scan();

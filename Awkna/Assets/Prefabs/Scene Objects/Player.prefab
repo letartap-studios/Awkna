@@ -423,14 +423,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3c9e9be88c2c24aa0b58dadb16486e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTimeBtwAttack: 0.3
+  startTimeBtwAttack: 0.5
   attackPos: {fileID: 2115697293309399627}
   attackRange: 0.33
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 528384
   damage: 1
-  sword: {fileID: 0}
 --- !u!50 &2115697293848515371
 Rigidbody2D:
   serializedVersion: 4
