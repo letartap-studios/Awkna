@@ -370,7 +370,7 @@ public class NewLevelGenerator : MonoBehaviour
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag("ItemSpawner");
 
-        foreach (GameObject i in objects)
+        for (int i = 0; i < length; i++)
         {
             Instantiate(crateObject, i.transform.position, Quaternion.identity);
         }
