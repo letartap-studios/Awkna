@@ -55,32 +55,32 @@ public class PlayerStats : MonoBehaviour
     /// <summary>
     /// The current health of the player.
     /// </summary>
-    public float Health { get { return health; } }
+    public float Health { get => health; }
     /// <summary>
     /// The current maximum health the player can have.
     /// Can be increased if the player collects a heart.
     /// </summary>
-    public float MaxHealth { get { return maxHealth; } }
+    public float MaxHealth { get => maxHealth; }
     /// <summary>
     /// The maximum health the player can gather.
     /// If he reached the the maximum, he can no longer increase his life by collecting hearts. 
     /// </summary>
-    public float MaxTotalHealth { get { return maxTotalHealth; } }
+    public float MaxTotalHealth { get => maxTotalHealth; }
     /// <summary>
     /// The current number of bombs.
     /// </summary>
-    public int BombsNumber { get { return bombsNumber; } }
+    public int BombsNumber { get => bombsNumber; }
     /// <summary>
     /// The current number of gems.
     /// </summary>
-    public int GemNumber { get { return gemNumber; } }
+    public int GemNumber { get => gemNumber; }
     /// <summary>
     /// The maximum distance at which the player can fire the grappling hook.
     /// </summary>
-    public float RopeMaxDistance { get { return ropeMaxCastDistance; } }
+    public float RopeMaxDistance { get => ropeMaxCastDistance; }
 
-    public int UsesUsed { get { return usesUsed; } set { usesUsed = value; } }
-    public int NumberOfUses { get { return numberOfUses; } }
+    public int UsesUsed { get => usesUsed; set => usesUsed = value; }
+    public int NumberOfUses { get => numberOfUses; }
 
     #endregion
 
@@ -98,6 +98,10 @@ public class PlayerStats : MonoBehaviour
         ropeMaxCastDistance = 5f;
     }
 
+    public void ResetGrapplingUses()
+    {
+        usesUsed = numberOfUses;
+    }
     public void UseGrapplingCharge()
     {
         usesUsed--;
@@ -134,7 +138,7 @@ public class PlayerStats : MonoBehaviour
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShakeController>().Shake();
 
             GameObject.FindWithTag("Player").GetComponent<RopeSystem>().ResetRope();
-                       
+
             PlayerController.Instance.Knockback(knockbackPwr, (Vector2)PlayerController.Instance.transform.position, pos.x);
 
             countdownTimeToInvulnerability = invulnerabilityTime;
@@ -172,7 +176,7 @@ public class PlayerStats : MonoBehaviour
 
             if (onHealthChangedCallback != null)
                 onHealthChangedCallback.Invoke();
-        }   
+        }
     }
     private void ClampHealth()
     {

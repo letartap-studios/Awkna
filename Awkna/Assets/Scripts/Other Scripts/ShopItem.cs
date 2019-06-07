@@ -15,28 +15,35 @@ public class ShopItem : MonoBehaviour
     private LayerMask playerMask;
     public Animator anim;
     public Animator anim2;
-    public int price;
+    private int price;
     public int numberOfItems;
 
     public GameObject displayItemPos;
+    public GameObject pushButtonIndicator;
+    public GameObject itemCost;
 
-    
+    bool empty = false;
+
 
     private void Start()
     {
-        soldObjectSprite =  GetComponent<SpriteRenderer>().sprite;
+        soldObjectSprite = GetComponent<SpriteRenderer>().sprite;
 
         playerMask = LayerMask.GetMask("Player");
         soldObject = PickupArray[Random.Range(1, PickupArray.Length)];
+        price = soldObject.GetComponent<PowerUp>().price;
         displayItemPos.GetComponent<SpriteRenderer>().sprite = soldObject.GetComponent<SpriteRenderer>().sprite;
         PriceText.text = price.ToString();
     }
 
     public void DestroyShopItem()
     {
-        Instantiate(soldObject, transform.position, Quaternion.identity);
+        
         //GameObject.FindWithTag("Player").GetComponent<RopeSystem>().ResetRope();
-        Destroy(gameObject);
+        Destroy(displayItemPos);
+        Destroy(pushButtonIndicator);
+        Destroy(itemCost);
+        empty = true;
     }
 
     private void Update()
@@ -62,9 +69,16 @@ public class ShopItem : MonoBehaviour
             {
                 if (PlayerStats.Instance.GemNumber >= price)
                 {
-                    PlayerStats.Instance.PayGems(price);
-                    DestroyShopItem();
-                    
+                    if (!empty)
+                    {
+                        PlayerStats.Instance.PayGems(price);
+                        Instantiate(soldObject, transform.position, Quaternion.identity);
+                        DestroyShopItem();
+                    }
+                }
+                else
+                {
+                    // Not enough gems
                 }
             }
         }

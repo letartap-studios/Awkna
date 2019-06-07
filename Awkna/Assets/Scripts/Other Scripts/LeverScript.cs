@@ -47,6 +47,10 @@ public class LeverScript : MonoBehaviour
                     {
                         electricty[i].GetComponent<DoorScript>().OpenDoor();
                     }
+                    else if(electricty[i].layer == 27) // Shop
+                    {
+                        electricty[i].GetComponent<ShopItem>().DestroyShopItem();
+                    }
                 }
             }
         }

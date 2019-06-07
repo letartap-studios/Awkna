@@ -115,7 +115,7 @@ public class RopeSystem : MonoBehaviour
 
         if (playerController.isGrounded && !ropeAttached)
         {
-            PlayerStats.Instance.UsesUsed = PlayerStats.Instance.NumberOfUses;
+            PlayerStats.Instance.ResetGrapplingUses();
         }
 
         HandleInput(aimDirection);
