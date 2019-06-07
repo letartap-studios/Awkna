@@ -357,23 +357,23 @@ public class NewLevelGenerator : MonoBehaviour
 
     private void SummonEnemies()
     {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("EnemySpawner");
+        //GameObject[] objects = GameObject.FindGameObjectsWithTag("EnemySpawner");
 
-        foreach (GameObject i in objects)
-        {
-            Debug.Log("test");
-            Instantiate(ufoEnemy, i.transform.position, Quaternion.identity);
-        }
+        //foreach (GameObject i in objects)
+        //{
+        //    Debug.Log("test");
+        //    Instantiate(ufoEnemy, i.transform.position, Quaternion.identity);
+        //}
     }
 
     private void SummonCrates()
     {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("ItemSpawner");
+        //GameObject[] objects = GameObject.FindGameObjectsWithTag("ItemSpawner");
 
-        foreach (GameObject i in objects)
-        {
-            Instantiate(crateObject, i.transform.position, Quaternion.identity);
-        }
+        //for (int i = 0; i < length; i++)
+        //{
+        //    Instantiate(crateObject, i.transform.position, Quaternion.identity);
+        //}
     }
 
 }

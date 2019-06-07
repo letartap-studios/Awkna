@@ -52,6 +52,8 @@ public class PlayerStats : MonoBehaviour
     private int usesUsed;
     private int numberOfUses = 2;
 
+    private int level = 0;
+
     /// <summary>
     /// The current health of the player.
     /// </summary>
@@ -81,6 +83,7 @@ public class PlayerStats : MonoBehaviour
 
     public int UsesUsed { get => usesUsed; set => usesUsed = value; }
     public int NumberOfUses { get => numberOfUses; }
+    public int Level { get => level; set => level = value; }
 
     #endregion
 
@@ -96,6 +99,12 @@ public class PlayerStats : MonoBehaviour
         bombsNumber = 3;
         gemNumber = 0;
         ropeMaxCastDistance = 5f;
+        level = 0;
+    }
+
+    public void NextLevel()
+    {
+        level++;
     }
 
     public void ResetGrapplingUses()
