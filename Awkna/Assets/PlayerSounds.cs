@@ -12,7 +12,8 @@ public class PlayerSounds : MonoBehaviour
 
     private bool spawnDust;
 
-    public GameObject dustEffect;
+    public ParticleSystem walkDustEffect;
+    public ParticleSystem landEffect;
 
     void Awake()
     {
@@ -21,7 +22,19 @@ public class PlayerSounds : MonoBehaviour
 
     void Update()
     {
+        if (PlayerController.Instance.isGrounded == true)
+        {
+            if(spawnDust == true)
+            {
+            Instantiate(landEffect, PlayerController.Instance.groundCheck.position, Quaternion.identity);
+                spawnDust = false;
+            }
 
+        }
+        else
+        {
+            spawnDust = true;
+        }
 
 
         if (PlayerController.Instance.isGrounded == true && PlayerController.Instance.GetHorizontalMoveInput() != 0 /*&& audioSrc.isPlaying == false*/)
@@ -33,7 +46,7 @@ public class PlayerSounds : MonoBehaviour
             if (timeToNextStep <= 0)
             {
                 audioSrc.Play();
-                Instantiate(dustEffect, PlayerController.Instance.groundCheck.position, Quaternion.identity);
+                Instantiate(walkDustEffect, PlayerController.Instance.groundCheck.position, Quaternion.identity);
                 timeToNextStep = minTimeBetweenSteps;
             }
             else
