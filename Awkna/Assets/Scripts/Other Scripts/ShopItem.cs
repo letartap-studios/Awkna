@@ -15,28 +15,41 @@ public class ShopItem : MonoBehaviour
     private LayerMask playerMask;
     public Animator anim;
     public Animator anim2;
-    public int price;
+    private int price;
     public int numberOfItems;
 
     public GameObject displayItemPos;
+    public GameObject pushButtonIndicator;
+    public GameObject itemCost;
 
-    
+    bool empty = false;
+
 
     private void Start()
-    {
-        soldObjectSprite =  GetComponent<SpriteRenderer>().sprite;
-
+    {        
         playerMask = LayerMask.GetMask("Player");
+        EnableShop();
+    }
+
+    public void EnableShop()
+    {
+        soldObjectSprite = GetComponent<SpriteRenderer>().sprite;
         soldObject = PickupArray[Random.Range(1, PickupArray.Length)];
+        price = soldObject.GetComponent<PowerUp>().price;
         displayItemPos.GetComponent<SpriteRenderer>().sprite = soldObject.GetComponent<SpriteRenderer>().sprite;
+        displayItemPos.GetComponent<SpriteRenderer>().enabled = true;
+        pushButtonIndicator.SetActive(true);
+        itemCost.SetActive(true);
         PriceText.text = price.ToString();
     }
 
-    public void DestroyShopItem()
+    public void DisableShop()
     {
-        Instantiate(soldObject, transform.position, Quaternion.identity);
         //GameObject.FindWithTag("Player").GetComponent<RopeSystem>().ResetRope();
-        Destroy(gameObject);
+        displayItemPos.GetComponent<SpriteRenderer>().enabled = false;
+        pushButtonIndicator.SetActive(false);
+        itemCost.SetActive(false);
+        empty = true;
     }
 
     private void Update()
@@ -62,9 +75,16 @@ public class ShopItem : MonoBehaviour
             {
                 if (PlayerStats.Instance.GemNumber >= price)
                 {
-                    PlayerStats.Instance.PayGems(price);
-                    DestroyShopItem();
-                    
+                    if (!empty)
+                    {
+                        PlayerStats.Instance.PayGems(price);
+                        Instantiate(soldObject, transform.position, Quaternion.identity);
+                        DisableShop();
+                    }
+                }
+                else
+                {
+                    // Not enough gems
                 }
             }
         }
