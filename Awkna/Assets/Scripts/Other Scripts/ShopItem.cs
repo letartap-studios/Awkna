@@ -46,6 +46,7 @@ public class ShopItem : MonoBehaviour
     public void DisableShop()
     {
         //GameObject.FindWithTag("Player").GetComponent<RopeSystem>().ResetRope();
+        FindObjectOfType<AudioManager>().Play("ka-ching");
         displayItemPos.GetComponent<SpriteRenderer>().enabled = false;
         pushButtonIndicator.SetActive(false);
         itemCost.SetActive(false);

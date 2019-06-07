@@ -25,6 +25,7 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 animator.SetTrigger("attacked");
+                FindObjectOfType<AudioManager>().Play("sword_hit");
 
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
 
@@ -33,6 +34,8 @@ public class PlayerAttack : MonoBehaviour
                     if (enemiesToDamage[i].CompareTag("Enemy"))
                     {
                         enemiesToDamage[i].GetComponent<EnemyHealth>().TakeDamage(damage);
+                        FindObjectOfType<AudioManager>().Play("hit_alien");
+
                     }
 
                 }
