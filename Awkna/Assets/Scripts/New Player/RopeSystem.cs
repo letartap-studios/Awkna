@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class RopeSystem : MonoBehaviour
 {
+    #region Sigleton
+    private static RopeSystem instance;
+    public static RopeSystem Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = FindObjectOfType<RopeSystem>();
+            return instance;
+        }
+    }
+    #endregion
+
     #region Varibles
     public GameObject ropeHingeAnchor;
     private DistanceJoint2D ropeJoint;
@@ -27,7 +40,9 @@ public class RopeSystem : MonoBehaviour
     public float startWaitTime;
 
     public float climbSpeed = 3f;      // Set the speed at which the player can go up and down the rope.
-    private bool isColliding;          // Flag to determine whether or not the rope's distance joint distance property can be increased or decreased.     
+    private bool isColliding;          // Flag to determine whether or not the rope's distance joint distance property can be increased or decreased.    
+
+    public Animator anim;
 
     private Dictionary<Vector2, int> wrapPointsLookup = new Dictionary<Vector2, int>();
 
@@ -43,6 +58,7 @@ public class RopeSystem : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         ropeRenderer = GetComponent<LineRenderer>();
         waitTime = startWaitTime;
+
     }
 
     private void LateUpdate()
@@ -97,6 +113,11 @@ public class RopeSystem : MonoBehaviour
 
         }
 
+        if (playerController.isGrounded && !ropeAttached)
+        {
+            PlayerStats.Instance.ResetGrapplingUses();
+        }
+
         HandleInput(aimDirection);
 
         UpdateRopePositions();
@@ -122,7 +143,7 @@ public class RopeSystem : MonoBehaviour
 
     private void HandleInput(Vector2 aimDirection)
     {
-        if (Input.GetButtonDown("Grapple") && waitTime == startWaitTime)
+        if (Input.GetButtonDown("Grapple") && waitTime == startWaitTime && PlayerStats.Instance.UsesUsed > 0)
         {
             if (ropeAttached)
             {
@@ -131,6 +152,8 @@ public class RopeSystem : MonoBehaviour
             }
 
             ropeRenderer.enabled = true;
+
+
 
             var hit = Physics2D.Raycast(playerPosition, aimDirection, PlayerStats.Instance.RopeMaxDistance, ropeLayerMask);
 
@@ -141,11 +164,12 @@ public class RopeSystem : MonoBehaviour
                 {
                     FindObjectOfType<AudioManager>().Play("hook"); //play sound
                     // Jump slightly to distance the player a little from the ground after grappling to something.
-                    //transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2f), ForceMode2D.Impulse);
+                    // transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2f), ForceMode2D.Impulse);
                     ropePositions.Add(hit.point);
                     ropeJoint.distance = Vector2.Distance(playerPosition, hit.point);
                     ropeJoint.enabled = true;
                     ropeHingeAnchorSprite.enabled = true;
+                    PlayerStats.Instance.UseGrapplingCharge();
                 }
 
                 waitTime = 0;
@@ -155,6 +179,8 @@ public class RopeSystem : MonoBehaviour
                 ropeRenderer.enabled = false;
                 ropeAttached = false;
                 ropeJoint.enabled = false;
+                //animation
+                anim.SetTrigger("outOfRange");
             }
         }
         if (Input.GetButtonDown("Jump") && playerController.isSwinging)
@@ -273,7 +299,7 @@ public class RopeSystem : MonoBehaviour
         }
         if (Input.GetAxisRaw("Vertical") > 0f && ropeAttached)
         {
-            if (!isColliding)
+            //if (!isColliding)
                 ropeJoint.distance -= Time.deltaTime * climbSpeed;
         }
         else if (Input.GetAxisRaw("Vertical") < 0f && ropeAttached && !playerController.isGrounded)

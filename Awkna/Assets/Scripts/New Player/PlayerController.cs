@@ -89,9 +89,9 @@ public class PlayerController : MonoBehaviour
         initialGravity = rb.gravityScale;               // Get the initial value of the gravity.
         m_GravityDirection = GravityDirection.Down;     // Initialize the gravity direction with down.
         Physics2D.IgnoreLayerCollision(15, 20, true);   // Ignore the collition between the player and the collectables.
-        //Physics2D.IgnoreLayerCollision(20, 20, true);   // Ignore the collision between the collectables.
+        //Physics2D.IgnoreLayerCollision(20, 20, true); // Ignore the collision between the collectables.
         Physics2D.IgnoreLayerCollision(15, 12, true);   // player, enemies
-        Physics2D.IgnoreLayerCollision(13, 15, true);  // Ignore the collision between the player and the bomb.
+        Physics2D.IgnoreLayerCollision(13, 15, true);   // Ignore the collision between the player and the bomb.
     }
 
     private void Update()
@@ -116,14 +116,14 @@ public class PlayerController : MonoBehaviour
         #endregion
 
         #region Jump
-        if (m_GravityDirection == GravityDirection.Down) // Check if the gravity is downwards so the jump force is up.
+        if (m_GravityDirection == GravityDirection.Down)
         {
-            if (Input.GetButtonDown("Jump") && (isGrounded || isSwinging)) // Check if the Jump button was pressed and give the player's...
+            if (Input.GetButtonDown("Jump") && (isGrounded || isSwinging || isClimbing))
             {
                 Animator.SetTrigger("takeOf");
-                rb.velocity = Vector2.up * jumpForce;               //...rigidbody velocity on the y axis.
-                isJumping = true;                                   // The player is jumping.
-                jumpTimeCounter = jumpTime;                         // Reset the jump time counter.
+                rb.velocity = Vector2.up * jumpForce;
+                isJumping = true;
+                jumpTimeCounter = jumpTime;
             }
 
             if (Input.GetButton("Jump") && isJumping == true)       // While the player is holding down the jump button...
@@ -265,7 +265,6 @@ public class PlayerController : MonoBehaviour
 
         if (!isSwinging)
         {
-
             Physics2D.IgnoreLayerCollision(15, 11, false); // player, ladders
 
             ladderCollider = Physics2D.OverlapCircle((Vector2)transform.position + ladderOffset, ladderDistance, whatIsLadder);
@@ -282,7 +281,6 @@ public class PlayerController : MonoBehaviour
             {
                 isClimbing = false;
                 rb.gravityScale = initialGravity;
-
             }
         }
         else
@@ -385,7 +383,7 @@ public class PlayerController : MonoBehaviour
         facingRight = !facingRight;                             // Change the facing upon rotation
 
     }
-
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected() // Draw a gismos circle around the ground check radius.
     {
         Gizmos.color = Color.red;
@@ -393,26 +391,21 @@ public class PlayerController : MonoBehaviour
 
         Gizmos.DrawWireSphere(vec, groundCheckRadius);
 
-        Gizmos.color = Color.white;
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere((Vector2)transform.position + ladderOffset, ladderDistance);
     }
-
-    public void Knockback(float knockDur, float knockbackPwr, Vector3 knockbackDir, float posX)
+#endif
+    public void Knockback(float knockbackPwr, Vector2 knockbackDir, float posX)
     {
-        float timer = 0;        // The time that has passed since the function started.
-
-        while (knockDur > timer)
+        if (posX <= transform.position.x)
         {
-            timer += Time.deltaTime;
-            if (posX <= transform.position.x)
-            {
-                rb.AddForce(new Vector3(knockbackDir.x * knockbackPwr, knockbackDir.y, transform.position.z));
-            }
-            else
-            {
-                rb.AddForce(new Vector3(knockbackDir.x * (-knockbackPwr), knockbackDir.y, transform.position.z));
-            }
+            rb.AddForce(new Vector2(knockbackDir.x * knockbackPwr, knockbackDir.y));
         }
+        else
+        {
+            rb.AddForce(new Vector2(knockbackDir.x * (-knockbackPwr), knockbackDir.y));
+        }
+
     }
 
     #endregion

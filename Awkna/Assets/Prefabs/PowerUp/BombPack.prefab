@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 50
-  m_Sprite: {fileID: 21300000, guid: 299599986b195ec44ba0d4bf6f4d4804, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ef606300fa605d4eaaf9309d1ec420c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -148,9 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5495ed82f1ecd074f8144a170010d252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpText: +1 bomb pack
-  expiresImmediately: 0
-  specialEffect: {fileID: 0}
-  soundEffect: {fileID: 0}
-  pickUpRange: 0
-  numberOfBombs: 3
+  powerUpText: +1 pack of bombs
+  expiresImmediately: 1
+  pickUpRange: 0.5
+  price: 6
+  numberOfBombs: 4

@@ -23,24 +23,9 @@ public class PlayerStats : MonoBehaviour
             _instance = this;
         }
         DontDestroyOnLoad(gameObject);
+
+        usesUsed = numberOfUses;
     }
-
-
-    //private static PlayerStats instance;
-    //public static PlayerStats Instance
-    //{
-    //    get
-    //    {
-    //        if (instance == null)
-    //            instance = FindObjectOfType<PlayerStats>();
-    //        return instance;
-    //    }
-    //}
-
-    //private void Awake()
-    //{
-    //    DontDestroyOnLoad(gameObject);
-    //}
     #endregion
 
     #region Variables and Getters
@@ -59,37 +44,43 @@ public class PlayerStats : MonoBehaviour
     private float ropeMaxCastDistance = 5f;
     private float countdownTimeToInvulnerability = 0;
     [SerializeField]
-    private float invulnerabilityTime;
+    private float invulnerabilityTime = 0.2f;
 
-    private float knockDuration;
+    [SerializeField]
     private float knockbackPwr;
+
+    private int usesUsed;
+    private int numberOfUses = 2;
 
     /// <summary>
     /// The current health of the player.
     /// </summary>
-    public float Health { get { return health; } }
+    public float Health { get => health; }
     /// <summary>
     /// The current maximum health the player can have.
     /// Can be increased if the player collects a heart.
     /// </summary>
-    public float MaxHealth { get { return maxHealth; } }
+    public float MaxHealth { get => maxHealth; }
     /// <summary>
     /// The maximum health the player can gather.
     /// If he reached the the maximum, he can no longer increase his life by collecting hearts. 
     /// </summary>
-    public float MaxTotalHealth { get { return maxTotalHealth; } }
+    public float MaxTotalHealth { get => maxTotalHealth; }
     /// <summary>
     /// The current number of bombs.
     /// </summary>
-    public int BombsNumber { get { return bombsNumber; } }
+    public int BombsNumber { get => bombsNumber; }
     /// <summary>
     /// The current number of gems.
     /// </summary>
-    public int GemNumber { get { return gemNumber; } }
+    public int GemNumber { get => gemNumber; }
     /// <summary>
-    /// The maximum distance at whitch the player cand fire the grappling hook.
+    /// The maximum distance at which the player can fire the grappling hook.
     /// </summary>
-    public float RopeMaxDistance { get { return ropeMaxCastDistance; } }
+    public float RopeMaxDistance { get => ropeMaxCastDistance; }
+
+    public int UsesUsed { get => usesUsed; set => usesUsed = value; }
+    public int NumberOfUses { get => numberOfUses; }
 
     #endregion
 
@@ -99,12 +90,25 @@ public class PlayerStats : MonoBehaviour
     /// </summary>
     public void ResetStats()
     {
-        health = 3f;
         maxHealth = 3f;
+        health = maxHealth;
         maxTotalHealth = 6f;
         bombsNumber = 3;
         gemNumber = 0;
         ropeMaxCastDistance = 5f;
+    }
+
+    public void ResetGrapplingUses()
+    {
+        usesUsed = numberOfUses;
+    }
+    public void UseGrapplingCharge()
+    {
+        usesUsed--;
+    }
+    public void AddGrapplingUsage()
+    {
+        numberOfUses++;
     }
 
     /// <summary>
@@ -134,8 +138,8 @@ public class PlayerStats : MonoBehaviour
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShakeController>().Shake();
 
             GameObject.FindWithTag("Player").GetComponent<RopeSystem>().ResetRope();
-                       
-            PlayerController.Instance.Knockback(knockDuration, knockbackPwr, PlayerController.Instance.transform.position, pos.x);
+
+            PlayerController.Instance.Knockback(knockbackPwr, (Vector2)PlayerController.Instance.transform.position, pos.x);
 
             countdownTimeToInvulnerability = invulnerabilityTime;
 
@@ -172,7 +176,7 @@ public class PlayerStats : MonoBehaviour
 
             if (onHealthChangedCallback != null)
                 onHealthChangedCallback.Invoke();
-        }   
+        }
     }
     private void ClampHealth()
     {

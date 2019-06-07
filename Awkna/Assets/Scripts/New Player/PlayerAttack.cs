@@ -24,8 +24,6 @@ public class PlayerAttack : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                //CameraShaker.Instance.ShakeOnce(1f, 2f, .1f, .3f);   // When the player is attacking shake the camera.
-
                 animator.SetTrigger("attacked");
 
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
@@ -34,31 +32,24 @@ public class PlayerAttack : MonoBehaviour
                 {
                     if (enemiesToDamage[i].CompareTag("Enemy"))
                     {
-                        enemiesToDamage[i].transform.GetChild(0).GetComponent<EnemyHealth>().TakeDamage(damage);
-                    }
-                    if (enemiesToDamage[i].CompareTag("PatrollingEnemy"))
-                    {
-                        enemiesToDamage[i].GetComponent<PatrolEnemyHealth>().TakeDamage(damage);
-                    }
-                    if (enemiesToDamage[i].CompareTag("VerticalPatrollingEnemy"))
-                    {
-                        enemiesToDamage[i].GetComponent<VerticalPatrollingEnemyHealth>().TakeDamage(damage);
+                        enemiesToDamage[i].GetComponent<EnemyHealth>().TakeDamage(damage);
                     }
 
                 }
 
-                timeBtwAttack = startTimeBtwAttack;
-            }
+            timeBtwAttack = startTimeBtwAttack;
         }
+    }
         else
         {
             timeBtwAttack -= Time.deltaTime;
         }
     }
-
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
     }
+#endif
 }

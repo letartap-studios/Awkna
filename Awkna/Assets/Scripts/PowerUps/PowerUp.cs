@@ -12,12 +12,14 @@ public class PowerUp : MonoBehaviour
     public string powerUpText;
     [Tooltip("Tick true for power ups that are instant use, eg a health addition that has no delay before expiring")]
     public bool expiresImmediately;
-    public GameObject specialEffect;
-    public AudioClip soundEffect;
+    //public GameObject specialEffect;
+    //public AudioClip soundEffect;
 
     private GameObject dialogue;
 
     public float pickUpRange;
+
+    public int price;
 
 
     /// <summary>
@@ -46,12 +48,6 @@ public class PowerUp : MonoBehaviour
         powerUpState = PowerUpState.InAttractMode;
 
         dialogue = GameObject.FindWithTag("Dialogue");
-
-        //text1 = GameObject.FindWithTag("text1");
-        //text2 = GameObject.FindWithTag("text2");
-        //text3 = GameObject.FindWithTag("text3");
-        //text4 = GameObject.FindWithTag("text4");
-        //text5 = GameObject.FindWithTag("text5");
     }
 
     protected virtual void Update()
@@ -94,10 +90,10 @@ public class PowerUp : MonoBehaviour
 
     protected virtual void PowerUpEffects()
     {
-        if (specialEffect != null)
-        {
-            Instantiate(specialEffect, transform.position, transform.rotation, transform);
-        }
+        //if (specialEffect != null)
+        //{
+        //    Instantiate(specialEffect, transform.position, transform.rotation, transform);
+        //}
 
 
         FindObjectOfType<AudioManager>().Play("pickup");
@@ -140,13 +136,14 @@ public class PowerUp : MonoBehaviour
     {
         // Arbitrary delay of some seconds to allow particle, audio is all done
         // TODO could tighten this and inspect the sfx? Hard to know how many, as subclasses could have spawned their own
-        Destroy(gameObject, 5f);
+        Destroy(gameObject);
     }
-
+#if UNITY_EDITOR
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, pickUpRange);
     }
+#endif
 }
 

@@ -12,8 +12,7 @@ namespace Enemy
         private GameObject player;                          // Refence to the player object in the scene.
         private bool playerInRange = false;                 // Whether the player has been in range of the enemy until the moment.
         private float distanceToPlayer;                     // The distance at which the enemy starts to follow the player.
-        [HideInInspector]
-        public bool isFollowing;
+        private bool activated;
         #endregion
 
         void Start()
@@ -42,10 +41,11 @@ namespace Enemy
                 }
             }
 
-            if (playerInRange)          // If the player was in range of the enemy...
+            if (playerInRange && !activated)          
             {
+                activated = true;
                 GetComponent<AIPath>().enabled = true;  // Activate the script AIPath.
-                transform.GetChild(0).GetComponent<EnemyHealth>().enabled = true;
+                GetComponent<EnemyHealth>().enabled = true;
                 GetComponent<EnemyAttack>().enabled = true;
                 GetComponent<FlyingEnemyRange>().enabled = false;
             }

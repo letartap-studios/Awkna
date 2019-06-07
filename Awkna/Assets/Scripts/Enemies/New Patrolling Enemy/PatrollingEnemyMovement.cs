@@ -45,28 +45,7 @@ public class PatrollingEnemyMovement : MonoBehaviour
             Flip();
         }
 
-        //if (frontGroundCheck.CompareTag("LaserHolder"))
-        //{
-        //    //idle animation
-        //    anim.SetBool("idle", true);
-        //}
-        //else
-        //{
-        //    //end idle animation
-        //    anim.SetBool("idle", false);
-        //}
-
         m_MoveVector.y = Mathf.Max(m_MoveVector.y - gravity * Time.deltaTime, -gravity);
-
-        if (health.countdownTimeToInvulnerability <= 0)
-        {
-            movementSpeed = initialMovementSpeed;
-        }
-        else
-        {
-            anim.SetTrigger("takeDamage");
-            movementSpeed = 0;
-        }
 
         SetHorizontalSpeed(movementSpeed);
 

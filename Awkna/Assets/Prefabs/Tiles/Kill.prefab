@@ -73,7 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 103092142185816030, guid: c74c4618891224140b045d5ee3ce508c, type: 3}
+  m_Sprite: {fileID: 7859757414964814041, guid: ad160015b5e09914d83df8addc6968dd,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,10 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e107acab6c37ca42b82ebec3ed1a3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 0.05
   offset: {x: 0, y: 0}
   size: {x: 1, y: 1}
-  playerController: {fileID: 0}
 --- !u!61 &8419934415272737179
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -139,10 +139,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 5041454722469268486, guid: c74c4618891224140b045d5ee3ce508c, type: 3}
-  - {fileID: 103092142185816030, guid: c74c4618891224140b045d5ee3ce508c, type: 3}
-  - {fileID: -6324399588396681608, guid: c74c4618891224140b045d5ee3ce508c, type: 3}
-  - {fileID: -6152654041698072594, guid: c74c4618891224140b045d5ee3ce508c, type: 3}
+  - {fileID: -5751917788780251490, guid: ad160015b5e09914d83df8addc6968dd, type: 3}
+  - {fileID: 7859757414964814041, guid: ad160015b5e09914d83df8addc6968dd, type: 3}
+  - {fileID: -1026395683719060503, guid: ad160015b5e09914d83df8addc6968dd, type: 3}
+  - {fileID: 6780172419555979032, guid: ad160015b5e09914d83df8addc6968dd, type: 3}
 --- !u!60 &3355719559483259845
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -242,17 +242,17 @@ PrefabInstance:
     - target: {fileID: 7036417900694863382, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.8584906
+      value: 0.10335546
       objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863382, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.14670835
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863382, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 0.85882354
       objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863382, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}

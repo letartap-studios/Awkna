@@ -14,6 +14,7 @@ public class Oxygen : MonoBehaviour
     private bool lowLevelOxygenAlarm = false;
     private bool zeroOxygenAlarm = false;
     private GameObject dialogue;
+    public Text oxygenPercentage;
     private void Awake()
     {
         barImage = transform.Find("Bar").GetComponent<Image>();
@@ -27,6 +28,8 @@ public class Oxygen : MonoBehaviour
 
     private void Update()
     {
+        if (oxygenAmmount > maxOxygenAmmount)
+            oxygenAmmount = maxOxygenAmmount;
 
         if (oxygenAmmount <= 0)
         {
@@ -51,6 +54,8 @@ public class Oxygen : MonoBehaviour
         {
             oxygenAmmount -= Time.deltaTime * speedOfOxygenUsage;
             barImage.fillAmount = oxygenAmmount / maxOxygenAmmount;
+
+            oxygenPercentage.text = (int)((oxygenAmmount / maxOxygenAmmount)*100) + "%";
 
             if (lowLevelOxygenAlarm == false && ((oxygenAmmount / maxOxygenAmmount) <= 0.3f)) 
             {
