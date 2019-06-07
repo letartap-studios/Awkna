@@ -26,16 +26,16 @@ public class PlayerAttack : MonoBehaviour
             {
                 animator.SetTrigger("attacked");
 
-                Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
+                //Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
 
-                for (int i = 0; i < enemiesToDamage.Length; i++)     // Damage all enemies in the area.
-                {
-                    if (enemiesToDamage[i].CompareTag("Enemy"))
-                    {
-                        enemiesToDamage[i].GetComponent<EnemyHealth>().TakeDamage(damage);
-                    }
+                //for (int i = 0; i < enemiesToDamage.Length; i++)     // Damage all enemies in the area.
+                //{
+                //    if (enemiesToDamage[i].CompareTag("Enemy"))
+                //    {
+                //        enemiesToDamage[i].GetComponent<EnemyHealth>().TakeDamage(damage);
+                //    }
 
-                }
+                //}
 
             timeBtwAttack = startTimeBtwAttack;
         }

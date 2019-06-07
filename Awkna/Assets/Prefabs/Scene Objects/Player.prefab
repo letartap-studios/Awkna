@@ -430,6 +430,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 528384
   damage: 1
+  sword: {fileID: 0}
 --- !u!50 &2115697293848515371
 Rigidbody2D:
   serializedVersion: 4
@@ -1326,9 +1327,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6478506870360737167}
   - component: {fileID: 2096183673593893657}
-  m_Layer: 0
+  - component: {fileID: 2912472314990256318}
+  m_Layer: 28
   m_Name: Saber
-  m_TagString: Untagged
+  m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1395,6 +1397,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &2912472314990256318
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4162944910232879130}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.078346305, y: 0.11151123}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.33333334, y: 0.7777778}
+    newSize: {x: 0.42857143, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.18188183, y: 0.55475533}
+  m_EdgeRadius: 0
 --- !u!1 &4346582592982976299
 GameObject:
   m_ObjectHideFlags: 0

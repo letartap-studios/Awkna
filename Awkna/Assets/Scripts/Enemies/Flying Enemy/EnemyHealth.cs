@@ -17,9 +17,15 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        
         health -= damage;
-        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShakeController>().Shake();
         Debug.Log("Enemy has taken damage");
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Sword")
+        {
+            TakeDamage(1);
+        }
     }
 }

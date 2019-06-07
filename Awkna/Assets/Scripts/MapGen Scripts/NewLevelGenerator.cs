@@ -356,11 +356,14 @@ public class NewLevelGenerator : MonoBehaviour
         }
 
         SummonEnemies();
-        SummonCrates();
+        SummonChests();
     }
 
     private void SummonEnemies()
     {
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("EnemySpawner");
+        GameObject[] patrollObjects = GameObject.FindGameObjectsWithTag("DevourerSpawner");
+
         switch (PlayerStats.Instance.Level)
         {
             case 1:
@@ -379,20 +382,16 @@ public class NewLevelGenerator : MonoBehaviour
                 maxDevourers = 8;
                 break;
             default:
-                maxFlyingEnemies = 9;
-                maxDevourers = 10;
+                maxFlyingEnemies = objects.Length-1;
+                maxDevourers = patrollObjects.Length;
                 break;
         }
-        
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("EnemySpawner");
 
         for (int i = 0; i < maxFlyingEnemies; i++) 
         {
             Debug.Log("spawn flying enemy");
             Instantiate(ufoEnemy, objects[i].transform.position, Quaternion.identity);
         }
-
-        GameObject[] patrollObjects = GameObject.FindGameObjectsWithTag("DevourerSpawner");
 
         for (int i = 0; i < maxDevourers; i++)
         {
@@ -401,7 +400,7 @@ public class NewLevelGenerator : MonoBehaviour
         }
     }
 
-    private void SummonCrates()
+    private void SummonChests()
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag("ItemSpawner");
 
