@@ -6,10 +6,14 @@ public class LeverScript : MonoBehaviour
     public float range;
 
     public Sprite leverDownSprite;
+    public Sprite leverUpSprite;
 
     SpriteRenderer spriteRenderer;
 
+    private bool leverIsUp = true;
+
     public Animator anim;
+    public Light led;
 
     private void Start()
     {
@@ -23,33 +27,60 @@ public class LeverScript : MonoBehaviour
         {
             if (Input.GetButtonDown("Interact"))
             {
-                anim.SetBool("inRange", false);
-                spriteRenderer.sprite = leverDownSprite;
-
-                foreach (Transform child in transform)
-                {
-                    Destroy(child.gameObject);
-                }
-
                 GameObject[] electricty = GameObject.FindGameObjectsWithTag("Electricity");
-                for (int i = 0; i < electricty.Length; i++)
+
+                if (leverIsUp)
                 {
-                    if(electricty[i].layer == 22)       // Light Bulb
+                    led.color = Color.red;
+                    leverIsUp = false;
+                    spriteRenderer.sprite = leverDownSprite;
+                    for (int i = 0; i < electricty.Length; i++)
                     {
-                        electricty[i].GetComponentInChildren<Light>().enabled = false;
+                        if (electricty[i].layer == 22)       // Light Bulb
+                        {
+                            //electricty[i].GetComponentInChildren<Light>().enabled = false;
+                            electricty[i].transform.GetChild(0).gameObject.GetComponent<Light>().enabled = false;
+                        }
+                        else if (electricty[i].layer == 23)  // Laser
+                        {
+                            electricty[i].transform.GetComponent<Blink>().enabled = false;
+                            electricty[i].transform.GetChild(0).gameObject.SetActive(false);
+                        }
+                        else if (electricty[i].layer == 24)  // Electrical Door
+                        {
+                            electricty[i].GetComponent<DoorScript>().OpenDoor();
+                        }
+                        else if (electricty[i].layer == 27) // Shop
+                        {
+                            electricty[i].GetComponent<ShopItem>().DisableShop();
+                        }
                     }
-                    else if(electricty[i].layer == 23)  // Laser
+                }
+                else
+                {
+                    led.color = Color.green;
+                    leverIsUp = true;
+                    spriteRenderer.sprite = leverUpSprite;
+                    
+                    for (int i = 0; i < electricty.Length; i++)
                     {
-                        electricty[i].transform.GetComponent<Blink>().enabled = false;
-                        electricty[i].transform.GetChild(0).gameObject.SetActive(false);
-                    }
-                    else if(electricty[i].layer == 24)  // Electrical Door
-                    {
-                        electricty[i].GetComponent<DoorScript>().OpenDoor();
-                    }
-                    else if(electricty[i].layer == 27) // Shop
-                    {
-                        electricty[i].GetComponent<ShopItem>().DestroyShopItem();
+                        if (electricty[i].layer == 22)       // Light Bulb
+                        {
+                            electricty[i].transform.GetChild(0).gameObject.GetComponent<Light>().enabled = true;
+                        }
+                        else if (electricty[i].layer == 23)  // Laser
+                        {
+                            electricty[i].transform.GetComponent<Blink>().enabled = true;
+                            electricty[i].transform.GetChild(0).gameObject.SetActive(true);
+                        }
+                        else if (electricty[i].layer == 24)  // Electrical Door
+                        {
+                            electricty[i].GetComponent<DoorScript>().CloseDoor();
+                        }
+                        else if (electricty[i].layer == 27) // Shop
+                        {
+                            electricty[i].GetComponent<ShopItem>().EnableShop();
+                        }
                     }
                 }
             }

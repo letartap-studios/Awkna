@@ -26,23 +26,29 @@ public class ShopItem : MonoBehaviour
 
 
     private void Start()
+    {        
+        playerMask = LayerMask.GetMask("Player");
+        EnableShop();
+    }
+
+    public void EnableShop()
     {
         soldObjectSprite = GetComponent<SpriteRenderer>().sprite;
-
-        playerMask = LayerMask.GetMask("Player");
         soldObject = PickupArray[Random.Range(1, PickupArray.Length)];
         price = soldObject.GetComponent<PowerUp>().price;
         displayItemPos.GetComponent<SpriteRenderer>().sprite = soldObject.GetComponent<SpriteRenderer>().sprite;
+        displayItemPos.GetComponent<SpriteRenderer>().enabled = true;
+        pushButtonIndicator.SetActive(true);
+        itemCost.SetActive(true);
         PriceText.text = price.ToString();
     }
 
-    public void DestroyShopItem()
+    public void DisableShop()
     {
-        
         //GameObject.FindWithTag("Player").GetComponent<RopeSystem>().ResetRope();
-        Destroy(displayItemPos);
-        Destroy(pushButtonIndicator);
-        Destroy(itemCost);
+        displayItemPos.GetComponent<SpriteRenderer>().enabled = false;
+        pushButtonIndicator.SetActive(false);
+        itemCost.SetActive(false);
         empty = true;
     }
 
@@ -73,7 +79,7 @@ public class ShopItem : MonoBehaviour
                     {
                         PlayerStats.Instance.PayGems(price);
                         Instantiate(soldObject, transform.position, Quaternion.identity);
-                        DestroyShopItem();
+                        DisableShop();
                     }
                 }
                 else
