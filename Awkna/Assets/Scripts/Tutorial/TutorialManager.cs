@@ -6,13 +6,11 @@ public class TutorialManager : MonoBehaviour
 {
     public GameObject[] popUps;
     private int popUpIndex;
-    private float waitTime = 5f;
-    private float waitTimeJump = 0.08f;
-    private float waitTimePutBomb = 5f;
-    private float waitTimeGem = 5f;
+    public GameObject[] collider;
 
     void Update()
     {
+        Debug.Log(popUpIndex);
         for (int i = 0; i < popUps.Length; i++)
         {
             if (i == popUpIndex)
@@ -25,6 +23,19 @@ public class TutorialManager : MonoBehaviour
             }
         }
 
+        /*if (popUpIndex == 7)
+        {
+            if (Input.GetButtonDown("Grapple"))
+            {
+                popUpIndex++;
+            }
+        }*/
+
+        /*if (popUpIndex == 8)
+        {
+            popUpIndex++;
+        }*/
+        /*
         if (popUpIndex == 0)
         {
             if (Input.GetButtonDown("Horizontal"))
@@ -78,6 +89,19 @@ public class TutorialManager : MonoBehaviour
                     waitTimeGem -= Time.deltaTime;
                 }
             }
-        }
+        }else if (popUpIndex == 5)
+        {
+            if (collider.CompareTag("Player"))
+            {
+                popUpIndex++;
+            }
+        }*/
     }
+
+    public void increment()
+    {
+        Destroy(collider[popUpIndex]);
+        popUpIndex++;
+    }
+        
 }
