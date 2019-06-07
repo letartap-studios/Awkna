@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3c9e9be88c2c24aa0b58dadb16486e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTimeBtwAttack: 0.5
+  startTimeBtwAttack: 0.6
   attackPos: {fileID: 2115697293309399627}
   attackRange: 0.33
   whatIsEnemy:
@@ -666,7 +666,8 @@ AudioSource:
   m_GameObject: {fileID: 2115697293848515362}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: dfab9357daedd534ea2dcf0b2a94d434,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 18beeba95f8452242a12a75f6c313e43, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

@@ -50,7 +50,7 @@ MonoBehaviour:
     pitch: 0.96
     Loop: 0
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 5c97647f3148e144e9996646dcb9cb49, type: 3}
+  - clip: {fileID: 8300000, guid: ee2e9787ada50df469145a7c7f6bb610, type: 3}
     name: levelstart
     volume: 0.43
     pitch: 0.96
@@ -88,19 +88,31 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: a2ed3209ab28e5d44a69c3781903552b, type: 3}
     name: static_laser
-    volume: 0.36
+    volume: 0
     pitch: 0.96
-    Loop: 1
+    Loop: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: e9e37eb6f21f3814bb56ef8ca78de955, type: 3}
     name: sword_hit
-    volume: 0.398
+    volume: 0.36
+    pitch: 0.96
+    Loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: fc8f6baad01566b468b392134dd41c9b, type: 3}
+    name: surge
+    volume: 0.526
     pitch: 0.96
     Loop: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 4d8b81e5f32db3f40b8a02c101971d1d, type: 3}
     name: hit_alien
-    volume: 0.398
-    pitch: 0.96
+    volume: 0.36
+    pitch: 1.61
+    Loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 6a016a15a1b48a5479e07aca60692593, type: 3}
+    name: power_on
+    volume: 0.36
+    pitch: 1.61
     Loop: 0
     source: {fileID: 0}

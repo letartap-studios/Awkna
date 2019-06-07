@@ -17,9 +17,9 @@ public class AlienTalkScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        audioSrc.volume = Random.Range(0.1f, 0.3f);
+        audioSrc.volume = Random.Range(0.1f, 0.5f);
         audioSrc.pitch = Random.Range(0.9f, 1.6f);
-        minTimeBetweenSteps = Random.Range(4f, 6f);
+        minTimeBetweenSteps = Random.Range(2f, 4f);
         if (timeToNextStep <= 0)
         {
             if(audioSrc.isPlaying == false)
