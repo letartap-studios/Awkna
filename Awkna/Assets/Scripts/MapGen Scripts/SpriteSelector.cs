@@ -88,12 +88,8 @@ public class SpriteSelector : MonoBehaviour
         upLeftRightSprite = upLeftRight[randomId];
         leftRightSprite = leftRight[randomId];
         downLeftRightSprite = downLeftRight[randomId];
-    }
 
-    private void Update()
-    {
         ChangeSprite();
-
     }
 
     public void ChangeSprite()

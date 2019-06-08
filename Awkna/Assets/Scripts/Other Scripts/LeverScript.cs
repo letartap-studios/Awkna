@@ -31,6 +31,8 @@ public class LeverScript : MonoBehaviour
 
                 if (leverIsUp)
                 {
+                    FindObjectOfType<AudioManager>().Play("surge");
+
                     led.color = Color.red;
                     leverIsUp = false;
                     spriteRenderer.sprite = leverDownSprite;
@@ -54,10 +56,17 @@ public class LeverScript : MonoBehaviour
                         {
                             electricty[i].GetComponent<ShopItem>().DisableShop();
                         }
+                        else if(electricty[i].layer == 29) // Shopkeeper
+                        {
+                            electricty[i].GetComponent<Animator>().SetBool("on", false);
+                            electricty[i].transform.GetChild(7).GetComponent<TextMesh>().text = "OH NO!";
+                            electricty[i].transform.GetChild(7).GetComponent<Shopkeeper>().lightsOut = true;
+                        }
                     }
                 }
                 else
                 {
+                    FindObjectOfType<AudioManager>().Play("power_on");
                     led.color = Color.green;
                     leverIsUp = true;
                     spriteRenderer.sprite = leverUpSprite;
@@ -80,6 +89,12 @@ public class LeverScript : MonoBehaviour
                         else if (electricty[i].layer == 27) // Shop
                         {
                             electricty[i].GetComponent<ShopItem>().EnableShop();
+                        }
+                        else if (electricty[i].layer == 29) // Shopkeeper
+                        {
+                            electricty[i].GetComponent<Animator>().SetBool("on", true);
+                            electricty[i].transform.GetChild(7).GetComponent<TextMesh>().text = "The electricity is back!";
+                            electricty[i].transform.GetChild(7).GetComponent<Shopkeeper>().lightsOut = false;
                         }
                     }
                 }

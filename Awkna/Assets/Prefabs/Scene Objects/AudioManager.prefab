@@ -44,9 +44,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - clip: {fileID: 8300000, guid: 98f95acdb018aae4f9c1ba6fb65c54de, type: 3}
+  - clip: {fileID: 8300000, guid: b5ee55a2397e76b4cafe189d0c647dfe, type: 3}
     name: Explosion1
     volume: 0.43
     pitch: 0.96
+    Loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: ee2e9787ada50df469145a7c7f6bb610, type: 3}
+    name: levelstart
+    volume: 0.43
+    pitch: 0.96
+    Loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 3f3ec189d6b320c40af4dcb9179a0e7d, type: 3}
+    name: hook
+    volume: 0.43
+    pitch: 0.96
+    Loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: fd16dce303f2eba4c92424252b248761, type: 3}
+    name: damagetaken
+    volume: 0.43
+    pitch: 0.96
+    Loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 301f492efe291dd48a0c25b6c01d8377, type: 3}
+    name: pickup
+    volume: 0.43
+    pitch: 0.96
+    Loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 7240c288740e96d40b004eb8c439d377, type: 3}
+    name: fall
+    volume: 0.43
+    pitch: 0.96
+    Loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 305545836eedc82438d29336af4d656f, type: 3}
+    name: ka-ching
+    volume: 0.618
+    pitch: 0.96
+    Loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: a2ed3209ab28e5d44a69c3781903552b, type: 3}
+    name: static_laser
+    volume: 0
+    pitch: 0.96
+    Loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: e9e37eb6f21f3814bb56ef8ca78de955, type: 3}
+    name: sword_hit
+    volume: 0.36
+    pitch: 0.96
+    Loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: fc8f6baad01566b468b392134dd41c9b, type: 3}
+    name: surge
+    volume: 0.526
+    pitch: 0.96
+    Loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 4d8b81e5f32db3f40b8a02c101971d1d, type: 3}
+    name: hit_alien
+    volume: 0.36
+    pitch: 1.61
+    Loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 6a016a15a1b48a5479e07aca60692593, type: 3}
+    name: power_on
+    volume: 0.36
+    pitch: 1.61
     Loop: 0
     source: {fileID: 0}

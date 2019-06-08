@@ -24,7 +24,8 @@ public class NewLevelGenerator : MonoBehaviour
 
 
     public GameObject ufoEnemy;
-    public GameObject crateObject;
+    public GameObject devourer;
+    public GameObject chest;
 
 
     int cursorPosX = 0;
@@ -33,6 +34,9 @@ public class NewLevelGenerator : MonoBehaviour
     directions direction;
     directions lastDirection;
     roomsTypes[,] map;
+
+    int maxFlyingEnemies;
+    int maxDevourers;
 
     public enum roomsTypes
     {
@@ -352,27 +356,58 @@ public class NewLevelGenerator : MonoBehaviour
         }
 
         SummonEnemies();
-        SummonCrates();
+        SummonChests();
     }
 
     private void SummonEnemies()
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag("EnemySpawner");
+        GameObject[] patrollObjects = GameObject.FindGameObjectsWithTag("DevourerSpawner");
 
-        foreach (GameObject i in objects)
+        switch (PlayerStats.Instance.Level)
         {
-            Debug.Log("test");
-            Instantiate(ufoEnemy, i.transform.position, Quaternion.identity);
+            case 1:
+            case 2:
+                maxFlyingEnemies = 3;
+                maxDevourers = 4;
+                break;
+            case 3:
+            case 4:
+                maxFlyingEnemies = 5;
+                maxDevourers = 6;
+                break;
+            case 5:
+            case 6:
+                maxFlyingEnemies = 7;
+                maxDevourers = 8;
+                break;
+            default:
+                maxFlyingEnemies = objects.Length-1;
+                maxDevourers = patrollObjects.Length;
+                break;
+        }
+
+        for (int i = 0; i < maxFlyingEnemies; i++) 
+        {
+            Debug.Log("spawn flying enemy");
+            Instantiate(ufoEnemy, objects[i].transform.position, Quaternion.identity);
+        }
+
+        for (int i = 0; i < maxDevourers; i++)
+        {
+            Debug.Log("spawn devourer");
+            Instantiate(devourer, patrollObjects[i].transform.position, Quaternion.identity);
         }
     }
 
-    private void SummonCrates()
+    private void SummonChests()
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag("ItemSpawner");
 
-        foreach (GameObject i in objects)
+        for (int i = 0; i < objects.Length; i++)
         {
-            Instantiate(crateObject, i.transform.position, Quaternion.identity);
+            Debug.Log("spawn chest");
+            Instantiate(chest, objects[i].transform.position, Quaternion.identity);
         }
     }
 

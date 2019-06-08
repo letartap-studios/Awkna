@@ -79,6 +79,7 @@ public class PauseMenu : MonoBehaviour
         gameoverMenuUI.SetActive(false);
         GameIsPaused = false;
         PlayerStats.Instance.ResetStats();
+        PlayerStats.Instance.NextLevel();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //SceneManager.LoadScene("vlod");
         Time.timeScale = 1f;

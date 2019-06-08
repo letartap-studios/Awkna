@@ -91,6 +91,8 @@ public class PlayerController : MonoBehaviour
         Physics2D.IgnoreLayerCollision(15, 20, true);   // Ignore the collition between the player and the collectables.
         //Physics2D.IgnoreLayerCollision(20, 20, true); // Ignore the collision between the collectables.
         Physics2D.IgnoreLayerCollision(15, 12, true);   // player, enemies
+        Physics2D.IgnoreLayerCollision(12, 12, true);   // enemies
+        Physics2D.IgnoreLayerCollision(12, 19, true);   // enemies, chest/crate
         Physics2D.IgnoreLayerCollision(13, 15, true);   // Ignore the collision between the player and the bomb.
     }
 

@@ -14,7 +14,6 @@ public class ShopItem : MonoBehaviour
     [SerializeField] private Vector2 size;
     private LayerMask playerMask;
     public Animator anim;
-    public Animator anim2;
     private int price;
     public int numberOfItems;
 
@@ -22,7 +21,9 @@ public class ShopItem : MonoBehaviour
     public GameObject pushButtonIndicator;
     public GameObject itemCost;
 
-    bool empty = false;
+    public TextMesh shopkeeper;
+
+    bool empty;
 
 
     private void Start()
@@ -41,6 +42,7 @@ public class ShopItem : MonoBehaviour
         pushButtonIndicator.SetActive(true);
         itemCost.SetActive(true);
         PriceText.text = price.ToString();
+        empty = false;
     }
 
     public void DisableShop()
@@ -66,10 +68,6 @@ public class ShopItem : MonoBehaviour
             {
                 anim.SetBool("inRange", true);
             }
-            if (anim2 != null)
-            {
-                anim2.SetBool("inRange", true);
-            }
 
             if (Input.GetButtonDown("Interact"))
             {
@@ -79,12 +77,14 @@ public class ShopItem : MonoBehaviour
                     {
                         PlayerStats.Instance.PayGems(price);
                         Instantiate(soldObject, transform.position, Quaternion.identity);
+                        FindObjectOfType<AudioManager>().Play("ka-ching");
                         DisableShop();
                     }
                 }
                 else
                 {
-                    // Not enough gems
+                    // Not enough gems text
+                    shopkeeper.text = "You didn't gather enough gems, earthling!";
                 }
             }
         }
@@ -98,8 +98,6 @@ public class ShopItem : MonoBehaviour
         {
             if (anim != null)
                 anim.SetBool("inRange", false);
-            if (anim2 != null)
-                anim2.SetBool("inRange", false);
         }
     }
 

@@ -51,6 +51,12 @@ public class PlayerStats : MonoBehaviour
 
     private int usesUsed;
     private int numberOfUses = 2;
+    [SerializeField]
+    private int level = 0;
+
+    private float damageAnimationTime;
+    [SerializeField]
+    private float initialdDamageAnimationTime;
 
     /// <summary>
     /// The current health of the player.
@@ -81,6 +87,7 @@ public class PlayerStats : MonoBehaviour
 
     public int UsesUsed { get => usesUsed; set => usesUsed = value; }
     public int NumberOfUses { get => numberOfUses; }
+    public int Level { get => level; set => level = value; }
 
     #endregion
 
@@ -96,6 +103,13 @@ public class PlayerStats : MonoBehaviour
         bombsNumber = 3;
         gemNumber = 0;
         ropeMaxCastDistance = 5f;
+        numberOfUses = 2;
+        level = 0;
+    }
+
+    public void NextLevel()
+    {
+        level++;
     }
 
     public void ResetGrapplingUses()

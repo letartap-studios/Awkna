@@ -4,22 +4,32 @@
 public class EnemyHealth : MonoBehaviour
 {
     public int health;
-    [HideInInspector]
 
+    public ParticleSystem deathParticles;
 
     private void Update()
     {
         if (health <= 0)
         {
             Destroy(gameObject);
+            Instantiate(deathParticles, gameObject.transform.position, Quaternion.identity);
         }
     }
 
     public void TakeDamage(int damage)
     {
-        
         health -= damage;
-        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShakeController>().Shake();
         Debug.Log("Enemy has taken damage");
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShakeController>().Shake();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Sword")
+        {
+            TakeDamage(1);
+            FindObjectOfType<AudioManager>().Play("hit_alien");
+
+        }
     }
 }

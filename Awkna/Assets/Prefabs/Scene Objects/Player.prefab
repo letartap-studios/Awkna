@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3c9e9be88c2c24aa0b58dadb16486e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTimeBtwAttack: 0.3
+  startTimeBtwAttack: 0.5
   attackPos: {fileID: 2115697293309399627}
   attackRange: 0.33
   whatIsEnemy:
@@ -491,8 +491,6 @@ MonoBehaviour:
   waitTime: 0
   startWaitTime: 0.5
   climbSpeed: 5
-  usesUsed: 0
-  numberOfUses: 1
   anim: {fileID: 174803940181713847}
 --- !u!120 &2115697293848515349
 LineRenderer:
@@ -655,7 +653,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minTimeBetweenSteps: 0.2
-  dustEffect: {fileID: 4025888977589029232, guid: 6581dd4c987fc674284e1b96d5107a7d,
+  walkDustEffect: {fileID: 4327993200132837721, guid: 6581dd4c987fc674284e1b96d5107a7d,
+    type: 3}
+  landEffect: {fileID: 4327993200132837721, guid: e8c31adabcf41d14680793db2c77d2bf,
     type: 3}
 --- !u!82 &1905101323972294251
 AudioSource:
@@ -666,7 +666,8 @@ AudioSource:
   m_GameObject: {fileID: 2115697293848515362}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: dfab9357daedd534ea2dcf0b2a94d434,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 18beeba95f8452242a12a75f6c313e43, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1326,9 +1327,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6478506870360737167}
   - component: {fileID: 2096183673593893657}
-  m_Layer: 0
+  - component: {fileID: 2912472314990256318}
+  m_Layer: 28
   m_Name: Saber
-  m_TagString: Untagged
+  m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1395,6 +1397,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &2912472314990256318
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4162944910232879130}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.078346305, y: 0.11151123}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.33333334, y: 0.7777778}
+    newSize: {x: 0.42857143, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.18188183, y: 0.55475533}
+  m_EdgeRadius: 0
 --- !u!1 &4346582592982976299
 GameObject:
   m_ObjectHideFlags: 0
