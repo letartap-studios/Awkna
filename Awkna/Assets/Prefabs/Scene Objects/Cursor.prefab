@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df5a79102ce61c41a8acd97aaa24e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  full: {fileID: 21300000, guid: ba0a90f02a52d6147bdc6102f25681d5, type: 3}
-  half: {fileID: 21300000, guid: f979cb25cad73884b956ced54c7d8d3a, type: 3}
-  empty: {fileID: 21300000, guid: 82c068090f9cbd54dbfce341195f28f1, type: 3}
+  full: {fileID: 6355458312320289183, guid: 6f1b3b993804bf64dae97173c57e9e15, type: 3}
+  half: {fileID: 6220788291478819134, guid: 6f1b3b993804bf64dae97173c57e9e15, type: 3}
+  empty: {fileID: -4839980158940636794, guid: 6f1b3b993804bf64dae97173c57e9e15, type: 3}
   pause: {fileID: 0}
   gameOver: {fileID: 0}
 --- !u!212 &1344655332018391771
@@ -86,7 +86,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 200
-  m_Sprite: {fileID: 21300000, guid: ba0a90f02a52d6147bdc6102f25681d5, type: 3}
+  m_Sprite: {fileID: 6355458312320289183, guid: 6f1b3b993804bf64dae97173c57e9e15,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
