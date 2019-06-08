@@ -56,6 +56,12 @@ public class LeverScript : MonoBehaviour
                         {
                             electricty[i].GetComponent<ShopItem>().DisableShop();
                         }
+                        else if(electricty[i].layer == 29) // Shopkeeper
+                        {
+                            electricty[i].GetComponent<Animator>().SetBool("on", false);
+                            electricty[i].transform.GetChild(7).GetComponent<TextMesh>().text = "OH NO!";
+                            electricty[i].transform.GetChild(7).GetComponent<Shopkeeper>().lightsOut = true;
+                        }
                     }
                 }
                 else
@@ -83,6 +89,12 @@ public class LeverScript : MonoBehaviour
                         else if (electricty[i].layer == 27) // Shop
                         {
                             electricty[i].GetComponent<ShopItem>().EnableShop();
+                        }
+                        else if (electricty[i].layer == 29) // Shopkeeper
+                        {
+                            electricty[i].GetComponent<Animator>().SetBool("on", true);
+                            electricty[i].transform.GetChild(7).GetComponent<TextMesh>().text = "The electricity is back!";
+                            electricty[i].transform.GetChild(7).GetComponent<Shopkeeper>().lightsOut = false;
                         }
                     }
                 }

@@ -58,13 +58,6 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     private float initialdDamageAnimationTime;
 
-    [SerializeField]
-    private SpriteRenderer body;
-    [SerializeField]
-    private SpriteRenderer rightHand;
-    [SerializeField]
-    private SpriteRenderer leftHand;
-
     /// <summary>
     /// The current health of the player.
     /// </summary>
@@ -110,6 +103,7 @@ public class PlayerStats : MonoBehaviour
         bombsNumber = 3;
         gemNumber = 0;
         ropeMaxCastDistance = 5f;
+        numberOfUses = 2;
         level = 0;
     }
 
