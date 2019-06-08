@@ -12,6 +12,10 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene(sceneName: "vlod");
+        if (PlayerStats.Instance.Level == 0)
+        {
+            PlayerStats.Instance.ResetStats();
+        }
         PlayerStats.Instance.NextLevel();
         Time.timeScale = 1f;
     }
