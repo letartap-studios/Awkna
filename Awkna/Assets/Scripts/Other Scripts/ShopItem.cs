@@ -21,6 +21,8 @@ public class ShopItem : MonoBehaviour
     public GameObject pushButtonIndicator;
     public GameObject itemCost;
 
+    public TextMesh shopkeeper;
+
     bool empty;
 
 
@@ -82,6 +84,7 @@ public class ShopItem : MonoBehaviour
                 else
                 {
                     // Not enough gems text
+                    shopkeeper.text = "You didn't gather enough gems, earthling!";
                 }
             }
         }
