@@ -389,13 +389,13 @@ public class NewLevelGenerator : MonoBehaviour
 
         for (int i = 0; i < maxFlyingEnemies; i++) 
         {
-            Debug.Log("spawn flying enemy");
+            //Debug.Log("spawn flying enemy");
             Instantiate(ufoEnemy, objects[i].transform.position, Quaternion.identity);
         }
 
         for (int i = 0; i < maxDevourers; i++)
         {
-            Debug.Log("spawn devourer");
+            //Debug.Log("spawn devourer");
             Instantiate(devourer, patrollObjects[i].transform.position, Quaternion.identity);
         }
     }
@@ -406,7 +406,7 @@ public class NewLevelGenerator : MonoBehaviour
 
         for (int i = 0; i < objects.Length; i++)
         {
-            Debug.Log("spawn chest");
+            //Debug.Log("spawn chest");
             Instantiate(chest, objects[i].transform.position, Quaternion.identity);
         }
     }

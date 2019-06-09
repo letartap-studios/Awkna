@@ -16,9 +16,10 @@ public class HeadStomper : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
+
             collision.GetComponent<EnemyHealth>().TakeDamage(collision.GetComponent<EnemyHealth>().health);
-            anim.SetTrigger("takeOf");
-            rb.velocity = new Vector2(rb.velocity.x, bounceOnEnemy);
+            anim.SetTrigger("stomp");
+            //rb.velocity = new Vector2(rb.velocity.x, bounceOnEnemy);
             
         }
     }

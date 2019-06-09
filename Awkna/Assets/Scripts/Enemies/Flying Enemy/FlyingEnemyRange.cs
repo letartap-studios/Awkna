@@ -45,7 +45,6 @@ namespace Enemy
             {
                 activated = true;
                 GetComponent<AIPath>().enabled = true;  // Activate the script AIPath.
-                GetComponent<EnemyHealth>().enabled = true;
                 GetComponent<EnemyAttack>().enabled = true;
                 GetComponent<FlyingEnemyRange>().enabled = false;
             }
