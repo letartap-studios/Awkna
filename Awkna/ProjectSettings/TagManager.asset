@@ -7,7 +7,6 @@ TagManager:
   - Environment
   - Heal
   - Collect
-  - Enemy
   - Door
   - Crate
   - Gem
@@ -34,6 +33,7 @@ TagManager:
   - Shop
   - DevourerSpawner
   - Sword
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -47,7 +47,7 @@ TagManager:
   - Borders
   - Room
   - Ladder
-  - Enemy
+  - FlyingEnemy
   - Bomb
   - Platform
   - Player
@@ -60,12 +60,12 @@ TagManager:
   - LightBulb
   - Laser
   - ElectricalDoor
-  - Attack
+  - 
   - LaserHolder
   - Shop
   - Sword
   - Shopkeeper
-  - 
+  - PatrollingEnemy
   - 
   m_SortingLayers:
   - name: Background
