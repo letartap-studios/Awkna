@@ -25,7 +25,7 @@ public class KillTile : MonoBehaviour
         }
         else
         {
-            PlayerStats.Instance.TakeDamage(damage);
+            PlayerStats.Instance.TakeDamage(damage, transform.position);
         }
     }
 #if UNITY_EDITOR

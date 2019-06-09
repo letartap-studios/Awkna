@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3032946328403841246}
   - component: {fileID: 646149728043497314}
   - component: {fileID: -205999473003186166}
-  - component: {fileID: 8930437183429454944}
   - component: {fileID: 1074660908635139586}
   - component: {fileID: 5157700398643278258}
   m_Layer: 17
@@ -123,29 +122,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &8930437183429454944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2910687485101638016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9646103a204b95d48810e4e7e3c78f03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  areaOfEffect: 1.5
-  whatIsDestructible:
-    serializedVersion: 2
-    m_Bits: 37120
-  damagePlayer: 5
-  offset: {x: 0, y: -0.475}
-  size: {x: 0.94, y: 0.05}
-  effect: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 17152
 --- !u!61 &1074660908635139586
 BoxCollider2D:
   m_ObjectHideFlags: 0

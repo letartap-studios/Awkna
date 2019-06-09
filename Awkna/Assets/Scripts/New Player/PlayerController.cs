@@ -21,8 +21,7 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed = 40f;           // The speed at which the player is moving.
     public float jumpForce = 400f;              // Amount of force added when the player jumps.    
     [Range(0, .3f)]
-    [SerializeField]
-    private float horizontalMovementSmoothing;  // How much to smooth out the horizontal movement.
+    public float horizontalMovementSmoothing;   // How much to smooth out the horizontal movement.
     public bool facingRight = false;            // For determining which way the player is currently facing.
     [HideInInspector]
     public bool isGrounded;                     // Whether or not the player is grounded.
@@ -72,28 +71,27 @@ public class PlayerController : MonoBehaviour
     public bool switchGravityPower;             // Turn on or off the gravity switch ability.
     public GameObject energyUI;                 // Turn on or off the energy bar from the UI.  
 
-    public Animator Animator { get; private set; }
+    public Animator anim { get; private set; }
     public float GetHorizontalMoveInput()
     {
         return horizontalMoveInput;
     }
+
+    public float knockback;
+    public float knockbackLength;
+    public float knockbackCount;
+    public bool knockFromRight;
     #endregion
 
 
     private void Awake()
     {
         FindObjectOfType<AudioManager>().Play("levelstart");
-        energy = maxEnergy;                             // Start with max energy.
-        rb = GetComponent<Rigidbody2D>();               // Get the rigidbody component from the player object.
-        Animator = GetComponent<Animator>();            // Get the animator component from the player object.
-        initialGravity = rb.gravityScale;               // Get the initial value of the gravity.
-        m_GravityDirection = GravityDirection.Down;     // Initialize the gravity direction with down.
-        Physics2D.IgnoreLayerCollision(15, 20, true);   // Ignore the collition between the player and the collectables.
-        //Physics2D.IgnoreLayerCollision(20, 20, true); // Ignore the collision between the collectables.
-        Physics2D.IgnoreLayerCollision(15, 12, true);   // player, enemies
-        Physics2D.IgnoreLayerCollision(12, 12, true);   // enemies
-        Physics2D.IgnoreLayerCollision(12, 19, true);   // enemies, chest/crate
-        Physics2D.IgnoreLayerCollision(13, 15, true);   // Ignore the collision between the player and the bomb.
+        energy = maxEnergy;
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        initialGravity = rb.gravityScale;
+        m_GravityDirection = GravityDirection.Down;
     }
 
     private void Update()
@@ -122,7 +120,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump") && (isGrounded || isSwinging || isClimbing))
             {
-                Animator.SetTrigger("takeOf");
+                anim.SetTrigger("takeOf");
                 rb.velocity = Vector2.up * jumpForce;
                 isJumping = true;
                 jumpTimeCounter = jumpTime;
@@ -148,11 +146,11 @@ public class PlayerController : MonoBehaviour
 
             if (isGrounded || isSwinging)
             {
-                Animator.SetBool("isJumping", false);
+                anim.SetBool("isJumping", false);
             }
             else
             {
-                Animator.SetBool("isJumping", true);
+                anim.SetBool("isJumping", true);
             }
         }
         else                                             // The same things apply to the reversed gravity.
@@ -244,21 +242,36 @@ public class PlayerController : MonoBehaviour
         if (!isSwinging)
         {
             //animator.SetBool("IsSwinging", false);
-            Physics2D.IgnoreLayerCollision(15, 19, false);
+            Physics2D.IgnoreLayerCollision(15, 19, false); // player, crate
 
 
-            Vector3 targetVelocity = new Vector2(horizontalMoveInput * movementSpeed, rb.velocity.y);     // Move the character by finding the target velocity...       
-            rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, horizontalMovementSmoothing);
-        }                                                                                          // ...and then smoothing it out and applying it to the character.
+            Vector3 targetVelocity = new Vector2(horizontalMoveInput * movementSpeed, rb.velocity.y);
+            if (knockbackCount <= 0)
+            {
+                rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, horizontalMovementSmoothing);
+            }
+            else
+            {
+                if (knockFromRight)
+                {
+                    rb.velocity = new Vector2(-knockback, knockback);
+                }
+                else
+                {
+                    rb.velocity = new Vector2(knockback, knockback);
+                }
+                knockbackCount -= Time.deltaTime;
+            }
+        }                                                                                          
         #endregion
 
         if (horizontalMoveInput == 0)
         {
-            Animator.SetBool("isRunning", false);
+            anim.SetBool("isRunning", false);
         }
         else if (isGrounded)
         {
-            Animator.SetBool("isRunning", true);
+            anim.SetBool("isRunning", true);
         }
 
         #endregion

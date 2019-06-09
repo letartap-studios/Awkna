@@ -42,12 +42,10 @@ public class PlayerStats : MonoBehaviour
     private int gemNumber = 0;
     [SerializeField]
     private float ropeMaxCastDistance = 5f;
-    private float countdownTimeToInvulnerability = 0;
+
+    private bool invincible = false;
     [SerializeField]
     private float invulnerabilityTime = 0.2f;
-
-    [SerializeField]
-    private float knockbackPwr;
 
     private int usesUsed;
     private int numberOfUses = 2;
@@ -137,27 +135,34 @@ public class PlayerStats : MonoBehaviour
     /// <param name="dmg">The amount of damage the player takes.</param>
     public void TakeDamage(float dmg, Vector2 pos)
     {
-        if (countdownTimeToInvulnerability <= 0)
+        if (!invincible)
         {
             health -= dmg;
 
+            invincible = true;
+
             FindObjectOfType<AudioManager>().Play("damagetaken");//play sound
 
-            PlayerController.Instance.Animator.SetTrigger("getDamaged");
+            PlayerController.Instance.anim.SetTrigger("getDamaged");
 
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShakeController>().Shake();
 
             GameObject.FindWithTag("Player").GetComponent<RopeSystem>().ResetRope();
 
-            PlayerController.Instance.Knockback(knockbackPwr, (Vector2)PlayerController.Instance.transform.position, pos.x);
+            PlayerController.Instance.knockbackCount = PlayerController.Instance.knockbackLength;
 
-            countdownTimeToInvulnerability = invulnerabilityTime;
+            if (pos.x > PlayerController.Instance.transform.position.x)
+            {
+                PlayerController.Instance.knockFromRight = true;
+            }
+            else
+            {
+                PlayerController.Instance.knockFromRight = false;
+            }
+
+            Invoke("resetInvulnerability", invulnerabilityTime);
 
             ClampHealth();
-        }
-        else
-        {
-            countdownTimeToInvulnerability -= Time.deltaTime;
         }
     }
     public void TakeDamage(float dmg)
@@ -166,14 +171,18 @@ public class PlayerStats : MonoBehaviour
 
         FindObjectOfType<AudioManager>().Play("damagetaken");//play sound
 
-        PlayerController.Instance.Animator.SetTrigger("getDamaged");
+        PlayerController.Instance.anim.SetTrigger("getDamaged");
 
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShakeController>().Shake();
-
-        countdownTimeToInvulnerability = invulnerabilityTime;
-
+        
         ClampHealth();
     }
+
+    private void resetInvulnerability()
+    {
+        invincible = false;
+    }
+
     /// <summary>
     /// Add one health to the players stats.
     /// </summary>
