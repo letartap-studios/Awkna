@@ -69,9 +69,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -1485450897
+  m_SortingLayer: -1
+  m_SortingOrder: 100
   m_Sprite: {fileID: 5593397471219839343, guid: ec3b2022e636c9849a759f750d97809d,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -137,11 +137,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4420026457830191306}
     m_Modifications:
-    - target: {fileID: 3982117298283188876, guid: 0344c02f3ffe0a74bbe08ac1b3df62c6,
-        type: 3}
-      propertyPath: m_Name
-      value: InputButtonIndicator
-      objectReference: {fileID: 0}
     - target: {fileID: 433800696474262673, guid: 0344c02f3ffe0a74bbe08ac1b3df62c6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -196,6 +191,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982117298283188876, guid: 0344c02f3ffe0a74bbe08ac1b3df62c6,
+        type: 3}
+      propertyPath: m_Name
+      value: InputButtonIndicator
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0344c02f3ffe0a74bbe08ac1b3df62c6, type: 3}

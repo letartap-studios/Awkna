@@ -17,7 +17,8 @@ GameObject:
   - component: {fileID: 7979948849784545223}
   - component: {fileID: 2650069776787078833}
   - component: {fileID: 4832600579509569571}
-  m_Layer: 12
+  - component: {fileID: 8716872700582722989}
+  m_Layer: 30
   m_Name: Devourer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -100,7 +101,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.02718997, y: 0.0030267239}
+  m_Offset: {x: 0.03181839, y: -0.065111876}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -111,7 +112,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.86623335, y: 0.5828748}
+  m_Size: {x: 0.7482166, y: 0.44659758}
   m_EdgeRadius: 0.03
 --- !u!50 &7979948849784545220
 Rigidbody2D:
@@ -165,10 +166,9 @@ MonoBehaviour:
   gravity: 10
   movementSpeed: 2
   spriteFaceLeft: 1
-  frontGroundOffset: {x: -0.7, y: 0}
-  edgeOffset: {x: -0.95, y: -1}
+  frontGroundOffset: {x: -0.55, y: 0}
+  edgeOffset: {x: -0.83, y: -0.42}
   radius: 0.2
-  health: {fileID: 0}
 --- !u!95 &7979948849784545223
 Animator:
   serializedVersion: 3
@@ -200,12 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3617a9abf223e6041bb9224b9b3c171a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockDuration: 0.5
-  knockbackPwr: 5
   dealtDamage: 1
-  offset: {x: 0.01, y: 0}
-  radius: 0.38
-  attackTrigger: 0
 --- !u!114 &4832600579509569571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,5 +214,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  patroll: 1
   deathParticles: {fileID: 19876556, guid: 94a8fd438d46ee04ab79c5cfb68d2670, type: 3}
+--- !u!58 &8716872700582722989
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7979948849784545216}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.31, y: -0.10481252}
+  serializedVersion: 2
+  m_Radius: 0.19518746

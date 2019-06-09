@@ -48,10 +48,7 @@ public class SpriteSelector : MonoBehaviour
     private Sprite singleSprite;
     #endregion
 
-    private bool upRay;
-    private bool downRay;
-    private bool leftRay;
-    private bool rightRay;
+
 
     public float radius;
     public LayerMask whatIsGround;
@@ -94,10 +91,11 @@ public class SpriteSelector : MonoBehaviour
 
     public void ChangeSprite()
     {
-        upRay = Physics2D.OverlapCircle((Vector2)transform.position + upOffset, radius, whatIsGround);
-        downRay = Physics2D.OverlapCircle((Vector2)transform.position + downOffset, radius, whatIsGround);
-        leftRay = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, radius, whatIsGround);
-        rightRay = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, radius, whatIsGround);
+
+        bool upRay = Physics2D.OverlapCircle((Vector2)transform.position + upOffset, radius, whatIsGround);
+        bool downRay = Physics2D.OverlapCircle((Vector2)transform.position + downOffset, radius, whatIsGround);
+        bool leftRay = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, radius, whatIsGround);
+        bool rightRay = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, radius, whatIsGround);
 
         if (!upRay && !downRay && !leftRay && !rightRay)     // single
         {
@@ -164,7 +162,7 @@ public class SpriteSelector : MonoBehaviour
             spriteRenderer.sprite = downLeftRightSprite;
         }
     }
-#if UNITY_EDITOR
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -179,5 +177,4 @@ public class SpriteSelector : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset, radius);
     }
-#endif
 }

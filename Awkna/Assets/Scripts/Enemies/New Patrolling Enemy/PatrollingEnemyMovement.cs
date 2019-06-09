@@ -17,7 +17,6 @@ public class PatrollingEnemyMovement : MonoBehaviour
     public Vector2 edgeOffset;
     public float radius;
     private EnemyAttack attack;
-    public EnemyHealth health;
     private Animator anim;
 
     public Vector3 moveVector { get { return m_MoveVector; } }
@@ -63,7 +62,7 @@ public class PatrollingEnemyMovement : MonoBehaviour
 
         frontGroundOffset.x = -frontGroundOffset.x;
         edgeOffset.x = -edgeOffset.x;
-        attack.offset.x = -attack.offset.x;
+        //attack.offset.x = -attack.offset.x;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
