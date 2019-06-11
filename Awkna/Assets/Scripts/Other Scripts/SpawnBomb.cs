@@ -31,14 +31,14 @@ public class SpawnBomb : MonoBehaviour
             {
                 if (objectsToDamage[i].CompareTag("Player"))        // If the bomb collides with the player at explosion, ...
                 {
-                    PlayerStats.Instance.TakeDamage(PlayerStats.Instance.MaxHealth, transform.position);  // ...damage the player.
+                    PlayerStats.Instance.TakeDamage(PlayerStats.Instance.Health, transform.position);  // ...damage the player.
                 }
-                else if (objectsToDamage[i].CompareTag("Enemy"))     // If the bomb collides with an enemy at explosion,...
+                else if (objectsToDamage[i].CompareTag("Enemy"))    // If the bomb collides with an enemy at explosion,...
                 {
                     //                                              // ...deal damage to the enemy equal to its health. (Kill it)
                     objectsToDamage[i].GetComponent<EnemyHealth>().TakeDamage(objectsToDamage[i].GetComponent<EnemyHealth>().health);
                 }
-                else if (objectsToDamage[i].CompareTag("Crate"))                                               // If it collides with anything else that is destructible,..
+                else if (objectsToDamage[i].CompareTag("Crate"))    // If it collides with anything else that is destructible,..
                 {
                     objectsToDamage[i].GetComponent<CrateHealth>().DestroyCrate();
                 }
@@ -51,14 +51,22 @@ public class SpawnBomb : MonoBehaviour
                     Destroy(objectsToDamage[i].gameObject);
                 }
 
-                // ...destroy it.
-
             }
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShakeController>().Shake();
 
             GameObject instance = Instantiate(effect, transform.position, Quaternion.identity);   //Explosion effect.
 
             FindObjectOfType<AudioManager>().Play("Explosion1");
+
+
+            //Collider2D scan = Physics2D.OverlapCircle(transform.position, areaOfEffect + updateOffset + 100f);
+            //Bounds bounds = scan.bounds;
+
+            Bounds bounds = gameObject.transform.GetChild(0).gameObject.GetComponent<Collider>().bounds;
+
+            AstarPath.active.UpdateGraphs(bounds);
+
+            // AstarPath.active.Scan();
 
             Destroy(whatIsBomb);                                            // Destroy the bomb at explosion.
             Destroy(instance, 3f);
@@ -70,8 +78,6 @@ public class SpawnBomb : MonoBehaviour
                 if (tilesToUpdate[i].GetComponent<SpriteSelector>() != null)
                     tilesToUpdate[i].GetComponent<SpriteSelector>().ChangeSprite();
             }
-
-            AstarPath.active.Scan();
         }
         else
         {

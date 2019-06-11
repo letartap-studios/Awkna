@@ -40,7 +40,7 @@ public class RopeSystem : MonoBehaviour
     public float startWaitTime;
 
     public float climbSpeed = 3f;      // Set the speed at which the player can go up and down the rope.
-    private bool isColliding;          // Flag to determine whether or not the rope's distance joint distance property can be increased or decreased.    
+    //private bool isColliding;          // Flag to determine whether or not the rope's distance joint distance property can be increased or decreased.    
 
     public Animator anim;
 
@@ -120,10 +120,15 @@ public class RopeSystem : MonoBehaviour
 
         HandleInput(aimDirection);
 
-        UpdateRopePositions();
+        
 
         HandleRopeLength();
 
+        
+    }
+    private void FixedUpdate()
+    {
+        UpdateRopePositions();
         HandleRopeUnwrap();
     }
 
@@ -325,15 +330,15 @@ public class RopeSystem : MonoBehaviour
         return orderedDictionary.Any() ? orderedDictionary.First().Value : Vector2.zero;
     }
 
-    private void OnTriggerStay2D(Collider2D colliderStay)
-    {
-        isColliding = true;
-    }
+    //private void OnTriggerStay2D(Collider2D colliderStay)
+    //{
+    //    isColliding = true;
+    //}
 
-    private void OnTriggerExit2D(Collider2D colliderOnExit)
-    {
-        isColliding = false;
-    }
+    //private void OnTriggerExit2D(Collider2D colliderOnExit)
+    //{
+    //    isColliding = false;
+    //}
 
     private void HandleRopeUnwrap()
     {
