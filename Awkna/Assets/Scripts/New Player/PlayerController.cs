@@ -244,11 +244,10 @@ public class PlayerController : MonoBehaviour
             //animator.SetBool("IsSwinging", false);
             Physics2D.IgnoreLayerCollision(15, 19, false); // player, crate
 
-
-            Vector3 targetVelocity = new Vector2(horizontalMoveInput * movementSpeed, rb.velocity.y);
             if (knockbackCount <= 0)
             {
-                rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, horizontalMovementSmoothing);
+                    Vector3 targetVelocity = new Vector2(horizontalMoveInput * movementSpeed, rb.velocity.y);
+                    rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, horizontalMovementSmoothing);
             }
             else
             {
@@ -262,7 +261,7 @@ public class PlayerController : MonoBehaviour
                 }
                 knockbackCount -= Time.deltaTime;
             }
-        }                                                                                          
+        }
         #endregion
 
         if (horizontalMoveInput == 0)
@@ -297,6 +296,11 @@ public class PlayerController : MonoBehaviour
                 isClimbing = false;
                 rb.gravityScale = initialGravity;
             }
+            //if (Input.GetButton("Horizontal"))
+            //{
+            //    isClimbing = false;
+            //    rb.gravityScale = initialGravity;
+            //}
         }
         else
         {

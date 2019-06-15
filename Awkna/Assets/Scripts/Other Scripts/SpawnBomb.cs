@@ -50,7 +50,6 @@ public class SpawnBomb : MonoBehaviour
                 {
                     Destroy(objectsToDamage[i].gameObject);
                 }
-
             }
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShakeController>().Shake();
 
