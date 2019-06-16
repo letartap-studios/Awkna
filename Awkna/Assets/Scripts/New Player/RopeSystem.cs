@@ -39,6 +39,8 @@ public class RopeSystem : MonoBehaviour
     public float waitTime;
     public float startWaitTime;
 
+    public CursorMovement cursorMovement;
+
     public float climbSpeed = 3f;      // Set the speed at which the player can go up and down the rope.
     //private bool isColliding;          // Flag to determine whether or not the rope's distance joint distance property can be increased or decreased.    
 
@@ -63,8 +65,8 @@ public class RopeSystem : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 facingDirection = new Vector3(worldMousePosition.x, worldMousePosition.y, transform.position.z) - transform.position;
+        //Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 facingDirection = new Vector3(cursorMovement.transform.position.x, cursorMovement.transform.position.y, transform.position.z) - transform.position;
         float aimAngle = Mathf.Atan2(facingDirection.y, facingDirection.x);
         if (aimAngle < 0f)
         {
@@ -120,11 +122,11 @@ public class RopeSystem : MonoBehaviour
 
         HandleInput(aimDirection);
 
-        
+
 
         HandleRopeLength();
 
-        
+
     }
     private void FixedUpdate()
     {
@@ -305,7 +307,7 @@ public class RopeSystem : MonoBehaviour
         if (Input.GetAxisRaw("Vertical") > 0f && ropeAttached)
         {
             //if (!isColliding)
-                ropeJoint.distance -= Time.deltaTime * climbSpeed;
+            ropeJoint.distance -= Time.deltaTime * climbSpeed;
         }
         else if (Input.GetAxisRaw("Vertical") < 0f && ropeAttached && !playerController.isGrounded)
         {

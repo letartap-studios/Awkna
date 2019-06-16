@@ -30,7 +30,7 @@ public class MouseCursor : MonoBehaviour
             Cursor.visible = false;
 
             Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = cursorPos;
+            //transform.position = cursorPos;
 
             if (PlayerStats.Instance.UsesUsed == 2)
             {
