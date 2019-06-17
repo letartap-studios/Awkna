@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bc054e01947c99d4a98fd4b93cb9882e, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -60,6 +60,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -134,9 +135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpText: +1 Gem
   expiresImmediately: 1
-  specialEffect: {fileID: 0}
-  soundEffect: {fileID: 0}
   pickUpRange: 0.15
+  price: 0
 --- !u!1001 &7128769447422693518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -152,12 +152,12 @@ PrefabInstance:
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.019
       objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.038
       objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
@@ -177,12 +177,12 @@ PrefabInstance:
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.0060293796
       objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9999818
       objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
@@ -228,6 +228,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Intensity
       value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589130412793644822, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 0.22025082
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589130412793644822, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.617
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589130412793644822, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589130412793644822, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.75977707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589130412793644822, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e0341b224a2f714382be454b2e8a95a, type: 3}

@@ -64,6 +64,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -212,6 +213,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 894583733778659531}
     m_Modifications:
+    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_Name
+      value: Point Light (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -282,16 +293,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.687074
       objectReference: {fileID: 0}
-    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
-        type: 3}
-      propertyPath: m_Name
-      value: Point Light (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863382, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_Intensity
@@ -332,6 +333,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 894583733778659531}
     m_Modifications:
+    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_Name
+      value: Point Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863385, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -401,16 +412,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.687074
-      objectReference: {fileID: 0}
-    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
-        type: 3}
-      propertyPath: m_Name
-      value: Point Light
-      objectReference: {fileID: 0}
-    - target: {fileID: 7036417900694863383, guid: 8e0341b224a2f714382be454b2e8a95a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7036417900694863382, guid: 8e0341b224a2f714382be454b2e8a95a,
         type: 3}

@@ -103,8 +103,8 @@ public class PlayerController : MonoBehaviour
 
         #region Flip the player facing by mouse cursor
         // using mousePosition and player's transform (on orthographic camera view)
-        //var delta = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        var delta = cursorMovement.transform.position - transform.position;
+        var delta = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        //var delta = cursorMovement.transform.position - transform.position;
         if (delta.x >= 0 && !facingRight)
         { // mouse is on right side of player
             transform.localScale = new Vector3(-1, 1, 1); // or activate look right some other way

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Experimental.Rendering.LWRP;
 
 public class LeverScript : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class LeverScript : MonoBehaviour
     private bool leverIsUp = true;
 
     public Animator anim;
-    public Light led;
+    public Light2D led;
 
     private void Start()
     {
@@ -41,7 +42,7 @@ public class LeverScript : MonoBehaviour
                         if (electricty[i].layer == 22)       // Light Bulb
                         {
                             //electricty[i].GetComponentInChildren<Light>().enabled = false;
-                            electricty[i].transform.GetChild(0).gameObject.GetComponent<Light>().enabled = false;
+                            electricty[i].transform.GetChild(0).gameObject.GetComponent<Light2D>().enabled = false;
                         }
                         else if (electricty[i].layer == 23)  // Laser
                         {
@@ -75,7 +76,7 @@ public class LeverScript : MonoBehaviour
                     {
                         if (electricty[i].layer == 22)       // Light Bulb
                         {
-                            electricty[i].transform.GetChild(0).gameObject.GetComponent<Light>().enabled = true;
+                            electricty[i].transform.GetChild(0).gameObject.GetComponent<Light2D>().enabled = true;
                         }
                         else if (electricty[i].layer == 23)  // Laser
                         {

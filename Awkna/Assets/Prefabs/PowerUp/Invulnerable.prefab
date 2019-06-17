@@ -57,6 +57,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -92,12 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0774c4e1358e943895cf1ecdd0456d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpName: Invulnerability
-  powerUpExplanation: Get invulnerable when pressing the special ability button
-  powerUpQuote: 
+  powerUpText: 
   expiresImmediately: 0
-  specialEffect: {fileID: 0}
-  soundEffect: {fileID: 0}
-  name: invulnerability
   pickUpRange: 0.4
+  price: 0
   time: 4

@@ -59,6 +59,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -203,6 +204,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3032946328403841246, guid: df5b0c2e128669a4e979b514ec8fff2e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bc054e01947c99d4a98fd4b93cb9882e, type: 2}
     - target: {fileID: 5382317980258869651, guid: df5b0c2e128669a4e979b514ec8fff2e,
         type: 3}
       propertyPath: m_Offset.y
